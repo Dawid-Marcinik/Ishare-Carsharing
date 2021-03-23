@@ -1,0 +1,33 @@
+<div class="container">
+	<h1 class="display-6">Modificar modelo</h1>
+	<form action="u" method="POST">
+		<label for="idMarca">Marca: </label>
+		<select name="idMarca" id="idMarca">
+			<option th:each="marca:${marcas}" th:value="${marca.id}" th:text="${marca.nombre}" th:selected="${marca.id == idMarcaModelo}"></option>
+		</select>
+		<br>
+		<label for="nombre">Nombre del modelo: </label>
+		<input type="text" id="nombre" name="nombre" th:value="${modelo.nombre}">
+		<br>
+		<label for="numeroPasajeros">Número de pasajeros: </label>
+		<input type="number" id="numeroPasajeros" name="numeroPasajeros" th:value="${modelo.numeroPasajeros}">
+		<br>
+		<label for="tipo">Tipo: </label>
+		<select name="tipo" id="tipo">
+			<option value="berlina">Berlina</option>
+			<option value="Hatchback">Hatchback</option>
+			<option value="urbano">Urbano</option>
+			<option value="urbano">Familiar</option>
+		</select>
+		<br>
+		<label for="autonomiaTotal">Autonomía total (Km): </label>
+		<input type="number" id="autonomiaTotal" name="autonomiaTotal" th:value="${modelo.autonomiaTotal}">
+		<br>
+		<label for="tarifa">Tarifa: (€/minuto)</label>
+		<input type="number" step="0.01" id="tarifa" name="tarifa" th:value="${modelo.tarifa}">
+		<br>
+		<input type="hidden" name="id" th:value="${modelo.id}">
+		<input type="submit" value="Modificar">
+		<input type="button" value="Cancelar" onclick="location.href='r'">
+	</form>
+</div>

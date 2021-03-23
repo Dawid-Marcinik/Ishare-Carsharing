@@ -1,0 +1,38 @@
+<div class="container">
+	<h1 class="display-6">Lista de Coches</h1>
+	<button class="btn"><a href="/coche/c">Crear nuevo coche para la flota</a></button>
+	<table class="table">
+		<tr>
+			<th>Matrícula</th>
+			<th>Marca</th>
+			<th>Modelo</th>
+			<th>Tipo</th>
+			<th>Plazas</th>
+			<th>Ubicación</th>
+			<th>Autonomía restante</th>
+			<th>Modificar</th>
+			<th>Borrar</th>
+		</tr>
+		<tr th:each="coche:${coches}">
+			<td th:text="${coche.matricula}"></td>
+			<td th:text="${coche.modelo.marca.nombre}"></td>
+			<td th:text="${coche.modelo.nombre}"></td>
+			<td th:text="${coche.modelo.tipo}"></td>
+			<td th:text="${coche.modelo.numeroPasajeros}"></td>
+			<td th:text="${coche.ubicacion.nombre}"></td>
+			<td th:text="${coche.autonomiaRestante}"></td>
+			<td>
+				<form action="u" method="GET">
+					<input type="hidden" name="id" th:value="${coche.id}">
+					<button onclick="submit()"><img src="/img/edit.png" height="20px" width="20px"></button>
+				</form>
+			</td>
+			<td>
+				<form action="d" method="POST">
+					<input type="hidden" name="id" th:value="${coche.id}">
+					<button onclick="submit()"><img src="/img/delete.png" height="20px" width="20px"></button>
+				</form>
+			</td>
+		</tr>
+	</table>	
+</div>

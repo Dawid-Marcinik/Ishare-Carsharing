@@ -24,7 +24,7 @@ public class Modelo {
 	@Column
 	private String tipo;
 	@Column
-	private Float autonomiaTotal;
+	private Integer autonomiaTotal;
 	@Column
 	private Float tarifa;
 	@ManyToOne(cascade = CascadeType.PERSIST)
@@ -36,7 +36,7 @@ public class Modelo {
 	public Modelo() {
 	}
 
-	public Modelo(String nombre, Integer numeroPasajeros, String tipo, Float autonomiaTotal, Float tarifa,
+	public Modelo(String nombre, Integer numeroPasajeros, String tipo, Integer autonomiaTotal, Float tarifa,
 			Marca marca) {
 		super();
 		this.nombre = nombre;
@@ -80,11 +80,11 @@ public class Modelo {
 		this.tipo = tipo;
 	}
 
-	public Float getAutonomiaTotal() {
+	public Integer getAutonomiaTotal() {
 		return autonomiaTotal;
 	}
 
-	public void setAutonomiaTotal(Float autonomiaTotal) {
+	public void setAutonomiaTotal(Integer autonomiaTotal) {
 		this.autonomiaTotal = autonomiaTotal;
 	}
 
