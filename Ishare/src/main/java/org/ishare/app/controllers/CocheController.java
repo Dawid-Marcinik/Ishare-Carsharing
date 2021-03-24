@@ -33,7 +33,7 @@ public class CocheController {
 	//Recuperar
 	@GetMapping("r")
 	public String rGet(ModelMap modelo) {
-		modelo.put("view", "coche/r");
+		modelo.put("view", "/coche/r");
 		modelo.put("coches", cocheRepository.findAll());
 		return ("_t/frame");
 	}
