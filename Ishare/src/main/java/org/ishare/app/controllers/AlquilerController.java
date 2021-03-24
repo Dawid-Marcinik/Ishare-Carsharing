@@ -106,7 +106,9 @@ public class AlquilerController {
 	@GetMapping("c")
 	public String alquilerCGet(ModelMap m) {
 		m.put("ubicaciones",this.ubicacionRepository.findAll());
+		m.put("coches",this.cocheRepository.findAll());
 		m.put("view","alquiler/cGet");
+		
 		return "/_t/frame";
 	}
 	
