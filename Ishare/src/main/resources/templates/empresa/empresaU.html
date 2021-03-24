@@ -1,0 +1,43 @@
+<div class="container">
+	<h1>Editar empresa</h1>
+	<form method="post" action="/empresa/u" class="form">
+	
+		
+		Nombre de usuario
+		<input type="text" name="nombreUsuario" th:value="${empresa.nombreUsuario}">
+		
+		Contraseña
+		<input type="text" name="contrasena" th:value="${empresa.contrasena}">
+		
+		Localidad
+		<input type="text" name="localidad" th:value="${empresa.localidad}">
+		
+		Dirección
+		<input type="text" name="direccion" th:value="${empresa.direccion}">
+		
+		Código postal
+		<input type="number" name="codigoPostal" th:value="${empresa.codigoPostal}">
+		
+		Teléfono
+		<input type="number" name="telefono" th:value="${empresa.telefono}">
+		
+		Email
+		<input type="email" name="email" th:value="${empresa.email}">
+		
+		Rol
+		<input type="text" name="rol" th:value="${empresa.rol}">
+		
+		Saldo
+		<input type="number" name="saldo" th:value="${empresa.saldo}">
+		
+		Cif
+		<input type="text" name="cif" th:value="${empresa.cif}">
+		
+		Razón social
+		<input type="text" name="razonSocial" th:value="${empresa.razonSocial}">
+		
+		<input type="hidden" name="id" th:value="${empresa.id}"/>
+		
+		<input type="submit" class="form-item" />
+	</form>
+</div>
