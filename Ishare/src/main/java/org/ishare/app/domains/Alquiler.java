@@ -36,6 +36,9 @@ public class Alquiler {
 	@ManyToOne(cascade = CascadeType.PERSIST,optional=true)
 	private Ubicacion finalizaEn;
 	
+	@ManyToOne(cascade=CascadeType.PERSIST,optional=true)
+	private Coche coche;
+	
 	public Alquiler() {
 
 	}
@@ -44,6 +47,14 @@ public class Alquiler {
 		this.fechaInicio=fechaInicio;
 		this.fechaFin=fechaFin;
 		this.puntuacion=puntuacion;
+	}
+	
+	public Coche getCoche() {
+		return coche;
+	}
+	
+	public void setCoche(Coche coche) {
+		this.coche=coche;
 	}
 	
 	public Ubicacion getIniciaEn() {

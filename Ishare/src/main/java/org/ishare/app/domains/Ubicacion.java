@@ -32,6 +32,9 @@ public class Ubicacion {
 	@OneToMany(mappedBy = "finalizaEn", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	private Collection<Alquiler> finalizadosEn;
 	
+	@OneToMany(mappedBy="ubicacion",cascade=CascadeType.PERSIST, fetch=FetchType.LAZY)
+	private Collection<Coche> cochesAlquilados;
+	
 	public Ubicacion() {
 		
 	}
@@ -42,6 +45,13 @@ public class Ubicacion {
 		this.plazasTotales=plazasTotales;
 	}
 
+	public Collection<Coche> getCochesAlquilados(){
+		return cochesAlquilados;
+	}
+	
+	public void setCochesAlquilados(Collection<Coche> cochesAlquilados) {
+		this.cochesAlquilados=cochesAlquilados;
+	}
 	
 	public Collection<Alquiler> getIniciadosEn() {
 		return iniciadosEn;
