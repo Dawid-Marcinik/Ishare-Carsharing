@@ -1,0 +1,17 @@
+<meta charset=UTF-8>
+<div class="container">
+	<h1>Editar ubicación</h1>
+	
+	<form method="post">
+		DIRECCIÓN
+		<input type="text" name="direccion"/>
+		<br/>
+		PLAZAS TOTALES
+		<input type="text" name="plazasTotales"/>
+		<br/>
+
+		
+		<input type="hidden" name="idUbicacion" th:value="${ubicacion.idUbicacion}"/>
+		<input type="submit"/>
+	</form>
+</div>

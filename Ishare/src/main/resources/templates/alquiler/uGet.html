@@ -1,0 +1,31 @@
+<meta charset=UTF-8>
+<div class="container">
+	<h1>Editar alquiler</h1>
+	
+	<form method="post">
+		FECHA INICIO
+		<input type="date" name="fechaInicio"/>
+		<br/>
+		FECHA FIN
+		<input type="date" name="fechaFin"/>
+		<br/>
+		UBICACIÓN DE INICIO
+		<select name="idUbicacionInicio">
+			<option th:each="ubicacion:${ubicaciones}" th:text="${ubicacion.direccion}" th:value="${ubicacion.idUbicacion}">
+			</option>
+		</select>
+		<br/>
+		UBICACIÓN DE FINALIZACIÓN
+		<select name="idUbicacionFin">
+			<option th:each="ubicacion:${ubicaciones}" th:text="${ubicacion.direccion}" th:value="${ubicacion.idUbicacion}">
+			</option>
+		</select>
+		<br/>
+		PUNTUACIÓN
+		<input type="text" name="puntuacion"/>
+		<br/>
+		
+		<input type="hidden" name="idAlquiler" th:value="${alquiler.idAlquiler}"/>
+		<input type="submit"/>
+	</form>
+</div>
