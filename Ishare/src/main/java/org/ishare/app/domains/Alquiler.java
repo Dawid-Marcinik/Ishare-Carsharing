@@ -39,6 +39,9 @@ public class Alquiler {
 	@ManyToOne(cascade=CascadeType.PERSIST,optional=true)
 	private Coche coche;
 	
+	@ManyToOne(cascade=CascadeType.PERSIST,optional=true)
+	private Entidad entidad;
+	
 	public Alquiler() {
 
 	}
@@ -105,6 +108,11 @@ public class Alquiler {
 		this.puntuacion = puntuacion;
 	}
 	
-	
+	public Entidad getEntidad() {
+		return entidad;
+	}
+	public void setEntidad(Entidad entidad) {
+		this.entidad = entidad;
+	}
 
 }
