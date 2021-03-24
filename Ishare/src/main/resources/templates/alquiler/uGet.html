@@ -11,7 +11,7 @@
 		<br/>
 		<label for="idCocheAlquilado">COCHE ALQUILADO: </label>
 		<select name="idCocheAlquilado" id="idCocheAlquilado">
-			<option th:each="coche:${coches}" th:text="${coche.modelo.marca.nombre}+${coche.modelo.nombre}+${coche.matricula}+${coche.autonomiaRestante}" th:value="${coche.id}">
+			<option th:each="coche:${coches}" th:text="|${coche.modelo.marca.nombre} - ${coche.modelo.nombre} - ${coche.matricula} - ${coche.autonomiaRestante}|" th:value="${coche.id}">
 			</option>
 		</select>
 		<br/>
