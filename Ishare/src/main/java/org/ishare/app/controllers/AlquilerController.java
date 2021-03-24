@@ -9,10 +9,12 @@ import javax.servlet.http.HttpSession;
 
 
 import org.ishare.app.domains.Alquiler;
+import org.ishare.app.domains.Coche;
 import org.ishare.app.domains.Ubicacion;
 import org.ishare.app.exceptions.DangerException;
 import org.ishare.app.helpers.PRG;
 import org.ishare.app.repositories.AlquilerRepository;
+import org.ishare.app.repositories.CocheRepository;
 import org.ishare.app.repositories.UbicacionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,6 +33,9 @@ public class AlquilerController {
 	
 	@Autowired
 	UbicacionRepository ubicacionRepository;
+	
+	@Autowired
+	CocheRepository cocheRepository;
 
 	@GetMapping("d")
 	public String alquilerDGet(
@@ -55,6 +60,7 @@ public class AlquilerController {
 			@RequestParam("idAlquiler") Long idAlquiler,
 			@RequestParam("fechaInicio") String stringFechaInicio,
 			@RequestParam("fechaFin") String stringFechaFin,
+			@RequestParam("idCocheAlquilado") Long idCocheAlquilado,
 			@RequestParam("idUbicacionInicio") Long idUbicacionInicio,
 			@RequestParam("idUbicacionFin") Long idUbicacionFin,
 			@RequestParam("puntuacion") String puntuacion,
@@ -108,6 +114,7 @@ public class AlquilerController {
 	public String alquilerCPost( 
 			@RequestParam("fechaInicio") String stringFechaInicio,
 			@RequestParam("fechaFin") String stringFechaFin,
+			@RequestParam("idCocheAlquilado") Long idCocheAlquilado,
 			@RequestParam("idUbicacionInicio") Long idUbicacionInicio,
 			@RequestParam("idUbicacionFin") Long idUbicacionFin,
 			@RequestParam("puntuacion") String stringPuntuacion,
@@ -122,8 +129,10 @@ public class AlquilerController {
 			LocalDate fechaInicio=LocalDate.parse(stringFechaInicio);
 			LocalDate fechaFin=LocalDate.parse(stringFechaFin);
 			Alquiler alquiler = new Alquiler(fechaInicio,fechaFin,puntuacion);
+			Coche cocheAlquilado=cocheRepository.getOne(idCocheAlquilado);
 			Ubicacion ubicacionInicio=ubicacionRepository.getOne(idUbicacionInicio);
 			Ubicacion ubicacionFin=ubicacionRepository.getOne(idUbicacionFin);
+			alquiler.setCoche(cocheAlquilado);
 			alquiler.setIniciaEn(ubicacionInicio);
 			alquiler.setFinalizaEn(ubicacionFin);
 			ubicacionInicio.getIniciadosEn().add(alquiler);

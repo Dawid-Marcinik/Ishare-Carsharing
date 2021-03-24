@@ -11,7 +11,7 @@
 		<br>
 		<label for="idMarca">Ubicación: </label>
 		<select name="idUbicacion" id="idUbicacion">
-			<option th:each="ubicacion:${ubicaciones}" th:value="${ubicacion.id}" th:text="${ubicacion.nombre}"></option>
+			<option th:each="ubicacion:${ubicaciones}" th:value="${ubicacion.idUbicacion}" th:text="${ubicacion.direccion}"></option>
 		</select>
 		<br>
 		<input type="submit" value="Crear">
