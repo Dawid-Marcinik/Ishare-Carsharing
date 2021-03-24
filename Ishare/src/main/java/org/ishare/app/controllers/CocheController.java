@@ -88,7 +88,7 @@ public class CocheController {
 		}
 		//Borrar
 		@PostMapping("d")
-		public String dPost(ModelMap modelo, @RequestParam("id") Long id) {
+		public String dPost(@RequestParam("id") Long id) {
 			cocheRepository.delete(cocheRepository.getOne(id));
 			return("redirect:/coche/r");
 		}

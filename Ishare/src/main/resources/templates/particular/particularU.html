@@ -1,0 +1,47 @@
+<div class="container">
+	<h1>Editar particular</h1>
+	<form method="post" action="/particular/u" class="form">
+	
+	Nombre de usuario
+		<input type="text" name="nombreUsuario" th:value="${particular.nombreUsuario}">
+		
+		Contraseña
+		<input type="text" name="contrasena" th:value="${particular.contrasena}">
+		
+		Localidad
+		<input type="text" name="localidad" th:value="${particular.localidad}">
+		
+		Dirección
+		<input type="text" name="direccion" th:value="${particular.direccion}">
+		
+		Código postal
+		<input type="number" name="codigoPostal" th:value="${particular.codigoPostal}">
+		
+		Teléfono
+		<input type="number" name="telefono" th:value="${particular.telefono}">
+		
+		Email
+		<input type="email" name="email" th:value="${particular.email}">
+		
+		Rol
+		<input type="text" name="rol" th:value="${particular.rol}">
+		
+		Saldo
+		<input type="number" name="saldo" th:value="${particular.saldo}">
+		Dni
+		<input type="text" name="dni" th:value="${particular.dni}">
+		
+		Nombre
+		<input type="text" name="nombre" th:value="${particular.nombre}">
+		
+		Apellidos
+		<input type="text" name="apellidos" th:value="${particular.apellidos}">
+		
+		Fecha de nacimiento
+		<input type="text" name="fechaNacimiento" th:value="${particular.fechaNacimiento}">
+		
+		<input type="hidden" name="id" th:value="${particular.id}"/>
+		
+		<input type="submit" class="form-item" />
+	</form>
+</div>
