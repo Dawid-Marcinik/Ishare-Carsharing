@@ -2,6 +2,7 @@ package org.ishare.app.controllers;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.servlet.http.HttpSession;
@@ -56,40 +57,42 @@ public class AlquilerController {
 			@RequestParam("fechaFin") String stringFechaFin,
 			@RequestParam("idUbicacionInicio") Long idUbicacionInicio,
 			@RequestParam("idUbicacionFin") Long idUbicacionFin,
-			@RequestParam("puntuacion") Integer puntuacion,
+			@RequestParam("puntuacion") String puntuacion,
 			ModelMap data
 			) throws DangerException, ParseException {
-		Date fechaInicio=new SimpleDateFormat("yyyy-mm-dd").parse(stringFechaInicio);
-		Date fechaFin=new SimpleDateFormat("yyyy-mm-dd").parse(stringFechaFin);
+		if(puntuacion==""||stringFechaInicio==""||stringFechaFin==""||idUbicacionInicio==null||idUbicacionFin==null) {
+			PRG.error("Hay campos vacíos", "/alquiler/r");
+		}else {
+			
+		
+		int punt=Integer.parseInt(puntuacion);
+		LocalDate fechaInicio=LocalDate.parse(stringFechaInicio);
+		LocalDate fechaFin=LocalDate.parse(stringFechaFin);
 		Alquiler alquiler = alquilerRepository.getOne(idAlquiler);
 		Ubicacion ubicacionInicio=ubicacionRepository.getOne(idUbicacionInicio);
 		Ubicacion ubicacionFin=ubicacionRepository.getOne(idUbicacionFin);
 		alquiler.setFechaInicio(fechaInicio);
 		alquiler.setFechaFin(fechaFin);
-		alquiler.setPuntuacion(puntuacion);
+		alquiler.setPuntuacion(punt);
 		
-		if(alquiler.getIniciaEn().getIniciadosEn()==null) {
+		
 			alquiler.setIniciaEn(ubicacionInicio);
 			ubicacionInicio.getIniciadosEn().add(alquiler);
-			}else {
-				alquiler.getIniciaEn().getIniciadosEn().remove(alquiler);
-				alquiler.setIniciaEn(ubicacionInicio);
-				ubicacionInicio.getIniciadosEn().add(alquiler);
-		}
 		
-		if(alquiler.getFinalizaEn().getFinalizadosEn()==null) {
+		
+
 			alquiler.setFinalizaEn(ubicacionFin);
 			ubicacionInicio.getFinalizadosEn().add(alquiler);
-		}else {
-		alquiler.getFinalizaEn().getFinalizadosEn().remove(alquiler);
-		alquiler.setFinalizaEn(ubicacionFin);
-		ubicacionInicio.getFinalizadosEn().add(alquiler);
-		}
-		try {
-			alquilerRepository.save(alquiler);
-		}
-		catch (Exception e) {
-			PRG.error("Alquiler duplicado","/alquiler/r");
+			if(fechaFin.compareTo(fechaInicio)<0) {
+				PRG.error("La fecha de inicio no puede ser después de la fecha de finalización", "/alquiler/r");
+			}else {
+				try {
+					alquilerRepository.save(alquiler);
+				}	
+				catch (Exception e) {
+					PRG.error("Alquiler duplicado","/alquiler/r");
+				}	
+			}
 		}
 		return "redirect:/alquiler/r";
 	}
@@ -107,26 +110,44 @@ public class AlquilerController {
 			@RequestParam("fechaFin") String stringFechaFin,
 			@RequestParam("idUbicacionInicio") Long idUbicacionInicio,
 			@RequestParam("idUbicacionFin") Long idUbicacionFin,
-			@RequestParam("puntuacion") Integer puntuacion,
+			@RequestParam("puntuacion") String stringPuntuacion,
 			ModelMap data
 			) throws DangerException, ParseException {
-		Date fechaInicio=new SimpleDateFormat("yyyy-mm-dd").parse(stringFechaInicio);
-		Date fechaFin=new SimpleDateFormat("yyyy-mm-dd").parse(stringFechaFin);
-		Alquiler alquiler = new Alquiler(fechaInicio,fechaFin,puntuacion);
-		Ubicacion ubicacionInicio=ubicacionRepository.getOne(idUbicacionInicio);
-		Ubicacion ubicacionFin=ubicacionRepository.getOne(idUbicacionFin);
-		alquiler.setIniciaEn(ubicacionInicio);
-		alquiler.setFinalizaEn(ubicacionFin);
-		ubicacionInicio.getIniciadosEn().add(alquiler);
-		ubicacionFin.getFinalizadosEn().add(alquiler);
-		try {
-			alquilerRepository.save(alquiler);
+		
+		
+		if(stringPuntuacion==""||stringFechaInicio==""||stringFechaFin==""||idUbicacionInicio==null||idUbicacionFin==null) {
+			PRG.error("Hay campos vacíos", "/alquiler/r");
+		}else {
+			int puntuacion=Integer.parseInt(stringPuntuacion);
+			LocalDate fechaInicio=LocalDate.parse(stringFechaInicio);
+			LocalDate fechaFin=LocalDate.parse(stringFechaFin);
+			Alquiler alquiler = new Alquiler(fechaInicio,fechaFin,puntuacion);
+			Ubicacion ubicacionInicio=ubicacionRepository.getOne(idUbicacionInicio);
+			Ubicacion ubicacionFin=ubicacionRepository.getOne(idUbicacionFin);
+			alquiler.setIniciaEn(ubicacionInicio);
+			alquiler.setFinalizaEn(ubicacionFin);
+			ubicacionInicio.getIniciadosEn().add(alquiler);
+			ubicacionFin.getFinalizadosEn().add(alquiler);
+			if(fechaFin.compareTo(fechaInicio)<0) {
+				PRG.error("La fecha de inicio no puede ser después de la fecha de finalización", "/alquiler/r");
+			}else {
+				
+				try {
+					alquilerRepository.save(alquiler);
+				}
+				catch (Exception e) {
+					PRG.error("Alquiler duplicado","/alquiler/r");
+				}
+			}
 		}
-		catch (Exception e) {
-			PRG.error("Alquiler duplicado","/alquiler/r");
-		}
-		return "redirect:/alquiler/r";
+	
+				return "redirect:/alquiler/r";
 	}
+		
+		
+		
+		
+		
 	
 	@GetMapping("r")
 	public String alquilerRGet(

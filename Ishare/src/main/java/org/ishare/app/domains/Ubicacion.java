@@ -26,10 +26,10 @@ public class Ubicacion {
 	@Column
 	private Integer plazasTotales;
 	
-	@OneToMany(mappedBy = "iniciaEn", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "iniciaEn", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	private Collection<Alquiler> iniciadosEn;
 	
-	@OneToMany(mappedBy = "finalizaEn", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "finalizaEn", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	private Collection<Alquiler> finalizadosEn;
 	
 	public Ubicacion() {

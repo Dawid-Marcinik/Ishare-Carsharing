@@ -11,13 +11,11 @@
 
 	<table border="1">
 		<tr>
-			<th>Id</th>
 			<th>Dirección</th>
 			<th>Plazas totales</th>
 		</tr>
 
 		<tr th:each="ubicacion:${ubicaciones}">
-			<td th:text="${ubicacion.idUbicacion}"></td>
 			<td th:text="${ubicacion.direccion}"></td>
 			<td th:text="${ubicacion.plazasTotales}"></td>
 			<td>

@@ -11,7 +11,6 @@
 
 	<table border="1">
 		<tr>
-			<th>Id</th>
 			<th>Fecha inicio</th>
 			<th>Fecha fin</th>
 			<th>Ubicacón de inicio</th>
@@ -20,7 +19,6 @@
 		</tr>
 
 		<tr th:each="alquiler:${alquileres}">
-			<td th:text="${alquiler.idAlquiler}"></td>
 			<td th:text="${alquiler.fechaInicio}"></td>
 			<td th:text="${alquiler.fechaFin}"></td>
 			<td th:text="${alquiler.iniciaEn?.direccion}"></td>

@@ -32,26 +32,14 @@ public class UbicacionController {
 			HttpSession s) throws DangerException {
 		
 		Ubicacion ubicacion = ubicacionRepository.getOne(idUbicacion);
-		if(ubicacion.getIniciadosEn()==null) {
+
+				for (Alquiler alquiler:ubicacion.getIniciadosEn()) {
+					alquiler.setIniciaEn(null);
+					alquiler.setFinalizaEn(null);
+					alquilerRepository.save(alquiler);
+				}
 			
-		}else {
-			for (Alquiler alquiler:ubicacion.getIniciadosEn()) {
-				alquiler.setIniciaEn(null);
-				alquilerRepository.save(alquiler);
-				ubicacion.getIniciadosEn().remove(alquiler);
-				ubicacionRepository.save(ubicacion);
-			}
-		}
-		if(ubicacion.getFinalizadosEn()==null) {
-			
-		}else {
-			for (Alquiler alquiler:ubicacion.getFinalizadosEn()) {
-				alquiler.setFinalizaEn(null);
-				alquilerRepository.save(alquiler);
-				ubicacion.getFinalizadosEn().remove(alquiler);
-				ubicacionRepository.save(ubicacion);
-			}
-		}
+		
 		ubicacionRepository.delete(ubicacion);
 		return "redirect:/ubicacion/r";
 	}
@@ -68,21 +56,26 @@ public class UbicacionController {
 	@PostMapping("u")
 	public String ubicacionUPost( 
 			@RequestParam("direccion") String direccion,
-			@RequestParam("plazasTotales") Integer plazasTotales,
+			@RequestParam("plazasTotales") String stringPlazasTotales,
 			@RequestParam("idUbicacion") Long idUbicacion,
 			ModelMap data
 			) throws DangerException {
-		
-		Ubicacion ubicacion = ubicacionRepository.getOne(idUbicacion);
-		ubicacion.setDireccion(direccion);
-		ubicacion.setPlazasTotales(plazasTotales);
-		
-		try {
-			ubicacionRepository.save(ubicacion);
+		if(direccion==""||stringPlazasTotales=="") {
+			PRG.error("Hay campos vacíos", "/ubicacion/r");
+		}else {
+			int plazasTotales=Integer.parseInt(stringPlazasTotales);
+			Ubicacion ubicacion = ubicacionRepository.getOne(idUbicacion);
+			ubicacion.setDireccion(direccion);
+			ubicacion.setPlazasTotales(plazasTotales);
+			
+			try {
+				ubicacionRepository.save(ubicacion);
+			}
+			catch (Exception e) {
+				PRG.error("Ubicación duplicada","/ubicacion/r");
+			}
 		}
-		catch (Exception e) {
-			PRG.error("Ubicación duplicada","/ubicacion/r");
-		}
+		
 		return "redirect:/ubicacion/r";
 	}
 	
@@ -95,18 +88,24 @@ public class UbicacionController {
 	@PostMapping("c")
 	public String ubicacionCPost( 
 			@RequestParam("direccion") String direccion,
-			@RequestParam("plazasTotales") Integer plazasTotales,
+			@RequestParam("plazasTotales") String stringPlazasTotales,
 			ModelMap data
 			) throws DangerException {
-		
-		Ubicacion ubicacion = new Ubicacion(direccion,plazasTotales);
-		
-		try {
-			ubicacionRepository.save(ubicacion);
+		if(direccion==""||stringPlazasTotales=="") {
+			PRG.error("Hay campos vacíos", "/ubicacion/r");
+		}else {
+			int plazasTotales=Integer.parseInt(stringPlazasTotales);
+
+			Ubicacion ubicacion = new Ubicacion(direccion,plazasTotales);
+			
+			try {
+				ubicacionRepository.save(ubicacion);
+			}
+			catch (Exception e) {
+				PRG.error("Ubicación duplicada","/ubicacion/r");
+			}
 		}
-		catch (Exception e) {
-			PRG.error("Ubicación duplicada","/ubicacion/r");
-		}
+		
 		return "redirect:/ubicacion/r";
 	}
 	
