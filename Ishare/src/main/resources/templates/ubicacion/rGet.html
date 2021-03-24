@@ -1,0 +1,43 @@
+<meta charset=UTF-8>
+<div class="container">
+	<form action="/ubicacion/c" method="get">
+		<input type="submit" value="Nueva ubicación" />
+	</form>
+	<form action="/">
+		<input type="submit" value="Volver" />
+	</form>
+
+	<h1>Listado de ubicaciones</h1>
+
+	<table border="1">
+		<tr>
+			<th>Dirección</th>
+			<th>Plazas totales</th>
+		</tr>
+
+		<tr th:each="ubicacion:${ubicaciones}">
+			<td th:text="${ubicacion.direccion}"></td>
+			<td th:text="${ubicacion.plazasTotales}"></td>
+			<td>
+
+				<form action="/ubicacion/d">
+					<input type="hidden" name="idUbicacion" th:value="${ubicacion.idUbicacion}" />
+					<button onclick="submit()">
+						Borrar
+					</button>
+				</form>
+
+				<form action="/ubicacion/u">
+					<input type="hidden" name="idUbicacion" th:value="${ubicacion.idUbicacion}" />
+					<button onclick="submit()">
+						Editar
+					</button>
+				</form>
+
+			</td>
+		</tr>
+
+
+	</table>
+
+</div>
