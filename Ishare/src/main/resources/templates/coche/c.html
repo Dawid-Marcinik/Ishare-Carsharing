@@ -1,0 +1,20 @@
+<div class="container">
+	<h1 class="display-6">Añadir nuevo coche</h1>
+	<form action="c" method="POST">
+		<label for="idMarca">Modelo: </label>
+		<select name="idModelo" id="idModelo">
+			<option th:each="modelo:${modelos}" th:value="${modelo.id}" th:text="|${modelo.marca.nombre} - ${modelo.nombre}|"></option>
+		</select>
+		<br>
+		<label for="matricula">Matrícula del coche: </label>
+		<input type="text" id="matricula" name="matricula">
+		<br>
+		<label for="idMarca">Ubicación: </label>
+		<select name="idUbicacion" id="idUbicacion">
+			<option th:each="ubicacion:${ubicaciones}" th:value="${ubicacion.id}" th:text="${ubicacion.nombre}"></option>
+		</select>
+		<br>
+		<input type="submit" value="Crear">
+		<input type="button" value="Cancelar" onclick="location.href='r'">
+	</form>
+</div>

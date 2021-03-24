@@ -1,0 +1,36 @@
+<div class="container">
+	<h1 class="display-6">Lista de modelos</h1>
+	<button class="btn"><a href="/modelo/c">Crear nuevo modelo</a></button>
+	<table class="table">
+		<tr>
+			<th>Marca</th>
+			<th>Nombre</th>
+			<th>Número de pasajeros</th>
+			<th>Tipo</th>
+			<th>Autonomía Total (Km)</th>
+			<th>Tarifa (€/minuto)</th>
+			<th>Modificar</th>
+			<th>Borrar</th>
+		</tr>
+		<tr th:each="modelo:${modelos}">
+			<td th:text="${modelo.marca.nombre}"></td>
+			<td th:text="${modelo.nombre}"></td>
+			<td th:text="${modelo.numeroPasajeros}"></td>
+			<td th:text="${modelo.tipo}"></td>
+			<td th:text="${modelo.autonomiaTotal}"></td>
+			<td th:text="${modelo.tarifa}"></td>
+			<td>
+				<form action="u" method="GET">
+					<input type="hidden" name="id" th:value="${modelo.id}">
+					<button onclick="submit()"><img src="/img/edit.png" height="20px" width="20px"></button>
+				</form>
+			</td>
+			<td>
+				<form action="d" method="POST">
+					<input type="hidden" name="id" th:value="${modelo.id}">
+					<button onclick="submit()"><img src="/img/delete.png" height="20px" width="20px"></button>
+				</form>
+			</td>
+		</tr>
+	</table>	
+</div>

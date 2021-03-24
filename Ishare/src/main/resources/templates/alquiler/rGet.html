@@ -1,0 +1,49 @@
+<meta charset=UTF-8>
+<div class="container">
+	<form action="/alquiler/c" method="get">
+		<input type="submit" value="Nuevo alquiler" />
+	</form>
+	<form action="/">
+		<input type="submit" value="Volver" />
+	</form>
+
+	<h1>Listado de alquileres</h1>
+
+	<table border="1">
+		<tr>
+			<th>Fecha inicio</th>
+			<th>Fecha fin</th>
+			<th>Ubicacón de inicio</th>
+			<th>Ubicacón de finalización</th>
+			<th>Puntuación</th>
+		</tr>
+
+		<tr th:each="alquiler:${alquileres}">
+			<td th:text="${alquiler.fechaInicio}"></td>
+			<td th:text="${alquiler.fechaFin}"></td>
+			<td th:text="${alquiler.iniciaEn?.direccion}"></td>
+			<td th:text="${alquiler.finalizaEn?.direccion}"></td>
+			<td th:text="${alquiler.puntuacion}"></td>
+			<td>
+
+				<form action="/alquiler/d">
+					<input type="hidden" name="idAlquiler" th:value="${alquiler.idAlquiler}" />
+					<button onclick="submit()">
+						Borrar
+					</button>
+				</form>
+
+				<form action="/alquiler/u">
+					<input type="hidden" name="idAlquiler" th:value="${alquiler.idAlquiler}" />
+					<button onclick="submit()">
+						Editar
+					</button>
+				</form>
+
+			</td>
+		</tr>
+
+
+	</table>
+
+</div>
