@@ -9,6 +9,12 @@
 		FECHA FIN
 		<input type="date" name="fechaFin"/>
 		<br/>
+		COCHE ALQUILADO
+		<select name="idCocheAlquilado">
+			<option th:each="coche:${coches}" th:text="${coche.matricula}.--.${coche.modelo})" th:value="${coche.id}">
+			</option>
+		</select>
+		<br/>
 		UBICACIÓN DE INICIO
 		<select name="idUbicacionInicio">
 			<option th:each="ubicacion:${ubicaciones}" th:text="${ubicacion.direccion}" th:value="${ubicacion.idUbicacion}">
