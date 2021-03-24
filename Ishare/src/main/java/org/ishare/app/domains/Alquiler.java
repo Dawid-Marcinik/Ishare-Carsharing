@@ -2,7 +2,7 @@ package org.ishare.app.domains;
 
 
 import java.time.LocalDate;
-import java.util.Date;
+
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
