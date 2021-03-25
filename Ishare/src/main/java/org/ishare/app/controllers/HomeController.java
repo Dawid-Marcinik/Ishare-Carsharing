@@ -65,7 +65,7 @@ public class HomeController {
 		}
 		m.put("roles", rolRepository.findAll());
 		m.put("view", link);
-		return "/_t/frame";
+		return "redirect:"+link;
 	}
 	
 	//LOGIN
