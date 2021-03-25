@@ -11,6 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 
@@ -42,12 +43,13 @@ public class Entidad {
 	@Column(unique = true)
 	protected String email;
 	
-	protected String rol;
-	
 	protected Float saldo;
 	
 	@OneToMany(mappedBy = "entidad",cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
 	protected List<Alquiler>alquileres;
+	
+	@ManyToOne(cascade=CascadeType.ALL)
+	private Rol rol;
 	
 	//Constructores
 	//===========================================================================
@@ -59,7 +61,7 @@ public class Entidad {
 	
 	
 	public Entidad(String nombreUsuario, String contrasena, String localidad, String direccion, Integer codigoPostal,
-			Integer telefono, String email, String rol, Float saldo) {
+			Integer telefono, String email, Float saldo) {
 		super();
 		this.nombreUsuario = nombreUsuario;
 		this.contrasena = contrasena;
@@ -68,8 +70,14 @@ public class Entidad {
 		this.codigoPostal = codigoPostal;
 		this.telefono = telefono;
 		this.email = email;
-		this.rol = rol;
 		this.saldo = saldo;
+	}
+	
+	public Entidad(Long id, String nombreUsuario, String contrasena) {
+		super();
+		this.id=id;
+		this.nombreUsuario = nombreUsuario;
+		this.contrasena = contrasena;
 	}
 
 
@@ -141,13 +149,6 @@ public class Entidad {
 		this.email = email;
 	}
 
-	public String getRol() {
-		return rol;
-	}
-
-	public void setRol(String rol) {
-		this.rol = rol;
-	}
 
 	public Float getSaldo() {
 		return saldo;
@@ -169,6 +170,17 @@ public class Entidad {
 		this.alquileres = alquileres;
 	}
 	
+	public Rol getRol() {
+		return rol;
+	}
+	
+	public void setRol(Rol rol) {
+		this.rol=rol;
+	}
+	
+	public boolean isAdmin() {
+		return (this.getRol()!= null && this.getRol().getNombre().equals("admin"));
+	}
 	
 
 }

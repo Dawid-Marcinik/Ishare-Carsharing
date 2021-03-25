@@ -2,6 +2,14 @@
 	<div class="row justify-content-center">
 	<form method="post" action="/empresa/u" class="form">
 	
+	<div th:if="${session.user != null && session.user.isAdmin()}">
+		ROL
+		<select name="idRol">
+			<option th:each="rol:${roles}" th:text="${rol.nombre}" th:value="${rol.id}">
+			</option>
+		</select>
+		<br/>
+		</div>
 		
 		Nombre de usuario
 		<input type="text" name="nombreUsuario" th:value="${empresa.nombreUsuario}"><br>
@@ -24,8 +32,6 @@
 		Email
 		<input type="email" name="email" th:value="${empresa.email}"><br>
 		
-		Rol
-		<input type="text" name="rol" th:value="${empresa.rol}"><br>
 		
 		Saldo
 		<input type="number" name="saldo" th:value="${empresa.saldo}"><br>

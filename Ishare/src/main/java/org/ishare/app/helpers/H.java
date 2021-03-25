@@ -2,6 +2,12 @@ package org.ishare.app.helpers;
 
 import javax.servlet.http.HttpSession;
 
+import org.ishare.app.exceptions.DangerException;
+import org.ishare.app.domains.Entidad;
+
+
+
+
 public class H {
 	/**
 	 * 
@@ -27,4 +33,31 @@ public class H {
 		s.setAttribute("severity", "info");
 		s.setAttribute("link", "/");
 	}
+	
+	public static void isRolOK(String rolExigido, HttpSession s) throws DangerException {
+		String rolActual = "anon";
+		
+		if (s.getAttribute("user") != null) {
+			rolActual = ((Entidad)s.getAttribute("user")).isAdmin() ? "admin" : "auth";
+		}
+		System.err.println("ROL="+rolActual);
+
+		if ((rolActual=="anon" ||  rolActual=="auth") 	&& rolExigido=="admin") {
+			throw new DangerException("Rol inadecuado");
+		}
+		
+		if ((rolActual=="anon" ) 						&& rolExigido=="auth") {
+			throw new DangerException("Rol inadecuado");
+		}
+		
+		if ((rolActual!="anon" ) 						&& rolExigido=="anon") {
+			throw new DangerException("Rol inadecuado");
+		}
+		
+		
+	
+
+	}
+
+	
 }

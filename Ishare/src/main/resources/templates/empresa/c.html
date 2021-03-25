@@ -5,6 +5,15 @@
 
 <div class="row justify-content-center">
 	<form method="POST">
+	<div th:if="${session.user != null && session.user.isAdmin()}">
+		ROL
+		<select name="idRol">
+			<option th:each="rol:${roles}" th:text="${rol.nombre}" th:value="${rol.id}">
+			</option>
+		</select>
+		<br/>
+		</div>
+	<div class="w-100"></div>
 		<label for="nombreUsuario">Nombre del usuario</label>
 	<input type="text" name="nombreUsuario" id="nombreUsuario" />
 	<div class="w-100"></div>
@@ -25,9 +34,6 @@
 	<div class="w-100"></div>
 		<label for="email">Email</label>
 	<input type="email" name="email" id="email" />
-	<div class="w-100"></div>
-		<label for="rol">Rol</label>
-	<input type="text" name="rol" id="rol" />
 	<div class="w-100"></div>
 		<label for="saldo">SALDO</label>
 	<input type="number" name="saldo" id="saldo" step="0.01"/>
