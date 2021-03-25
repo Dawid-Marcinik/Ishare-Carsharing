@@ -21,8 +21,8 @@ public class Modelo {
 	private String nombre;
 	@Column
 	private Integer numeroPasajeros;
-	@Column
-	private String tipo;
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	private Tipo tipo;
 	@Column
 	private Integer autonomiaTotal;
 	@Column
@@ -36,7 +36,7 @@ public class Modelo {
 	public Modelo() {
 	}
 
-	public Modelo(String nombre, Integer numeroPasajeros, String tipo, Integer autonomiaTotal, Float tarifa,
+	public Modelo(String nombre, Integer numeroPasajeros, Tipo tipo, Integer autonomiaTotal, Float tarifa,
 			Marca marca) {
 		super();
 		this.nombre = nombre;
@@ -72,11 +72,11 @@ public class Modelo {
 		this.numeroPasajeros = numeroPasajeros;
 	}
 
-	public String getTipo() {
+	public Tipo getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(String tipo) {
+	public void setTipo(Tipo tipo) {
 		this.tipo = tipo;
 	}
 

@@ -2,10 +2,12 @@ package org.ishare.app.controllers;
 
 import org.ishare.app.domains.Marca;
 import org.ishare.app.domains.Modelo;
+import org.ishare.app.domains.Tipo;
 import org.ishare.app.exceptions.DangerException;
 import org.ishare.app.helpers.PRG;
 import org.ishare.app.repositories.MarcaRepository;
 import org.ishare.app.repositories.ModeloRepository;
+import org.ishare.app.repositories.TipoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -21,6 +23,8 @@ public class ModeloController {
 	private MarcaRepository marcaRepository;
 	@Autowired
 	private ModeloRepository modeloRepository;
+	@Autowired
+	private TipoRepository tipoRepository;
 	
 	//Recuperar
 	@GetMapping("r")
@@ -34,17 +38,19 @@ public class ModeloController {
 	@GetMapping("c")
 	public String cGet(ModelMap modelo) {
 		modelo.put("marcas", marcaRepository.findAll());
+		modelo.put("tipos", tipoRepository.findAll());
 		modelo.put("view", "modelo/c");
 		return ("_t/frame");
 	}
 	@PostMapping("c")
-	public String cPost(ModelMap modelo, @RequestParam("idMarca") Long idMarca, @RequestParam("nombre") String nombre, @RequestParam("numeroPasajeros") Integer numeroPasajeros, @RequestParam("tipo") String tipo, @RequestParam("autonomiaTotal") Integer autonomiaTotal, @RequestParam("tarifa") Float tarifa) throws DangerException{
+	public String cPost(ModelMap modelo, @RequestParam("idMarca") Long idMarca, @RequestParam("nombre") String nombre, @RequestParam("numeroPasajeros") Integer numeroPasajeros, @RequestParam("idTipo") Long idTipo, @RequestParam("autonomiaTotal") Integer autonomiaTotal, @RequestParam("tarifa") Float tarifa) throws DangerException{
 			
 		if(nombre == "" || numeroPasajeros <= 0 || autonomiaTotal <= 0 || tarifa <= 0) {
 			PRG.error("Ningún parámetro puede estar vacío","modelo/c");
 		}
+		
 		Marca marca = marcaRepository.getOne(idMarca);
-			
+		Tipo tipo = tipoRepository.getOne(idTipo);
 		Modelo modeloMarca = new Modelo(nombre, numeroPasajeros, tipo, autonomiaTotal, tarifa, marca);
 			
 		try {
@@ -59,19 +65,21 @@ public class ModeloController {
 	@GetMapping("u")
 	public String uGet(ModelMap modelo, @RequestParam("id") Long id) {
 		modelo.put("marcas", marcaRepository.findAll());
+		modelo.put("tipos", tipoRepository.findAll());
 		modelo.put("idMarcaModelo", modeloRepository.getOne(id).getMarca().getId());
 		modelo.put("modelo", modeloRepository.getOne(id));
 		modelo.put("view", "modelo/u");
 		return ("_t/frame");
 	}
 	@PostMapping("u")
-	public String uPost(ModelMap modelo, @RequestParam("id") Long id, @RequestParam("idMarca") Long idMarca, @RequestParam("nombre") String nombre, @RequestParam("numeroPasajeros") Integer numeroPasajeros, @RequestParam("tipo") String tipo, @RequestParam("autonomiaTotal") Integer autonomiaTotal, @RequestParam("tarifa") Float tarifa) throws DangerException{
+	public String uPost(ModelMap modelo, @RequestParam("id") Long id, @RequestParam("idMarca") Long idMarca, @RequestParam("nombre") String nombre, @RequestParam("numeroPasajeros") Integer numeroPasajeros, @RequestParam("idTipo") Long idTipo, @RequestParam("autonomiaTotal") Integer autonomiaTotal, @RequestParam("tarifa") Float tarifa) throws DangerException{
 				
 		if(nombre == "" || numeroPasajeros <= 0 || autonomiaTotal <= 0 || tarifa <= 0) {
 			PRG.error("Ningún parámetro puede estar vacío","modelo/c");
 		}
 		
 		Marca marca = marcaRepository.getOne(idMarca);	
+		Tipo tipo = tipoRepository.getOne(idTipo);
 		Modelo modeloMarca = modeloRepository.getOne(id);
 		
 		try {
