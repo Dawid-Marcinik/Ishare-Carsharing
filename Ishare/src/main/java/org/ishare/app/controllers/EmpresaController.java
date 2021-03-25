@@ -1,6 +1,8 @@
 package org.ishare.app.controllers;
 
 
+import java.text.ParseException;
+
 import javax.servlet.http.HttpSession;
 
 import org.ishare.app.domains.Empresa;
@@ -36,15 +38,22 @@ public class EmpresaController {
 			@RequestParam("contrasena") String contrasena,
 			@RequestParam("localidad") String localidad,
 			@RequestParam("direccion") String direccion,
-			@RequestParam("codigoPostal") Integer codigoPostal,
-			@RequestParam("telefono") Integer telefono,
+			@RequestParam("codigoPostal") String codigoPostal,
+			@RequestParam("telefono") String telefono,
 			@RequestParam("email") String email,
-			@RequestParam("rol") String rol,
-			@RequestParam("saldo") Float saldo,
-			@RequestParam("cif") String cif,@RequestParam("razonSocial") String razonSocial) throws DangerException{
+			@RequestParam("saldo") String saldo,
+			@RequestParam("cif") String cif,
+			@RequestParam("razonSocial") String razonSocial) throws DangerException, ParseException{
 		
-		if((cif != "")&&(razonSocial != "")) {
-			Empresa em = new Empresa(nombreUsuario,contrasena,localidad,direccion,codigoPostal,telefono,email,rol,saldo,cif, razonSocial);
+		if(nombreUsuario==""||contrasena==""||localidad==""||direccion==""||codigoPostal==""||telefono==""||email==""||saldo==""||cif==""||razonSocial==""||nombreUsuario==null||contrasena==null||localidad==null||direccion==null||telefono==null||email==null||saldo==null||cif==null||razonSocial==null) {
+			PRG.error("Ningún campo puede quedar vacío", "/empresa/r");
+		}else {
+		
+			int iCodigoPostal=Integer.parseInt(codigoPostal);
+			int iTelefono=Integer.parseInt(telefono);
+			float fSaldo=Float.parseFloat(saldo);
+			Empresa em = new Empresa(nombreUsuario,contrasena,localidad,direccion,iCodigoPostal,iTelefono,email,fSaldo,cif, razonSocial);
+			
 			
 			
 			try {
@@ -53,8 +62,6 @@ public class EmpresaController {
 				// TODO: handle exception
 				PRG.error("no pueden haber dos CIF ni Razón social iguales","/empresa/c");
 			}
-		}else {
-			PRG.error("No puede estar el cif ni la razón social vacio","/empresa/c");
 		}
 		
 		return "redirect:/empresa/r";
@@ -81,35 +88,41 @@ public class EmpresaController {
 			@RequestParam("contrasena") String contrasena,
 			@RequestParam("localidad") String localidad,
 			@RequestParam("direccion") String direccion,
-			@RequestParam("codigoPostal") Integer codigoPostal,
-			@RequestParam("telefono") Integer telefono,
+			@RequestParam("codigoPostal") String codigoPostal,
+			@RequestParam("telefono") String telefono,
 			@RequestParam("email") String email,
-			@RequestParam("rol") String rol,
-			@RequestParam("saldo") Float saldo,
+			@RequestParam("saldo") String saldo,
 			@RequestParam("cif") String cif,
 			@RequestParam("razonSocial") String razonSocial,
 			@RequestParam("id") Long id,
-			HttpSession s) {
+			HttpSession s) throws DangerException {
+		if(nombreUsuario==""||contrasena==""||localidad==""||direccion==""||codigoPostal==""||telefono==""||email==""||saldo==""||cif==""||razonSocial=="") {
+			PRG.error("Ningún campo puede quedar vacío", "/empresa/r");
+		}else {
 		try {
+			int iCodigoPostal=Integer.parseInt(codigoPostal);
+			int iTelefono=Integer.parseInt(telefono);
+			float fSaldo=Float.parseFloat(saldo);
 			Empresa em = empresaRepository.getOne(id);
 			em.setNombreUsuario(nombreUsuario);
 			em.setContrasena(contrasena);
 			em.setLocalidad(localidad);
 			em.setDireccion(direccion);
-			em.setCodigoPostal(codigoPostal);
-			em.setTelefono(telefono);
+			em.setCodigoPostal(iCodigoPostal);
+			em.setTelefono(iTelefono);
 			em.setEmail(email);
-			em.setRol(rol);
-			em.setSaldo(saldo);
+			em.setSaldo(fSaldo);
 			em.setCif(cif);
 			em.setRazonSocial(razonSocial);
 			empresaRepository.save(em);
 			
-			H.info(s, "Empresa " + razonSocial+ " actualizada correctamente", "info", "/empresa/r");
+			H.info(s, "Empresa " + razonSocial+ " actualizada correctamente", "info", "/empresa/r");//No escribe
 		} catch (Exception e) {
 			H.info(s, "Empresa " + razonSocial + " duplicada", "danger", "/empresa/r");
 		}
+		}
 		return "redirect:/info";
+		
 	}
 	
 	@PostMapping("d")

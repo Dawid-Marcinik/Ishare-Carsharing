@@ -42,7 +42,7 @@ public class Entidad {
 	@Column(unique = true)
 	protected String email;
 	
-	protected String rol;
+	
 	
 	protected Float saldo;
 	
@@ -59,7 +59,7 @@ public class Entidad {
 	
 	
 	public Entidad(String nombreUsuario, String contrasena, String localidad, String direccion, Integer codigoPostal,
-			Integer telefono, String email, String rol, Float saldo) {
+			Integer telefono, String email, Float saldo) {
 		super();
 		this.nombreUsuario = nombreUsuario;
 		this.contrasena = contrasena;
@@ -68,7 +68,6 @@ public class Entidad {
 		this.codigoPostal = codigoPostal;
 		this.telefono = telefono;
 		this.email = email;
-		this.rol = rol;
 		this.saldo = saldo;
 	}
 
@@ -141,13 +140,7 @@ public class Entidad {
 		this.email = email;
 	}
 
-	public String getRol() {
-		return rol;
-	}
 
-	public void setRol(String rol) {
-		this.rol = rol;
-	}
 
 	public Float getSaldo() {
 		return saldo;
