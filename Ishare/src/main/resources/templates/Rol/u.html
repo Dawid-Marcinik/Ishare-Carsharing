@@ -1,0 +1,11 @@
+<div class="container">
+	<h1 class="display-6">Modificar Rol</h1>
+	<form action="u" method="POST">
+		<label for="nombre">Nombre del rol: </label>
+		<input type="text" id="nombre" name="nombre" th:value="${rol.nombre}">
+		<input type="hidden" name="id" th:value="${rol.id}">
+		<br>
+		<input type="submit" value="Modificar">
+		<input type="button" value="Cancelar" onclick="location.href='r'">
+	</form>
+</div>

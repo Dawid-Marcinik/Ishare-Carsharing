@@ -1,0 +1,26 @@
+<div class="container">
+	<h1 class="display-6">Lista de roles</h1>
+	<button class="btn"><a href="/rol/c">Crear nuevo rol</a></button>
+	<table class="table">
+		<tr>
+			<th>Nombre</th>
+			<th>Modificar</th>
+			<th>Borrar</th>
+		</tr>
+		<tr th:each="rol:${roles}">
+			<td th:text="${rol.nombre}"></td>
+			<td>
+				<form action="u" method="GET">
+					<input type="hidden" name="id" th:value="${rol.id}">
+					<button onclick="submit()"><img src="/img/edit.png" height="20px" width="20px"></button>
+				</form>
+			</td>
+			<td>
+				<form action="d" method="POST">
+					<input type="hidden" name="id" th:value="${rol.id}">
+					<button onclick="submit()"><img src="/img/delete.png" height="20px" width="20px"></button>
+				</form>
+			</td>
+		</tr>
+	</table>	
+</div>

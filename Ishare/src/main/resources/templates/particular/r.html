@@ -13,6 +13,7 @@
 			<th>Nombre</th>
 			<th>Apellidos</th>
 			<th>Fecha de nacimiento</th>
+			<th>Rol</th>
 			<th>Acciones</th>
 		</tr>
 
@@ -21,6 +22,7 @@
 			<td th:text="${particular.nombre}"></td>
 			<td th:text="${particular.apellidos}"></td>
 			<td th:text="${particular.fechaNacimiento}"></td>
+			<td th:text="${particular.rol.nombre}"></td>
 			<td class="row">
 				<form action="/particular/u" method="get">
 					<input type="hidden" name="id" th:value="${particular.id}" />

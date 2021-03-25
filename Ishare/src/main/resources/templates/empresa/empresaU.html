@@ -25,7 +25,9 @@
 		<input type="email" name="email" th:value="${empresa.email}"><br>
 		
 		Rol
-		<input type="text" name="rol" th:value="${empresa.rol}"><br>
+		<select name="idRol">
+			<option th:each="rol:${roles}" th:value="${rol.id}" th:text="${rol.nombre}"></option>
+		</select>
 		
 		Saldo
 		<input type="number" name="saldo" th:value="${empresa.saldo}"><br>
