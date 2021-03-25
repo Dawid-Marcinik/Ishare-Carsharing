@@ -11,11 +11,7 @@
 		<br>
 		<label for="idMarca">Ubicación: </label>
 		<select name="idUbicacion" id="idUbicacion">
-<<<<<<< HEAD
 			<option th:each="ubicacion:${ubicaciones}" th:value="${ubicacion.idUbicacion}" th:selected="${ubicacion.direccion == coche.ubicacion.direccion}" th:text="${ubicacion.direccion}"></option>
-=======
-			<option th:each="ubicacion:${ubicaciones}" th:value="${ubicacion.idUbicacion}" th:selected="${ubicacion.nombre == coche.ubicacion.nombre}" th:text="${ubicacion.nombre}"></option>
->>>>>>> branch 'master' of https://github.com/Dawid-Marcinik/Ishare-Carsharing
 		</select>
 		<br>
 		<label for="autonomiaRestante">Autonomia restante (Km): </label>
