@@ -63,6 +63,7 @@ public class HomeController {
 		else if(tipoEntidad.equals("Particular")) {
 			link = "/particular/c";
 		}
+		m.put("roles", rolRepository.findAll());
 		m.put("view", link);
 		return "/_t/frame";
 	}
