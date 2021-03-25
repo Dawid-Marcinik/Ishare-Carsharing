@@ -4,7 +4,7 @@
 <h1 class="display-4">Ishare - carsharing</h1>
 	<div th:if="${session.user == null}">
 		<a href="/login">LOGIN</a> / 
-		<a href="/persona/c">REGISTRO</a>
+		<a href="/registro">REGISTRO</a>
 	</div>
 
 	<div th:if="${session.user != null}">
