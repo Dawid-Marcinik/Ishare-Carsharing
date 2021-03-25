@@ -48,6 +48,25 @@ public class HomeController {
 		return "/_t/frame";
 	}
 	
+	//REGISTRO
+	@GetMapping("/registro")
+	public String registroGet(ModelMap m) throws DangerException {
+		m.put("view","/home/registro");
+		return "/_t/frame";
+	}
+	@PostMapping("/registro")
+	public String registroPost(@RequestParam("tipoEntidad") String tipoEntidad,ModelMap m) throws DangerException {
+		String link = "";
+		if(tipoEntidad.equals("Empresa")) {
+			link = "/empresa/c";
+		}
+		else if(tipoEntidad.equals("Particular")) {
+			link = "/particular/c";
+		}
+		m.put("view", link);
+		return "/_t/frame";
+	}
+	
 	//LOGIN
 	@GetMapping("/login")
 	public String loginGet(ModelMap m,HttpSession s) throws DangerException {
