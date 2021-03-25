@@ -1,9 +1,7 @@
 package org.ishare.app.controllers;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Date;
 
 import javax.servlet.http.HttpSession;
 

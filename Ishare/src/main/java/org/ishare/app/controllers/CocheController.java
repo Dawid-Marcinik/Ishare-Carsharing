@@ -1,13 +1,11 @@
 package org.ishare.app.controllers;
 
 import org.ishare.app.domains.Coche;
-import org.ishare.app.domains.Marca;
 import org.ishare.app.domains.Modelo;
 import org.ishare.app.domains.Ubicacion;
 import org.ishare.app.exceptions.DangerException;
 import org.ishare.app.helpers.PRG;
 import org.ishare.app.repositories.CocheRepository;
-import org.ishare.app.repositories.MarcaRepository;
 import org.ishare.app.repositories.ModeloRepository;
 import org.ishare.app.repositories.UbicacionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +19,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("coche")
 public class CocheController {
-	@Autowired
-	private MarcaRepository marcaRepository;
 	@Autowired
 	private ModeloRepository modeloRepository;
 	@Autowired
