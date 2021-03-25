@@ -1,14 +1,5 @@
 <meta charset=UTF-8>
 <header class="container">
-<div th:if="${session.user == null}">
-		<a href="/login">LOGIN</a> / 
-		<a href="/entidad/c">REGISTRO</a>
-	</div>
-
-	<div th:if="${session.user != null}">
-		Hola <span th:text="|${session.user.nombreUsuario} (${session.user.rol.nombre}) |"/> / 
-		<a href="/logout">LOGOUT</a>
-	</div>
 <div class="row">
 <h1 class="display-4">Ishare - carsharing</h1>
 	<div th:if="${session.user == null}">

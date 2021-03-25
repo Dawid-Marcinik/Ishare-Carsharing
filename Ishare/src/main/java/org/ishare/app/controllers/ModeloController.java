@@ -30,6 +30,7 @@ public class ModeloController {
 	@GetMapping("r")
 	public String rGet(ModelMap modelo) {
 		modelo.put("view", "modelo/r");
+		modelo.put("tipos", tipoRepository.findAll());
 		modelo.put("modelos", modeloRepository.findAll());
 		return ("_t/frame");
 	}
