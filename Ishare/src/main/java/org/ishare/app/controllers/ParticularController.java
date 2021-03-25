@@ -8,11 +8,13 @@ import javax.servlet.http.HttpSession;
 
 
 import org.ishare.app.domains.Particular;
+import org.ishare.app.domains.Rol;
 import org.ishare.app.exceptions.DangerException;
 import org.ishare.app.helpers.H;
 import org.ishare.app.helpers.PRG;
 
 import org.ishare.app.repositories.ParticularRepository;
+import org.ishare.app.repositories.RolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -32,10 +34,13 @@ public class ParticularController {
 	
 	@Autowired
 	ParticularRepository particularRepository;
+	@Autowired
+	private RolRepository rolRepository;
 	
 	@GetMapping("c")
 	public String particularCGet(ModelMap m) {
 		m.put("view", "/particular/c");
+		m.put("roles", rolRepository.findAll());
 		return "/_t/frame";
 	}
 	
@@ -47,7 +52,7 @@ public class ParticularController {
 			@RequestParam("codigoPostal") Integer codigoPostal,
 			@RequestParam("telefono") Integer telefono,
 			@RequestParam("email") String email,
-			@RequestParam("rol") String rol,
+			@RequestParam("idRol") Long idRol,
 			@RequestParam("saldo") Float saldo,
 			@RequestParam("dni") String dni, 
 			@RequestParam("nombre") String nombre, 
@@ -56,6 +61,7 @@ public class ParticularController {
 			@RequestParam("fechaNacimiento") LocalDate fechaNacimiento) throws DangerException{
 		
 		if(dni != "") {
+			Rol rol = rolRepository.getOne(idRol);
 			Particular p = new Particular(nombreUsuario,contrasena,localidad,direccion,codigoPostal,telefono,email,rol,saldo,dni,nombre,apellidos,fechaNacimiento);
 	
 			try {
@@ -83,6 +89,7 @@ public class ParticularController {
 	@GetMapping("u")
 	public String updateGet(@RequestParam("id") Long id, ModelMap m) {
 		m.put("particular", particularRepository.getOne(id));
+		m.put("roles", rolRepository.findAll());
 		m.put("view", "/particular/particularU");
 		return "/_t/frame";
 	}
@@ -95,7 +102,7 @@ public class ParticularController {
 			@RequestParam("codigoPostal") Integer codigoPostal,
 			@RequestParam("telefono") Integer telefono,
 			@RequestParam("email") String email,
-			@RequestParam("rol") String rol,
+			@RequestParam("idRol") Long idRol,
 			@RequestParam("saldo") Float saldo,
 			@RequestParam("dni") String dni,
 			@RequestParam("nombre") String nombre,
@@ -106,6 +113,7 @@ public class ParticularController {
 			HttpSession s) {
 		try {
 			Particular p = particularRepository.getOne(id);
+			Rol rol = rolRepository.getOne(idRol);
 			p.setNombreUsuario(nombreUsuario);
 			p.setContrasena(contrasena);
 			p.setLocalidad(localidad);

@@ -39,7 +39,7 @@ public class Particular extends Entidad {
 	
 	
 	public Particular(String nombreUsuario, String contrasena, String localidad, String direccion, Integer codigoPostal,
-			Integer telefono, String email, String rol, Float saldo,String dni, String nombre, String apellidos, LocalDate fechaNacimiento) {
+			Integer telefono, String email, Rol rol, Float saldo,String dni, String nombre, String apellidos, LocalDate fechaNacimiento) {
 		super(nombreUsuario, contrasena, localidad, direccion, codigoPostal, telefono, email, rol, saldo);
 		
 		this.dni = dni;

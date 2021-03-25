@@ -34,7 +34,7 @@ public class Empresa extends Entidad {
 
 
 	public Empresa(String nombreUsuario, String contrasena, String localidad, String direccion, Integer codigoPostal,
-			Integer telefono, String email, String rol, Float saldo,String cif, String razonSocial) {
+			Integer telefono, String email, Rol rol, Float saldo,String cif, String razonSocial) {
 		super(nombreUsuario, contrasena, localidad, direccion, codigoPostal, telefono, email, rol, saldo);
 		// TODO Auto-generated constructor stub
 		this.cif = cif;

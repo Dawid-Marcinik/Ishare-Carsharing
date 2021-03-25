@@ -12,25 +12,25 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Tipo {
+public class Rol {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column(unique = true)
 	private String nombre;
-	@OneToMany(mappedBy = "tipo", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-	private List<Modelo> modelos;
+	@OneToMany(mappedBy = "rol", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	private List<Entidad> entidades;
 	
 	//CONSTRUCTORES
-	public Tipo() {
+	public Rol() {
 	}
 
-	public Tipo(String nombre) {
+	public Rol(String nombre) {
 		super();
 		this.nombre = nombre;
 	}
-	
+
 	//GETTERS Y SETTERS
 	public Long getId() {
 		return id;
@@ -48,11 +48,12 @@ public class Tipo {
 		this.nombre = nombre;
 	}
 
-	public List<Modelo> getModelos() {
-		return modelos;
+	public List<Entidad> getEntidades() {
+		return entidades;
 	}
 
-	public void setModelos(List<Modelo> modelos) {
-		this.modelos = modelos;
+	public void setEntidades(List<Entidad> entidades) {
+		this.entidades = entidades;
 	}
+	
 }

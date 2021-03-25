@@ -4,10 +4,12 @@ package org.ishare.app.controllers;
 import javax.servlet.http.HttpSession;
 
 import org.ishare.app.domains.Empresa;
+import org.ishare.app.domains.Rol;
 import org.ishare.app.exceptions.DangerException;
 import org.ishare.app.helpers.H;
 import org.ishare.app.helpers.PRG;
 import org.ishare.app.repositories.EmpresaRepository;
+import org.ishare.app.repositories.RolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -24,10 +26,13 @@ public class EmpresaController {
 	
 	@Autowired
 	private EmpresaRepository empresaRepository;
+	@Autowired
+	private RolRepository rolRepository;
 	
 	@GetMapping("c")
 	public String empresaCGet(ModelMap m) {
 		m.put("view", "/empresa/c");
+		m.put("roles", rolRepository.findAll());
 		return "/_t/frame";
 	}
 	
@@ -39,13 +44,13 @@ public class EmpresaController {
 			@RequestParam("codigoPostal") Integer codigoPostal,
 			@RequestParam("telefono") Integer telefono,
 			@RequestParam("email") String email,
-			@RequestParam("rol") String rol,
+			@RequestParam("idRol") Long idRol,
 			@RequestParam("saldo") Float saldo,
 			@RequestParam("cif") String cif,@RequestParam("razonSocial") String razonSocial) throws DangerException{
 		
 		if((cif != "")&&(razonSocial != "")) {
+			Rol rol = rolRepository.getOne(idRol);
 			Empresa em = new Empresa(nombreUsuario,contrasena,localidad,direccion,codigoPostal,telefono,email,rol,saldo,cif, razonSocial);
-			
 			
 			try {
 				empresaRepository.save(em);
@@ -72,6 +77,7 @@ public class EmpresaController {
 	@GetMapping("u")
 	public String updateGet(@RequestParam("id") Long id, ModelMap m) {
 		m.put("empresa", empresaRepository.getOne(id));
+		m.put("roles", rolRepository.findAll());
 		m.put("view", "/empresa/empresaU");
 		return "/_t/frame";
 	}
@@ -84,7 +90,7 @@ public class EmpresaController {
 			@RequestParam("codigoPostal") Integer codigoPostal,
 			@RequestParam("telefono") Integer telefono,
 			@RequestParam("email") String email,
-			@RequestParam("rol") String rol,
+			@RequestParam("idRol") Long idRol,
 			@RequestParam("saldo") Float saldo,
 			@RequestParam("cif") String cif,
 			@RequestParam("razonSocial") String razonSocial,
@@ -92,6 +98,7 @@ public class EmpresaController {
 			HttpSession s) {
 		try {
 			Empresa em = empresaRepository.getOne(id);
+			Rol rol = rolRepository.getOne(idRol);
 			em.setNombreUsuario(nombreUsuario);
 			em.setContrasena(contrasena);
 			em.setLocalidad(localidad);
