@@ -11,7 +11,7 @@
 		<br>
 		<label for="idMarca">Ubicación: </label>
 		<select name="idUbicacion" id="idUbicacion">
-			<option th:each="ubicacion:${ubicaciones}" th:value="${ubicacion.id}" th:selected="${ubicacion.nombre == coche.ubicacion.nombre}" th:text="${ubicacion.nombre}"></option>
+			<option th:each="ubicacion:${ubicaciones}" th:value="${ubicacion.idUbicacion}" th:selected="${ubicacion.nombre == coche.ubicacion.nombre}" th:text="${ubicacion.nombre}"></option>
 		</select>
 		<br>
 		<label for="autonomiaRestante">Autonomia restante (Km): </label>
