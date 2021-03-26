@@ -2,6 +2,7 @@ package org.ishare.app.controllers;
 
 
 
+import java.text.ParseException;
 import java.time.LocalDate;
 
 import javax.servlet.http.HttpSession;
@@ -49,33 +50,45 @@ public class ParticularController {
 			@RequestParam("contrasena") String contrasena,
 			@RequestParam("localidad") String localidad,
 			@RequestParam("direccion") String direccion,
-			@RequestParam("codigoPostal") Integer codigoPostal,
-			@RequestParam("telefono") Integer telefono,
+			@RequestParam("codigoPostal") String codigoPostal,
+			@RequestParam("telefono") String telefono,
 			@RequestParam("email") String email,
 			@RequestParam("idRol") Long idRol,
-			@RequestParam("saldo") Float saldo,
+			@RequestParam("saldo") String saldo,
 			@RequestParam("dni") String dni, 
 			@RequestParam("nombre") String nombre, 
 			@RequestParam("apellidos") String apellidos,
 			@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-			@RequestParam("fechaNacimiento") LocalDate fechaNacimiento) throws DangerException{
-		
-		if(dni != "") {
+			@RequestParam("fechaNacimiento") String fechaNacimiento) throws DangerException, ParseException{
+			
+		if(nombreUsuario==""||contrasena==""||localidad==""||direccion==""||codigoPostal==""||telefono==""||email==""||saldo==""||dni==""||nombre==""||apellidos==""||fechaNacimiento==""||nombreUsuario==null||contrasena==null||localidad==null||direccion==null||codigoPostal==null||telefono==null||email==null||saldo==null||dni==null||nombre==null||apellidos==null||fechaNacimiento==null) {
+			PRG.error("Ningún campo puede quedar vacío", "/particular/r");
+		}else {
+			int iCodigoPostal=Integer.parseInt(codigoPostal);
+			int iTelefono=Integer.parseInt(telefono);
+			float fSaldo=Float.parseFloat(saldo);
+			LocalDate lFechaNacimiento=LocalDate.parse(fechaNacimiento);
 			Rol rol = rolRepository.getOne(idRol);
-			Particular p = new Particular(nombreUsuario,contrasena,localidad,direccion,codigoPostal,telefono,email,rol,saldo,dni,nombre,apellidos,fechaNacimiento);
+			Particular p = new Particular(nombreUsuario,contrasena,localidad,direccion,iCodigoPostal,iTelefono,email,rol,fSaldo,dni,nombre,apellidos,lFechaNacimiento);
 	
 			try {
 				particularRepository.save(p);
+				
 			} catch (Exception e) {
 				// TODO: handle exception
 				PRG.error("no pueden haber dos Dni iguales","/particular/c");
 			}
-		}else {
-			PRG.error("No puede quedar el dni vacio","/particular/c");
+			
+			
 		}
+		
+		
 		
 		return "redirect:/particular/r";
 	}
+	
+			
+
 	
 	@GetMapping("r")
 	public String particularRGet(ModelMap m) {
@@ -99,35 +112,40 @@ public class ParticularController {
 			@RequestParam("contrasena") String contrasena,
 			@RequestParam("localidad") String localidad,
 			@RequestParam("direccion") String direccion,
-			@RequestParam("codigoPostal") Integer codigoPostal,
-			@RequestParam("telefono") Integer telefono,
+			@RequestParam("codigoPostal") String codigoPostal,
+			@RequestParam("telefono") String telefono,
 			@RequestParam("email") String email,
 			@RequestParam("idRol") Long idRol,
-			@RequestParam("saldo") Float saldo,
+			@RequestParam("saldo") String saldo,
 			@RequestParam("dni") String dni,
 			@RequestParam("nombre") String nombre,
 			@RequestParam("apellidos") String apellidos,
 			@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-			@RequestParam("fechaNacimiento") LocalDate fechaNacimiento, 
+			@RequestParam("fechaNacimiento") String fechaNacimiento, 
 			@RequestParam("id") Long id,
-			HttpSession s) {
+			HttpSession s)throws DangerException, ParseException {
 		try {
-			Particular p = particularRepository.getOne(id);
+			int iCodigoPostal=Integer.parseInt(codigoPostal);
+			int iTelefono=Integer.parseInt(telefono);
+			float fSaldo=Float.parseFloat(saldo);
 			Rol rol = rolRepository.getOne(idRol);
+			LocalDate lFechaNacimiento=LocalDate.parse(fechaNacimiento);
+			Particular p = particularRepository.getOne(id);
 			p.setNombreUsuario(nombreUsuario);
 			p.setContrasena(contrasena);
 			p.setLocalidad(localidad);
 			p.setDireccion(direccion);
-			p.setCodigoPostal(codigoPostal);
-			p.setTelefono(telefono);
+			p.setCodigoPostal(iCodigoPostal);
+			p.setTelefono(iTelefono);
 			p.setEmail(email);
 			p.setRol(rol);
-			p.setSaldo(saldo);
+			p.setSaldo(fSaldo);
 			p.setDni(dni);
 			p.setNombre(nombre);
 			p.setApellidos(apellidos);
-			p.setFechaNacimiento(fechaNacimiento);
+			p.setFechaNacimiento(lFechaNacimiento);
 			particularRepository.save(p);
+		
 			
 			H.info(s, "Particular " + nombre+ " actualizado correctamente", "info", "/particular/r");
 		} catch (Exception e) {
