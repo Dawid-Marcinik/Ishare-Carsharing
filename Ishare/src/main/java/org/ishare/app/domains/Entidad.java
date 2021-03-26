@@ -11,6 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 
@@ -42,7 +43,10 @@ public class Entidad {
 	@Column(unique = true)
 	protected String email;
 	
-	
+
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	protected Rol rol;
+
 	
 	protected Float saldo;
 	
@@ -59,7 +63,9 @@ public class Entidad {
 	
 	
 	public Entidad(String nombreUsuario, String contrasena, String localidad, String direccion, Integer codigoPostal,
-			Integer telefono, String email, Float saldo) {
+
+			Integer telefono, String email, Rol rol, Float saldo) {
+
 		super();
 		this.nombreUsuario = nombreUsuario;
 		this.contrasena = contrasena;
@@ -140,6 +146,14 @@ public class Entidad {
 		this.email = email;
 	}
 
+
+	public Rol getRol() {
+		return rol;
+	}
+
+	public void setRol(Rol rol) {
+		this.rol = rol;
+	}
 
 
 	public Float getSaldo() {

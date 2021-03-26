@@ -3,26 +3,32 @@
 	<h1>Editar alquiler</h1>
 	
 	<form method="post">
-		FECHA INICIO
-		<input type="date" name="fechaInicio"/>
+		<label for="fechaInicio">FECHA INICIO: </label>
+		<input type="date" name="fechaInicio" id="fechaInicio"/>
 		<br/>
-		FECHA FIN
-		<input type="date" name="fechaFin"/>
+		<label for="fechaFin">FECHA FIN: </label>
+		<input type="date" name="fechaFin" id="fechaFin"/>
 		<br/>
-		UBICACIÓN DE INICIO
-		<select name="idUbicacionInicio">
+		<label for="idCocheAlquilado">COCHE ALQUILADO: </label>
+		<select name="idCocheAlquilado" id="idCocheAlquilado">
+			<option th:each="coche:${coches}" th:text="|${coche.modelo.marca.nombre} - ${coche.modelo.nombre} - ${coche.matricula} - ${coche.autonomiaRestante}|" th:value="${coche.id}">
+			</option>
+		</select>
+		<br/>
+		<label for="idUbicacionInicio">UBICACIÓN DE INICIO: </label>
+		<select name="idUbicacionInicio" id="idUbicacionInicio">
 			<option th:each="ubicacion:${ubicaciones}" th:text="${ubicacion.direccion}" th:value="${ubicacion.idUbicacion}">
 			</option>
 		</select>
 		<br/>
-		UBICACIÓN DE FINALIZACIÓN
-		<select name="idUbicacionFin">
+		<label for="idUbicacionFin">UBICACIÓN DE FINALIZACIÓN: </label>
+		<select name="idUbicacionFin" id="idUbicacionFin">
 			<option th:each="ubicacion:${ubicaciones}" th:text="${ubicacion.direccion}" th:value="${ubicacion.idUbicacion}">
 			</option>
 		</select>
 		<br/>
-		PUNTUACIÓN
-		<input type="number" name="puntuacion" max="10" min="0"/>
+		<label for="puntuacion">PUNTUACIÓN: </label>
+		<input type="number" id="puntuacion" name="puntuacion" max="10" min="0"/>
 		<br/>
 		
 		<input type="hidden" name="idAlquiler" th:value="${alquiler.idAlquiler}"/>

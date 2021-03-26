@@ -23,6 +23,13 @@
 		<label for="email">Email</label>
 	<input type="email" name="email" id="email" />
 	<div class="w-100"></div>
+
+		<label for="idRol">Rol</label>
+		<select name="idRol">
+			<option th:each="rol:${roles}" th:value="${rol.id}" th:text="${rol.nombre}"></option>
+		</select>
+	<div class="w-100"></div>
+
 		<label for="saldo">SALDO</label>
 	<input type="number" name="saldo" id="saldo" step="0.01"/>
 	<div class="w-100"></div>

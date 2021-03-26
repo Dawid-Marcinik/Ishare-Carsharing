@@ -1,41 +1,47 @@
-<div class="container">
-	<h1>Editar empresa</h1>
+	<h1 class="row justify-content-center">Editar empresa</h1>
+	<div class="row justify-content-center">
 	<form method="post" action="/empresa/u" class="form">
 	
 		
 		Nombre de usuario
-		<input type="text" name="nombreUsuario" th:value="${empresa.nombreUsuario}">
+		<input type="text" name="nombreUsuario" th:value="${empresa.nombreUsuario}"><br>
 		
 		Contraseña
-		<input type="text" name="contrasena" th:value="${empresa.contrasena}">
+		<input type="text" name="contrasena" th:value="${empresa.contrasena}"><br>
 		
 		Localidad
-		<input type="text" name="localidad" th:value="${empresa.localidad}">
+		<input type="text" name="localidad" th:value="${empresa.localidad}"><br>
 		
 		Dirección
-		<input type="text" name="direccion" th:value="${empresa.direccion}">
+		<input type="text" name="direccion" th:value="${empresa.direccion}"><br>
 		
 		Código postal
-		<input type="number" name="codigoPostal" th:value="${empresa.codigoPostal}">
+		<input type="number" name="codigoPostal" th:value="${empresa.codigoPostal}"><br>
 		
 		Teléfono
-		<input type="number" name="telefono" th:value="${empresa.telefono}">
+		<input type="number" name="telefono" th:value="${empresa.telefono}"><br>
 		
 		Email
-		<input type="email" name="email" th:value="${empresa.email}">
+		<input type="email" name="email" th:value="${empresa.email}"><br>
 		
+
+		Rol
+		<select name="idRol">
+			<option th:each="rol:${roles}" th:value="${rol.id}" th:text="${rol.nombre}"></option>
+		</select>
+
 		
 		Saldo
-		<input type="number" name="saldo" th:value="${empresa.saldo}">
+		<input type="number" name="saldo" th:value="${empresa.saldo}"><br>
 		
 		Cif
-		<input type="text" name="cif" th:value="${empresa.cif}">
+		<input type="text" name="cif" th:value="${empresa.cif}"><br>
 		
 		Razón social
-		<input type="text" name="razonSocial" th:value="${empresa.razonSocial}">
+		<input type="text" name="razonSocial" th:value="${empresa.razonSocial}"><br>
 		
 		<input type="hidden" name="id" th:value="${empresa.id}"/>
 		
 		<input type="submit" class="form-item" />
 	</form>
-</div>
+	</div>

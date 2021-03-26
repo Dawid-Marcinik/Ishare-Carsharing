@@ -11,14 +11,14 @@
 		<br>
 		<label for="idMarca">Ubicación: </label>
 		<select name="idUbicacion" id="idUbicacion">
-			<option th:each="ubicacion:${ubicaciones}" th:value="${ubicacion.id}" th:selected="${ubicacion.nombre == coche.ubicacion.nombre}" th:text="${ubicacion.nombre}"></option>
+			<option th:each="ubicacion:${ubicaciones}" th:value="${ubicacion.idUbicacion}" th:selected="${ubicacion.direccion == coche.ubicacion.direccion}" th:text="${ubicacion.direccion}"></option>
 		</select>
 		<br>
 		<label for="autonomiaRestante">Autonomia restante (Km): </label>
 		<input type="number" th:value="${coche.autonomiaRestante}" id="autonomiaRestante" name="autonomiaRestante">
 		<br>
 		<input type="hidden" name="id" th:value="${coche.id}">
-		<input type="submit" value="Crear">
+		<input type="submit" value="Modificar">
 		<input type="button" value="Cancelar" onclick="location.href='r'">
 	</form>
 </div>

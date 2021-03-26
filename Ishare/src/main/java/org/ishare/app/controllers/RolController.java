@@ -1,9 +1,10 @@
 package org.ishare.app.controllers;
 
 import org.ishare.app.domains.Marca;
+import org.ishare.app.domains.Rol;
 import org.ishare.app.exceptions.DangerException;
 import org.ishare.app.helpers.PRG;
-import org.ishare.app.repositories.MarcaRepository;
+import org.ishare.app.repositories.RolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -13,71 +14,72 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("marca")
-public class MarcaController {
+@RequestMapping("rol")
+public class RolController {
+
 	@Autowired
-	private MarcaRepository marcaRepository;
+	private RolRepository rolRepository;
 	
 	//Recuperar
 	@GetMapping("r")
 	public String rGet(ModelMap modelo) {
-		modelo.put("view", "marca/r");
-		modelo.put("marcas", marcaRepository.findAll());
+		modelo.put("view", "rol/r");
+		modelo.put("roles", rolRepository.findAll());
 		return ("_t/frame");
 	}
 	
 	//Crear
 	@GetMapping("c")
 	public String cGet(ModelMap modelo) {
-		modelo.put("view", "marca/c");
+		modelo.put("view", "rol/c");
 		return ("_t/frame");
 	}
 	@PostMapping("c")
 	public String cPost(ModelMap modelo, @RequestParam("nombre") String nombre) throws DangerException{
 		
 		if(nombre == "" || nombre == null) {
-			PRG.error("El nombre de la marca no puede estar vacío","marca/c");
+			PRG.error("El nombre del rol no puede estar vacío","rol/c");
 		}
 		
-		Marca marca = new Marca(nombre);
+		Rol rol = new Rol(nombre);
 		
 		try {
-			marcaRepository.save(marca);
+			rolRepository.save(rol);
 		} catch (Exception e) {
-			PRG.error("nombre ya existente","marca/c");
+			PRG.error("nombre ya existente","rol/c");
 		}
-		return("redirect:/marca/r");
+		return("redirect:/rol/r");
 	}
 	
 	//Modificar
 	@GetMapping("u")
 	public String uGet(ModelMap modelo, @RequestParam("id") Long id) {
-		modelo.put("marca", marcaRepository.getOne(id));
-		modelo.put("view", "marca/u");
+		modelo.put("rol", rolRepository.getOne(id));
+		modelo.put("view", "rol/u");
 		return ("_t/frame");
 	}
 	@PostMapping("u")
 	public String uPost(ModelMap modelo, @RequestParam("id") Long id, @RequestParam("nombre") String nombre) throws DangerException{
 		
 		if(nombre == "" || nombre == null) {
-			PRG.error("El nombre de la marca no puede estar vacío","marca/u");
+			PRG.error("El nombre del rol no puede estar vacío","rol/u");
 		}
-		
-		Marca marca = marcaRepository.getOne(id);
-		
+			
+		Rol rol = rolRepository.getOne(id);
+			
 		try {
-			marca.setNombre(nombre);
-			marcaRepository.save(marca);
+			rol.setNombre(nombre);
+			rolRepository.save(rol);
 		} catch (Exception e) {
-			PRG.error("nombre ya existente","marca/u");
+			PRG.error("nombre ya existente","rol/u");
 		}
-		return("redirect:/marca/r");
+		return("redirect:/rol/r");
 	}
 	
 	//Borrar
-	@PostMapping("d")
-	public String dPost(ModelMap modelo, @RequestParam("id") Long id) {
-		marcaRepository.delete(marcaRepository.getOne(id));
-		return("redirect:/marca/r");
-	}
+		@PostMapping("d")
+		public String dPost(ModelMap modelo, @RequestParam("id") Long id) {
+			rolRepository.delete(rolRepository.getOne(id));
+			return("redirect:/rol/r");
+		}
 }

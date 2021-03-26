@@ -1,44 +1,51 @@
-<div class="container">
-	<h1>Editar particular</h1>
+	<h1 class="row justify-content-center">Editar particular</h1>
+	<div class="row justify-content-center">
 	<form method="post" action="/particular/u" class="form">
 	
 	Nombre de usuario
-		<input type="text" name="nombreUsuario" th:value="${particular.nombreUsuario}">
+		<input type="text" name="nombreUsuario" th:value="${particular.nombreUsuario}"><br>
 		
 		Contraseña
-		<input type="text" name="contrasena" th:value="${particular.contrasena}">
+		<input type="text" name="contrasena" th:value="${particular.contrasena}"><br>
 		
 		Localidad
-		<input type="text" name="localidad" th:value="${particular.localidad}">
+		<input type="text" name="localidad" th:value="${particular.localidad}"><br>
 		
 		Dirección
-		<input type="text" name="direccion" th:value="${particular.direccion}">
+		<input type="text" name="direccion" th:value="${particular.direccion}"><br>
 		
 		Código postal
-		<input type="number" name="codigoPostal" th:value="${particular.codigoPostal}">
+		<input type="number" name="codigoPostal" th:value="${particular.codigoPostal}"><br>
 		
 		Teléfono
-		<input type="number" name="telefono" th:value="${particular.telefono}">
+		<input type="number" name="telefono" th:value="${particular.telefono}"><br>
 		
 		Email
-		<input type="email" name="email" th:value="${particular.email}">
+		<input type="email" name="email" th:value="${particular.email}"><br>
 		
+
+		Rol
+		<select name="idRol">
+			<option th:each="rol:${roles}" th:value="${rol.id}" th:text="${rol.nombre}"></option>
+		</select>
+		
+
 		Saldo
-		<input type="number" name="saldo" th:value="${particular.saldo}">
+		<input type="number" name="saldo" th:value="${particular.saldo}"><br>
 		Dni
-		<input type="text" name="dni" th:value="${particular.dni}">
+		<input type="text" name="dni" th:value="${particular.dni}"><br>
 		
 		Nombre
-		<input type="text" name="nombre" th:value="${particular.nombre}">
+		<input type="text" name="nombre" th:value="${particular.nombre}"><br>
 		
 		Apellidos
-		<input type="text" name="apellidos" th:value="${particular.apellidos}">
+		<input type="text" name="apellidos" th:value="${particular.apellidos}"><br>
 		
 		Fecha de nacimiento
-		<input type="text" name="fechaNacimiento" th:value="${particular.fechaNacimiento}">
+		<input type="text" name="fechaNacimiento" th:value="${particular.fechaNacimiento}"><br>
 		
 		<input type="hidden" name="id" th:value="${particular.id}"/>
 		
 		<input type="submit" class="form-item" />
 	</form>
-</div>
+	</div>
