@@ -7,7 +7,7 @@
 		</select>
 		<br>
 		<label for="matricula">Matrícula del coche: </label>
-		<input type="text" id="matricula" name="matricula">
+		<input type="text" id="matricula" name="matricula" onkeyup="validar_matricula(this)" onblur="validar_matricula(this)" onfocus="reseteaColor(this)">
 		<br>
 		<label for="idMarca">Ubicación: </label>
 		<select name="idUbicacion" id="idUbicacion">
@@ -18,3 +18,4 @@
 		<input type="button" value="Cancelar" onclick="location.href='r'">
 	</form>
 </div>
+<script src="/js/Validar_marca_modelo_tipo.js" type="text/javascript"></script>

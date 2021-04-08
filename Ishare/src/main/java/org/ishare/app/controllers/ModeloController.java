@@ -45,7 +45,7 @@ public class ModeloController {
 	@PostMapping("c")
 	public String cPost(ModelMap modelo, @RequestParam("idMarca") Long idMarca, @RequestParam("nombre") String nombre, @RequestParam("numeroPasajeros") Integer numeroPasajeros, @RequestParam("idTipo") Long idTipo, @RequestParam("autonomiaTotal") Integer autonomiaTotal, @RequestParam("tarifa") Float tarifa) throws DangerException{
 			
-		if(nombre == "" || numeroPasajeros <= 0 || autonomiaTotal <= 0 || tarifa <= 0) {
+		if(nombre == "" || numeroPasajeros <= 0 || numeroPasajeros == null || autonomiaTotal <= 0 || autonomiaTotal == null || tarifa <= 0 || tarifa == null) {
 			PRG.error("Ningún parámetro puede estar vacío","modelo/c");
 		}
 		
@@ -74,7 +74,7 @@ public class ModeloController {
 	@PostMapping("u")
 	public String uPost(ModelMap modelo, @RequestParam("id") Long id, @RequestParam("idMarca") Long idMarca, @RequestParam("nombre") String nombre, @RequestParam("numeroPasajeros") Integer numeroPasajeros, @RequestParam("idTipo") Long idTipo, @RequestParam("autonomiaTotal") Integer autonomiaTotal, @RequestParam("tarifa") Float tarifa) throws DangerException{
 				
-		if(nombre == "" || numeroPasajeros <= 0 || autonomiaTotal <= 0 || tarifa <= 0) {
+		if(nombre == "" || numeroPasajeros <= 0 || numeroPasajeros == null || autonomiaTotal <= 0 || autonomiaTotal == null || tarifa <= 0 || tarifa == null) {
 			PRG.error("Ningún parámetro puede estar vacío","modelo/c");
 		}
 		

@@ -1,11 +1,12 @@
 <div class="container">
 	<h1 class="display-6">Modificar tipo de vehículo</h1>
-	<form action="u" method="POST">
+	<form id="formulario" action="u" method="POST" onSubmit="return validar_nombre(this)">
 		<label for="nombre">Nombre del tipo de vehículo: </label>
-		<input type="text" id="nombre" name="nombre" th:value="${tipo.nombre}">
+		<input type="text" id="nombre" name="nombre" th:value="${tipo.nombre}" onkeyup="validar_nombre(this)" onblur="validar_nombre(this)" onfocus="reseteaColor(this)">
 		<input type="hidden" name="id" th:value="${tipo.id}">
 		<br>
 		<input type="submit" value="Modificar">
 		<input type="button" value="Cancelar" onclick="location.href='r'">
 	</form>
 </div>
+<script src="/js/Validar_marca_modelo_tipo.js" type="text/javascript"></script>
