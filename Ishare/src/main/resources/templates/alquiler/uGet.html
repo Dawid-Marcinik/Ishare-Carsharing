@@ -1,34 +1,73 @@
 <meta charset=UTF-8>
+<style>
+	input:valid{
+		border-color: black;
+	}
+
+	input:invalid{
+		border-color:red;
+	}
+	.nullClass{
+		border-color: red;
+	}
+	*:focus { outline: none; } 
+</style>
+<script type="text/javascript">
+	function validarCocheAlquilado(){
+		if(document.getElementById("idCocheAlquilado").selectedIndex=="0"){
+		document.getElementById("idCocheAlquilado").setAttribute("style","border-color:red");	
+		}else{
+			document.getElementById("idCocheAlquilado").setAttribute("style","border-color:black");
+		}
+	}
+	function validarUbicacionInicio(){
+		if(document.getElementById("idUbicacionInicio").selectedIndex=="0"){
+		document.getElementById("idUbicacionInicio").setAttribute("style","border-color:red");	
+		}else{
+			document.getElementById("idUbicacionInicio").setAttribute("style","border-color:black");
+		}
+	}
+	function validarUbicacionFin(){
+		if(document.getElementById("idUbicacionFin").selectedIndex=="0"){
+		document.getElementById("idUbicacionFin").setAttribute("style","border-color:red");	
+		}else{
+			document.getElementById("idUbicacionFin").setAttribute("style","border-color:black");
+		}
+	}
+</script>
 <div class="container">
 	<h1>Editar alquiler</h1>
 	
 	<form method="post">
 		<label for="fechaInicio">FECHA INICIO: </label>
-		<input type="date" name="fechaInicio" id="fechaInicio"/>
+		<input type="date" name="fechaInicio" id="fechaInicio" required />
 		<br/>
 		<label for="fechaFin">FECHA FIN: </label>
-		<input type="date" name="fechaFin" id="fechaFin"/>
+		<input type="date" name="fechaFin" id="fechaFin" required />
 		<br/>
 		<label for="idCocheAlquilado">COCHE ALQUILADO: </label>
-		<select name="idCocheAlquilado" id="idCocheAlquilado">
+		<select name="idCocheAlquilado" id="idCocheAlquilado" required onchange ="validarCocheAlquilado()" class="nullClass">
+			<option value="-1" selected>- - - -</option>
 			<option th:each="coche:${coches}" th:text="|${coche.modelo.marca.nombre} - ${coche.modelo.nombre} - ${coche.matricula} - ${coche.autonomiaRestante}|" th:value="${coche.id}">
 			</option>
 		</select>
 		<br/>
 		<label for="idUbicacionInicio">UBICACIÓN DE INICIO: </label>
-		<select name="idUbicacionInicio" id="idUbicacionInicio">
+		<select name="idUbicacionInicio" id="idUbicacionInicio" required onchange="validarUbicacionInicio()" class="nullClass">
+			<option value="-1" selected>- - - -</option>
 			<option th:each="ubicacion:${ubicaciones}" th:text="${ubicacion.direccion}" th:value="${ubicacion.idUbicacion}">
 			</option>
 		</select>
 		<br/>
 		<label for="idUbicacionFin">UBICACIÓN DE FINALIZACIÓN: </label>
-		<select name="idUbicacionFin" id="idUbicacionFin">
+		<select name="idUbicacionFin" id="idUbicacionFin" required onchange="validarUbicacionFin()" class="nullClass"> 
+			<option value="-1" selected>- - - -</option>
 			<option th:each="ubicacion:${ubicaciones}" th:text="${ubicacion.direccion}" th:value="${ubicacion.idUbicacion}">
 			</option>
 		</select>
 		<br/>
 		<label for="puntuacion">PUNTUACIÓN: </label>
-		<input type="number" id="puntuacion" name="puntuacion" max="10" min="0"/>
+		<input type="number" id="puntuacion" name="puntuacion" max="10" min="0" required/>
 		<br/>
 		
 		<input type="hidden" name="idAlquiler" th:value="${alquiler.idAlquiler}"/>

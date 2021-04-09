@@ -1,13 +1,38 @@
 <meta charset=UTF-8>
+<script type="text/javascript">
+	function validarDireccion(){
+		var direccion=document.getElementById("direccion").value;
+		var expresion=/^[a-zA-ZñÑçÇáéíóúÁÉÍÓÚ]{5}[\s]{1}[a-zA-ZñÑçÇáéíóúÁÉÍÓÚ\-]{3}[\s - a-zA-ZñÑçÇáéíóúÁÉÍÓÚ]{0,35}$/
+		var valido;
+
+		valido=expresion.test(direccion);
+
+		if (valido==true){
+			document.getElementById("direccion").setAttribute("style","border-color:black");
+		}else{
+			document.getElementById("direccion").setAttribute("style","border-color:red");
+		}
+	}
+</script>
+<style>
+	input:valid{
+		border-color: black;
+	}
+
+	input:invalid{
+		border-color:red;
+	}
+	*:focus { outline: none; } 
+</style>
 <div class="container">
 	<h1>Nueva ubicación</h1>
 	
 	<form method="post">
 		<label for="direccion">DIRECCIÓN</label>
-		<input type="text" id="direccion" name="direccion"/>
+		<input type="text" id="direccion" name="direccion" style="border-color:red" onkeyup="validarDireccion()">
 		<br/>
 		<label for="plazasTotales">PLAZAS TOTALES</label>
-		<input type="number" id="plazasTotales" name="plazasTotales" min="1"/>
+		<input type="number" id="plazasTotales" name="plazasTotales" min="1" required/>
 		<br/>
 		
 		<input type="submit"/>
