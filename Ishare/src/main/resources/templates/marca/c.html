@@ -1,6 +1,6 @@
 <div class="container">
 	<h1 class="display-6">Crear nueva marca</h1>
-	<form id="formulario" action="c" method="POST" onSubmit="return validar_nombre(this)">
+	<form id="formulario" action="c" method="POST" onSubmit="return validar_nombre(this.nombre)">
 		<label for="nombre">Nombre de la marca: </label>
 		<input type="text" id="nombre" name="nombre" onkeyup="validar_nombre(this)" onblur="validar_nombre(this)" onfocus="reseteaColor(this)">
 		<br>
