@@ -11,16 +11,48 @@ function validar_campo_aspecto(elemento, valor){
 	
 }
 //Establecimiento del estado de validación
-function validar_modelo(modelo,pasajeros,autonomia,tarifa){
-	modeloBien = validar_nombre(modelo);
-	pasajerosBien = validar_pasajeros(pasajeros);
-	autonomiaBien = validar_autonomia(autonomia);
-	tarifaBien = validar_tarifa(tarifa);
+function validar_modelo(campo){
+	formulario = campo.parentNode;
+	console.log(formulario)
+	modeloBien = validar_nombre(formulario.nombre);
+	pasajerosBien = validar_pasajeros(formulario.numeroPasajeros);
+	autonomiaBien = validar_autonomia(formulario.autonomiaTotal);
+	tarifaBien = validar_tarifa(formulario.tarifa);
 	
-	if(modeloBien == true && pasajerosBien == true && autonomiaBien == true && tarifaBien == true) return true;
-	else return false;
+	if(modeloBien == true && pasajerosBien == true && autonomiaBien == true && tarifaBien == true) formulario.envio.disabled = false;
+	else formulario.envio.disabled = true;
 	
 }
+
+function validar_tipo_o_marca(elemento){
+	var nombre = elemento.value.toLowerCase();
+	var nombre_exprReg = /^[a-z áéíóúüëïöä\-]{3,20}$/;
+	var nombreBien = nombre_exprReg.test(nombre);
+	var devuelvo = false;
+	
+	if(nombreBien){ 
+		devuelvo = true;
+		validar_campo_aspecto(elemento, devuelvo);
+		elemento.parentNode.envio.disabled = false;
+	}
+
+	else {
+		validar_campo_aspecto(elemento, devuelvo);
+		elemento.parentNode.envio.disabled = true;
+	}
+	
+}
+
+function validar_coche(campo){
+	formulario = campo.parentNode;
+	matriculaBien = validar_matricula(campo);
+	
+	if(matriculaBien == true) formulario.envio.disabled = false;
+	else formulario.envio.disabled = true;
+	
+}
+
+//Validar elementos individuales
 
 function validar_matricula(elemento){
 	var matricula = elemento.value.toLowerCase();
@@ -31,27 +63,33 @@ function validar_matricula(elemento){
 	if(matriculaBien){ 
 		devuelvo = true;
 		validar_campo_aspecto(elemento, devuelvo);
+		return devuelvo;
 	}
 
-	else validar_campo_aspecto(elemento, devuelvo);
+	else {
+		validar_campo_aspecto(elemento, devuelvo);
+		return devuelvo;
+	}
 	
-	return devuelvo;
 }
 
 function validar_nombre(elemento){
 	var nombre = elemento.value.toLowerCase();
-	var nombre_exprReg = /^[a-z áéíóúüëïöä\-]{3,20}$/;
+	var nombre_exprReg = /^[a-z0-9 áéíóúüëïöä\-]{2,20}$/;
 	var nombreBien = nombre_exprReg.test(nombre);
 	var devuelvo = false;
 	
 	if(nombreBien){ 
 		devuelvo = true;
 		validar_campo_aspecto(elemento, devuelvo);
+		return devuelvo;
 	}
 
-	else validar_campo_aspecto(elemento, devuelvo);
+	else {
+		validar_campo_aspecto(elemento, devuelvo);
+		return devuelvo;
+	}
 	
-	return devuelvo;
 }
 
 function validar_pasajeros(elemento){
@@ -63,11 +101,14 @@ function validar_pasajeros(elemento){
 	if(numPasajerosBien){ 
 		devuelvo = true;
 		validar_campo_aspecto(elemento, devuelvo);
+		return devuelvo;
 	}
 
-	else validar_campo_aspecto(elemento, devuelvo);
+	else {
+		validar_campo_aspecto(elemento, devuelvo);
+		return devuelvo;
+	}
 	
-	return devuelvo;
 }
 
 function validar_autonomia(elemento){
@@ -79,11 +120,14 @@ function validar_autonomia(elemento){
 	if(autonomiaBien){ 
 		devuelvo = true;
 		validar_campo_aspecto(elemento, devuelvo);
+		return devuelvo;
 	}
 
-	else validar_campo_aspecto(elemento, devuelvo);
+	else {
+		validar_campo_aspecto(elemento, devuelvo);
+		return devuelvo;
+	}
 	
-	return devuelvo;
 }
 
 function validar_tarifa(elemento){
@@ -95,9 +139,12 @@ function validar_tarifa(elemento){
 	if(tarifaBien){ 
 		devuelvo = true;
 		validar_campo_aspecto(elemento, devuelvo);
+		return devuelvo;
 	}
 
-	else validar_campo_aspecto(elemento, devuelvo);
+	else {
+		validar_campo_aspecto(elemento, devuelvo);
+		return devuelvo;
+	}
 	
-	return devuelvo;
 }

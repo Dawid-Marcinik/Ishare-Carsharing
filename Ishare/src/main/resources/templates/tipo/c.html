@@ -1,10 +1,10 @@
 <div class="container">
 	<h1 class="display-6">Crear nuevo tipo de vehículo</h1>
-	<form id="formulario" action="c" method="POST" onSubmit="return validar_nombre(this.nombre)">
+	<form id="formulario" action="c" method="POST">
 		<label for="nombre">Nombre del tipo: </label>
-		<input type="text" id="nombre" name="nombre" onkeyup="validar_nombre(this)" onblur="validar_nombre(this)" onfocus="reseteaColor(this)">
+		<input type="text" id="nombre" name="nombre" onkeyup="validar_tipo_o_marca(this)" onfocus="reseteaColor(this)">
 		<br>
-		<input type="submit" value="Crear">
+		<input id="envio" type="submit" value="Crear" disabled>
 		<input type="button" value="Cancelar" onclick="location.href='r'">
 	</form>
 </div>

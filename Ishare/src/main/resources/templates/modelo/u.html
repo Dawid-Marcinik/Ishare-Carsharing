@@ -1,16 +1,16 @@
 <div class="container">
 	<h1 class="display-6">Modificar modelo</h1>
-	<form id="formulario" action="u" method="POST" onSubmit="return validar_modelo(this.nombre, this.numeroPasajeros, this.autonomiaTotal, this.tarifa)">
+	<form id="formulario" action="u" method="POST">
 		<label for="idMarca">Marca: </label>
 		<select name="idMarca" id="idMarca">
 			<option th:each="marca:${marcas}" th:value="${marca.id}" th:text="${marca.nombre}" th:selected="${marca.id == idMarcaModelo}"></option>
 		</select>
 		<br>
 		<label for="nombre">Nombre del modelo: </label>
-		<input type="text" id="nombre" name="nombre" th:value="${modelo.nombre}" onkeyup="validar_nombre(this)" onblur="validar_nombre(this)" onfocus="reseteaColor(this)">
+		<input type="text" id="nombre" name="nombre" th:value="${modelo.nombre}" onchange="validar_nombre(this)" onkeyup="validar_modelo(this)" onfocus="reseteaColor(this)">
 		<br>
 		<label for="numeroPasajeros">Número de pasajeros: </label>
-		<input type="number" id="numeroPasajeros" name="numeroPasajeros" th:value="${modelo.numeroPasajeros}"  onkeyup="validar_pasajeros(this)" onclick="validar_pasajeros(this)" onblur="validar_pasajeros(this)" onfocus="reseteaColor(this)">
+		<input type="number" id="numeroPasajeros" name="numeroPasajeros" th:value="${modelo.numeroPasajeros}"  onkeyup="validar_pasajeros(this)" onchange="validar_modelo(this)" onclick="validar_pasajeros(this)" onfocus="reseteaColor(this)">
 		<br>
 		<label for="idTipo">Tipo: </label>
 		<select name="idTipo" id="idTipo">
@@ -18,13 +18,13 @@
 		</select>
 		<br>
 		<label for="autonomiaTotal">Autonomía total (Km): </label>
-		<input type="number" id="autonomiaTotal" name="autonomiaTotal" th:value="${modelo.autonomiaTotal}"  onkeyup="validar_autonomia(this)" onclick="validar_autonomia(this)" onblur="validar_autonomia(this)" onfocus="reseteaColor(this)">
+		<input type="number" id="autonomiaTotal" name="autonomiaTotal" th:value="${modelo.autonomiaTotal}"  onkeyup="validar_autonomia(this)" onchange="validar_modelo(this)" onclick="validar_autonomia(this)" onfocus="reseteaColor(this)">
 		<br>
 		<label for="tarifa">Tarifa: (€/minuto)</label>
-		<input type="number" step="0.01" id="tarifa" name="tarifa" th:value="${modelo.tarifa}" onkeyup="validar_tarifa(this)" onclick="validar_tarifa(this)" onblur="validar_tarifa(this)" onfocus="reseteaColor(this)">
+		<input type="number" step="0.01" id="tarifa" name="tarifa" th:value="${modelo.tarifa}" onkeyup="validar_tarifa(this)" onchange="validar_modelo(this)" onclick="validar_tarifa(this)" onfocus="reseteaColor(this)">
 		<br>
 		<input type="hidden" name="id" th:value="${modelo.id}">
-		<input type="submit" value="Modificar">
+		<input id="envio" type="submit" value="Modificar">
 		<input type="button" value="Cancelar" onclick="location.href='r'">
 	</form>
 </div>

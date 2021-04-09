@@ -7,7 +7,7 @@
 		</select>
 		<br>
 		<label for="matricula">Matrícula del coche: </label>
-		<input type="text" th:value="${coche.matricula}" id="matricula" name="matricula" onkeyup="validar_matricula(this)" onblur="validar_matricula(this)" onfocus="reseteaColor(this)">
+		<input type="text" th:value="${coche.matricula}" id="matricula" name="matricula" onkeyup="validar_coche(this)" onfocus="reseteaColor(this)">
 		<br>
 		<label for="idMarca">Ubicación: </label>
 		<select name="idUbicacion" id="idUbicacion">
@@ -18,7 +18,7 @@
 		<input type="number" th:value="${coche.autonomiaRestante}" id="autonomiaRestante" name="autonomiaRestante">
 		<br>
 		<input type="hidden" name="id" th:value="${coche.id}">
-		<input type="submit" value="Modificar">
+		<input id="envio" type="submit" value="Modificar">
 		<input type="button" value="Cancelar" onclick="location.href='r'">
 	</form>
 </div>
