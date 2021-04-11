@@ -76,7 +76,7 @@ public class ParticularController {
 				
 			} catch (Exception e) {
 				// TODO: handle exception
-				PRG.error("no pueden haber dos Dni iguales","/particular/c");
+				PRG.error("no pueden haber dos Nombre usuario, telefono, email, y/o dni iguales","/particular/c");
 			}
 			
 			

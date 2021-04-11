@@ -49,7 +49,7 @@ public class AlquilerController {
 			ModelMap m) {
 		m.put("ubicaciones",this.ubicacionRepository.findAll());
 		m.put("alquiler",alquilerRepository.getOne(idAlquiler));
-		m.put("coches", cocheRepository.findAll());
+		m.put("coches", cocheRepository.findAll());//No se porque no hay puesto un this como en ubicacionRepository
 		m.put("view","alquiler/uGet");
 		return "/_t/frame";
 	}

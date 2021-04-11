@@ -34,7 +34,7 @@ public class UbicacionController {
 		Ubicacion ubicacion = ubicacionRepository.getOne(idUbicacion);
 
 				for (Alquiler alquiler:ubicacion.getIniciadosEn()) {
-					alquiler.setIniciaEn(null);
+					alquiler.setIniciaEn(null);//No entiendo el for
 					alquiler.setFinalizaEn(null);
 					alquilerRepository.save(alquiler);
 				}

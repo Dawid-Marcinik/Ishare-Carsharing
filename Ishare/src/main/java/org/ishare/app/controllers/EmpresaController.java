@@ -65,7 +65,7 @@ public class EmpresaController {
 				empresaRepository.save(em);
 			} catch (Exception e) {
 				// TODO: handle exception
-				PRG.error("no pueden haber dos CIF ni Razón social iguales","/empresa/c");
+				PRG.error("no pueden haber dos Nombre usuario, telefono, email, cif y/o razon social iguales","/empresa/c");
 			}
 		}
 		

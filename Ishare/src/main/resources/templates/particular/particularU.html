@@ -1,27 +1,27 @@
-	<h1 class="row justify-content-center">Editar particular</h1>
-	<div class="row justify-content-center">
+<div class="container">
+	<h1 class="display-6">Editar particular</h1>
 	<form method="post" action="/particular/u" class="form">
 	
 	Nombre de usuario
-		<input type="text" name="nombreUsuario" th:value="${particular.nombreUsuario}"><br>
+		<input type="text" name="nombreUsuario" id="nombreUsuario" th:value="${particular.nombreUsuario}" onchange='validarNombreUsuario(this.form)' onkeyup="validar(this.form)"><br>
 		
 		Contraseña
-		<input type="text" name="contrasena" th:value="${particular.contrasena}"><br>
+		<input type="password" name="contrasena" id="contrasena" th:value="${particular.contrasena}" onchange='validarContrasena(this.form)' onkeyup="validar(this.form)"><br>
 		
 		Localidad
-		<input type="text" name="localidad" th:value="${particular.localidad}"><br>
+		<input type="text" name="localidad" id="localidad" th:value="${particular.localidad}" onchange='validarLocalidad(this.form)' onkeyup="validar(this.form)"><br>
 		
 		Dirección
-		<input type="text" name="direccion" th:value="${particular.direccion}"><br>
+		<input type="text" name="direccion" id="direccion" th:value="${particular.direccion}" onchange='validarDireccion(this.form)' onkeyup="validar(this.form)"><br>
 		
 		Código postal
-		<input type="number" name="codigoPostal" th:value="${particular.codigoPostal}"><br>
+		<input type="number" name="codigoPostal" id="codigoPostal" th:value="${particular.codigoPostal}"  onchange='validarCodigoPostal(this.form)' onkeyup="validar(this.form)"><br>
 		
 		Teléfono
-		<input type="number" name="telefono" th:value="${particular.telefono}"><br>
+		<input type="number" name="telefono" id="telefono" th:value="${particular.telefono}" onchange='validarTelefono(this.form)' onkeyup="validar(this.form)"><br>
 		
 		Email
-		<input type="email" name="email" th:value="${particular.email}"><br>
+		<input type="email" name="email" id="email" th:value="${particular.email}" onchange='validarEmail(this.form)' onkeyup="validar(this.form)"><br>
 		
 		Rol
 		<select name="idRol">
@@ -29,21 +29,22 @@
 		</select>
 		
 		Saldo
-		<input type="number" name="saldo" th:value="${particular.saldo}"><br>
+		<input type="number" name="saldo" id="saldo" th:value="${particular.saldo}" onchange='validarSaldo(this.form)' onkeyup="validar(this.form)"><br>
 		Dni
-		<input type="text" name="dni" th:value="${particular.dni}"><br>
+		<input type="text" name="dni"  id="dni" th:value="${particular.dni}" onkeyup="validar(this.form)" onchange='validarDni(this.form)'><br>
 		
 		Nombre
-		<input type="text" name="nombre" th:value="${particular.nombre}"><br>
+		<input type="text" name="nombre" id="nombre" th:value="${particular.nombre}" onkeyup="validar(this.form)" onchange='validarNombre(this.form)'><br>
 		
 		Apellidos
-		<input type="text" name="apellidos" th:value="${particular.apellidos}"><br>
+		<input type="text" name="apellidos" id="apellidos" th:value="${particular.apellidos}" onkeyup="validar(this.form)" onchange='validarApellidos(this.form)'><br>
 		
 		Fecha de nacimiento
-		<input type="text" name="fechaNacimiento" th:value="${particular.fechaNacimiento}"><br>
+		<input type="Date" name="fechaNacimiento" id="fechaNacimiento"  th:value="${particular.fechaNacimiento}" onchange='validarFechaNac(this.form)' onkeyup="validar(this.form)"><br>
 		
-		<input type="hidden" name="id" th:value="${particular.id}"/>
+		<input type="hidden" name="id" id="id" th:value="${particular.id}"/>
 		
-		<input type="submit" class="form-item" />
+		<input type="submit" id="envio" class="form-item" onclick="validar(this.form)"/>
 	</form>
 	</div>
+	<script src="/js/expRegParticular.js"></script>
