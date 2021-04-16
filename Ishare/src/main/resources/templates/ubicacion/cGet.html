@@ -1,15 +1,74 @@
 <meta charset=UTF-8>
+<script type="text/javascript">
+	function validarDireccion(){
+		var direccion=document.getElementById("direccion").value;
+		var expresion=/^[a-zA-ZñÑçÇáéíóúÁÉÍÓÚ]{4,10}[\s - a-zA-ZñÑçÇáéíóúÁÉÍÓÚ]{0,36}$/
+		var valido;
+		
+		var ret;
+
+		valido=expresion.test(direccion);
+
+		if (valido==true){
+			document.getElementById("direccion").setAttribute("style","border-color:black");
+			ret=true;
+			
+		}else{
+			document.getElementById("direccion").setAttribute("style","border-color:red");
+			ret=false;
+			
+		}
+			
+		return ret;
+		
+	}
+	
+	function validarNumPlazas(){
+		var ret;
+		if(document.getElementById("plazasTotales").value==""){
+			ret=false;
+		}else{
+			ret=true;
+		}
+		
+		return ret;
+		
+	}
+	
+	function validar(){
+		validarDireccion();
+		validarNumPlazas();
+		
+		if(validarDireccion()==true && validarNumPlazas()==true){
+			document.getElementById("enviar").disabled=false;
+			
+		}else{
+			document.getElementById("enviar").disabled=true;
+		}
+			
+	}
+</script>
+<style>
+	input:valid{
+		border-color: black;
+	}
+
+	input:invalid{
+		border-color:red;
+	}
+	*:focus { outline: none; } 
+</style>
 <div class="container">
 	<h1>Nueva ubicación</h1>
 	
 	<form method="post">
 		<label for="direccion">DIRECCIÓN</label>
-		<input type="text" id="direccion" name="direccion"/>
+		<input type="text" id="direccion" name="direccion" style="border-color:red" onkeyup="validar()">
 		<br/>
 		<label for="plazasTotales">PLAZAS TOTALES</label>
-		<input type="number" id="plazasTotales" name="plazasTotales" min="1"/>
+		<input type="number" id="plazasTotales" name="plazasTotales" min="1" onchange="validar()" required/>
 		<br/>
 		
-		<input type="submit"/>
+		<input type="submit" id="enviar" disabled/>
 	</form>
 </div>

@@ -7,6 +7,7 @@ import org.ishare.app.exceptions.DangerException;
 import org.ishare.app.helpers.PRG;
 import org.ishare.app.repositories.CocheRepository;
 import org.ishare.app.repositories.ModeloRepository;
+import org.ishare.app.repositories.TipoRepository;
 import org.ishare.app.repositories.UbicacionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,8 @@ public class CocheController {
 	private CocheRepository cocheRepository;
 	@Autowired
 	private UbicacionRepository ubicacionRepository;
+	@Autowired
+	private TipoRepository tipoRepository;
 	
 	//Recuperar
 	@GetMapping("r")
@@ -37,13 +40,18 @@ public class CocheController {
 	@GetMapping("c")
 	public String cGet(ModelMap modelo) {
 		modelo.put("modelos", modeloRepository.findAll());
+		modelo.put("tipos", tipoRepository.findAll());
 		modelo.put("ubicaciones", ubicacionRepository.findAll());
 		modelo.put("view", "coche/c");
 		return ("_t/frame");
 	}
 	@PostMapping("c")
 	public String cPost(ModelMap modelo, @RequestParam("matricula") String matricula, @RequestParam("idModelo") Long idModelo, @RequestParam("idUbicacion") Long idUbicacion) throws DangerException{
-			
+		
+		if(matricula == null || idModelo == null || idUbicacion == null) {
+			PRG.error("Debe rellenar todos los datos","coche/c");
+		}
+		
 		Modelo modeloMarca = modeloRepository.getOne(idModelo);
 		Ubicacion ubicacion = ubicacionRepository.getOne(idUbicacion);
 		Coche coche = new Coche(matricula,modeloMarca.getAutonomiaTotal(), modeloMarca, ubicacion);
@@ -60,13 +68,18 @@ public class CocheController {
 		public String uGet(ModelMap modelo, @RequestParam("id") Long id) {
 			modelo.put("coche", cocheRepository.getOne(id));
 			modelo.put("modelos", modeloRepository.findAll());
+			modelo.put("tipos", tipoRepository.findAll());
 			modelo.put("ubicaciones", ubicacionRepository.findAll());
 			modelo.put("view", "coche/u");
 			return ("_t/frame");
 		}
 		@PostMapping("u")
 		public String uPost(ModelMap modelo, @RequestParam("matricula") String matricula, @RequestParam("autonomiaRestante") Integer autonomiaRestante, @RequestParam("id") Long id, @RequestParam("idModelo") Long idModelo, @RequestParam("idUbicacion") Long idUbicacion) throws DangerException{
-				
+			
+			if(matricula == null || idModelo == null || idUbicacion == null) {
+				PRG.error("Debe rellenar todos los datos","coche/c");
+			}
+			
 			Modelo modeloMarca = modeloRepository.getOne(idModelo);
 			Ubicacion ubicacion = ubicacionRepository.getOne(idUbicacion);
 			Coche coche = cocheRepository.getOne(id);

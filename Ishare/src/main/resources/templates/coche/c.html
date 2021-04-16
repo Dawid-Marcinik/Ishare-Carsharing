@@ -7,14 +7,15 @@
 		</select>
 		<br>
 		<label for="matricula">Matrícula del coche: </label>
-		<input type="text" id="matricula" name="matricula">
+		<input type="text" id="matricula" name="matricula" onkeyup="validar_coche(this)" onfocus="reseteaColor(this)">
 		<br>
 		<label for="idMarca">Ubicación: </label>
 		<select name="idUbicacion" id="idUbicacion">
 			<option th:each="ubicacion:${ubicaciones}" th:value="${ubicacion.idUbicacion}" th:text="${ubicacion.direccion}"></option>
 		</select>
 		<br>
-		<input type="submit" value="Crear">
+		<input id="envio" type="submit" value="Crear" disabled>
 		<input type="button" value="Cancelar" onclick="location.href='r'">
 	</form>
 </div>
+<script src="/js/Validar_marca_modelo_tipo.js" type="text/javascript"></script>

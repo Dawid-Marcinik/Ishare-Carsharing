@@ -1,10 +1,10 @@
+
 package org.ishare.app.controllers;
 
 import java.text.ParseException;
 import java.time.LocalDate;
 
 import javax.servlet.http.HttpSession;
-
 
 import org.ishare.app.domains.Alquiler;
 import org.ishare.app.domains.Coche;
@@ -25,147 +25,130 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/alquiler")
 public class AlquilerController {
-	
-	@Autowired 
+
+	@Autowired
 	AlquilerRepository alquilerRepository;
-	
+
 	@Autowired
 	UbicacionRepository ubicacionRepository;
-	
+
 	@Autowired
 	CocheRepository cocheRepository;
 
 	@GetMapping("d")
-	public String alquilerDGet(
-			@RequestParam("idAlquiler") Long idAlquiler,
-			HttpSession s) throws DangerException{
-			alquilerRepository.delete(alquilerRepository.getOne(idAlquiler));
-			return "redirect:/alquiler/r";
+	public String alquilerDGet(@RequestParam("idAlquiler")  Long idAlquiler,  HttpSession s)
+			throws DangerException {
+		alquilerRepository.delete(alquilerRepository.getOne(idAlquiler));
+		return "redirect:/alquiler/r";
 	}
-	
+
 	@GetMapping("u")
-	public String alquilerUGet(
-			@RequestParam("idAlquiler") Long idAlquiler,
-			ModelMap m) {
-		m.put("ubicaciones",this.ubicacionRepository.findAll());
-		m.put("alquiler",alquilerRepository.getOne(idAlquiler));
-		m.put("coches", cocheRepository.findAll());//No se porque no hay puesto un this como en ubicacionRepository
-		m.put("view","alquiler/uGet");
+	public String alquilerUGet(@RequestParam("idAlquiler")  Long idAlquiler,  ModelMap m) {
+		m.put("ubicaciones", this.ubicacionRepository.findAll());
+		m.put("alquiler", alquilerRepository.getOne(idAlquiler));
+		m.put("coches", cocheRepository.findAll());
+		m.put("view", "alquiler/uGet");
 		return "/_t/frame";
 	}
-	
+
 	@PostMapping("u")
-	public String alquilerUPost( 
-			@RequestParam("idAlquiler") Long idAlquiler,
-			@RequestParam("fechaInicio") String stringFechaInicio,
-			@RequestParam("fechaFin") String stringFechaFin,
-			@RequestParam("idCocheAlquilado") Long idCocheAlquilado,
-			@RequestParam("idUbicacionInicio") Long idUbicacionInicio,
-			@RequestParam("idUbicacionFin") Long idUbicacionFin,
-			@RequestParam("puntuacion") String puntuacion,
-			ModelMap data
-			) throws DangerException, ParseException {
-		if(puntuacion==""||stringFechaInicio==""||stringFechaFin==""||idUbicacionInicio==null||idUbicacionFin==null) {
+	public String alquilerUPost(@RequestParam("idAlquiler")  Long idAlquiler,
+			@RequestParam("fechaInicio")  String stringFechaInicio,
+			@RequestParam("fechaFin")  String stringFechaFin,
+			@RequestParam("idCocheAlquilado")  Long idCocheAlquilado,
+			@RequestParam("idUbicacionInicio")  Long idUbicacionInicio,
+			@RequestParam("idUbicacionFin")  Long idUbicacionFin,
+			@RequestParam("puntuacion")  String puntuacion,  ModelMap data)
+			throws DangerException, ParseException {
+		if (puntuacion == "" || stringFechaInicio == "" || stringFechaFin == "" || idUbicacionInicio == null
+				|| idUbicacionFin == null || idCocheAlquilado == null) {
 			PRG.error("Hay campos vacíos", "/alquiler/r");
-		}else {
-			
-		
-		int punt=Integer.parseInt(puntuacion);
-		LocalDate fechaInicio=LocalDate.parse(stringFechaInicio);
-		LocalDate fechaFin=LocalDate.parse(stringFechaFin);
-		Alquiler alquiler = alquilerRepository.getOne(idAlquiler);
-		Ubicacion ubicacionInicio=ubicacionRepository.getOne(idUbicacionInicio);
-		Ubicacion ubicacionFin=ubicacionRepository.getOne(idUbicacionFin);
-		alquiler.setFechaInicio(fechaInicio);
-		alquiler.setFechaFin(fechaFin);
-		alquiler.setPuntuacion(punt);
-		
-		
+		} else {
+
+			 int punt = Integer.parseInt(puntuacion);
+			 LocalDate fechaInicio = LocalDate.parse(stringFechaInicio);
+			 LocalDate fechaFin = LocalDate.parse(stringFechaFin);
+			 Alquiler alquiler = alquilerRepository.getOne(idAlquiler);
+			 Ubicacion ubicacionInicio = ubicacionRepository.getOne(idUbicacionInicio);
+			 Ubicacion ubicacionFin = ubicacionRepository.getOne(idUbicacionFin);
+			alquiler.setFechaInicio(fechaInicio);
+			alquiler.setFechaFin(fechaFin);
+			alquiler.setPuntuacion(punt);
+
 			alquiler.setIniciaEn(ubicacionInicio);
 			ubicacionInicio.getIniciadosEn().add(alquiler);
-		
-		
 
 			alquiler.setFinalizaEn(ubicacionFin);
 			ubicacionInicio.getFinalizadosEn().add(alquiler);
-			if(fechaFin.compareTo(fechaInicio)<0) {
+			if (fechaFin.compareTo(fechaInicio) < 0) {
 				PRG.error("La fecha de inicio no puede ser después de la fecha de finalización", "/alquiler/r");
-			}else {
+			} else {
 				try {
 					alquilerRepository.save(alquiler);
-				}	
-				catch (Exception e) {
-					PRG.error("Alquiler duplicado","/alquiler/r");
-				}	
+				} catch ( Exception e) {
+					PRG.error("Alquiler duplicado", "/alquiler/r");
+				}
 			}
 		}
 		return "redirect:/alquiler/r";
 	}
-	
+
 	@GetMapping("c")
-	public String alquilerCGet(ModelMap m) {
-		m.put("ubicaciones",this.ubicacionRepository.findAll());
-		m.put("coches",this.cocheRepository.findAll());
-		m.put("view","alquiler/cGet");
-		
+	public String alquilerCGet( ModelMap m) {
+		m.put("ubicaciones", this.ubicacionRepository.findAll());
+		m.put("coches", this.cocheRepository.findAll());
+		m.put("view", "alquiler/cGet");
+
 		return "/_t/frame";
 	}
-	
+
 	@PostMapping("c")
-	public String alquilerCPost( 
-			@RequestParam("fechaInicio") String stringFechaInicio,
+	public String alquilerCPost(@RequestParam("fechaInicio")  String stringFechaInicio,
 			@RequestParam("fechaFin") String stringFechaFin,
 			@RequestParam("idCocheAlquilado") Long idCocheAlquilado,
 			@RequestParam("idUbicacionInicio") Long idUbicacionInicio,
-			@RequestParam("idUbicacionFin") Long idUbicacionFin,
-			@RequestParam("puntuacion") String stringPuntuacion,
-			ModelMap data
-			) throws DangerException, ParseException {
-		
-		
-		if(stringPuntuacion==""||stringFechaInicio==""||stringFechaFin==""||idUbicacionInicio==null||idUbicacionFin==null) {
+			@RequestParam("idUbicacionFin")  Long idUbicacionFin,
+			@RequestParam("puntuacion") String stringPuntuacion,  ModelMap data)
+			throws DangerException, ParseException {
+
+		if (stringPuntuacion == "" || stringFechaInicio == "" || stringFechaFin == "" || idUbicacionInicio == null
+				|| idUbicacionFin == null || idCocheAlquilado == null || idUbicacionInicio == -1 || idUbicacionFin == -1
+				|| idCocheAlquilado == -1) {
 			PRG.error("Hay campos vacíos", "/alquiler/r");
-		}else {
-			int puntuacion=Integer.parseInt(stringPuntuacion);
-			LocalDate fechaInicio=LocalDate.parse(stringFechaInicio);
-			LocalDate fechaFin=LocalDate.parse(stringFechaFin);
-			Alquiler alquiler = new Alquiler(fechaInicio,fechaFin,puntuacion);
-			Coche cocheAlquilado=cocheRepository.getOne(idCocheAlquilado);
-			Ubicacion ubicacionInicio=ubicacionRepository.getOne(idUbicacionInicio);
-			Ubicacion ubicacionFin=ubicacionRepository.getOne(idUbicacionFin);
+		} else {
+			 int puntuacion = Integer.parseInt(stringPuntuacion);
+			 LocalDate fechaInicio = LocalDate.parse(stringFechaInicio);
+			 LocalDate fechaFin = LocalDate.parse(stringFechaFin);
+			 Alquiler alquiler = new Alquiler(fechaInicio, fechaFin, puntuacion);
+			 Coche cocheAlquilado = cocheRepository.getOne(idCocheAlquilado);
+			 Ubicacion ubicacionInicio = ubicacionRepository.getOne(idUbicacionInicio);
+			 Ubicacion ubicacionFin = ubicacionRepository.getOne(idUbicacionFin);
 			alquiler.setCoche(cocheAlquilado);
 			alquiler.setIniciaEn(ubicacionInicio);
 			alquiler.setFinalizaEn(ubicacionFin);
 			ubicacionInicio.getIniciadosEn().add(alquiler);
 			ubicacionFin.getFinalizadosEn().add(alquiler);
-			if(fechaFin.compareTo(fechaInicio)<0) {
+			if (fechaFin.compareTo(fechaInicio) < 0) {
 				PRG.error("La fecha de inicio no puede ser después de la fecha de finalización", "/alquiler/r");
-			}else {
-				
+			} else {
+
 				try {
 					alquilerRepository.save(alquiler);
-				}
-				catch (Exception e) {
-					PRG.error("Alquiler duplicado","/alquiler/r");
+				} catch ( Exception e) {
+					PRG.error("Alquiler duplicado", "/alquiler/r");
 				}
 			}
 		}
-	
-				return "redirect:/alquiler/r";
+
+		return "redirect:/alquiler/r";
 	}
-		
-		
-		
-		
-		
-	
+
 	@GetMapping("r")
-	public String alquilerRGet(
-			ModelMap m
-			) {
-		m.put("alquileres",alquilerRepository.findAll());
+	public String alquilerRGet( ModelMap m) {
+		m.put("alquileres", alquilerRepository.findAll());
 		m.put("view", "alquiler/rGet");
 		return "/_t/frame";
 	}
-	
+
 }
+
