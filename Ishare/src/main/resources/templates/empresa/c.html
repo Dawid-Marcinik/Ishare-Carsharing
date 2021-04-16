@@ -1,30 +1,28 @@
+
+
 <h1 class="row justify-content-center">Nueva empresa</h1>
-
-
-
-
 <div class="row justify-content-center">
 	<form method="POST">
-		<label for="nombreUsuario">Nombre del usuario</label>
-	<input type="text" name="nombreUsuario" id="nombreUsuario" />
+	<label for="nombreUsuario">Nombre del usuario</label>
+	<input type="text" name="nombreUsuario" id="nombreUsuario" onchange='validarNombreUsuario(this.form)' onkeyup="validar(this.form)"/>
 	<div class="w-100"></div>
-		<label for="contrasena">ContraseÃ±a</label>
-	<input type="text" name="contrasena" id="contrasena" />
+		<label for="contrasena">Contraseña</label>
+	<input type="password" name="contrasena" id="contrasena" onchange='validarContrasena(this.form)' onkeyup="validar(this.form)"/>
 	<div class="w-100"></div>
 		<label for="localidad">Localidad</label>
-	<input type="text" name="localidad" id="localidad" />
+	<input type="text" name="localidad" id="localidad" onchange='validarLocalidad(this.form)' onkeyup="validar(this.form)"/>
 	<div class="w-100"></div>
-		<label for="direccion">DirecciÃ³n</label>
-	<input type="text" name="direccion" id="direccion" />
+		<label for="direccion">Dirección</label>
+	<input type="text" name="direccion" id="direccion" onchange='validarDireccion(this.form)' onkeyup="validar(this.form)"/>
 	<div class="w-100"></div>
-		<label for="codigoPostal">CÃ³digo Postal</label>
-	<input type="number" name="codigoPostal" id="codigoPostal" />
+		<label for="codigoPostal">Código Postal</label>
+	<input type="number" name="codigoPostal" id="codigoPostal"  onchange='validarCodigoPostal(this.form)' onkeyup="validar(this.form)"/>
 	<div class="w-100"></div>
-		<label for="telefono">TelÃ©fono</label>
-	<input type="number" name="telefono" id="telefono" />
+		<label for="telefono">Teléfono</label>
+	<input type="number" name="telefono" id="telefono" onchange='validarTelefono(this.form)' onkeyup="validar(this.form)"/>
 	<div class="w-100"></div>
 		<label for="email">Email</label>
-	<input type="email" name="email" id="email" />
+	<input type="email" name="email" id="email" onchange='validarEmail(this.form)' onkeyup="validar(this.form)"/>
 	<div class="w-100"></div>
 		<label for="idRol">Rol</label>
 		<select name="idRol">
@@ -32,15 +30,21 @@
 		</select>
 	<div class="w-100"></div>
 		<label for="saldo">SALDO</label>
-	<input type="number" name="saldo" id="saldo" step="0.01"/>
+	<input type="number" name="saldo" id="saldo" step="0.01" onchange='validarSaldo(this.form)' onkeyup="validar(this.form)"/>
 	<div class="w-100"></div>
 	<label for="cif">CIF</label>
-	<input type="text" name="cif" id="cif" />
+	<input type="text" name="cif" id="cif" onchange='validarCif(this.form)' onkeyup="validar(this.form)"/>
 	<div class="w-100"></div>
-	<label for="razonSocial">RazÃ³n social</label>
-	<input type="text" name="razonSocial" id="razonSocial"/>
+	<label for="razonSocial">Razón social</label>
+	<input type="text" name="razonSocial" id="razonSocial" onchange='validarRazonSocial(this.form)' onkeyup="validar(this.form)"/>
 	<div class="w-100"></div>
-	<button class="btn btn-primary">Crear</button>
+	<button class="btn btn-primary" disabled id="envio" onclick="validar(this.form)">Crear</button>
 	<br>
 	</form>
 </div>
+<script src="/js/expRegEmpresa.js"></script>
+
+
+
+
+
