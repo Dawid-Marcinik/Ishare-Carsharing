@@ -97,8 +97,12 @@ public class CocheController {
 		}
 		//Borrar
 		@PostMapping("d")
-		public String dPost(@RequestParam("id") Long id) {
+		public String dPost(@RequestParam("id") Long id) throws DangerException {
+			try {
 			cocheRepository.delete(cocheRepository.getOne(id));
+			}catch(Exception e) {
+				PRG.error("Antes de borrar un coche has de borrar el alquiler al que esta hilado");
+			}
 			return("redirect:/coche/r");
 		}
 }
