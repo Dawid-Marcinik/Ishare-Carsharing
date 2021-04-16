@@ -1,10 +1,11 @@
-<div class="container">
-	<h1 class="display-6">Crear nuevo rol</h1>
-	<form action="c" method="POST">
+<h1 class="row justify-content-center">Crear nuevo rol</h1>
+<div class="row justify-content-center">
+	<form method="POST">
 		<label for="nombre">Nombre del rol: </label>
-		<input type="text" id="nombre" name="nombre">
+		<input type="text" id="nombre" name="nombre" onchange='validarNombreRol(this.form)' onkeyup="validar(this.form)">
 		<br>
-		<input type="submit" value="Crear">
-		<input type="button" value="Cancelar" onclick="location.href='r'">
+		<input type="submit" id="envio" value="Crear" onclick="validar(this.form)">
+		<input type="button" disabled value="Cancelar" onclick="location.href='r'">
 	</form>
 </div>
+<script src="/js/expRegRol.js"></script>

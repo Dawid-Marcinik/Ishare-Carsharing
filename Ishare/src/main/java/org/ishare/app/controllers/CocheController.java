@@ -47,7 +47,11 @@ public class CocheController {
 	}
 	@PostMapping("c")
 	public String cPost(ModelMap modelo, @RequestParam("matricula") String matricula, @RequestParam("idModelo") Long idModelo, @RequestParam("idUbicacion") Long idUbicacion) throws DangerException{
-			
+		
+		if(matricula == null || idModelo == null || idUbicacion == null) {
+			PRG.error("Debe rellenar todos los datos","coche/c");
+		}
+		
 		Modelo modeloMarca = modeloRepository.getOne(idModelo);
 		Ubicacion ubicacion = ubicacionRepository.getOne(idUbicacion);
 		Coche coche = new Coche(matricula,modeloMarca.getAutonomiaTotal(), modeloMarca, ubicacion);
@@ -71,7 +75,11 @@ public class CocheController {
 		}
 		@PostMapping("u")
 		public String uPost(ModelMap modelo, @RequestParam("matricula") String matricula, @RequestParam("autonomiaRestante") Integer autonomiaRestante, @RequestParam("id") Long id, @RequestParam("idModelo") Long idModelo, @RequestParam("idUbicacion") Long idUbicacion) throws DangerException{
-				
+			
+			if(matricula == null || idModelo == null || idUbicacion == null) {
+				PRG.error("Debe rellenar todos los datos","coche/c");
+			}
+			
 			Modelo modeloMarca = modeloRepository.getOne(idModelo);
 			Ubicacion ubicacion = ubicacionRepository.getOne(idUbicacion);
 			Coche coche = cocheRepository.getOne(id);
