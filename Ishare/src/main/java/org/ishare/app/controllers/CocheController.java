@@ -1,9 +1,12 @@
 package org.ishare.app.controllers;
 
+import javax.servlet.http.HttpSession;
+
 import org.ishare.app.domains.Coche;
 import org.ishare.app.domains.Modelo;
 import org.ishare.app.domains.Ubicacion;
 import org.ishare.app.exceptions.DangerException;
+import org.ishare.app.helpers.H;
 import org.ishare.app.helpers.PRG;
 import org.ishare.app.repositories.CocheRepository;
 import org.ishare.app.repositories.ModeloRepository;
@@ -97,7 +100,8 @@ public class CocheController {
 		}
 		//Borrar
 		@PostMapping("d")
-		public String dPost(@RequestParam("id") Long id) throws DangerException {
+		public String dPost(@RequestParam("id") Long id, HttpSession sesion) throws DangerException {
+			H.isRolOK("Admin", sesion);
 			try {
 			cocheRepository.delete(cocheRepository.getOne(id));
 			}catch(Exception e) {
