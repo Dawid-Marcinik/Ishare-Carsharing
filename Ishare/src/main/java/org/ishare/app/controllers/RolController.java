@@ -1,7 +1,10 @@
 package org.ishare.app.controllers;
 
+import javax.servlet.http.HttpSession;
+
 import org.ishare.app.domains.Rol;
 import org.ishare.app.exceptions.DangerException;
+import org.ishare.app.helpers.H;
 import org.ishare.app.helpers.PRG;
 import org.ishare.app.repositories.RolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +24,8 @@ public class RolController {
 
 	// Recuperar
 	@GetMapping("r")
-	public String rGet(final ModelMap modelo) {
+	public String rGet(final ModelMap modelo,final HttpSession s) throws DangerException {
+		H.isRolOK("Admin", s);
 		modelo.put("view", "rol/r");
 		modelo.put("roles", rolRepository.findAll());
 		return "_t/frame";
@@ -35,8 +39,8 @@ public class RolController {
 	}
 
 	@PostMapping("c")
-	public String cPost(final ModelMap modelo, @RequestParam("nombre") final String nombre) throws DangerException {
-
+	public String cPost(final ModelMap modelo, @RequestParam("nombre") final String nombre,final HttpSession s) throws DangerException {
+		H.isRolOK("Admin", s);
 		if (nombre == "" || nombre == null) {
 			PRG.error("El nombre del rol no puede estar vacío", "rol/c");
 		}
@@ -61,14 +65,14 @@ public class RolController {
 
 	@PostMapping("u")
 	public String uPost(final ModelMap modelo, @RequestParam("id") final Long id,
-			@RequestParam("nombre") final String nombre) throws DangerException {
+			@RequestParam("nombre") final String nombre, final HttpSession s) throws DangerException {
 
 		if (nombre == "" || nombre == null) {
 			PRG.error("El nombre del rol no puede estar vacío", "rol/u");
 		}
 
 		final Rol rol = rolRepository.getOne(id);
-
+		H.isRolOK("Admin", s);
 		try {
 			rol.setNombre(nombre);
 			rolRepository.save(rol);
@@ -80,8 +84,13 @@ public class RolController {
 
 	// Borrar
 	@PostMapping("d")
-	public String dPost(final ModelMap modelo, @RequestParam("id") final Long id) {
+	public String dPost(final ModelMap modelo, @RequestParam("id") final Long id, HttpSession sesion) throws DangerException {
+		H.isRolOK("Admin", sesion);
+		try {
 		rolRepository.delete(rolRepository.getOne(id));
+		}catch(Exception e) {
+			PRG.error("¿Realmente desea borrar el rol?");
+		}
 		return "redirect:/rol/r";
 	}
 }
