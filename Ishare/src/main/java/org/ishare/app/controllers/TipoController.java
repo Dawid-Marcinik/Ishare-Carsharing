@@ -1,7 +1,10 @@
 package org.ishare.app.controllers;
 
+import javax.servlet.http.HttpSession;
+
 import org.ishare.app.domains.Tipo;
 import org.ishare.app.exceptions.DangerException;
+import org.ishare.app.helpers.H;
 import org.ishare.app.helpers.PRG;
 import org.ishare.app.repositories.TipoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +24,7 @@ public class TipoController {
 	
 	//Recuperar
 		@GetMapping("r")
-		public String rGet(ModelMap modelo) {
+		public String rGet(ModelMap modelo, HttpSession sesion) {
 			modelo.put("view", "tipo/r");
 			modelo.put("tipos", tipoRepository.findAll());
 			return ("_t/frame");
@@ -33,8 +36,8 @@ public class TipoController {
 		return ("_t/frame");
 	}
 	@PostMapping("c")
-	public String cPost(ModelMap modelo, @RequestParam("nombre") String nombre) throws DangerException{
-		
+	public String cPost(ModelMap modelo, @RequestParam("nombre") String nombre, HttpSession sesion) throws DangerException{
+		H.isRolOK("Admin", sesion);
 		if(nombre == "" || nombre == null) {
 			PRG.error("El nombre del tipo no puede estar vacío","tipo/c");
 		}
@@ -56,8 +59,8 @@ public class TipoController {
 		return ("_t/frame");
 	}
 	@PostMapping("u")
-	public String uPost(ModelMap modelo, @RequestParam("id") Long id, @RequestParam("nombre") String nombre) throws DangerException{
-		
+	public String uPost(ModelMap modelo, @RequestParam("id") Long id, @RequestParam("nombre") String nombre, HttpSession sesion) throws DangerException{
+		H.isRolOK("Admin", sesion);
 		if(nombre == "" || nombre == null) {
 			PRG.error("El nombre del tipo no puede estar vacío","marca/u");
 		}
@@ -74,7 +77,8 @@ public class TipoController {
 	}
 	//Borrar
 	@PostMapping("d")
-	public String dPost(ModelMap modelo, @RequestParam("id") Long id) {
+	public String dPost(ModelMap modelo, @RequestParam("id") Long id, HttpSession sesion) throws DangerException {
+		H.isRolOK("Admin", sesion);
 		tipoRepository.delete(tipoRepository.getOne(id));
 		return("redirect:/tipo/r");
 	}
