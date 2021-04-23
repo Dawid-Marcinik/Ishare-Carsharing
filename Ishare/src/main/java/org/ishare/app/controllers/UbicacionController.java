@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.ishare.app.domains.Ubicacion;
 import org.ishare.app.exceptions.DangerException;
+import org.ishare.app.helpers.H;
 import org.ishare.app.helpers.PRG;
 import org.ishare.app.repositories.UbicacionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ public class UbicacionController {
 
 	@GetMapping("d")
 	public String ubicacionDGet(@RequestParam final Long idUbicacion, final HttpSession s) throws DangerException {
+		H.isRolOK("Admin", s);
 
 		try {
 
@@ -36,7 +38,9 @@ public class UbicacionController {
 	}
 
 	@GetMapping("u")
-	public String ubicacionUGet(@RequestParam("idUbicacion") final Long idUbicacion, final ModelMap m) {
+	public String ubicacionUGet(@RequestParam("idUbicacion") final Long idUbicacion, final ModelMap m,
+			final HttpSession s) throws DangerException {
+		H.isRolOK("Admin", s);
 		m.put("ubicacion", ubicacionRepository.getOne(idUbicacion));
 		m.put("view", "ubicacion/uGet");
 		return "/_t/frame";
