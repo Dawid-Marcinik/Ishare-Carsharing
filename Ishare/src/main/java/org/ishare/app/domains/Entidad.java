@@ -159,8 +159,11 @@ public class Entidad {
 		this.alquileres = alquileres;
 	}
 
+	
 	public boolean isAdmin() {
-		return this.getRol() != null && this.getRol().getNombre().equals("Admin");
+		return (this.getRol()!= null && this.getRol().getNombre().equals("Admin"));
 	}
+
+
 
 }

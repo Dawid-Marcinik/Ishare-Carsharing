@@ -41,15 +41,17 @@ public class H {
 		String rolActual = "anon";
 
 		if (s.getAttribute("user") != null) {
-			rolActual = ((Entidad) s.getAttribute("user")).isAdmin() ? "Admin" : "User";
-		}
-		System.err.println("ROL=" + rolActual);
 
-		if ((rolActual == "anon" || rolActual == "User") && rolExigido == "Admin") {
+			rolActual = ((Entidad)s.getAttribute("user")).isAdmin() ? "Admin" : "User";
+		}
+		System.err.println("ROL="+rolActual);
+
+		if ((rolActual=="anon" ||  rolActual=="User") 	&& rolExigido=="Admin") {
 			throw new DangerException("Rol inadecuado");
 		}
+		
+		if ((rolActual=="anon" ) 						&& rolExigido=="User") {
 
-		if (rolActual == "anon" && rolExigido == "User") {
 			throw new DangerException("Rol inadecuado");
 		}
 
