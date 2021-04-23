@@ -1,18 +1,17 @@
 <meta charset=UTF-8>
 <div class="container">
-	<form action="/ubicacion/c" method="get">
-		<input type="submit" value="Nueva ubicación" />
-	</form>
-	<form action="/">
-		<input type="submit" value="Volver" />
-	</form>
+	<h1 class="display-6">Listado de ubicaciones</h1>
+	<button class="btn"><a href="/ubicacion/c">Crear nueva ubicación</a></button>
+	<button class="btn"><a href="/">Volver</a></button>
 
-	<h1>Listado de ubicaciones</h1>
 
-	<table border="1">
+
+	<table class="table">
 		<tr>
 			<th>Dirección</th>
 			<th>Plazas totales</th>
+			<th>Modificar</th>
+			<th>Borrar</th>
 		</tr>
 
 		<tr th:each="ubicacion:${ubicaciones}">
@@ -20,17 +19,17 @@
 			<td th:text="${ubicacion.plazasTotales}"></td>
 			<td>
 
-				<form action="/ubicacion/d">
-					<input type="hidden" name="idUbicacion" th:value="${ubicacion.idUbicacion}" />
-					<button onclick="submit()">
-						Borrar
-					</button>
-				</form>
-
 				<form action="/ubicacion/u">
 					<input type="hidden" name="idUbicacion" th:value="${ubicacion.idUbicacion}" />
-					<button onclick="submit()">
-						Editar
+					<button onclick="submit()" onmouseover="" style="cursor: pointer;"><img src="/img/edit.png" height="20px" width="20px">
+					</button>
+				</form>
+			</td>
+			<td>
+				<form action="/ubicacion/d">
+					<input type="hidden" name="idUbicacion" th:value="${ubicacion.idUbicacion}" />
+					<button onclick="submit()" onmouseover="" style="cursor: pointer;"><img src="/img/delete.png" height="20px" width="20px">
+
 					</button>
 				</form>
 

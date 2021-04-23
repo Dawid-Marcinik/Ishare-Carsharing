@@ -2,7 +2,7 @@
 package org.ishare.app.controllers;
 
 import java.text.ParseException;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.servlet.http.HttpSession;
 
@@ -45,7 +45,9 @@ public class AlquilerController {
 	}
 
 	@GetMapping("u")
-	public String alquilerUGet(@RequestParam("idAlquiler") final Long idAlquiler, final ModelMap m) {
+	public String alquilerUGet(@RequestParam("idAlquiler") final Long idAlquiler, final ModelMap m, final HttpSession s)
+			throws DangerException {
+		H.isRolOK("Admin", s);
 		m.put("ubicaciones", this.ubicacionRepository.findAll());
 		m.put("alquiler", alquilerRepository.getOne(idAlquiler));
 		m.put("coches", cocheRepository.findAll());
@@ -68,8 +70,8 @@ public class AlquilerController {
 		} else {
 
 			final int punt = Integer.parseInt(puntuacion);
-			final LocalDate fechaInicio = LocalDate.parse(stringFechaInicio);
-			final LocalDate fechaFin = LocalDate.parse(stringFechaFin);
+			final LocalDateTime fechaInicio = LocalDateTime.parse(stringFechaInicio);
+			final LocalDateTime fechaFin = LocalDateTime.parse(stringFechaFin);
 			final Alquiler alquiler = alquilerRepository.getOne(idAlquiler);
 			final Ubicacion ubicacionInicio = ubicacionRepository.getOne(idUbicacionInicio);
 			final Ubicacion ubicacionFin = ubicacionRepository.getOne(idUbicacionFin);
@@ -119,8 +121,8 @@ public class AlquilerController {
 			PRG.error("Hay campos vacíos", "/alquiler/r");
 		} else {
 			final int puntuacion = Integer.parseInt(stringPuntuacion);
-			final LocalDate fechaInicio = LocalDate.parse(stringFechaInicio);
-			final LocalDate fechaFin = LocalDate.parse(stringFechaFin);
+			final LocalDateTime fechaInicio = LocalDateTime.parse(stringFechaInicio);
+			final LocalDateTime fechaFin = LocalDateTime.parse(stringFechaFin);
 			final Alquiler alquiler = new Alquiler(fechaInicio, fechaFin, puntuacion);
 			final Coche cocheAlquilado = cocheRepository.getOne(idCocheAlquilado);
 			final Ubicacion ubicacionInicio = ubicacionRepository.getOne(idUbicacionInicio);
