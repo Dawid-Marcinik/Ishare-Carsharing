@@ -1,6 +1,6 @@
 package org.ishare.app.domains;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,8 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 @Entity
 public class Alquiler {
 
@@ -20,10 +18,8 @@ public class Alquiler {
 	private Long idAlquiler;
 
 	@Column()
-	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-	private LocalDate fechaInicio;
-	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-	private LocalDate fechaFin;
+	private LocalDateTime fechaInicio;
+	private LocalDateTime fechaFin;
 	private Integer puntuacion;
 
 	@ManyToOne(cascade = CascadeType.PERSIST)
@@ -42,7 +38,7 @@ public class Alquiler {
 
 	}
 
-	public Alquiler(final LocalDate fechaInicio, final LocalDate fechaFin, final Integer puntuacion) {
+	public Alquiler(final LocalDateTime fechaInicio, final LocalDateTime fechaFin, final Integer puntuacion) {
 		super();
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
@@ -81,19 +77,19 @@ public class Alquiler {
 		this.idAlquiler = idAlquiler;
 	}
 
-	public LocalDate getFechaInicio() {
+	public LocalDateTime getFechaInicio() {
 		return fechaInicio;
 	}
 
-	public void setFechaInicio(final LocalDate fechaInicio) {
+	public void setFechaInicio(final LocalDateTime fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
 
-	public LocalDate getFechaFin() {
+	public LocalDateTime getFechaFin() {
 		return fechaFin;
 	}
 
-	public void setFechaFin(final LocalDate fechaFin) {
+	public void setFechaFin(final LocalDateTime fechaFin) {
 		this.fechaFin = fechaFin;
 	}
 
