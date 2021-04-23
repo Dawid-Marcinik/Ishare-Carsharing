@@ -1,9 +1,12 @@
 package org.ishare.app.controllers;
 
+import javax.servlet.http.HttpSession;
+
 import org.ishare.app.domains.Marca;
 import org.ishare.app.domains.Modelo;
 import org.ishare.app.domains.Tipo;
 import org.ishare.app.exceptions.DangerException;
+import org.ishare.app.helpers.H;
 import org.ishare.app.helpers.PRG;
 import org.ishare.app.repositories.MarcaRepository;
 import org.ishare.app.repositories.ModeloRepository;
@@ -28,7 +31,7 @@ public class ModeloController {
 	
 	//Recuperar
 	@GetMapping("r")
-	public String rGet(ModelMap modelo) {
+	public String rGet(ModelMap modelo, HttpSession sesion) {
 		modelo.put("view", "modelo/r");
 		modelo.put("tipos", tipoRepository.findAll());
 		modelo.put("modelos", modeloRepository.findAll());
@@ -44,8 +47,8 @@ public class ModeloController {
 		return ("_t/frame");
 	}
 	@PostMapping("c")
-	public String cPost(ModelMap modelo, @RequestParam("idMarca") Long idMarca, @RequestParam("nombre") String nombre, @RequestParam("numeroPasajeros") Integer numeroPasajeros, @RequestParam("idTipo") Long idTipo, @RequestParam("autonomiaTotal") Integer autonomiaTotal, @RequestParam("tarifa") Float tarifa) throws DangerException{
-			
+	public String cPost(ModelMap modelo, @RequestParam("idMarca") Long idMarca, @RequestParam("nombre") String nombre, @RequestParam("numeroPasajeros") Integer numeroPasajeros, @RequestParam("idTipo") Long idTipo, @RequestParam("autonomiaTotal") Integer autonomiaTotal, @RequestParam("tarifa") Float tarifa, HttpSession sesion) throws DangerException{
+		H.isRolOK("Admin", sesion);
 		if(nombre == "" || numeroPasajeros <= 0 || numeroPasajeros == null || autonomiaTotal <= 0 || autonomiaTotal == null || tarifa <= 0 || tarifa == null) {
 			PRG.error("Ningún parámetro puede estar vacío","modelo/c");
 		}
@@ -73,8 +76,8 @@ public class ModeloController {
 		return ("_t/frame");
 	}
 	@PostMapping("u")
-	public String uPost(ModelMap modelo, @RequestParam("id") Long id, @RequestParam("idMarca") Long idMarca, @RequestParam("nombre") String nombre, @RequestParam("numeroPasajeros") Integer numeroPasajeros, @RequestParam("idTipo") Long idTipo, @RequestParam("autonomiaTotal") Integer autonomiaTotal, @RequestParam("tarifa") Float tarifa) throws DangerException{
-				
+	public String uPost(ModelMap modelo, @RequestParam("id") Long id, @RequestParam("idMarca") Long idMarca, @RequestParam("nombre") String nombre, @RequestParam("numeroPasajeros") Integer numeroPasajeros, @RequestParam("idTipo") Long idTipo, @RequestParam("autonomiaTotal") Integer autonomiaTotal, @RequestParam("tarifa") Float tarifa, HttpSession sesion) throws DangerException{
+		H.isRolOK("Admin", sesion);
 		if(nombre == "" || numeroPasajeros <= 0 || numeroPasajeros == null || autonomiaTotal <= 0 || autonomiaTotal == null || tarifa <= 0 || tarifa == null) {
 			PRG.error("Ningún parámetro puede estar vacío","modelo/c");
 		}
@@ -99,7 +102,8 @@ public class ModeloController {
 	
 	//Borrar
 	@PostMapping("d")
-	public String dPost(ModelMap modelo, @RequestParam("id") Long id) {
+	public String dPost(ModelMap modelo, @RequestParam("id") Long id, HttpSession sesion) throws DangerException {
+		H.isRolOK("Admin", sesion);
 		modeloRepository.delete(modeloRepository.getOne(id));
 		return("redirect:/modelo/r");
 	}

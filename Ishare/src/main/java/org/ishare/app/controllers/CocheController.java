@@ -49,8 +49,8 @@ public class CocheController {
 		return ("_t/frame");
 	}
 	@PostMapping("c")
-	public String cPost(ModelMap modelo, @RequestParam("matricula") String matricula, @RequestParam("idModelo") Long idModelo, @RequestParam("idUbicacion") Long idUbicacion) throws DangerException{
-		
+	public String cPost(ModelMap modelo, @RequestParam("matricula") String matricula, @RequestParam("idModelo") Long idModelo, @RequestParam("idUbicacion") Long idUbicacion, HttpSession sesion) throws DangerException{
+		H.isRolOK("Admin", sesion);
 		if(matricula == null || idModelo == null || idUbicacion == null) {
 			PRG.error("Debe rellenar todos los datos","coche/c");
 		}
@@ -77,8 +77,8 @@ public class CocheController {
 			return ("_t/frame");
 		}
 		@PostMapping("u")
-		public String uPost(ModelMap modelo, @RequestParam("matricula") String matricula, @RequestParam("autonomiaRestante") Integer autonomiaRestante, @RequestParam("id") Long id, @RequestParam("idModelo") Long idModelo, @RequestParam("idUbicacion") Long idUbicacion) throws DangerException{
-			
+		public String uPost(ModelMap modelo, @RequestParam("matricula") String matricula, @RequestParam("autonomiaRestante") Integer autonomiaRestante, @RequestParam("id") Long id, @RequestParam("idModelo") Long idModelo, @RequestParam("idUbicacion") Long idUbicacion, HttpSession sesion) throws DangerException{
+			H.isRolOK("Admin", sesion);
 			if(matricula == null || idModelo == null || idUbicacion == null) {
 				PRG.error("Debe rellenar todos los datos","coche/c");
 			}
