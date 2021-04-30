@@ -1,9 +1,12 @@
 package org.ishare.app.controllers;
 
+import javax.servlet.http.HttpSession;
+
 import org.ishare.app.domains.Coche;
 import org.ishare.app.domains.Modelo;
 import org.ishare.app.domains.Ubicacion;
 import org.ishare.app.exceptions.DangerException;
+import org.ishare.app.helpers.H;
 import org.ishare.app.helpers.PRG;
 import org.ishare.app.repositories.CocheRepository;
 import org.ishare.app.repositories.ModeloRepository;
@@ -46,8 +49,8 @@ public class CocheController {
 		return ("_t/frame");
 	}
 	@PostMapping("c")
-	public String cPost(ModelMap modelo, @RequestParam("matricula") String matricula, @RequestParam("idModelo") Long idModelo, @RequestParam("idUbicacion") Long idUbicacion) throws DangerException{
-		
+	public String cPost(ModelMap modelo, @RequestParam("matricula") String matricula, @RequestParam("idModelo") Long idModelo, @RequestParam("idUbicacion") Long idUbicacion, HttpSession sesion) throws DangerException{
+		H.isRolOK("Admin", sesion);
 		if(matricula == null || idModelo == null || idUbicacion == null) {
 			PRG.error("Debe rellenar todos los datos","coche/c");
 		}
@@ -74,8 +77,8 @@ public class CocheController {
 			return ("_t/frame");
 		}
 		@PostMapping("u")
-		public String uPost(ModelMap modelo, @RequestParam("matricula") String matricula, @RequestParam("autonomiaRestante") Integer autonomiaRestante, @RequestParam("id") Long id, @RequestParam("idModelo") Long idModelo, @RequestParam("idUbicacion") Long idUbicacion) throws DangerException{
-			
+		public String uPost(ModelMap modelo, @RequestParam("matricula") String matricula, @RequestParam("autonomiaRestante") Integer autonomiaRestante, @RequestParam("id") Long id, @RequestParam("idModelo") Long idModelo, @RequestParam("idUbicacion") Long idUbicacion, HttpSession sesion) throws DangerException{
+			H.isRolOK("Admin", sesion);
 			if(matricula == null || idModelo == null || idUbicacion == null) {
 				PRG.error("Debe rellenar todos los datos","coche/c");
 			}
@@ -97,8 +100,13 @@ public class CocheController {
 		}
 		//Borrar
 		@PostMapping("d")
-		public String dPost(@RequestParam("id") Long id) {
+		public String dPost(@RequestParam("id") Long id, HttpSession sesion) throws DangerException {
+			H.isRolOK("Admin", sesion);
+			try {
 			cocheRepository.delete(cocheRepository.getOne(id));
+			}catch(Exception e) {
+				PRG.error("Antes de borrar un coche has de borrar el alquiler al que esta hilado");
+			}
 			return("redirect:/coche/r");
 		}
 }

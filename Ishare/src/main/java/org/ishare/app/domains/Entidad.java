@@ -1,7 +1,5 @@
 package org.ishare.app.domains;
 
-
-
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -14,54 +12,50 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-
-
 @Entity
 public class Entidad {
-	
+
 //Atributos
 //=================================================================	
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Long id;
 
 	@Column(unique = true)
 	protected String nombreUsuario;
-	
+
 	protected String contrasena;
-	
+
 	protected String localidad;
-	
+
 	protected String direccion;
-	
+
 	protected Integer codigoPostal;
-	
+
 	@Column(unique = true)
 	protected Integer telefono;
-	
+
 	@Column(unique = true)
 	protected String email;
-	
+
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	protected Rol rol;
-	
+
 	protected Float saldo;
-	
-	@OneToMany(mappedBy = "entidad",cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
-	protected List<Alquiler>alquileres;
-	
-	//Constructores
-	//===========================================================================
+
+	@OneToMany(mappedBy = "entidad", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	protected List<Alquiler> alquileres;
+
+	// Constructores
+	// ===========================================================================
 
 	public Entidad() {
-		
+
 	}
 
-	
-	
-	public Entidad(String nombreUsuario, String contrasena, String localidad, String direccion, Integer codigoPostal,
-			Integer telefono, String email, Rol rol, Float saldo) {
+	public Entidad(final String nombreUsuario, final String contrasena, final String localidad, final String direccion,
+			final Integer codigoPostal, final Integer telefono, final String email, final Rol rol, final Float saldo) {
 		super();
 		this.nombreUsuario = nombreUsuario;
 		this.contrasena = contrasena;
@@ -74,16 +68,14 @@ public class Entidad {
 		this.saldo = saldo;
 	}
 
-
-
-	//GETTERS Y SETTERS
-	//=========================================================================
+	// GETTERS Y SETTERS
+	// =========================================================================
 
 	public Long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(final Long id) {
 		this.id = id;
 	}
 
@@ -91,7 +83,7 @@ public class Entidad {
 		return nombreUsuario;
 	}
 
-	public void setNombreUsuario(String nombreUsuario) {
+	public void setNombreUsuario(final String nombreUsuario) {
 		this.nombreUsuario = nombreUsuario;
 	}
 
@@ -99,7 +91,7 @@ public class Entidad {
 		return contrasena;
 	}
 
-	public void setContrasena(String contrasena) {
+	public void setContrasena(final String contrasena) {
 		this.contrasena = contrasena;
 	}
 
@@ -107,7 +99,7 @@ public class Entidad {
 		return localidad;
 	}
 
-	public void setLocalidad(String localidad) {
+	public void setLocalidad(final String localidad) {
 		this.localidad = localidad;
 	}
 
@@ -115,7 +107,7 @@ public class Entidad {
 		return direccion;
 	}
 
-	public void setDireccion(String direccion) {
+	public void setDireccion(final String direccion) {
 		this.direccion = direccion;
 	}
 
@@ -123,7 +115,7 @@ public class Entidad {
 		return codigoPostal;
 	}
 
-	public void setCodigoPostal(Integer codigoPostal) {
+	public void setCodigoPostal(final Integer codigoPostal) {
 		this.codigoPostal = codigoPostal;
 	}
 
@@ -131,7 +123,7 @@ public class Entidad {
 		return telefono;
 	}
 
-	public void setTelefono(Integer telefono) {
+	public void setTelefono(final Integer telefono) {
 		this.telefono = telefono;
 	}
 
@@ -139,7 +131,7 @@ public class Entidad {
 		return email;
 	}
 
-	public void setEmail(String email) {
+	public void setEmail(final String email) {
 		this.email = email;
 	}
 
@@ -147,7 +139,7 @@ public class Entidad {
 		return rol;
 	}
 
-	public void setRol(Rol rol) {
+	public void setRol(final Rol rol) {
 		this.rol = rol;
 	}
 
@@ -155,22 +147,23 @@ public class Entidad {
 		return saldo;
 	}
 
-	public void setSaldo(Float saldo) {
+	public void setSaldo(final Float saldo) {
 		this.saldo = saldo;
 	}
-
-
 
 	public List<Alquiler> getAlquileres() {
 		return alquileres;
 	}
 
-
-
-	public void setAlquileres(List<Alquiler> alquileres) {
+	public void setAlquileres(final List<Alquiler> alquileres) {
 		this.alquileres = alquileres;
 	}
+
 	
-	
+	public boolean isAdmin() {
+		return (this.getRol()!= null && this.getRol().getNombre().equals("Admin"));
+	}
+
+
 
 }

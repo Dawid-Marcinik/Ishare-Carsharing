@@ -27,12 +27,13 @@ public class Coche {
 	private Ubicacion ubicacion;
 	@OneToMany(mappedBy = "coche", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	private List<Alquiler> alquileres;
-	
-	//CONSTRUCTORES
+
+	// CONSTRUCTORES
 	public Coche() {
 	}
 
-	public Coche(String matricula,Integer autonomiaRestante, Modelo modelo, Ubicacion ubicacion) {
+	public Coche(final String matricula, final Integer autonomiaRestante, final Modelo modelo,
+			final Ubicacion ubicacion) {
 		super();
 		this.matricula = matricula;
 		this.autonomiaRestante = autonomiaRestante;
@@ -40,12 +41,12 @@ public class Coche {
 		this.ubicacion = ubicacion;
 	}
 
-	//GETTERS Y SETTERS
+	// GETTERS Y SETTERS
 	public Long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(final Long id) {
 		this.id = id;
 	}
 
@@ -53,7 +54,7 @@ public class Coche {
 		return autonomiaRestante;
 	}
 
-	public void setAutonomiaRestante(Integer autonomiaRestante) {
+	public void setAutonomiaRestante(final Integer autonomiaRestante) {
 		this.autonomiaRestante = autonomiaRestante;
 	}
 
@@ -61,7 +62,7 @@ public class Coche {
 		return modelo;
 	}
 
-	public void setModelo(Modelo modelo) {
+	public void setModelo(final Modelo modelo) {
 		this.modelo = modelo;
 	}
 
@@ -69,7 +70,7 @@ public class Coche {
 		return alquileres;
 	}
 
-	public void setAlquileres(List<Alquiler> alquileres) {
+	public void setAlquileres(final List<Alquiler> alquileres) {
 		this.alquileres = alquileres;
 	}
 
@@ -77,7 +78,7 @@ public class Coche {
 		return ubicacion;
 	}
 
-	public void setUbicacion(Ubicacion ubicacion) {
+	public void setUbicacion(final Ubicacion ubicacion) {
 		this.ubicacion = ubicacion;
 	}
 
@@ -85,7 +86,7 @@ public class Coche {
 		return matricula;
 	}
 
-	public void setMatricula(String matricula) {
+	public void setMatricula(final String matricula) {
 		this.matricula = matricula;
 	}
 

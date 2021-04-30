@@ -1,0 +1,20 @@
+// Custom.scss
+// Option A: Include all of Bootstrap
+
+// PRIMERO: Sobreescritura de variables de boostrap
+$body-color: green;
+
+// SEGUNDO: EXTENSIONES A LAS CLASES DE BOOTSTRAP
+.btn-base{
+	@extend .btn;
+	background-color: cyan;
+	color: white;
+}
+.patata{
+	@extend .btn;
+	background-color: green;
+}
+
+
+// TERCERO: IMPORTACIÓN DEL PROPIO BOOTSTRAP
+@import "node_modules/bootstrap/scss/bootstrap";

@@ -59,18 +59,18 @@
 	*:focus { outline: none; } 
 </style>
 <div class="container">
-	<h1>Editar ubicación</h1>
+	<h1 class="display-6">Editar ubicación</h1>
 	
 	<form method="post">
 		<label for="direccion">DIRECCIÓN</label>
-		<input type="text" id="direccion" name="direccion" style="border-color:red" onkeyup="validar()"/>
+		<input type="text" th:value="${ubicacion.direccion}" id="direccion" name="direccion" onkeyup="validar()"/>
 		<br/>
 		<label for="plazasTotales">PLAZAS TOTALES</label>
-		<input type="number" id="plazasTotales" name="plazasTotales" min="1" onchange="validar()" required />
+		<input type="number" th:value="${ubicacion.plazasTotales}"id="plazasTotales" name="plazasTotales" min="1" onchange="validar()" required />
 		<br/>
 
 		
 		<input type="hidden" name="idUbicacion" th:value="${ubicacion.idUbicacion}"/>
-		<input type="submit" id="enviar" disabled/>
+		<input type="submit" id="enviar"/>
 	</form>
 </div>
