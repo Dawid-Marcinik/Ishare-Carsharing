@@ -61,7 +61,7 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: green;
+  color: #212529;
   text-align: left;
   background-color: #fff; }
 
@@ -1309,7 +1309,7 @@ pre {
 .table {
   width: 100%;
   margin-bottom: 1rem;
-  color: green; }
+  color: #212529; }
   .table th,
   .table td {
     padding: 0.75rem;
@@ -1344,7 +1344,7 @@ pre {
   background-color: rgba(0, 0, 0, 0.05); }
 
 .table-hover tbody tr:hover {
-  color: green;
+  color: #212529;
   background-color: rgba(0, 0, 0, 0.075); }
 
 .table-primary,
@@ -1627,7 +1627,7 @@ select.form-control:focus::-ms-value {
   margin-bottom: 0;
   font-size: 1rem;
   line-height: 1.5;
-  color: green;
+  color: #212529;
   background-color: transparent;
   border: solid transparent;
   border-width: 1px 0; }
@@ -1902,7 +1902,7 @@ textarea.form-control {
 .btn, .btn-base, .patata {
   display: inline-block;
   font-weight: 400;
-  color: green;
+  color: #212529;
   text-align: center;
   vertical-align: middle;
   user-select: none;
@@ -1917,7 +1917,7 @@ textarea.form-control {
     .btn, .btn-base, .patata {
       transition: none; } }
   .btn:hover, .btn-base:hover, .patata:hover {
-    color: green;
+    color: #212529;
     text-decoration: none; }
   .btn:focus, .btn-base:focus, .patata:focus, .btn.focus, .focus.btn-base, .focus.patata {
     outline: 0;
@@ -2364,7 +2364,7 @@ input[type="button"].btn-block {
   padding: 0.5rem 0;
   margin: 0.125rem 0 0;
   font-size: 1rem;
-  color: green;
+  color: #212529;
   text-align: left;
   list-style: none;
   background-color: #fff;
@@ -4045,7 +4045,7 @@ input[type="button"].btn-block {
     text-decoration: none;
     background-color: #f8f9fa; }
   .list-group-item-action:active {
-    color: green;
+    color: #212529;
     background-color: #e9ecef; }
 
 .list-group-item {
@@ -4667,7 +4667,7 @@ a.close.disabled {
 
 .popover-body {
   padding: 0.5rem 0.75rem;
-  color: green; }
+  color: #212529; }
 
 .carousel {
   position: relative; }
@@ -7785,7 +7785,7 @@ a.text-dark:hover, a.text-dark:focus {
   color: #121416 !important; }
 
 .text-body {
-  color: green !important; }
+  color: #212529 !important; }
 
 .text-muted {
   color: #6c757d !important; }
