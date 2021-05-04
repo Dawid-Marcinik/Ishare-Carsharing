@@ -133,7 +133,7 @@ public class ParticularController {
 
 			H.info(s, "Particular " + nombre + " actualizado correctamente", "info", "/particular/r");
 		} catch (final Exception e) {
-			H.info(s, "Particular " + nombre + " duplicado", "danger", "/particular/r");
+			PRG.error("Particular duplicado",  "/particular/r");
 		}
 		}
 		return "redirect:/info";

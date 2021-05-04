@@ -124,7 +124,7 @@ public class EmpresaController {
 				
 				H.info(s, "Empresa " + razonSocial + " actualizada correctamente", "info", "/empresa/r");// No escribe
 			} catch (final Exception e) {
-				H.info(s, "Empresa " + razonSocial + " duplicada", "danger", "/empresa/r");
+				PRG.error(" Empresa duplicada",  "/empresa/r");
 			}
 		}
 		return "redirect:/info";
