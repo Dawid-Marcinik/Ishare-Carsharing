@@ -46,9 +46,9 @@ public class ParticularController {
 			@RequestParam("idRol") final Long idRol, @RequestParam("saldo") final String saldo,
 			@RequestParam("dni") final String dni, @RequestParam("nombre") final String nombre,
 			@RequestParam("apellidos") final String apellidos,
-			@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @RequestParam("fechaNacimiento") final String fechaNacimiento)
+			@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @RequestParam("fechaNacimiento") final String fechaNacimiento,final HttpSession s)
 			throws DangerException, ParseException {
-
+		
 		if (nombreUsuario == "" || contrasena == "" || localidad == "" || direccion == "" || codigoPostal == ""
 				|| telefono == "" || email == "" || saldo == "" || dni == "" || nombre == "" || apellidos == ""
 				|| fechaNacimiento == "" || nombreUsuario == null || contrasena == null || localidad == null
@@ -63,7 +63,7 @@ public class ParticularController {
 			final Rol rol = rolRepository.getOne(idRol);
 			final Particular p = new Particular(nombreUsuario, contrasena, localidad, direccion, iCodigoPostal,
 					iTelefono, email, rol, fSaldo, dni, nombre, apellidos, lFechaNacimiento);
-
+			H.isRolOK("Admin", s);
 			try {
 				particularRepository.save(p);
 
@@ -78,8 +78,8 @@ public class ParticularController {
 	}
 
 	@GetMapping("r")
-	public String particularRGet(final ModelMap m) {
-
+	public String particularRGet(final ModelMap m,final HttpSession s) throws DangerException {
+		H.isRolOK("Admin", s);
 		m.put("particulares", particularRepository.findAll());
 		m.put("view", "/particular/r");
 
@@ -104,7 +104,10 @@ public class ParticularController {
 			@RequestParam("apellidos") final String apellidos,
 			@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @RequestParam("fechaNacimiento") final String fechaNacimiento,
 			@RequestParam("id") final Long id, final HttpSession s) throws DangerException, ParseException {
-		try {
+		if (nombreUsuario == "" || contrasena == "" || direccion == "" || telefono == "" || dni == ""
+				|| apellidos == "" ) {
+			PRG.error("Ningún campo puede quedar vacío", "/empresa/r");
+		} else {
 			final int iCodigoPostal = Integer.parseInt(codigoPostal);
 			final int iTelefono = Integer.parseInt(telefono);
 			final float fSaldo = Float.parseFloat(saldo);
@@ -124,21 +127,27 @@ public class ParticularController {
 			p.setNombre(nombre);
 			p.setApellidos(apellidos);
 			p.setFechaNacimiento(lFechaNacimiento);
+			H.isRolOK("Admin", s);H.isRolOK("user", s);
+			try {
 			particularRepository.save(p);
 
 			H.info(s, "Particular " + nombre + " actualizado correctamente", "info", "/particular/r");
 		} catch (final Exception e) {
 			H.info(s, "Particular " + nombre + " duplicado", "danger", "/particular/r");
 		}
+		}
 		return "redirect:/info";
 	}
 
 	@PostMapping("d")
-	public String borrarPost(@RequestParam("id") final Long id, final HttpSession s) {
-
+	public String borrarPost(@RequestParam("id") final Long id, final HttpSession s) throws DangerException {
+		H.isRolOK("Admin", s);
+		try {
 		final Particular particular = particularRepository.getOne(id);
-
 		particularRepository.delete(particular);
+		}catch(Exception e) {
+			PRG.error("Estas seguro que quieres borrar al particular");
+		}
 
 		return "redirect:/particular/r";
 	}

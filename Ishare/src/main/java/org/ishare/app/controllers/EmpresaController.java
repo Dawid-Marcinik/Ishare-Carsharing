@@ -42,9 +42,9 @@ public class EmpresaController {
 			@RequestParam("direccion") final String direccion, @RequestParam("codigoPostal") final String codigoPostal,
 			@RequestParam("telefono") final String telefono, @RequestParam("email") final String email,
 			@RequestParam("idRol") final Long idRol, @RequestParam("saldo") final String saldo,
-			@RequestParam("cif") final String cif, @RequestParam("razonSocial") final String razonSocial)
+			@RequestParam("cif") final String cif, @RequestParam("razonSocial") final String razonSocial,final HttpSession s)
 			throws DangerException, ParseException {
-
+		
 		if (nombreUsuario == "" || contrasena == "" || localidad == "" || direccion == "" || codigoPostal == ""
 				|| telefono == "" || email == "" || saldo == "" || cif == "" || razonSocial == ""
 				|| nombreUsuario == null || contrasena == null || localidad == null || direccion == null
@@ -58,7 +58,7 @@ public class EmpresaController {
 			final Rol rol = rolRepository.getOne(idRol);
 			final Empresa em = new Empresa(nombreUsuario, contrasena, localidad, direccion, iCodigoPostal, iTelefono,
 					email, rol, fSaldo, cif, razonSocial);
-
+			H.isRolOK("Admin", s);
 			try {
 				empresaRepository.save(em);
 			} catch (final Exception e) {
@@ -71,8 +71,8 @@ public class EmpresaController {
 	}
 
 	@GetMapping("r")
-	public String empresaRGet(final ModelMap m) {
-
+	public String empresaRGet(final ModelMap m,final HttpSession s) throws DangerException {
+		H.isRolOK("Admin", s);
 		m.put("empresas", empresaRepository.findAll());
 		m.put("view", "/empresa/r");
 
@@ -99,7 +99,9 @@ public class EmpresaController {
 				|| telefono == "" || email == "" || saldo == "" || cif == "" || razonSocial == "") {
 			PRG.error("Ningún campo puede quedar vacío", "/empresa/r");
 		} else {
-			try {
+			
+			
+				
 				final int iCodigoPostal = Integer.parseInt(codigoPostal);
 				final int iTelefono = Integer.parseInt(telefono);
 				final float fSaldo = Float.parseFloat(saldo);
@@ -116,8 +118,10 @@ public class EmpresaController {
 				em.setSaldo(fSaldo);
 				em.setCif(cif);
 				em.setRazonSocial(razonSocial);
+				H.isRolOK("Admin", s);H.isRolOK("user", s);
+				try {
 				empresaRepository.save(em);
-
+				
 				H.info(s, "Empresa " + razonSocial + " actualizada correctamente", "info", "/empresa/r");// No escribe
 			} catch (final Exception e) {
 				H.info(s, "Empresa " + razonSocial + " duplicada", "danger", "/empresa/r");
@@ -128,12 +132,15 @@ public class EmpresaController {
 	}
 
 	@PostMapping("d")
-	public String borrarPost(@RequestParam("id") final Long id, final HttpSession s) {
-
-		final Empresa empresa = empresaRepository.getOne(id);
-
-		empresaRepository.delete(empresa);
-
+	public String borrarPost(@RequestParam("id") final Long id, final HttpSession s) throws DangerException {
+		H.isRolOK("Admin", s);
+		try {
+			final Empresa empresa = empresaRepository.getOne(id);
+			empresaRepository.delete(empresa);
+		}catch(Exception e) {
+			PRG.error("Estas seguro que quieres borrar la empresa");
+		}
+		
 		return "redirect:/empresa/r";
 	}
 

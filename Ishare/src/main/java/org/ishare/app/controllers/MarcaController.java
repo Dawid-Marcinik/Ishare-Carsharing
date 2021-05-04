@@ -1,7 +1,10 @@
 package org.ishare.app.controllers;
 
+import javax.servlet.http.HttpSession;
+
 import org.ishare.app.domains.Marca;
 import org.ishare.app.exceptions.DangerException;
+import org.ishare.app.helpers.H;
 import org.ishare.app.helpers.PRG;
 import org.ishare.app.repositories.MarcaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +36,8 @@ public class MarcaController {
 		return ("_t/frame");
 	}
 	@PostMapping("c")
-	public String cPost(ModelMap modelo, @RequestParam("nombre") String nombre) throws DangerException{
-		
+	public String cPost(ModelMap modelo, @RequestParam("nombre") String nombre, HttpSession sesion) throws DangerException{
+		H.isRolOK("Admin", sesion);
 		if(nombre == "" || nombre == null) {
 			PRG.error("El nombre de la marca no puede estar vacío","marca/c");
 		}
@@ -57,8 +60,8 @@ public class MarcaController {
 		return ("_t/frame");
 	}
 	@PostMapping("u")
-	public String uPost(ModelMap modelo, @RequestParam("id") Long id, @RequestParam("nombre") String nombre) throws DangerException{
-		
+	public String uPost(ModelMap modelo, @RequestParam("id") Long id, @RequestParam("nombre") String nombre, HttpSession sesion) throws DangerException{
+		H.isRolOK("Admin", sesion);
 		if(nombre == "" || nombre == null) {
 			PRG.error("El nombre de la marca no puede estar vacío","marca/u");
 		}
@@ -76,7 +79,8 @@ public class MarcaController {
 	
 	//Borrar
 	@PostMapping("d")
-	public String dPost(ModelMap modelo, @RequestParam("id") Long id) {
+	public String dPost(ModelMap modelo, @RequestParam("id") Long id, HttpSession sesion) throws DangerException {
+		H.isRolOK("Admin", sesion);
 		marcaRepository.delete(marcaRepository.getOne(id));
 		return("redirect:/marca/r");
 	}
