@@ -3,6 +3,10 @@
 
 // PRIMERO: Sobreescritura de variables de boostrap
 
+$body-color: black;
+$body-bg: purple;
+
+
 // SEGUNDO: EXTENSIONES A LAS CLASES DE BOOTSTRAP
 .btn-base{
 	@extend .btn;
