@@ -1,12 +1,92 @@
-/* line 11, main.scss */
+/* line 12, main.scss */
+.capsula {
+  margin: 40px 0;
+}
+
+/* line 16, main.scss */
 .btn-base {
   background-color: cyan;
   color: white;
 }
 
-/* line 16, main.scss */
+/* line 21, main.scss */
 .patata {
   background-color: green;
+}
+
+/* line 26, main.scss */
+.cabecera {
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), black);
+}
+
+/* line 31, main.scss */
+.logo-container {
+  width: 150px;
+  height: 150px;
+  display: inline-block;
+}
+
+/* line 36, main.scss */
+.logo {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 41, main.scss */
+.texto-logo {
+  display: inline-block;
+}
+
+/* line 44, main.scss */
+.portada {
+  background-image: url("/img/resources/portada.jpg");
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  z-index: -1;
+}
+
+/* line 52, main.scss */
+.barra-nav {
+  width: 100%;
+  position: fixed !important;
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+  background-image: linear-gradient(to right, #0b1709, teal, #0b1709);
+  color: black !important;
+}
+
+/* line 60, main.scss */
+.titulo {
+  position: relative;
+  margin-top: 100px;
+}
+
+/* line 64, main.scss */
+.nav-link-color {
+  color: black !important;
+}
+
+/* line 69, main.scss */
+.pie-de-pagina-a {
+  width: 100%;
+  padding: 30px;
+  background-image: linear-gradient(to right, #0b1709, teal, #0b1709);
+  color: white;
+  text-align: center;
+}
+
+/* line 77, main.scss */
+.pie-de-pagina-b {
+  width: 100%;
+  padding: 30px;
+  background-image: linear-gradient(to right, #0b1709, #8bab0c, #0b1709);
+  color: white;
+  text-align: center;
 }
 
 /*!
@@ -49,13 +129,13 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 /* line 46, node_modules/bootstrap/scss/_reboot.scss */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Play", sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: black;
+  color: white;
   text-align: left;
-  background-color: purple;
+  background-color: black;
 }
 
 /* line 66, node_modules/bootstrap/scss/_reboot.scss */
@@ -543,7 +623,7 @@ mark,
 /* line 14, node_modules/bootstrap/scss/_images.scss */
 .img-thumbnail {
   padding: 0.25rem;
-  background-color: purple;
+  background-color: black;
   border: 1px solid #dee2e6;
   border-radius: 0.25rem;
   max-width: 100%;
@@ -1971,7 +2051,7 @@ pre code {
 .table {
   width: 100%;
   margin-bottom: 1rem;
-  color: black;
+  color: white;
 }
 /* line 11, node_modules/bootstrap/scss/_tables.scss */
 .table th,
@@ -2026,7 +2106,7 @@ pre code {
 
 /* line 13, node_modules/bootstrap/scss/mixins/_hover.scss */
 .table-hover tbody tr:hover {
-  color: black;
+  color: white;
   background-color: rgba(0, 0, 0, 0.075);
 }
 
@@ -2446,7 +2526,7 @@ select.form-control:focus::-ms-value {
   margin-bottom: 0;
   font-size: 1rem;
   line-height: 1.5;
-  color: black;
+  color: white;
   background-color: transparent;
   border: solid transparent;
   border-width: 1px 0;
@@ -2848,7 +2928,7 @@ textarea.form-control {
 .btn, .btn-base, .patata {
   display: inline-block;
   font-weight: 400;
-  color: black;
+  color: white;
   text-align: center;
   vertical-align: middle;
   user-select: none;
@@ -2868,7 +2948,7 @@ textarea.form-control {
 }
 /* line 13, node_modules/bootstrap/scss/mixins/_hover.scss */
 .btn:hover, .btn-base:hover, .patata:hover {
-  color: black;
+  color: white;
   text-decoration: none;
 }
 /* line 27, node_modules/bootstrap/scss/_buttons.scss */
@@ -3557,7 +3637,7 @@ input[type="button"].btn-block {
   padding: 0.5rem 0;
   margin: 0.125rem 0 0;
   font-size: 1rem;
-  color: black;
+  color: white;
   text-align: left;
   list-style: none;
   background-color: #fff;
@@ -4492,15 +4572,15 @@ input[type="button"].btn-block {
 }
 /* line 397, node_modules/bootstrap/scss/_custom-forms.scss */
 .custom-range:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 1px purple, 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  box-shadow: 0 0 0 1px black, 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 /* line 398, node_modules/bootstrap/scss/_custom-forms.scss */
 .custom-range:focus::-moz-range-thumb {
-  box-shadow: 0 0 0 1px purple, 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  box-shadow: 0 0 0 1px black, 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 /* line 399, node_modules/bootstrap/scss/_custom-forms.scss */
 .custom-range:focus::-ms-thumb {
-  box-shadow: 0 0 0 1px purple, 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  box-shadow: 0 0 0 1px black, 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 /* line 402, node_modules/bootstrap/scss/_custom-forms.scss */
 .custom-range::-moz-focus-outer {
@@ -4657,16 +4737,16 @@ input[type="button"].btn-block {
 }
 
 /* line 14, node_modules/bootstrap/scss/_nav.scss */
-.nav-link {
+.nav-link, .nav-link-color {
   display: block;
   padding: 0.5rem 1rem;
 }
 /* line 17, node_modules/bootstrap/scss/mixins/_hover.scss */
-.nav-link:hover, .nav-link:focus {
+.nav-link:hover, .nav-link-color:hover, .nav-link:focus, .nav-link-color:focus {
   text-decoration: none;
 }
 /* line 24, node_modules/bootstrap/scss/_nav.scss */
-.nav-link.disabled {
+.nav-link.disabled, .disabled.nav-link-color {
   color: #6c757d;
   pointer-events: none;
   cursor: default;
@@ -4677,28 +4757,29 @@ input[type="button"].btn-block {
   border-bottom: 1px solid #dee2e6;
 }
 /* line 38, node_modules/bootstrap/scss/_nav.scss */
-.nav-tabs .nav-link {
+.nav-tabs .nav-link, .nav-tabs .nav-link-color {
   margin-bottom: -1px;
   border: 1px solid transparent;
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
 }
 /* line 17, node_modules/bootstrap/scss/mixins/_hover.scss */
-.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
+.nav-tabs .nav-link:hover, .nav-tabs .nav-link-color:hover, .nav-tabs .nav-link:focus, .nav-tabs .nav-link-color:focus {
   border-color: #e9ecef #e9ecef #dee2e6;
 }
 /* line 47, node_modules/bootstrap/scss/_nav.scss */
-.nav-tabs .nav-link.disabled {
+.nav-tabs .nav-link.disabled, .nav-tabs .disabled.nav-link-color {
   color: #6c757d;
   background-color: transparent;
   border-color: transparent;
 }
 /* line 54, node_modules/bootstrap/scss/_nav.scss */
-.nav-tabs .nav-link.active,
-.nav-tabs .nav-item.show .nav-link {
+.nav-tabs .nav-link.active, .nav-tabs .active.nav-link-color,
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-item.show .nav-link-color {
   color: #495057;
-  background-color: purple;
-  border-color: #dee2e6 #dee2e6 purple;
+  background-color: black;
+  border-color: #dee2e6 #dee2e6 black;
 }
 /* line 61, node_modules/bootstrap/scss/_nav.scss */
 .nav-tabs .dropdown-menu {
@@ -4708,25 +4789,26 @@ input[type="button"].btn-block {
 }
 
 /* line 75, node_modules/bootstrap/scss/_nav.scss */
-.nav-pills .nav-link {
+.nav-pills .nav-link, .nav-pills .nav-link-color {
   border-radius: 0.25rem;
 }
 /* line 79, node_modules/bootstrap/scss/_nav.scss */
-.nav-pills .nav-link.active,
-.nav-pills .show > .nav-link {
+.nav-pills .nav-link.active, .nav-pills .active.nav-link-color,
+.nav-pills .show > .nav-link,
+.nav-pills .show > .nav-link-color {
   color: #fff;
   background-color: #007bff;
 }
 
 /* line 92, node_modules/bootstrap/scss/_nav.scss */
-.nav-fill > .nav-link,
+.nav-fill > .nav-link, .nav-fill > .nav-link-color,
 .nav-fill .nav-item {
   flex: 1 1 auto;
   text-align: center;
 }
 
 /* line 100, node_modules/bootstrap/scss/_nav.scss */
-.nav-justified > .nav-link,
+.nav-justified > .nav-link, .nav-justified > .nav-link-color,
 .nav-justified .nav-item {
   flex-basis: 0;
   flex-grow: 1;
@@ -4788,7 +4870,7 @@ input[type="button"].btn-block {
   list-style: none;
 }
 /* line 78, node_modules/bootstrap/scss/_navbar.scss */
-.navbar-nav .nav-link {
+.navbar-nav .nav-link, .navbar-nav .nav-link-color {
   padding-right: 0;
   padding-left: 0;
 }
@@ -4869,7 +4951,7 @@ input[type="button"].btn-block {
     position: absolute;
   }
   /* line 184, node_modules/bootstrap/scss/_navbar.scss */
-  .navbar-expand-sm .navbar-nav .nav-link {
+  .navbar-expand-sm .navbar-nav .nav-link, .navbar-expand-sm .navbar-nav .nav-link-color {
     padding-right: 0.5rem;
     padding-left: 0.5rem;
   }
@@ -4923,7 +5005,7 @@ input[type="button"].btn-block {
     position: absolute;
   }
   /* line 184, node_modules/bootstrap/scss/_navbar.scss */
-  .navbar-expand-md .navbar-nav .nav-link {
+  .navbar-expand-md .navbar-nav .nav-link, .navbar-expand-md .navbar-nav .nav-link-color {
     padding-right: 0.5rem;
     padding-left: 0.5rem;
   }
@@ -4977,7 +5059,7 @@ input[type="button"].btn-block {
     position: absolute;
   }
   /* line 184, node_modules/bootstrap/scss/_navbar.scss */
-  .navbar-expand-lg .navbar-nav .nav-link {
+  .navbar-expand-lg .navbar-nav .nav-link, .navbar-expand-lg .navbar-nav .nav-link-color {
     padding-right: 0.5rem;
     padding-left: 0.5rem;
   }
@@ -5031,7 +5113,7 @@ input[type="button"].btn-block {
     position: absolute;
   }
   /* line 184, node_modules/bootstrap/scss/_navbar.scss */
-  .navbar-expand-xl .navbar-nav .nav-link {
+  .navbar-expand-xl .navbar-nav .nav-link, .navbar-expand-xl .navbar-nav .nav-link-color {
     padding-right: 0.5rem;
     padding-left: 0.5rem;
   }
@@ -5082,7 +5164,7 @@ input[type="button"].btn-block {
   position: absolute;
 }
 /* line 184, node_modules/bootstrap/scss/_navbar.scss */
-.navbar-expand .navbar-nav .nav-link {
+.navbar-expand .navbar-nav .nav-link, .navbar-expand .navbar-nav .nav-link-color {
   padding-right: 0.5rem;
   padding-left: 0.5rem;
 }
@@ -5118,22 +5200,25 @@ input[type="button"].btn-block {
   color: rgba(0, 0, 0, 0.9);
 }
 /* line 241, node_modules/bootstrap/scss/_navbar.scss */
-.navbar-light .navbar-nav .nav-link {
+.navbar-light .navbar-nav .nav-link, .navbar-light .navbar-nav .nav-link-color {
   color: rgba(0, 0, 0, 0.5);
 }
 /* line 17, node_modules/bootstrap/scss/mixins/_hover.scss */
-.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
+.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link-color:hover, .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link-color:focus {
   color: rgba(0, 0, 0, 0.7);
 }
 /* line 248, node_modules/bootstrap/scss/_navbar.scss */
-.navbar-light .navbar-nav .nav-link.disabled {
+.navbar-light .navbar-nav .nav-link.disabled, .navbar-light .navbar-nav .disabled.nav-link-color {
   color: rgba(0, 0, 0, 0.3);
 }
 /* line 253, node_modules/bootstrap/scss/_navbar.scss */
-.navbar-light .navbar-nav .show > .nav-link,
+.navbar-light .navbar-nav .show > .nav-link, .navbar-light .navbar-nav .show > .nav-link-color,
 .navbar-light .navbar-nav .active > .nav-link,
+.navbar-light .navbar-nav .active > .nav-link-color,
 .navbar-light .navbar-nav .nav-link.show,
-.navbar-light .navbar-nav .nav-link.active {
+.navbar-light .navbar-nav .show.nav-link-color,
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .active.nav-link-color {
   color: rgba(0, 0, 0, 0.9);
 }
 /* line 261, node_modules/bootstrap/scss/_navbar.scss */
@@ -5167,22 +5252,25 @@ input[type="button"].btn-block {
   color: #fff;
 }
 /* line 293, node_modules/bootstrap/scss/_navbar.scss */
-.navbar-dark .navbar-nav .nav-link {
+.navbar-dark .navbar-nav .nav-link, .navbar-dark .navbar-nav .nav-link-color {
   color: rgba(255, 255, 255, 0.5);
 }
 /* line 17, node_modules/bootstrap/scss/mixins/_hover.scss */
-.navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-nav .nav-link:focus {
+.navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-nav .nav-link-color:hover, .navbar-dark .navbar-nav .nav-link:focus, .navbar-dark .navbar-nav .nav-link-color:focus {
   color: rgba(255, 255, 255, 0.75);
 }
 /* line 300, node_modules/bootstrap/scss/_navbar.scss */
-.navbar-dark .navbar-nav .nav-link.disabled {
+.navbar-dark .navbar-nav .nav-link.disabled, .navbar-dark .navbar-nav .disabled.nav-link-color {
   color: rgba(255, 255, 255, 0.25);
 }
 /* line 305, node_modules/bootstrap/scss/_navbar.scss */
-.navbar-dark .navbar-nav .show > .nav-link,
+.navbar-dark .navbar-nav .show > .nav-link, .navbar-dark .navbar-nav .show > .nav-link-color,
 .navbar-dark .navbar-nav .active > .nav-link,
+.navbar-dark .navbar-nav .active > .nav-link-color,
 .navbar-dark .navbar-nav .nav-link.show,
-.navbar-dark .navbar-nav .nav-link.active {
+.navbar-dark .navbar-nav .show.nav-link-color,
+.navbar-dark .navbar-nav .nav-link.active,
+.navbar-dark .navbar-nav .active.nav-link-color {
   color: #fff;
 }
 /* line 313, node_modules/bootstrap/scss/_navbar.scss */
@@ -6029,7 +6117,7 @@ a.badge-dark:focus, a.badge-dark.focus {
 }
 /* line 34, node_modules/bootstrap/scss/_list-group.scss */
 .list-group-item-action:active {
-  color: black;
+  color: white;
   background-color: #e9ecef;
 }
 
@@ -6687,7 +6775,7 @@ a.close.disabled {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Play", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -6806,7 +6894,7 @@ a.close.disabled {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Play", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -6963,7 +7051,7 @@ a.close.disabled {
 /* line 167, node_modules/bootstrap/scss/_popover.scss */
 .popover-body {
   padding: 0.5rem 0.75rem;
-  color: black;
+  color: white;
 }
 
 /* line 14, node_modules/bootstrap/scss/_carousel.scss */
@@ -11841,7 +11929,7 @@ a.text-dark:hover, a.text-dark:focus {
 
 /* line 51, node_modules/bootstrap/scss/utilities/_text.scss */
 .text-body {
-  color: black !important;
+  color: white !important;
 }
 
 /* line 52, node_modules/bootstrap/scss/utilities/_text.scss */

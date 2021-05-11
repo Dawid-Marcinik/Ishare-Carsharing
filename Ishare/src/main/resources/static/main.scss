@@ -3,11 +3,16 @@
 
 // PRIMERO: Sobreescritura de variables de boostrap
 
-$body-color: black;
-$body-bg: purple;
+$body-color: white;
+$body-bg: black;
+$font-family-base: 'Play', sans-serif;
 
 
 // SEGUNDO: EXTENSIONES A LAS CLASES DE BOOTSTRAP
+.capsula{
+	margin: 40px 0;
+}
+
 .btn-base{
 	@extend .btn;
 	background-color: cyan;
@@ -18,6 +23,63 @@ $body-bg: purple;
 	background-color: green;
 }
 
+.cabecera{
+	width: 100%;
+	height: 100vh;
+	background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,1));
+}
+.logo-container{
+	width:150px;
+	height:150px;
+	display:inline-block;
+}
+.logo{
+	object-fit: cover;
+	width:100%;
+	height:100%;
+}
+.texto-logo{
+	display:inline-block;
+}
+.portada{
+	background-image: url('/img/resources/portada.jpg');
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	position: absolute;
+	z-index: -1;
+}
+.barra-nav{
+	width: 100%;
+	position: fixed !important;
+	padding-top: 20px !important;
+	padding-bottom: 20px !important;
+	background-image: linear-gradient(to right,rgb(11, 23, 9),rgb(0, 128, 128),rgb(11, 23, 9));
+	color: black !important;
+}
+.titulo{
+	position: relative;
+	margin-top: 100px;
+}
+.nav-link-color{
+	@extend .nav-link;
+	color:black !important;
+}
 
+.pie-de-pagina-a{
+	width: 100%;
+	padding: 30px;
+	background-image: linear-gradient(to right,rgb(11, 23, 9),rgb(0, 128, 128),rgb(11, 23, 9));
+	color:white;
+	text-align: center;
+	
+}
+.pie-de-pagina-b{
+	width: 100%;
+	padding: 30px;
+	background-image: linear-gradient(to right,rgb(11, 23, 9),rgb(139, 171, 12),rgb(11, 23, 9));
+	color:white;
+	text-align: center;
+}
 // TERCERO: IMPORTACIÓN DEL PROPIO BOOTSTRAP
 @import "node_modules/bootstrap/scss/bootstrap";
