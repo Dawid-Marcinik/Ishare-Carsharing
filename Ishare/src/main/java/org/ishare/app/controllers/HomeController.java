@@ -26,7 +26,7 @@ public class HomeController {
 	@GetMapping("/home")
 	public String hom(final ModelMap modelo) {
 		modelo.put("view", "/home/home");
-		return "_t2/frame";
+		return "_t/frame";
 	}
 
 	@GetMapping("/")
