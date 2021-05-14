@@ -10,6 +10,7 @@
   var patronPuerta = /^([1-9]|[A-I])$/; */
 
   function validar(form) {
+  console.log(form);
     var validarU = validarNombreUsuario(form);
     var validarC = validarContrasena(form);
     var validarL = validarLocalidad(form);
