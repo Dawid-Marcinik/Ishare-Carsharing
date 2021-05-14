@@ -1,18 +1,110 @@
-<meta charset=UTF-8>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title></title>
+<style>
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 10px;
+  background: #f2f2f2;
+}
+
+.dropdown {
+  margin: 0;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  list-style: none;
+  height: 50px;
+  background-color: #333333;
+}
+
+.dropdown li {
+  position: relative;
+}
+
+.dropdown li a {
+  display: block;
+  padding: 0 10px;
+  height: 50px;
+  line-height: 50px;
+  color: #ffffff;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.dropdown li ul {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background-color: #ffffff;
+  width: 200px;
+  left: 0;
+  max-height: 0;
+  -webkit-transform: perspective(400) rotate3d(1, 0, 0, -90deg);
+  transform: perspective(400) rotate3d(1, 0, 0, -90deg);
+  -webkit-transition: 1350ms;
+  -o-transition: 1000ms;
+  transition: 1000ms;
+}
+
+.dropdown li ul li a {
+  height: 35px;
+  line-height: 35px;
+  color: #999;
+}
+
+.dropdown li ul li a:hover {
+  background-color: rgba(23, 23, 23, 0.9);
+  color: #ffffff;
+}
+
+.dropdown li:hover>ul {
+  max-height: 400px;
+  -webkit-transform: perspective(400) rotate3d(0, 0, 0, 0);
+  transform: perspective(400) rotate3d(0, 0, 0, 0);
+}
+
+.dropdown li:hover>a {
+  background-color: #555555;
+  color: #ffffff;
+}
+</style>
+</head>
 <div class="container">
 	<h1 class="display-5">HOME EN LA APP DE ISHARE</h1>
-
-	<ul class="list-group">
-		<li class="list-group-item btn"><a href="/marca/r">MARCAS</a></li>
-		<li class="list-group-item btn"><a href="/tipo/r">TIPOS DE VEHÍCULOS</a></li>
-		<li class="list-group-item btn"><a href="/modelo/r">MODELOS</a></li>
-		<li class="list-group-item btn"><a href="/coche/r">COCHES DE LA FLOTA</a></li>
-    	<li class="list-group-item btn"><a href="/alquiler/r">ALQUILERES</a></li>
-    	<li class="list-group-item btn"><a href="/ubicacion/r">UBICACIONES</a></li>
-    	<li class="list-group-item btn"><a href="/rol/r">ROLES</a></li>
-        <li class="list-group-item btn"><a href="/empresa/r">EMPRESAS</a></li>
-        <li class="list-group-item btn"><a href="/particular/r">PARTICULARES</a></li>
+<ul class="dropdown">
+        <li><a href="#">Menú</a>
+            <ul class="list-group" style="height: 100px;">
+	 
+		<li class="list-group-item btn h-50 d-inline-block"><a href="/marca/r" style="font-size: 12px;">MARCAS</a></li>
+		<li class="list-group-item btn h-50 d-inline-block"><a href="/tipo/r" style="font-size: 12px;">TIPOS DE VEHÍCULOS</a></li>
+		<li class="list-group-item btn h-50 d-inline-block"><a href="/modelo/r" style="font-size: 12px;">MODELOS</a></li>
+		<li class="list-group-item btn h-50 d-inline-block"><a href="/coche/r" style="font-size: 12px;">COCHES DE LA FLOTA</a></li>
+    	<li class="list-group-item btn h-50 d-inline-block"><a href="/alquiler/r" style="font-size: 12px;">ALQUILERES</a></li>
+    	<li class="list-group-item btn h-50 d-inline-block"><a href="/ubicacion/r" style="font-size: 12px;">UBICACIONES</a></li>
+    	<li class="list-group-item btn h-50 d-inline-block"><a href="/rol/r" style="font-size: 12px;">ROLES</a></li>
+        <li class="list-group-item btn h-50 d-inline-block"><a href="/empresa/r" style="font-size: 12px;">EMPRESAS</a></li>
+        <li class="list-group-item btn h-50 d-inline-block"><a href="/particular/r" style="font-size: 12px;">PARTICULARES</a></li>
+         <li class="list-group-item btn h-50 d-inline-block" style="font-size: 12px;">ACERCA DE LA EMPRESA
+         <ul><li class="list-group-item btn"><a href="/empresa/quienes" style="font-size: 12px;">QUIENES SOMOS</a></li>
+         <li class="list-group-item btn"><a href="/empresa/donde" style="font-size: 12px;">DONDE ESTAMOS</a></li></ul>
+         </li>
 	</ul>
 
 </div>
-

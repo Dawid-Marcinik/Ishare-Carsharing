@@ -1,7 +1,7 @@
 
-<h1 class="row justify-content-center">Nuevo particular</h1>
 
-<div class="row justify-content-center">
+<h1 class="row justify-content-center container">Nuevo particular</h1>
+<div class="row justify-content-center container">
 	<form method="POST">
 	<label for="nombreUsuario">Nombre del usuario</label>
 	<input type="text" name="nombreUsuario" id="nombreUsuario" onchange='validarNombreUsuario(this.form)' onkeyup="validar(this.form)"/>
@@ -33,13 +33,13 @@
 	<input type="number" name="saldo" id="saldo" step="0.01" onchange='validarSaldo(this.form)' onkeyup="validar(this.form)"/>
 	<div class="w-100"></div>
 	<label for="dni">DNI</label>
-	<input type="text" name="dni" id="dni" onkeyup='validar(this.form)' onchange='validarDni(this.form)'/>
+	<input type="text" name="dni" id="dni" onchange='validarDni(this.form)' onkeyup="validar(this.form)"/>
 	<div class="w-100"></div>
 	<label for="nombre">Nombre</label>
-	<input type="text" name="nombre" id="nombre" onkeyup="validar(this.form)" onchange='validarNombre(this.form)'/>
+	<input type="text" name="nombre" id="nombre" onchange='validarNombre(this.form)' onkeyup="validar(this.form)"/>
 	<div class="w-100"></div>
 	<label for="apellidos">Apellidos</label>
-	<input type="text" name="apellidos" id="apellidos" onkeyup="validar(this.form)" onchange='validarApellidos(this.form)'/>
+	<input type="text" name="apellidos" id="apellidos" onchange='validarApellidos(this.form)' onkeyup="validar(this.form)"/>
 	<div class="w-100"></div>
 	<label for="fechaNacimiento">Fecha de nacimiento</label>
 	<input type="Date" name="fechaNacimiento" id="fechaNacimiento" onchange='validarFechaNac(this.form)' onkeyup="validar(this.form)"/>
