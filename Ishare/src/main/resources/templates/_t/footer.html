@@ -1,6 +1,32 @@
 <meta charset=UTF-8>
-<div class="container">	
-	<footer>
-	APLICACIÓN ISHARE - PROYECTO DE FIN DE GRADO DAW2
-	</footer>
 </div>
+<!--FIN DEL BODY-->
+<div class="container-fluid py-5 pie-de-pagina-a">
+	<div class="row">
+		<div class="col-6 col-sm">
+			<h5>© ISHARE 2021</h5>
+		</div>
+		<div class="col-6 col-sm">
+			<h5>POLÍTICAS VARIAS</h5>
+			<ul class="list-unstyled text-small">
+				<li>Política de Cookies</li>
+				<li>Términos y condiciones</li>
+				<li>Política de privacidad</li>
+				<li>Política de precios</li>
+				<li>Preguntas frecuentes</li>
+				<li>Nos comprometemos con la Tierra</li>
+			</ul>
+		</div>
+		<div class="col-6 col-sm">
+			<h5>MENÚ</h5>
+			<hr>
+			<ul class="list-unstyled text-small">
+				<li th:each="ubicacion:${ubicaciones}" th:text="${ubicacion.nombre}">
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<footer class="pie-de-pagina-b">
+	APLICACIÓN ISHARE - PROYECTO DE FIN DE GRADO DAW2
+</footer>

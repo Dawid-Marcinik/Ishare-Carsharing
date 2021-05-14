@@ -1,15 +1,20 @@
 <meta charset=UTF-8>
-<header class="container">
-<div class="row">
-<h1 class="display-4">Ishare - carsharing</h1>
-	<div th:if="${session.user == null}">
-		<a href="/login">LOGIN</a> / 
-		<a href="/registro">REGISTRO</a>
+<header class="cabecera">
+<div class="portada">
+	<img class="portada" src="/img/resources/portada.jpg" alt="portada">
+	<div class="norow">
+	<div class="d-flex justify-content-center titulo">
+		<div class="logo-container">
+			<img class="logo" src="/img/resources/logotipo_3.png" alt="logo">
+		</div>
+		<h1 class="display-2 texto-logo">Ishare - carsharing</h1>
 	</div>
-
-	<div th:if="${session.user != null}">
-		Hola <span th:text="|${session.user.nombreUsuario} (${session.user.rol.nombre}) |"/> / 
-		<a href="/logout">LOGOUT</a>
+		<!--<div th:if="${session.user != null}">
+			Hola <span th:text="|${session.user.nombreUsuario} (${session.user.rol.nombre}) |"/> / 
+			<a href="/logout">LOGOUT</a>
+		</div>-->
 	</div>
 </div>
 </header>
+<div class="capsula">
+<!--</header>-->

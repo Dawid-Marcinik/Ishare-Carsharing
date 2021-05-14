@@ -1,17 +1,73 @@
 <meta charset=UTF-8>
-<nav class="container navbar navbar-expand-sm bg-dark navbar-dark rounded">
-<a class="navbar-brand" href="/">
-INICIO
-</a>
-<ul class="navbar-nav">
-<li class="nav-item dropdown">
-	<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
-	OPCIÓN 1
-	</a>
-	<div class="dropdown-menu">
-	<a class="dropdown-item" href="/invitado/c"> SUBOPCIÓN 1 </a>
-	<a class="dropdown-item" href="/invitado/a"> SUBOPCIÓN 2 </a>
+<!--INICIO DEL NAV-->
+<nav class="navbar navbar-expand-sm navbar-dark sacar-por-delante barra-nav">
+	<!--PARTE IZQUIERDA DEL NAV-->
+	<div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<a class="nav-link" href="/tarifas"> NUESTRAS TARIFAS </a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/tarifas"> ALQUILA UN VEHÍCULO </a>
+			</li>
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
+				SOBRE NOSOTROS
+				</a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="/invitado/c"> ENCUÉNTRANOS </a>
+					<a class="dropdown-item" href="/invitado/a"> CONOCE LA FLOTA </a>
+					<a class="dropdown-item" href="/invitado/a"> DEFENDEMOS LA TIERRA </a>
+				</div>
+			</li>
+			<li th:if="${session.user != null and session.user.rol.nombre == 'Admin'}" class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
+				ADMINISTRAR
+				</a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="/marca/r"> MARCAS </a>
+					<a class="dropdown-item" href="/tipo/r"> TIPOS DE VEHÍCULOS </a>
+					<a class="dropdown-item" href="/modelo/r"> MODELOS </a>
+					<a class="dropdown-item" href="/coche/r"> COCHES DE LA FLOTA </a>
+					<a class="dropdown-item" href="/ubicacion/r"> UBICACIONES </a>
+					<a class="dropdown-item" href="/rol/r"> ROLES </a>
+					<a class="dropdown-item" href="/empresa/r"> EMPRESAS </a>
+					<a class="dropdown-item" href="/particular/r"> PARTICULARES </a>
+					<a class="dropdown-item" href="/"> VER MENÚ </a>
+				</div>
+			</li>
+		</ul>
 	</div>
-</li>
-</ul>
+	<!--PARTE CENTRAL DEL NAV-->
+	<div class="mx-auto order-0">
+        <a class="navbar-brand mx-auto" href="/">ISHARE - CARSHARING</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+	<!--PARTE DERECHA DEL NAV-->
+	<div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+		<ul class="navbar-nav ml-auto">
+		<li th:if="${session.user == null}" class="nav-item">
+			<a class="nav-link" href="/login"> LOGIN </a>
+		</li>
+		<li th:if="${session.user == null}" class="nav-item">
+			<a class="nav-link" href="/registro"> REGISTRO </a>
+		</li>
+		<li th:if="${session.user != null}" class="nav-item">
+			<a class="nav-link" href="/recarga-tokens" th:text="|${session.user.saldo} Tokens|"></a>
+		</li>
+		<li th:if="${session.user != null}" class="nav-item">
+			<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
+				MI PERFIL
+				</a>
+				<div class="dropdown-menu dropdown-menu-right">
+					<a class="dropdown-item" href="/invitado/c"> MIS DATOS </a>
+					<a class="dropdown-item" href="/invitado/c"> RECARGAR TOKENS </a>
+					<a class="dropdown-item" href="/logout"> LOGOUT </a>
+				</div>
+		</li>
+		</ul>
+	</div>
 </nav>
+<!--FIN DEL NAV-->
