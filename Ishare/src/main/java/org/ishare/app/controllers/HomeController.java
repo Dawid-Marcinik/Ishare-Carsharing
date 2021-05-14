@@ -104,4 +104,20 @@ public class HomeController {
 		s.removeAttribute("user");
 		return "redirect:/";
 	}
+	
+	@GetMapping("quienes")
+	public String empresaQGet(final ModelMap m,final HttpSession s) throws DangerException {
+		H.isRolOK("anon", s);
+		m.put("view", "/home/quienes");
+
+		return "/_t/frame";
+	}
+	
+	@GetMapping("donde")
+	public String empresaDGet(final ModelMap m,final HttpSession s) throws DangerException {
+		H.isRolOK("anon", s);
+		m.put("view", "/home/donde");
+
+		return "/_t/frame";
+	}
 }

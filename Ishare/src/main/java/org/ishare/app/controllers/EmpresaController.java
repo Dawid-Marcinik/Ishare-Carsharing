@@ -78,24 +78,6 @@ public class EmpresaController {
 
 		return "/_t/frame";
 	}
-	
-	@GetMapping("quienes")
-	public String empresaQGet(final ModelMap m,final HttpSession s) throws DangerException {
-		H.isRolOK("anon", s);
-		m.put("empresas", empresaRepository.findAll());
-		m.put("view", "/empresa/quienes");
-
-		return "/_t/frame";
-	}
-	
-	@GetMapping("donde")
-	public String empresaDGet(final ModelMap m,final HttpSession s) throws DangerException {
-		H.isRolOK("anon", s);
-		m.put("empresas", empresaRepository.findAll());
-		m.put("view", "/empresa/donde");
-
-		return "/_t/frame";
-	}
 
 	@GetMapping("u")
 	public String updateGet(@RequestParam("id") final Long id, final ModelMap m) {
