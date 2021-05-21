@@ -63,7 +63,7 @@ public class ParticularController {
 			final Rol rol = rolRepository.getOne(idRol);
 			final Particular p = new Particular(nombreUsuario, contrasena, localidad, direccion, iCodigoPostal,
 					iTelefono, email, rol, fSaldo, dni, nombre, apellidos, lFechaNacimiento);
-			H.isRolOK("Admin", s);
+			H.isRolOK("anon", s);
 			try {
 				particularRepository.save(p);
 

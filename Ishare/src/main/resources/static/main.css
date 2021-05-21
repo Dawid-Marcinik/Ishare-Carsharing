@@ -1,46 +1,61 @@
-/* line 11, main.scss */
+/* line 30, main.scss */
 .capsula {
   margin: 40px 0;
 }
 
-/* line 15, main.scss */
+/* line 34, main.scss */
 .btn-base {
-  background-color: cyan;
-  color: white;
+  background-color: teal !important;
+  color: white !important;
+  text-decoration: none !important;
+  transition: 2s;
 }
 
-/* line 20, main.scss */
-.patata {
-  background-color: green;
+/* line 42, main.scss */
+.btn-cancelar {
+  background-color: #ee9206 !important;
+  color: white !important;
+  text-decoration: none !important;
+  transition: 2s;
 }
 
-/* line 25, main.scss */
+/* line 50, main.scss */
+.btn-cancelar:hover {
+  background-color: #e9272d !important;
+}
+
+/* line 54, main.scss */
+.btn-base:hover {
+  background-color: #8bab0c !important;
+}
+
+/* line 58, main.scss */
 .cabecera {
   width: 100%;
   height: 100vh;
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), black);
 }
 
-/* line 30, main.scss */
+/* line 63, main.scss */
 .logo-container {
   width: 150px;
   height: 150px;
   display: inline-block;
 }
 
-/* line 35, main.scss */
+/* line 68, main.scss */
 .logo {
   object-fit: cover;
   width: 100%;
   height: 100%;
 }
 
-/* line 41, main.scss */
+/* line 74, main.scss */
 .texto-logo {
   display: inline-block;
 }
 
-/* line 44, main.scss */
+/* line 77, main.scss */
 .portada {
   background-image: url("/img/resources/portada.jpg");
   width: 100%;
@@ -50,10 +65,9 @@
   z-index: -1;
 }
 
-/* line 52, main.scss */
+/* line 86, main.scss */
 .barra-nav {
   width: 100%;
-  position: fixed !important;
   padding-top: 20px !important;
   padding-bottom: 20px !important;
   background-image: linear-gradient(to right, #0b1709, teal, #0b1709);
@@ -61,18 +75,18 @@
   z-index: 999;
 }
 
-/* line 62, main.scss */
+/* line 95, main.scss */
 .titulo {
   position: relative;
   margin-top: 100px;
 }
 
-/* line 66, main.scss */
+/* line 99, main.scss */
 .nav-link-color {
   color: black !important;
 }
 
-/* line 71, main.scss */
+/* line 104, main.scss */
 .pie-de-pagina-a {
   width: 100%;
   padding: 30px;
@@ -81,7 +95,7 @@
   text-align: center;
 }
 
-/* line 79, main.scss */
+/* line 112, main.scss */
 .pie-de-pagina-b {
   width: 100%;
   padding: 30px;
@@ -90,7 +104,7 @@
   text-align: center;
 }
 
-/* line 86, main.scss */
+/* line 119, main.scss */
 .card-admin {
   height: 270px;
   width: 100%;
@@ -98,16 +112,47 @@
   margin: 10px 0;
 }
 
-/* line 93, main.scss */
+/* line 126, main.scss */
 .img-admin-fondo {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* line 98, main.scss */
+/* line 131, main.scss */
 .overlay-menu-admin {
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent);
+}
+
+/* line 134, main.scss */
+.enlace {
+  color: white !important;
+  text-decoration: none !important;
+}
+
+/* line 138, main.scss */
+.enlace:visited {
+  color: white !important;
+  text-decoration: none !important;
+}
+
+/* line 142, main.scss */
+.carousel-personalizado {
+  height: 500px;
+}
+
+/* line 147, main.scss */
+.img-carousel {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+}
+
+/* line 154, main.scss */
+.mapa {
+  width: 100%;
+  height: 600px;
 }
 
 /*!
@@ -119,10 +164,10 @@
 /* line 1, node_modules/bootstrap/scss/_root.scss */
 :root {
   --breakpoint-xs: 0;
-  --breakpoint-sm: 576px;
+  --breakpoint-sm: 682px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
-  --breakpoint-xl: 1200px;
+  --breakpoint-xl: 1280px;
   --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
@@ -727,7 +772,7 @@ pre code {
   margin-left: auto;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 682px) {
   /* line 20, node_modules/bootstrap/scss/_grid.scss */
   .container, .container-sm {
     max-width: 540px;
@@ -745,7 +790,7 @@ pre code {
     max-width: 960px;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1280px) {
   /* line 20, node_modules/bootstrap/scss/_grid.scss */
   .container, .container-sm, .container-md, .container-lg, .container-xl {
     max-width: 1140px;
@@ -1036,7 +1081,7 @@ pre code {
   margin-left: 91.66667%;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 682px) {
   /* line 34, node_modules/bootstrap/scss/mixins/_grid-framework.scss */
   .col-sm {
     flex-basis: 0;
@@ -1810,7 +1855,7 @@ pre code {
     margin-left: 91.66667%;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1280px) {
   /* line 34, node_modules/bootstrap/scss/mixins/_grid-framework.scss */
   .col-xl {
     flex-basis: 0;
@@ -2378,7 +2423,7 @@ pre code {
   background-color: rgba(255, 255, 255, 0.075);
 }
 
-@media (max-width: 575.98px) {
+@media (max-width: 681.98px) {
   /* line 171, node_modules/bootstrap/scss/_tables.scss */
   .table-responsive-sm {
     display: block;
@@ -2417,7 +2462,7 @@ pre code {
     border: 0;
   }
 }
-@media (max-width: 1199.98px) {
+@media (max-width: 1279.98px) {
   /* line 171, node_modules/bootstrap/scss/_tables.scss */
   .table-responsive-xl {
     display: block;
@@ -2887,7 +2932,7 @@ textarea.form-control {
 .form-inline .form-check {
   width: 100%;
 }
-@media (min-width: 576px) {
+@media (min-width: 682px) {
   /* line 289, node_modules/bootstrap/scss/_forms.scss */
   .form-inline label {
     display: flex;
@@ -2946,7 +2991,7 @@ textarea.form-control {
 }
 
 /* line 7, node_modules/bootstrap/scss/_buttons.scss */
-.btn, .btn-base, .patata {
+.btn, .btn-base, .btn-cancelar {
   display: inline-block;
   font-weight: 400;
   color: white;
@@ -2963,34 +3008,34 @@ textarea.form-control {
 }
 @media (prefers-reduced-motion: reduce) {
   /* line 7, node_modules/bootstrap/scss/_buttons.scss */
-  .btn, .btn-base, .patata {
+  .btn, .btn-base, .btn-cancelar {
     transition: none;
   }
 }
 /* line 13, node_modules/bootstrap/scss/mixins/_hover.scss */
-.btn:hover, .btn-base:hover, .patata:hover {
+.btn:hover, .btn-base:hover, .btn-cancelar:hover {
   color: white;
   text-decoration: none;
 }
 /* line 27, node_modules/bootstrap/scss/_buttons.scss */
-.btn:focus, .btn-base:focus, .patata:focus, .btn.focus, .focus.btn-base, .focus.patata {
+.btn:focus, .btn-base:focus, .btn-cancelar:focus, .btn.focus, .focus.btn-base, .focus.btn-cancelar {
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 /* line 34, node_modules/bootstrap/scss/_buttons.scss */
-.btn.disabled, .disabled.btn-base, .disabled.patata, .btn:disabled, .btn-base:disabled, .patata:disabled {
+.btn.disabled, .disabled.btn-base, .disabled.btn-cancelar, .btn:disabled, .btn-base:disabled, .btn-cancelar:disabled {
   opacity: 0.65;
 }
 /* line 40, node_modules/bootstrap/scss/_buttons.scss */
-.btn:not(:disabled):not(.disabled), .btn-base:not(:disabled):not(.disabled), .patata:not(:disabled):not(.disabled) {
+.btn:not(:disabled):not(.disabled), .btn-base:not(:disabled):not(.disabled), .btn-cancelar:not(:disabled):not(.disabled) {
   cursor: pointer;
 }
 
 /* line 55, node_modules/bootstrap/scss/_buttons.scss */
-a.btn.disabled, a.disabled.btn-base, a.disabled.patata,
+a.btn.disabled, a.disabled.btn-base, a.disabled.btn-cancelar,
 fieldset:disabled a.btn,
 fieldset:disabled a.btn-base,
-fieldset:disabled a.patata {
+fieldset:disabled a.btn-cancelar {
   pointer-events: none;
 }
 
@@ -3552,7 +3597,7 @@ fieldset:disabled a.patata {
 }
 
 /* line 112, node_modules/bootstrap/scss/_buttons.scss */
-.btn-lg, .btn-group-lg > .btn, .btn-group-lg > .btn-base, .btn-group-lg > .patata {
+.btn-lg, .btn-group-lg > .btn, .btn-group-lg > .btn-base, .btn-group-lg > .btn-cancelar {
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
   line-height: 1.5;
@@ -3560,7 +3605,7 @@ fieldset:disabled a.patata {
 }
 
 /* line 116, node_modules/bootstrap/scss/_buttons.scss */
-.btn-sm, .btn-group-sm > .btn, .btn-group-sm > .btn-base, .btn-group-sm > .patata {
+.btn-sm, .btn-group-sm > .btn, .btn-group-sm > .btn-base, .btn-group-sm > .btn-cancelar {
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
   line-height: 1.5;
@@ -3679,7 +3724,7 @@ input[type="button"].btn-block {
   left: auto;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 682px) {
   /* line 42, node_modules/bootstrap/scss/_dropdown.scss */
   .dropdown-menu-sm-left {
     right: auto;
@@ -3718,7 +3763,7 @@ input[type="button"].btn-block {
     left: auto;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1280px) {
   /* line 42, node_modules/bootstrap/scss/_dropdown.scss */
   .dropdown-menu-xl-left {
     right: auto;
@@ -3896,31 +3941,31 @@ input[type="button"].btn-block {
   vertical-align: middle;
 }
 /* line 10, node_modules/bootstrap/scss/_button-group.scss */
-.btn-group > .btn, .btn-group > .btn-base, .btn-group > .patata,
+.btn-group > .btn, .btn-group > .btn-base, .btn-group > .btn-cancelar,
 .btn-group-vertical > .btn,
 .btn-group-vertical > .btn-base,
-.btn-group-vertical > .patata {
+.btn-group-vertical > .btn-cancelar {
   position: relative;
   flex: 1 1 auto;
 }
 /* line 13, node_modules/bootstrap/scss/mixins/_hover.scss */
-.btn-group > .btn:hover, .btn-group > .btn-base:hover, .btn-group > .patata:hover,
+.btn-group > .btn:hover, .btn-group > .btn-base:hover, .btn-group > .btn-cancelar:hover,
 .btn-group-vertical > .btn:hover,
 .btn-group-vertical > .btn-base:hover,
-.btn-group-vertical > .patata:hover {
+.btn-group-vertical > .btn-cancelar:hover {
   z-index: 1;
 }
 /* line 19, node_modules/bootstrap/scss/_button-group.scss */
-.btn-group > .btn:focus, .btn-group > .btn-base:focus, .btn-group > .patata:focus, .btn-group > .btn:active, .btn-group > .btn-base:active, .btn-group > .patata:active, .btn-group > .btn.active, .btn-group > .active.btn-base, .btn-group > .active.patata,
+.btn-group > .btn:focus, .btn-group > .btn-base:focus, .btn-group > .btn-cancelar:focus, .btn-group > .btn:active, .btn-group > .btn-base:active, .btn-group > .btn-cancelar:active, .btn-group > .btn.active, .btn-group > .active.btn-base, .btn-group > .active.btn-cancelar,
 .btn-group-vertical > .btn:focus,
 .btn-group-vertical > .btn-base:focus,
-.btn-group-vertical > .patata:focus,
+.btn-group-vertical > .btn-cancelar:focus,
 .btn-group-vertical > .btn:active,
 .btn-group-vertical > .btn-base:active,
-.btn-group-vertical > .patata:active,
+.btn-group-vertical > .btn-cancelar:active,
 .btn-group-vertical > .btn.active,
 .btn-group-vertical > .active.btn-base,
-.btn-group-vertical > .active.patata {
+.btn-group-vertical > .active.btn-cancelar {
   z-index: 1;
 }
 
@@ -3936,23 +3981,23 @@ input[type="button"].btn-block {
 }
 
 /* line 40, node_modules/bootstrap/scss/_button-group.scss */
-.btn-group > .btn:not(:first-child), .btn-group > .btn-base:not(:first-child), .btn-group > .patata:not(:first-child),
+.btn-group > .btn:not(:first-child), .btn-group > .btn-base:not(:first-child), .btn-group > .btn-cancelar:not(:first-child),
 .btn-group > .btn-group:not(:first-child) {
   margin-left: -1px;
 }
 /* line 46, node_modules/bootstrap/scss/_button-group.scss */
-.btn-group > .btn:not(:last-child):not(.dropdown-toggle), .btn-group > .btn-base:not(:last-child):not(.dropdown-toggle), .btn-group > .patata:not(:last-child):not(.dropdown-toggle),
+.btn-group > .btn:not(:last-child):not(.dropdown-toggle), .btn-group > .btn-base:not(:last-child):not(.dropdown-toggle), .btn-group > .btn-cancelar:not(:last-child):not(.dropdown-toggle),
 .btn-group > .btn-group:not(:last-child) > .btn,
 .btn-group > .btn-group:not(:last-child) > .btn-base,
-.btn-group > .btn-group:not(:last-child) > .patata {
+.btn-group > .btn-group:not(:last-child) > .btn-cancelar {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 /* line 51, node_modules/bootstrap/scss/_button-group.scss */
-.btn-group > .btn:not(:first-child), .btn-group > .btn-base:not(:first-child), .btn-group > .patata:not(:first-child),
+.btn-group > .btn:not(:first-child), .btn-group > .btn-base:not(:first-child), .btn-group > .btn-cancelar:not(:first-child),
 .btn-group > .btn-group:not(:first-child) > .btn,
 .btn-group > .btn-group:not(:first-child) > .btn-base,
-.btn-group > .btn-group:not(:first-child) > .patata {
+.btn-group > .btn-group:not(:first-child) > .btn-cancelar {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
@@ -3972,13 +4017,13 @@ input[type="button"].btn-block {
 }
 
 /* line 84, node_modules/bootstrap/scss/_button-group.scss */
-.btn-sm + .dropdown-toggle-split, .btn-group-sm > .btn + .dropdown-toggle-split, .btn-group-sm > .btn-base + .dropdown-toggle-split, .btn-group-sm > .patata + .dropdown-toggle-split {
+.btn-sm + .dropdown-toggle-split, .btn-group-sm > .btn + .dropdown-toggle-split, .btn-group-sm > .btn-base + .dropdown-toggle-split, .btn-group-sm > .btn-cancelar + .dropdown-toggle-split {
   padding-right: 0.375rem;
   padding-left: 0.375rem;
 }
 
 /* line 89, node_modules/bootstrap/scss/_button-group.scss */
-.btn-lg + .dropdown-toggle-split, .btn-group-lg > .btn + .dropdown-toggle-split, .btn-group-lg > .btn-base + .dropdown-toggle-split, .btn-group-lg > .patata + .dropdown-toggle-split {
+.btn-lg + .dropdown-toggle-split, .btn-group-lg > .btn + .dropdown-toggle-split, .btn-group-lg > .btn-base + .dropdown-toggle-split, .btn-group-lg > .btn-cancelar + .dropdown-toggle-split {
   padding-right: 0.75rem;
   padding-left: 0.75rem;
 }
@@ -3990,50 +4035,50 @@ input[type="button"].btn-block {
   justify-content: center;
 }
 /* line 116, node_modules/bootstrap/scss/_button-group.scss */
-.btn-group-vertical > .btn, .btn-group-vertical > .btn-base, .btn-group-vertical > .patata,
+.btn-group-vertical > .btn, .btn-group-vertical > .btn-base, .btn-group-vertical > .btn-cancelar,
 .btn-group-vertical > .btn-group {
   width: 100%;
 }
 /* line 121, node_modules/bootstrap/scss/_button-group.scss */
-.btn-group-vertical > .btn:not(:first-child), .btn-group-vertical > .btn-base:not(:first-child), .btn-group-vertical > .patata:not(:first-child),
+.btn-group-vertical > .btn:not(:first-child), .btn-group-vertical > .btn-base:not(:first-child), .btn-group-vertical > .btn-cancelar:not(:first-child),
 .btn-group-vertical > .btn-group:not(:first-child) {
   margin-top: -1px;
 }
 /* line 127, node_modules/bootstrap/scss/_button-group.scss */
-.btn-group-vertical > .btn:not(:last-child):not(.dropdown-toggle), .btn-group-vertical > .btn-base:not(:last-child):not(.dropdown-toggle), .btn-group-vertical > .patata:not(:last-child):not(.dropdown-toggle),
+.btn-group-vertical > .btn:not(:last-child):not(.dropdown-toggle), .btn-group-vertical > .btn-base:not(:last-child):not(.dropdown-toggle), .btn-group-vertical > .btn-cancelar:not(:last-child):not(.dropdown-toggle),
 .btn-group-vertical > .btn-group:not(:last-child) > .btn,
 .btn-group-vertical > .btn-group:not(:last-child) > .btn-base,
-.btn-group-vertical > .btn-group:not(:last-child) > .patata {
+.btn-group-vertical > .btn-group:not(:last-child) > .btn-cancelar {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
 /* line 132, node_modules/bootstrap/scss/_button-group.scss */
-.btn-group-vertical > .btn:not(:first-child), .btn-group-vertical > .btn-base:not(:first-child), .btn-group-vertical > .patata:not(:first-child),
+.btn-group-vertical > .btn:not(:first-child), .btn-group-vertical > .btn-base:not(:first-child), .btn-group-vertical > .btn-cancelar:not(:first-child),
 .btn-group-vertical > .btn-group:not(:first-child) > .btn,
 .btn-group-vertical > .btn-group:not(:first-child) > .btn-base,
-.btn-group-vertical > .btn-group:not(:first-child) > .patata {
+.btn-group-vertical > .btn-group:not(:first-child) > .btn-cancelar {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
 
 /* line 152, node_modules/bootstrap/scss/_button-group.scss */
-.btn-group-toggle > .btn, .btn-group-toggle > .btn-base, .btn-group-toggle > .patata,
+.btn-group-toggle > .btn, .btn-group-toggle > .btn-base, .btn-group-toggle > .btn-cancelar,
 .btn-group-toggle > .btn-group > .btn,
 .btn-group-toggle > .btn-group > .btn-base,
-.btn-group-toggle > .btn-group > .patata {
+.btn-group-toggle > .btn-group > .btn-cancelar {
   margin-bottom: 0;
 }
 /* line 156, node_modules/bootstrap/scss/_button-group.scss */
-.btn-group-toggle > .btn input[type="radio"], .btn-group-toggle > .btn-base input[type="radio"], .btn-group-toggle > .patata input[type="radio"],
+.btn-group-toggle > .btn input[type="radio"], .btn-group-toggle > .btn-base input[type="radio"], .btn-group-toggle > .btn-cancelar input[type="radio"],
 .btn-group-toggle > .btn input[type="checkbox"],
 .btn-group-toggle > .btn-base input[type="checkbox"],
-.btn-group-toggle > .patata input[type="checkbox"],
+.btn-group-toggle > .btn-cancelar input[type="checkbox"],
 .btn-group-toggle > .btn-group > .btn input[type="radio"],
 .btn-group-toggle > .btn-group > .btn-base input[type="radio"],
-.btn-group-toggle > .btn-group > .patata input[type="radio"],
+.btn-group-toggle > .btn-group > .btn-cancelar input[type="radio"],
 .btn-group-toggle > .btn-group > .btn input[type="checkbox"],
 .btn-group-toggle > .btn-group > .btn-base input[type="checkbox"],
-.btn-group-toggle > .btn-group > .patata input[type="checkbox"] {
+.btn-group-toggle > .btn-group > .btn-cancelar input[type="checkbox"] {
   position: absolute;
   clip: rect(0, 0, 0, 0);
   pointer-events: none;
@@ -4120,45 +4165,45 @@ input[type="button"].btn-block {
   display: flex;
 }
 /* line 89, node_modules/bootstrap/scss/_input-group.scss */
-.input-group-prepend .btn, .input-group-prepend .btn-base, .input-group-prepend .patata,
+.input-group-prepend .btn, .input-group-prepend .btn-base, .input-group-prepend .btn-cancelar,
 .input-group-append .btn,
 .input-group-append .btn-base,
-.input-group-append .patata {
+.input-group-append .btn-cancelar {
   position: relative;
   z-index: 2;
 }
 /* line 93, node_modules/bootstrap/scss/_input-group.scss */
-.input-group-prepend .btn:focus, .input-group-prepend .btn-base:focus, .input-group-prepend .patata:focus,
+.input-group-prepend .btn:focus, .input-group-prepend .btn-base:focus, .input-group-prepend .btn-cancelar:focus,
 .input-group-append .btn:focus,
 .input-group-append .btn-base:focus,
-.input-group-append .patata:focus {
+.input-group-append .btn-cancelar:focus {
   z-index: 3;
 }
 /* line 98, node_modules/bootstrap/scss/_input-group.scss */
-.input-group-prepend .btn + .btn, .input-group-prepend .btn-base + .btn, .input-group-prepend .patata + .btn, .input-group-prepend .btn + .btn-base, .input-group-prepend .btn-base + .btn-base, .input-group-prepend .patata + .btn-base, .input-group-prepend .btn + .patata, .input-group-prepend .btn-base + .patata, .input-group-prepend .patata + .patata,
+.input-group-prepend .btn + .btn, .input-group-prepend .btn-base + .btn, .input-group-prepend .btn-cancelar + .btn, .input-group-prepend .btn + .btn-base, .input-group-prepend .btn-base + .btn-base, .input-group-prepend .btn-cancelar + .btn-base, .input-group-prepend .btn + .btn-cancelar, .input-group-prepend .btn-base + .btn-cancelar, .input-group-prepend .btn-cancelar + .btn-cancelar,
 .input-group-prepend .btn + .input-group-text,
 .input-group-prepend .btn-base + .input-group-text,
-.input-group-prepend .patata + .input-group-text,
+.input-group-prepend .btn-cancelar + .input-group-text,
 .input-group-prepend .input-group-text + .input-group-text,
 .input-group-prepend .input-group-text + .btn,
 .input-group-prepend .input-group-text + .btn-base,
-.input-group-prepend .input-group-text + .patata,
+.input-group-prepend .input-group-text + .btn-cancelar,
 .input-group-append .btn + .btn,
 .input-group-append .btn-base + .btn,
-.input-group-append .patata + .btn,
+.input-group-append .btn-cancelar + .btn,
 .input-group-append .btn + .btn-base,
 .input-group-append .btn-base + .btn-base,
-.input-group-append .patata + .btn-base,
-.input-group-append .btn + .patata,
-.input-group-append .btn-base + .patata,
-.input-group-append .patata + .patata,
+.input-group-append .btn-cancelar + .btn-base,
+.input-group-append .btn + .btn-cancelar,
+.input-group-append .btn-base + .btn-cancelar,
+.input-group-append .btn-cancelar + .btn-cancelar,
 .input-group-append .btn + .input-group-text,
 .input-group-append .btn-base + .input-group-text,
-.input-group-append .patata + .input-group-text,
+.input-group-append .btn-cancelar + .input-group-text,
 .input-group-append .input-group-text + .input-group-text,
 .input-group-append .input-group-text + .btn,
 .input-group-append .input-group-text + .btn-base,
-.input-group-append .input-group-text + .patata {
+.input-group-append .input-group-text + .btn-cancelar {
   margin-left: -1px;
 }
 
@@ -4207,10 +4252,10 @@ input[type="button"].btn-block {
 .input-group-lg > .input-group-append > .input-group-text,
 .input-group-lg > .input-group-prepend > .btn,
 .input-group-lg > .input-group-prepend > .btn-base,
-.input-group-lg > .input-group-prepend > .patata,
+.input-group-lg > .input-group-prepend > .btn-cancelar,
 .input-group-lg > .input-group-append > .btn,
 .input-group-lg > .input-group-append > .btn-base,
-.input-group-lg > .input-group-append > .patata {
+.input-group-lg > .input-group-append > .btn-cancelar {
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
   line-height: 1.5;
@@ -4230,10 +4275,10 @@ input[type="button"].btn-block {
 .input-group-sm > .input-group-append > .input-group-text,
 .input-group-sm > .input-group-prepend > .btn,
 .input-group-sm > .input-group-prepend > .btn-base,
-.input-group-sm > .input-group-prepend > .patata,
+.input-group-sm > .input-group-prepend > .btn-cancelar,
 .input-group-sm > .input-group-append > .btn,
 .input-group-sm > .input-group-append > .btn-base,
-.input-group-sm > .input-group-append > .patata {
+.input-group-sm > .input-group-append > .btn-cancelar {
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
   line-height: 1.5;
@@ -4247,34 +4292,34 @@ input[type="button"].btn-block {
 }
 
 /* line 190, node_modules/bootstrap/scss/_input-group.scss */
-.input-group > .input-group-prepend > .btn, .input-group > .input-group-prepend > .btn-base, .input-group > .input-group-prepend > .patata,
+.input-group > .input-group-prepend > .btn, .input-group > .input-group-prepend > .btn-base, .input-group > .input-group-prepend > .btn-cancelar,
 .input-group > .input-group-prepend > .input-group-text,
 .input-group:not(.has-validation) > .input-group-append:not(:last-child) > .btn,
 .input-group:not(.has-validation) > .input-group-append:not(:last-child) > .btn-base,
-.input-group:not(.has-validation) > .input-group-append:not(:last-child) > .patata,
+.input-group:not(.has-validation) > .input-group-append:not(:last-child) > .btn-cancelar,
 .input-group:not(.has-validation) > .input-group-append:not(:last-child) > .input-group-text,
 .input-group.has-validation > .input-group-append:nth-last-child(n + 3) > .btn,
 .input-group.has-validation > .input-group-append:nth-last-child(n + 3) > .btn-base,
-.input-group.has-validation > .input-group-append:nth-last-child(n + 3) > .patata,
+.input-group.has-validation > .input-group-append:nth-last-child(n + 3) > .btn-cancelar,
 .input-group.has-validation > .input-group-append:nth-last-child(n + 3) > .input-group-text,
 .input-group > .input-group-append:last-child > .btn:not(:last-child):not(.dropdown-toggle),
 .input-group > .input-group-append:last-child > .btn-base:not(:last-child):not(.dropdown-toggle),
-.input-group > .input-group-append:last-child > .patata:not(:last-child):not(.dropdown-toggle),
+.input-group > .input-group-append:last-child > .btn-cancelar:not(:last-child):not(.dropdown-toggle),
 .input-group > .input-group-append:last-child > .input-group-text:not(:last-child) {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
 /* line 201, node_modules/bootstrap/scss/_input-group.scss */
-.input-group > .input-group-append > .btn, .input-group > .input-group-append > .btn-base, .input-group > .input-group-append > .patata,
+.input-group > .input-group-append > .btn, .input-group > .input-group-append > .btn-base, .input-group > .input-group-append > .btn-cancelar,
 .input-group > .input-group-append > .input-group-text,
 .input-group > .input-group-prepend:not(:first-child) > .btn,
 .input-group > .input-group-prepend:not(:first-child) > .btn-base,
-.input-group > .input-group-prepend:not(:first-child) > .patata,
+.input-group > .input-group-prepend:not(:first-child) > .btn-cancelar,
 .input-group > .input-group-prepend:not(:first-child) > .input-group-text,
 .input-group > .input-group-prepend:first-child > .btn:not(:first-child),
 .input-group > .input-group-prepend:first-child > .btn-base:not(:first-child),
-.input-group > .input-group-prepend:first-child > .patata:not(:first-child),
+.input-group > .input-group-prepend:first-child > .btn-cancelar:not(:first-child),
 .input-group > .input-group-prepend:first-child > .input-group-text:not(:first-child) {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
@@ -4945,7 +4990,7 @@ input[type="button"].btn-block {
   overflow-y: auto;
 }
 
-@media (max-width: 575.98px) {
+@media (max-width: 681.98px) {
   /* line 156, node_modules/bootstrap/scss/_navbar.scss */
   .navbar-expand-sm > .container,
   .navbar-expand-sm > .container-fluid,
@@ -4957,7 +5002,7 @@ input[type="button"].btn-block {
     padding-left: 0;
   }
 }
-@media (min-width: 576px) {
+@media (min-width: 682px) {
   /* line 154, node_modules/bootstrap/scss/_navbar.scss */
   .navbar-expand-sm {
     flex-flow: row nowrap;
@@ -5107,7 +5152,7 @@ input[type="button"].btn-block {
     display: none;
   }
 }
-@media (max-width: 1199.98px) {
+@media (max-width: 1279.98px) {
   /* line 156, node_modules/bootstrap/scss/_navbar.scss */
   .navbar-expand-xl > .container,
   .navbar-expand-xl > .container-fluid,
@@ -5119,7 +5164,7 @@ input[type="button"].btn-block {
     padding-left: 0;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1280px) {
   /* line 154, node_modules/bootstrap/scss/_navbar.scss */
   .navbar-expand-xl {
     flex-flow: row nowrap;
@@ -5463,7 +5508,7 @@ input[type="button"].btn-block {
 .card-deck .card, .card-deck .card-admin {
   margin-bottom: 15px;
 }
-@media (min-width: 576px) {
+@media (min-width: 682px) {
   /* line 154, node_modules/bootstrap/scss/_card.scss */
   .card-deck {
     display: flex;
@@ -5484,7 +5529,7 @@ input[type="button"].btn-block {
 .card-group > .card, .card-group > .card-admin {
   margin-bottom: 15px;
 }
-@media (min-width: 576px) {
+@media (min-width: 682px) {
   /* line 180, node_modules/bootstrap/scss/_card.scss */
   .card-group {
     display: flex;
@@ -5540,7 +5585,7 @@ input[type="button"].btn-block {
 .card-columns .card, .card-columns .card-admin {
   margin-bottom: 0.75rem;
 }
-@media (min-width: 576px) {
+@media (min-width: 682px) {
   /* line 243, node_modules/bootstrap/scss/_card.scss */
   .card-columns {
     column-count: 3;
@@ -5739,7 +5784,7 @@ a.badge:hover, a.badge:focus {
 }
 
 /* line 31, node_modules/bootstrap/scss/_badge.scss */
-.btn .badge, .btn-base .badge, .patata .badge {
+.btn .badge, .btn-base .badge, .btn-cancelar .badge {
   position: relative;
   top: -1px;
 }
@@ -5886,7 +5931,7 @@ a.badge-dark:focus, a.badge-dark.focus {
   background-color: #e9ecef;
   border-radius: 0.3rem;
 }
-@media (min-width: 576px) {
+@media (min-width: 682px) {
   /* line 1, node_modules/bootstrap/scss/_jumbotron.scss */
   .jumbotron {
     padding: 4rem 2rem;
@@ -6217,7 +6262,7 @@ a.badge-dark:focus, a.badge-dark.focus {
   border-left-width: 1px;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 682px) {
   /* line 96, node_modules/bootstrap/scss/_list-group.scss */
   .list-group-horizontal-sm {
     flex-direction: row;
@@ -6307,7 +6352,7 @@ a.badge-dark:focus, a.badge-dark.focus {
     border-left-width: 1px;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1280px) {
   /* line 96, node_modules/bootstrap/scss/_list-group.scss */
   .list-group-horizontal-xl {
     flex-direction: row;
@@ -6751,7 +6796,7 @@ a.close.disabled {
   overflow: scroll;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 682px) {
   /* line 202, node_modules/bootstrap/scss/_modal.scss */
   .modal-dialog {
     max-width: 500px;
@@ -6789,7 +6834,7 @@ a.close.disabled {
     max-width: 800px;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1280px) {
   /* line 239, node_modules/bootstrap/scss/_modal.scss */
   .modal-xl {
     max-width: 1140px;
@@ -7091,13 +7136,13 @@ a.close.disabled {
 }
 
 /* line 22, node_modules/bootstrap/scss/_carousel.scss */
-.carousel-inner {
+.carousel-inner, .carousel-personalizado {
   position: relative;
   width: 100%;
   overflow: hidden;
 }
 /* line 2, node_modules/bootstrap/scss/mixins/_clearfix.scss */
-.carousel-inner::after {
+.carousel-inner::after, .carousel-personalizado::after {
   display: block;
   clear: both;
   content: "";
@@ -7679,7 +7724,7 @@ button.bg-dark:focus {
   display: inline-flex !important;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 682px) {
   /* line 12, node_modules/bootstrap/scss/utilities/_display.scss */
   .d-sm-none {
     display: none !important;
@@ -7817,7 +7862,7 @@ button.bg-dark:focus {
     display: inline-flex !important;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1280px) {
   /* line 12, node_modules/bootstrap/scss/utilities/_display.scss */
   .d-xl-none {
     display: none !important;
@@ -8127,7 +8172,7 @@ button.bg-dark:focus {
   align-self: stretch !important;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 682px) {
   /* line 11, node_modules/bootstrap/scss/utilities/_flex.scss */
   .flex-sm-row {
     flex-direction: row !important;
@@ -8640,7 +8685,7 @@ button.bg-dark:focus {
     align-self: stretch !important;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1280px) {
   /* line 11, node_modules/bootstrap/scss/utilities/_flex.scss */
   .flex-xl-row {
     flex-direction: row !important;
@@ -8826,7 +8871,7 @@ button.bg-dark:focus {
   float: none !important;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 682px) {
   /* line 7, node_modules/bootstrap/scss/utilities/_float.scss */
   .float-sm-left {
     float: left !important;
@@ -8874,7 +8919,7 @@ button.bg-dark:focus {
     float: none !important;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1280px) {
   /* line 7, node_modules/bootstrap/scss/utilities/_float.scss */
   .float-xl-left {
     float: left !important;
@@ -9612,7 +9657,7 @@ button.bg-dark:focus {
   margin-left: auto !important;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 682px) {
   /* line 11, node_modules/bootstrap/scss/utilities/_spacing.scss */
   .m-sm-0 {
     margin: 0 !important;
@@ -11181,7 +11226,7 @@ button.bg-dark:focus {
     margin-left: auto !important;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1280px) {
   /* line 11, node_modules/bootstrap/scss/utilities/_spacing.scss */
   .m-xl-0 {
     margin: 0 !important;
@@ -11759,7 +11804,7 @@ button.bg-dark:focus {
   text-align: center !important;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 682px) {
   /* line 22, node_modules/bootstrap/scss/utilities/_text.scss */
   .text-sm-left {
     text-align: left !important;
@@ -11807,7 +11852,7 @@ button.bg-dark:focus {
     text-align: center !important;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1280px) {
   /* line 22, node_modules/bootstrap/scss/utilities/_text.scss */
   .text-xl-left {
     text-align: left !important;
@@ -12018,7 +12063,7 @@ a.text-dark:hover, a.text-dark:focus {
   }
 
   /* line 24, node_modules/bootstrap/scss/_print.scss */
-  a:not(.btn):not(.btn-base):not(.patata) {
+  a:not(.btn):not(.btn-base):not(.btn-cancelar) {
     text-decoration: underline;
   }
 

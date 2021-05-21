@@ -3,9 +3,28 @@
 
 // PRIMERO: Sobreescritura de variables de boostrap
 
+$grid-breakpoints: (
+  // Extra small screen / phone
+  xs: 0,
+  // Small screen / phone
+  sm: 682px,
+  // Medium screen / tablet
+  md: 768px,
+  // Large screen / desktop
+  lg: 992px,
+  // Extra large screen / wide desktop
+  xl: 1280px
+);
 $body-color: white;
 $body-bg: black;
 $font-family-base: 'Play', sans-serif;
+$color-nav-centro:rgb(0, 128, 128);
+$color-footer-centro: rgb(139, 171, 12);
+$color-boton-base-hover:rgb(139, 171, 12);
+$color-boton-base:rgb(0, 128, 128);
+$color-nav-lateral:rgb(11, 23, 9);
+$color-cancelar-base:rgb(238, 146, 6);
+$color-cancelar-base-hover:rgb(233, 39, 45);
 
 // SEGUNDO: EXTENSIONES A LAS CLASES DE BOOTSTRAP
 .capsula{
@@ -14,12 +33,26 @@ $font-family-base: 'Play', sans-serif;
 
 .btn-base{
 	@extend .btn;
-	background-color: cyan;
-	color: white;
+	background-color: $color-boton-base !important;
+	color: $body-color !important;
+	text-decoration: none !important;
+	transition: 2s;
 }
-.patata{
+
+.btn-cancelar{
 	@extend .btn;
-	background-color: green;
+	background-color: $color-cancelar-base !important;
+	color: $body-color !important;
+	text-decoration: none !important;
+	transition: 2s;
+}
+
+.btn-cancelar:hover{
+	background-color: $color-cancelar-base-hover !important;
+}
+
+.btn-base:hover{
+	background-color: $color-footer-centro !important;
 }
 
 .cabecera{
@@ -49,13 +82,13 @@ $font-family-base: 'Play', sans-serif;
 	position: absolute;
 	z-index: -1;
 }
+
 .barra-nav{
 	width: 100%;
-	position: fixed !important;
 	padding-top: 20px !important;
 	padding-bottom: 20px !important;
-	background-image: linear-gradient(to right,rgb(11, 23, 9),rgb(0, 128, 128),rgb(11, 23, 9));
-	color: black !important;
+	background-image: linear-gradient(to right,$color-nav-lateral,$color-nav-centro,$color-nav-lateral);
+	color: $body-bg !important;
 	z-index:999;
 	
 }
@@ -65,22 +98,22 @@ $font-family-base: 'Play', sans-serif;
 }
 .nav-link-color{
 	@extend .nav-link;
-	color:black !important;
+	color: $body-bg !important;
 }
 
 .pie-de-pagina-a{
 	width: 100%;
 	padding: 30px;
-	background-image: linear-gradient(to right,rgb(11, 23, 9),rgb(0, 128, 128),rgb(11, 23, 9));
-	color:white;
+	background-image: linear-gradient(to right,$color-nav-lateral,$color-nav-centro,$color-nav-lateral);
+	color: $body-color;
 	text-align: center;
 	
 }
 .pie-de-pagina-b{
 	width: 100%;
 	padding: 30px;
-	background-image: linear-gradient(to right,rgb(11, 23, 9),rgb(139, 171, 12),rgb(11, 23, 9));
-	color:white;
+	background-image: linear-gradient(to right,$color-nav-lateral,$color-footer-centro,$color-nav-lateral);
+	color: $body-color;
 	text-align: center;
 }
 .card-admin{
@@ -97,6 +130,30 @@ $font-family-base: 'Play', sans-serif;
 }
 .overlay-menu-admin{
 	background-image: linear-gradient(to bottom,rgba(0,0,0,0.6),rgba(0,0,0,0));
+}
+.enlace{
+	color: $body-color !important;
+	text-decoration: none !important;
+}
+.enlace:visited{
+	color: $body-color !important;
+	text-decoration: none !important;
+}
+.carousel-personalizado{
+	@extend .carousel-inner;
+	height:500px;
+}
+
+.img-carousel{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	position: relative;
+}
+
+.mapa{
+	width:100%;
+	height:600px;
 }
 // TERCERO: IMPORTACIÓN DEL PROPIO BOOTSTRAP
 @import "node_modules/bootstrap/scss/bootstrap";

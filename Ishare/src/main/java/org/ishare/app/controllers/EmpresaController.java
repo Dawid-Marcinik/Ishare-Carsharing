@@ -58,7 +58,7 @@ public class EmpresaController {
 			final Rol rol = rolRepository.getOne(idRol);
 			final Empresa em = new Empresa(nombreUsuario, contrasena, localidad, direccion, iCodigoPostal, iTelefono,
 					email, rol, fSaldo, cif, razonSocial);
-			H.isRolOK("Admin", s);
+			H.isRolOK("anon", s);
 			try {
 				empresaRepository.save(em);
 			} catch (final Exception e) {

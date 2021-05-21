@@ -1,5 +1,5 @@
 <meta charset=UTF-8>
-<header class="cabecera">
+<header th:if="${#httpServletRequest.requestURI == '/'}" class="cabecera">
 <div class="portada">
 	<img class="portada" src="/img/resources/portada.jpg" alt="portada">
 	<div class="norow">

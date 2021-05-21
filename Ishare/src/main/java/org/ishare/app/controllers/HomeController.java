@@ -107,7 +107,6 @@ public class HomeController {
 	
 	@GetMapping("quienes")
 	public String empresaQGet(final ModelMap m,final HttpSession s) throws DangerException {
-		H.isRolOK("anon", s);
 		m.put("view", "/home/quienes");
 
 		return "/_t/frame";
@@ -115,7 +114,38 @@ public class HomeController {
 	
 	@GetMapping("donde")
 	public String empresaDGet(final ModelMap m,final HttpSession s) throws DangerException {
-		H.isRolOK("anon", s);
+		m.put("view", "/home/donde");
+
+		return "/_t/frame";
+	}
+	
+	//Añadido por si acaso
+	@GetMapping("/administracion")
+	public String administracion(final ModelMap modelo, final HttpSession s) throws DangerException {
+		H.isRolOK("Admin", s);
+		modelo.put("view", "/home/menuAdmin");
+		return "_t/frame";
+	}
+	@GetMapping("/politicasC")
+	public String politicasC(final ModelMap m, final HttpSession s) throws DangerException {
+		m.put("view", "/home/donde");
+
+		return "/_t/frame";
+	}
+	@GetMapping("/terminosC")
+	public String terminosC(final ModelMap m, final HttpSession s) throws DangerException {
+		m.put("view", "/home/donde");
+
+		return "/_t/frame";
+	}
+	@GetMapping("/privacidadP")
+	public String privacidadP(final ModelMap m, final HttpSession s) throws DangerException {
+		m.put("view", "/home/donde");
+
+		return "/_t/frame";
+	}
+	@GetMapping("/preciosP")
+	public String politicasP(final ModelMap m, final HttpSession s) throws DangerException {
 		m.put("view", "/home/donde");
 
 		return "/_t/frame";
