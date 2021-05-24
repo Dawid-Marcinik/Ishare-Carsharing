@@ -18,9 +18,11 @@ function validar_modelo(campo){
 	pasajerosBien = validar_pasajeros(formulario.numeroPasajeros);
 	autonomiaBien = validar_autonomia(formulario.autonomiaTotal);
 	tarifaBien = validar_tarifa(formulario.tarifa);
+	imagenBien = validar_imagen(formulario.imagen);
 	
-	if(modeloBien == true && pasajerosBien == true && autonomiaBien == true && tarifaBien == true) formulario.envio.disabled = false;
+	if(modeloBien == true && pasajerosBien == true && autonomiaBien == true && tarifaBien == true && imagenBien == true) formulario.envio.disabled = false;
 	else formulario.envio.disabled = true;
+	console.log(imagenBien);
 	
 }
 
@@ -146,5 +148,14 @@ function validar_tarifa(elemento){
 		validar_campo_aspecto(elemento, devuelvo);
 		return devuelvo;
 	}
-	
 }
+function validar_imagen(elemento){
+
+  devuelvo = true;
+
+     if($(elemento).val() == ''){
+        devuelvo = false;
+     }
+
+    return devuelvo;
+}	

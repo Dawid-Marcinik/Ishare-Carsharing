@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -27,6 +28,9 @@ public class Modelo {
 	private Integer autonomiaTotal;
 	@Column
 	private Float tarifa;
+	@Lob
+    @Column(name = "imagen")
+    private byte[] imagen;
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Marca marca;
 	@OneToMany(mappedBy = "modelo", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
@@ -36,7 +40,7 @@ public class Modelo {
 	public Modelo() {
 	}
 
-	public Modelo(String nombre, Integer numeroPasajeros, Tipo tipo, Integer autonomiaTotal, Float tarifa,
+	public Modelo(String nombre, Integer numeroPasajeros, Tipo tipo, Integer autonomiaTotal, Float tarifa, byte[] imagen,
 			Marca marca) {
 		super();
 		this.nombre = nombre;
@@ -45,6 +49,7 @@ public class Modelo {
 		this.autonomiaTotal = autonomiaTotal;
 		this.tarifa = tarifa;
 		this.marca = marca;
+		this.imagen = imagen;
 	}
 	
 	//GETTERS Y SETTERS
@@ -110,6 +115,14 @@ public class Modelo {
 
 	public void setCoches(List<Coche> coches) {
 		this.coches = coches;
+	}
+
+	public byte[] getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(byte[] imagen) {
+		this.imagen = imagen;
 	}
 	
 }

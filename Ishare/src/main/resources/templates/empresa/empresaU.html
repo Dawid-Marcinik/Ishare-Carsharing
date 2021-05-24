@@ -41,7 +41,8 @@
 		
 		<input type="hidden" name="id" th:value="${empresa.id}"/>
 		
-		<input type="submit" id="envio" class="form-item" onclick="validar(this.form)"/>
+		<input class="btn-base" type="submit" id="envio" class="form-item" onclick="validar(this.form)"/>
+		<button class="btn-cancelar"><a class="enlace" href="/">Volver</a></button>
 	</form>
 	</div>
 	<script src="/js/expRegEmpresa.js"></script>

@@ -1,46 +1,80 @@
-/* line 11, main.scss */
+/* line 30, main.scss */
 .capsula {
   margin: 40px 0;
 }
 
-/* line 15, main.scss */
+/* line 33, main.scss */
+.card-coche {
+  background-color: #1b5165 !important;
+}
+
+/* line 37, main.scss */
+.card-coche-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+}
+
+/* line 43, main.scss */
+.card-coche-img-container {
+  width: 100%;
+  height: 200px;
+}
+
+/* line 48, main.scss */
 .btn-base {
-  background-color: cyan;
-  color: white;
+  background-color: teal !important;
+  color: white !important;
+  text-decoration: none !important;
+  transition: 2s;
 }
 
-/* line 20, main.scss */
-.patata {
-  background-color: green;
+/* line 56, main.scss */
+.btn-cancelar {
+  background-color: #ee9206 !important;
+  color: white !important;
+  text-decoration: none !important;
+  transition: 2s;
 }
 
-/* line 25, main.scss */
+/* line 64, main.scss */
+.btn-cancelar:hover {
+  background-color: #e9272d !important;
+}
+
+/* line 68, main.scss */
+.btn-base:hover {
+  background-color: #8bab0c !important;
+}
+
+/* line 72, main.scss */
 .cabecera {
   width: 100%;
   height: 100vh;
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), black);
 }
 
-/* line 30, main.scss */
+/* line 77, main.scss */
 .logo-container {
   width: 150px;
   height: 150px;
   display: inline-block;
 }
 
-/* line 35, main.scss */
+/* line 82, main.scss */
 .logo {
   object-fit: cover;
   width: 100%;
   height: 100%;
 }
 
-/* line 41, main.scss */
+/* line 88, main.scss */
 .texto-logo {
   display: inline-block;
 }
 
-/* line 44, main.scss */
+/* line 91, main.scss */
 .portada {
   background-image: url("/img/resources/portada.jpg");
   width: 100%;
@@ -50,10 +84,9 @@
   z-index: -1;
 }
 
-/* line 52, main.scss */
+/* line 100, main.scss */
 .barra-nav {
   width: 100%;
-  position: fixed !important;
   padding-top: 20px !important;
   padding-bottom: 20px !important;
   background-image: linear-gradient(to right, #0b1709, teal, #0b1709);
@@ -61,18 +94,18 @@
   z-index: 999;
 }
 
-/* line 62, main.scss */
+/* line 109, main.scss */
 .titulo {
   position: relative;
   margin-top: 100px;
 }
 
-/* line 66, main.scss */
+/* line 113, main.scss */
 .nav-link-color {
   color: black !important;
 }
 
-/* line 71, main.scss */
+/* line 118, main.scss */
 .pie-de-pagina-a {
   width: 100%;
   padding: 30px;
@@ -81,7 +114,7 @@
   text-align: center;
 }
 
-/* line 79, main.scss */
+/* line 126, main.scss */
 .pie-de-pagina-b {
   width: 100%;
   padding: 30px;
@@ -90,7 +123,7 @@
   text-align: center;
 }
 
-/* line 86, main.scss */
+/* line 133, main.scss */
 .card-admin {
   height: 270px;
   width: 100%;
@@ -98,16 +131,52 @@
   margin: 10px 0;
 }
 
-/* line 93, main.scss */
+/* line 140, main.scss */
 .img-admin-fondo {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* line 98, main.scss */
+/* line 145, main.scss */
 .overlay-menu-admin {
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent);
+}
+
+/* line 148, main.scss */
+.enlace {
+  color: white !important;
+  text-decoration: none !important;
+}
+
+/* line 152, main.scss */
+.enlace:visited {
+  color: white !important;
+  text-decoration: none !important;
+}
+
+/* line 156, main.scss */
+.carousel-personalizado {
+  height: 500px;
+}
+
+/* line 161, main.scss */
+.img-carousel {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+}
+
+/* line 167, main.scss */
+.tabla {
+  margin-bottom: 0 !important;
+}
+
+/* line 171, main.scss */
+.mapa {
+  width: 100%;
+  height: 600px;
 }
 
 /*!
@@ -119,10 +188,10 @@
 /* line 1, node_modules/bootstrap/scss/_root.scss */
 :root {
   --breakpoint-xs: 0;
-  --breakpoint-sm: 576px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 992px;
-  --breakpoint-xl: 1200px;
+  --breakpoint-sm: 844px;
+  --breakpoint-md: 992px;
+  --breakpoint-lg: 1280px;
+  --breakpoint-xl: 1400px;
   --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
@@ -727,25 +796,25 @@ pre code {
   margin-left: auto;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 844px) {
   /* line 20, node_modules/bootstrap/scss/_grid.scss */
   .container, .container-sm {
     max-width: 540px;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   /* line 20, node_modules/bootstrap/scss/_grid.scss */
   .container, .container-sm, .container-md {
     max-width: 720px;
   }
 }
-@media (min-width: 992px) {
+@media (min-width: 1280px) {
   /* line 20, node_modules/bootstrap/scss/_grid.scss */
   .container, .container-sm, .container-md, .container-lg {
     max-width: 960px;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1400px) {
   /* line 20, node_modules/bootstrap/scss/_grid.scss */
   .container, .container-sm, .container-md, .container-lg, .container-xl {
     max-width: 1140px;
@@ -1036,7 +1105,7 @@ pre code {
   margin-left: 91.66667%;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 844px) {
   /* line 34, node_modules/bootstrap/scss/mixins/_grid-framework.scss */
   .col-sm {
     flex-basis: 0;
@@ -1294,7 +1363,7 @@ pre code {
     margin-left: 91.66667%;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   /* line 34, node_modules/bootstrap/scss/mixins/_grid-framework.scss */
   .col-md {
     flex-basis: 0;
@@ -1552,7 +1621,7 @@ pre code {
     margin-left: 91.66667%;
   }
 }
-@media (min-width: 992px) {
+@media (min-width: 1280px) {
   /* line 34, node_modules/bootstrap/scss/mixins/_grid-framework.scss */
   .col-lg {
     flex-basis: 0;
@@ -1810,7 +1879,7 @@ pre code {
     margin-left: 91.66667%;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1400px) {
   /* line 34, node_modules/bootstrap/scss/mixins/_grid-framework.scss */
   .col-xl {
     flex-basis: 0;
@@ -2069,25 +2138,26 @@ pre code {
   }
 }
 /* line 5, node_modules/bootstrap/scss/_tables.scss */
-.table {
+.table, .tabla {
   width: 100%;
   margin-bottom: 1rem;
   color: white;
 }
 /* line 11, node_modules/bootstrap/scss/_tables.scss */
-.table th,
-.table td {
+.table th, .tabla th,
+.table td,
+.tabla td {
   padding: 0.75rem;
   vertical-align: top;
   border-top: 1px solid #dee2e6;
 }
 /* line 18, node_modules/bootstrap/scss/_tables.scss */
-.table thead th {
+.table thead th, .tabla thead th {
   vertical-align: bottom;
   border-bottom: 2px solid #dee2e6;
 }
 /* line 23, node_modules/bootstrap/scss/_tables.scss */
-.table tbody + tbody {
+.table tbody + tbody, .tabla tbody + tbody {
   border-top: 2px solid #dee2e6;
 }
 
@@ -2341,13 +2411,13 @@ pre code {
 }
 
 /* line 114, node_modules/bootstrap/scss/_tables.scss */
-.table .thead-dark th {
+.table .thead-dark th, .tabla .thead-dark th {
   color: #fff;
   background-color: #343a40;
   border-color: #454d55;
 }
 /* line 122, node_modules/bootstrap/scss/_tables.scss */
-.table .thead-light th {
+.table .thead-light th, .tabla .thead-light th {
   color: #495057;
   background-color: #e9ecef;
   border-color: #dee2e6;
@@ -2378,7 +2448,7 @@ pre code {
   background-color: rgba(255, 255, 255, 0.075);
 }
 
-@media (max-width: 575.98px) {
+@media (max-width: 843.98px) {
   /* line 171, node_modules/bootstrap/scss/_tables.scss */
   .table-responsive-sm {
     display: block;
@@ -2391,7 +2461,7 @@ pre code {
     border: 0;
   }
 }
-@media (max-width: 767.98px) {
+@media (max-width: 991.98px) {
   /* line 171, node_modules/bootstrap/scss/_tables.scss */
   .table-responsive-md {
     display: block;
@@ -2404,7 +2474,7 @@ pre code {
     border: 0;
   }
 }
-@media (max-width: 991.98px) {
+@media (max-width: 1279.98px) {
   /* line 171, node_modules/bootstrap/scss/_tables.scss */
   .table-responsive-lg {
     display: block;
@@ -2417,7 +2487,7 @@ pre code {
     border: 0;
   }
 }
-@media (max-width: 1199.98px) {
+@media (max-width: 1399.98px) {
   /* line 171, node_modules/bootstrap/scss/_tables.scss */
   .table-responsive-xl {
     display: block;
@@ -2887,7 +2957,7 @@ textarea.form-control {
 .form-inline .form-check {
   width: 100%;
 }
-@media (min-width: 576px) {
+@media (min-width: 844px) {
   /* line 289, node_modules/bootstrap/scss/_forms.scss */
   .form-inline label {
     display: flex;
@@ -2946,7 +3016,7 @@ textarea.form-control {
 }
 
 /* line 7, node_modules/bootstrap/scss/_buttons.scss */
-.btn, .btn-base, .patata {
+.btn, .btn-base, .btn-cancelar {
   display: inline-block;
   font-weight: 400;
   color: white;
@@ -2963,34 +3033,34 @@ textarea.form-control {
 }
 @media (prefers-reduced-motion: reduce) {
   /* line 7, node_modules/bootstrap/scss/_buttons.scss */
-  .btn, .btn-base, .patata {
+  .btn, .btn-base, .btn-cancelar {
     transition: none;
   }
 }
 /* line 13, node_modules/bootstrap/scss/mixins/_hover.scss */
-.btn:hover, .btn-base:hover, .patata:hover {
+.btn:hover, .btn-base:hover, .btn-cancelar:hover {
   color: white;
   text-decoration: none;
 }
 /* line 27, node_modules/bootstrap/scss/_buttons.scss */
-.btn:focus, .btn-base:focus, .patata:focus, .btn.focus, .focus.btn-base, .focus.patata {
+.btn:focus, .btn-base:focus, .btn-cancelar:focus, .btn.focus, .focus.btn-base, .focus.btn-cancelar {
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 /* line 34, node_modules/bootstrap/scss/_buttons.scss */
-.btn.disabled, .disabled.btn-base, .disabled.patata, .btn:disabled, .btn-base:disabled, .patata:disabled {
+.btn.disabled, .disabled.btn-base, .disabled.btn-cancelar, .btn:disabled, .btn-base:disabled, .btn-cancelar:disabled {
   opacity: 0.65;
 }
 /* line 40, node_modules/bootstrap/scss/_buttons.scss */
-.btn:not(:disabled):not(.disabled), .btn-base:not(:disabled):not(.disabled), .patata:not(:disabled):not(.disabled) {
+.btn:not(:disabled):not(.disabled), .btn-base:not(:disabled):not(.disabled), .btn-cancelar:not(:disabled):not(.disabled) {
   cursor: pointer;
 }
 
 /* line 55, node_modules/bootstrap/scss/_buttons.scss */
-a.btn.disabled, a.disabled.btn-base, a.disabled.patata,
+a.btn.disabled, a.disabled.btn-base, a.disabled.btn-cancelar,
 fieldset:disabled a.btn,
 fieldset:disabled a.btn-base,
-fieldset:disabled a.patata {
+fieldset:disabled a.btn-cancelar {
   pointer-events: none;
 }
 
@@ -3552,7 +3622,7 @@ fieldset:disabled a.patata {
 }
 
 /* line 112, node_modules/bootstrap/scss/_buttons.scss */
-.btn-lg, .btn-group-lg > .btn, .btn-group-lg > .btn-base, .btn-group-lg > .patata {
+.btn-lg, .btn-group-lg > .btn, .btn-group-lg > .btn-base, .btn-group-lg > .btn-cancelar {
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
   line-height: 1.5;
@@ -3560,7 +3630,7 @@ fieldset:disabled a.patata {
 }
 
 /* line 116, node_modules/bootstrap/scss/_buttons.scss */
-.btn-sm, .btn-group-sm > .btn, .btn-group-sm > .btn-base, .btn-group-sm > .patata {
+.btn-sm, .btn-group-sm > .btn, .btn-group-sm > .btn-base, .btn-group-sm > .btn-cancelar {
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
   line-height: 1.5;
@@ -3679,7 +3749,7 @@ input[type="button"].btn-block {
   left: auto;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 844px) {
   /* line 42, node_modules/bootstrap/scss/_dropdown.scss */
   .dropdown-menu-sm-left {
     right: auto;
@@ -3692,7 +3762,7 @@ input[type="button"].btn-block {
     left: auto;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   /* line 42, node_modules/bootstrap/scss/_dropdown.scss */
   .dropdown-menu-md-left {
     right: auto;
@@ -3705,7 +3775,7 @@ input[type="button"].btn-block {
     left: auto;
   }
 }
-@media (min-width: 992px) {
+@media (min-width: 1280px) {
   /* line 42, node_modules/bootstrap/scss/_dropdown.scss */
   .dropdown-menu-lg-left {
     right: auto;
@@ -3718,7 +3788,7 @@ input[type="button"].btn-block {
     left: auto;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1400px) {
   /* line 42, node_modules/bootstrap/scss/_dropdown.scss */
   .dropdown-menu-xl-left {
     right: auto;
@@ -3896,31 +3966,31 @@ input[type="button"].btn-block {
   vertical-align: middle;
 }
 /* line 10, node_modules/bootstrap/scss/_button-group.scss */
-.btn-group > .btn, .btn-group > .btn-base, .btn-group > .patata,
+.btn-group > .btn, .btn-group > .btn-base, .btn-group > .btn-cancelar,
 .btn-group-vertical > .btn,
 .btn-group-vertical > .btn-base,
-.btn-group-vertical > .patata {
+.btn-group-vertical > .btn-cancelar {
   position: relative;
   flex: 1 1 auto;
 }
 /* line 13, node_modules/bootstrap/scss/mixins/_hover.scss */
-.btn-group > .btn:hover, .btn-group > .btn-base:hover, .btn-group > .patata:hover,
+.btn-group > .btn:hover, .btn-group > .btn-base:hover, .btn-group > .btn-cancelar:hover,
 .btn-group-vertical > .btn:hover,
 .btn-group-vertical > .btn-base:hover,
-.btn-group-vertical > .patata:hover {
+.btn-group-vertical > .btn-cancelar:hover {
   z-index: 1;
 }
 /* line 19, node_modules/bootstrap/scss/_button-group.scss */
-.btn-group > .btn:focus, .btn-group > .btn-base:focus, .btn-group > .patata:focus, .btn-group > .btn:active, .btn-group > .btn-base:active, .btn-group > .patata:active, .btn-group > .btn.active, .btn-group > .active.btn-base, .btn-group > .active.patata,
+.btn-group > .btn:focus, .btn-group > .btn-base:focus, .btn-group > .btn-cancelar:focus, .btn-group > .btn:active, .btn-group > .btn-base:active, .btn-group > .btn-cancelar:active, .btn-group > .btn.active, .btn-group > .active.btn-base, .btn-group > .active.btn-cancelar,
 .btn-group-vertical > .btn:focus,
 .btn-group-vertical > .btn-base:focus,
-.btn-group-vertical > .patata:focus,
+.btn-group-vertical > .btn-cancelar:focus,
 .btn-group-vertical > .btn:active,
 .btn-group-vertical > .btn-base:active,
-.btn-group-vertical > .patata:active,
+.btn-group-vertical > .btn-cancelar:active,
 .btn-group-vertical > .btn.active,
 .btn-group-vertical > .active.btn-base,
-.btn-group-vertical > .active.patata {
+.btn-group-vertical > .active.btn-cancelar {
   z-index: 1;
 }
 
@@ -3936,23 +4006,23 @@ input[type="button"].btn-block {
 }
 
 /* line 40, node_modules/bootstrap/scss/_button-group.scss */
-.btn-group > .btn:not(:first-child), .btn-group > .btn-base:not(:first-child), .btn-group > .patata:not(:first-child),
+.btn-group > .btn:not(:first-child), .btn-group > .btn-base:not(:first-child), .btn-group > .btn-cancelar:not(:first-child),
 .btn-group > .btn-group:not(:first-child) {
   margin-left: -1px;
 }
 /* line 46, node_modules/bootstrap/scss/_button-group.scss */
-.btn-group > .btn:not(:last-child):not(.dropdown-toggle), .btn-group > .btn-base:not(:last-child):not(.dropdown-toggle), .btn-group > .patata:not(:last-child):not(.dropdown-toggle),
+.btn-group > .btn:not(:last-child):not(.dropdown-toggle), .btn-group > .btn-base:not(:last-child):not(.dropdown-toggle), .btn-group > .btn-cancelar:not(:last-child):not(.dropdown-toggle),
 .btn-group > .btn-group:not(:last-child) > .btn,
 .btn-group > .btn-group:not(:last-child) > .btn-base,
-.btn-group > .btn-group:not(:last-child) > .patata {
+.btn-group > .btn-group:not(:last-child) > .btn-cancelar {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 /* line 51, node_modules/bootstrap/scss/_button-group.scss */
-.btn-group > .btn:not(:first-child), .btn-group > .btn-base:not(:first-child), .btn-group > .patata:not(:first-child),
+.btn-group > .btn:not(:first-child), .btn-group > .btn-base:not(:first-child), .btn-group > .btn-cancelar:not(:first-child),
 .btn-group > .btn-group:not(:first-child) > .btn,
 .btn-group > .btn-group:not(:first-child) > .btn-base,
-.btn-group > .btn-group:not(:first-child) > .patata {
+.btn-group > .btn-group:not(:first-child) > .btn-cancelar {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
@@ -3972,13 +4042,13 @@ input[type="button"].btn-block {
 }
 
 /* line 84, node_modules/bootstrap/scss/_button-group.scss */
-.btn-sm + .dropdown-toggle-split, .btn-group-sm > .btn + .dropdown-toggle-split, .btn-group-sm > .btn-base + .dropdown-toggle-split, .btn-group-sm > .patata + .dropdown-toggle-split {
+.btn-sm + .dropdown-toggle-split, .btn-group-sm > .btn + .dropdown-toggle-split, .btn-group-sm > .btn-base + .dropdown-toggle-split, .btn-group-sm > .btn-cancelar + .dropdown-toggle-split {
   padding-right: 0.375rem;
   padding-left: 0.375rem;
 }
 
 /* line 89, node_modules/bootstrap/scss/_button-group.scss */
-.btn-lg + .dropdown-toggle-split, .btn-group-lg > .btn + .dropdown-toggle-split, .btn-group-lg > .btn-base + .dropdown-toggle-split, .btn-group-lg > .patata + .dropdown-toggle-split {
+.btn-lg + .dropdown-toggle-split, .btn-group-lg > .btn + .dropdown-toggle-split, .btn-group-lg > .btn-base + .dropdown-toggle-split, .btn-group-lg > .btn-cancelar + .dropdown-toggle-split {
   padding-right: 0.75rem;
   padding-left: 0.75rem;
 }
@@ -3990,50 +4060,50 @@ input[type="button"].btn-block {
   justify-content: center;
 }
 /* line 116, node_modules/bootstrap/scss/_button-group.scss */
-.btn-group-vertical > .btn, .btn-group-vertical > .btn-base, .btn-group-vertical > .patata,
+.btn-group-vertical > .btn, .btn-group-vertical > .btn-base, .btn-group-vertical > .btn-cancelar,
 .btn-group-vertical > .btn-group {
   width: 100%;
 }
 /* line 121, node_modules/bootstrap/scss/_button-group.scss */
-.btn-group-vertical > .btn:not(:first-child), .btn-group-vertical > .btn-base:not(:first-child), .btn-group-vertical > .patata:not(:first-child),
+.btn-group-vertical > .btn:not(:first-child), .btn-group-vertical > .btn-base:not(:first-child), .btn-group-vertical > .btn-cancelar:not(:first-child),
 .btn-group-vertical > .btn-group:not(:first-child) {
   margin-top: -1px;
 }
 /* line 127, node_modules/bootstrap/scss/_button-group.scss */
-.btn-group-vertical > .btn:not(:last-child):not(.dropdown-toggle), .btn-group-vertical > .btn-base:not(:last-child):not(.dropdown-toggle), .btn-group-vertical > .patata:not(:last-child):not(.dropdown-toggle),
+.btn-group-vertical > .btn:not(:last-child):not(.dropdown-toggle), .btn-group-vertical > .btn-base:not(:last-child):not(.dropdown-toggle), .btn-group-vertical > .btn-cancelar:not(:last-child):not(.dropdown-toggle),
 .btn-group-vertical > .btn-group:not(:last-child) > .btn,
 .btn-group-vertical > .btn-group:not(:last-child) > .btn-base,
-.btn-group-vertical > .btn-group:not(:last-child) > .patata {
+.btn-group-vertical > .btn-group:not(:last-child) > .btn-cancelar {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
 /* line 132, node_modules/bootstrap/scss/_button-group.scss */
-.btn-group-vertical > .btn:not(:first-child), .btn-group-vertical > .btn-base:not(:first-child), .btn-group-vertical > .patata:not(:first-child),
+.btn-group-vertical > .btn:not(:first-child), .btn-group-vertical > .btn-base:not(:first-child), .btn-group-vertical > .btn-cancelar:not(:first-child),
 .btn-group-vertical > .btn-group:not(:first-child) > .btn,
 .btn-group-vertical > .btn-group:not(:first-child) > .btn-base,
-.btn-group-vertical > .btn-group:not(:first-child) > .patata {
+.btn-group-vertical > .btn-group:not(:first-child) > .btn-cancelar {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
 
 /* line 152, node_modules/bootstrap/scss/_button-group.scss */
-.btn-group-toggle > .btn, .btn-group-toggle > .btn-base, .btn-group-toggle > .patata,
+.btn-group-toggle > .btn, .btn-group-toggle > .btn-base, .btn-group-toggle > .btn-cancelar,
 .btn-group-toggle > .btn-group > .btn,
 .btn-group-toggle > .btn-group > .btn-base,
-.btn-group-toggle > .btn-group > .patata {
+.btn-group-toggle > .btn-group > .btn-cancelar {
   margin-bottom: 0;
 }
 /* line 156, node_modules/bootstrap/scss/_button-group.scss */
-.btn-group-toggle > .btn input[type="radio"], .btn-group-toggle > .btn-base input[type="radio"], .btn-group-toggle > .patata input[type="radio"],
+.btn-group-toggle > .btn input[type="radio"], .btn-group-toggle > .btn-base input[type="radio"], .btn-group-toggle > .btn-cancelar input[type="radio"],
 .btn-group-toggle > .btn input[type="checkbox"],
 .btn-group-toggle > .btn-base input[type="checkbox"],
-.btn-group-toggle > .patata input[type="checkbox"],
+.btn-group-toggle > .btn-cancelar input[type="checkbox"],
 .btn-group-toggle > .btn-group > .btn input[type="radio"],
 .btn-group-toggle > .btn-group > .btn-base input[type="radio"],
-.btn-group-toggle > .btn-group > .patata input[type="radio"],
+.btn-group-toggle > .btn-group > .btn-cancelar input[type="radio"],
 .btn-group-toggle > .btn-group > .btn input[type="checkbox"],
 .btn-group-toggle > .btn-group > .btn-base input[type="checkbox"],
-.btn-group-toggle > .btn-group > .patata input[type="checkbox"] {
+.btn-group-toggle > .btn-group > .btn-cancelar input[type="checkbox"] {
   position: absolute;
   clip: rect(0, 0, 0, 0);
   pointer-events: none;
@@ -4120,45 +4190,45 @@ input[type="button"].btn-block {
   display: flex;
 }
 /* line 89, node_modules/bootstrap/scss/_input-group.scss */
-.input-group-prepend .btn, .input-group-prepend .btn-base, .input-group-prepend .patata,
+.input-group-prepend .btn, .input-group-prepend .btn-base, .input-group-prepend .btn-cancelar,
 .input-group-append .btn,
 .input-group-append .btn-base,
-.input-group-append .patata {
+.input-group-append .btn-cancelar {
   position: relative;
   z-index: 2;
 }
 /* line 93, node_modules/bootstrap/scss/_input-group.scss */
-.input-group-prepend .btn:focus, .input-group-prepend .btn-base:focus, .input-group-prepend .patata:focus,
+.input-group-prepend .btn:focus, .input-group-prepend .btn-base:focus, .input-group-prepend .btn-cancelar:focus,
 .input-group-append .btn:focus,
 .input-group-append .btn-base:focus,
-.input-group-append .patata:focus {
+.input-group-append .btn-cancelar:focus {
   z-index: 3;
 }
 /* line 98, node_modules/bootstrap/scss/_input-group.scss */
-.input-group-prepend .btn + .btn, .input-group-prepend .btn-base + .btn, .input-group-prepend .patata + .btn, .input-group-prepend .btn + .btn-base, .input-group-prepend .btn-base + .btn-base, .input-group-prepend .patata + .btn-base, .input-group-prepend .btn + .patata, .input-group-prepend .btn-base + .patata, .input-group-prepend .patata + .patata,
+.input-group-prepend .btn + .btn, .input-group-prepend .btn-base + .btn, .input-group-prepend .btn-cancelar + .btn, .input-group-prepend .btn + .btn-base, .input-group-prepend .btn-base + .btn-base, .input-group-prepend .btn-cancelar + .btn-base, .input-group-prepend .btn + .btn-cancelar, .input-group-prepend .btn-base + .btn-cancelar, .input-group-prepend .btn-cancelar + .btn-cancelar,
 .input-group-prepend .btn + .input-group-text,
 .input-group-prepend .btn-base + .input-group-text,
-.input-group-prepend .patata + .input-group-text,
+.input-group-prepend .btn-cancelar + .input-group-text,
 .input-group-prepend .input-group-text + .input-group-text,
 .input-group-prepend .input-group-text + .btn,
 .input-group-prepend .input-group-text + .btn-base,
-.input-group-prepend .input-group-text + .patata,
+.input-group-prepend .input-group-text + .btn-cancelar,
 .input-group-append .btn + .btn,
 .input-group-append .btn-base + .btn,
-.input-group-append .patata + .btn,
+.input-group-append .btn-cancelar + .btn,
 .input-group-append .btn + .btn-base,
 .input-group-append .btn-base + .btn-base,
-.input-group-append .patata + .btn-base,
-.input-group-append .btn + .patata,
-.input-group-append .btn-base + .patata,
-.input-group-append .patata + .patata,
+.input-group-append .btn-cancelar + .btn-base,
+.input-group-append .btn + .btn-cancelar,
+.input-group-append .btn-base + .btn-cancelar,
+.input-group-append .btn-cancelar + .btn-cancelar,
 .input-group-append .btn + .input-group-text,
 .input-group-append .btn-base + .input-group-text,
-.input-group-append .patata + .input-group-text,
+.input-group-append .btn-cancelar + .input-group-text,
 .input-group-append .input-group-text + .input-group-text,
 .input-group-append .input-group-text + .btn,
 .input-group-append .input-group-text + .btn-base,
-.input-group-append .input-group-text + .patata {
+.input-group-append .input-group-text + .btn-cancelar {
   margin-left: -1px;
 }
 
@@ -4207,10 +4277,10 @@ input[type="button"].btn-block {
 .input-group-lg > .input-group-append > .input-group-text,
 .input-group-lg > .input-group-prepend > .btn,
 .input-group-lg > .input-group-prepend > .btn-base,
-.input-group-lg > .input-group-prepend > .patata,
+.input-group-lg > .input-group-prepend > .btn-cancelar,
 .input-group-lg > .input-group-append > .btn,
 .input-group-lg > .input-group-append > .btn-base,
-.input-group-lg > .input-group-append > .patata {
+.input-group-lg > .input-group-append > .btn-cancelar {
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
   line-height: 1.5;
@@ -4230,10 +4300,10 @@ input[type="button"].btn-block {
 .input-group-sm > .input-group-append > .input-group-text,
 .input-group-sm > .input-group-prepend > .btn,
 .input-group-sm > .input-group-prepend > .btn-base,
-.input-group-sm > .input-group-prepend > .patata,
+.input-group-sm > .input-group-prepend > .btn-cancelar,
 .input-group-sm > .input-group-append > .btn,
 .input-group-sm > .input-group-append > .btn-base,
-.input-group-sm > .input-group-append > .patata {
+.input-group-sm > .input-group-append > .btn-cancelar {
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
   line-height: 1.5;
@@ -4247,34 +4317,34 @@ input[type="button"].btn-block {
 }
 
 /* line 190, node_modules/bootstrap/scss/_input-group.scss */
-.input-group > .input-group-prepend > .btn, .input-group > .input-group-prepend > .btn-base, .input-group > .input-group-prepend > .patata,
+.input-group > .input-group-prepend > .btn, .input-group > .input-group-prepend > .btn-base, .input-group > .input-group-prepend > .btn-cancelar,
 .input-group > .input-group-prepend > .input-group-text,
 .input-group:not(.has-validation) > .input-group-append:not(:last-child) > .btn,
 .input-group:not(.has-validation) > .input-group-append:not(:last-child) > .btn-base,
-.input-group:not(.has-validation) > .input-group-append:not(:last-child) > .patata,
+.input-group:not(.has-validation) > .input-group-append:not(:last-child) > .btn-cancelar,
 .input-group:not(.has-validation) > .input-group-append:not(:last-child) > .input-group-text,
 .input-group.has-validation > .input-group-append:nth-last-child(n + 3) > .btn,
 .input-group.has-validation > .input-group-append:nth-last-child(n + 3) > .btn-base,
-.input-group.has-validation > .input-group-append:nth-last-child(n + 3) > .patata,
+.input-group.has-validation > .input-group-append:nth-last-child(n + 3) > .btn-cancelar,
 .input-group.has-validation > .input-group-append:nth-last-child(n + 3) > .input-group-text,
 .input-group > .input-group-append:last-child > .btn:not(:last-child):not(.dropdown-toggle),
 .input-group > .input-group-append:last-child > .btn-base:not(:last-child):not(.dropdown-toggle),
-.input-group > .input-group-append:last-child > .patata:not(:last-child):not(.dropdown-toggle),
+.input-group > .input-group-append:last-child > .btn-cancelar:not(:last-child):not(.dropdown-toggle),
 .input-group > .input-group-append:last-child > .input-group-text:not(:last-child) {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
 /* line 201, node_modules/bootstrap/scss/_input-group.scss */
-.input-group > .input-group-append > .btn, .input-group > .input-group-append > .btn-base, .input-group > .input-group-append > .patata,
+.input-group > .input-group-append > .btn, .input-group > .input-group-append > .btn-base, .input-group > .input-group-append > .btn-cancelar,
 .input-group > .input-group-append > .input-group-text,
 .input-group > .input-group-prepend:not(:first-child) > .btn,
 .input-group > .input-group-prepend:not(:first-child) > .btn-base,
-.input-group > .input-group-prepend:not(:first-child) > .patata,
+.input-group > .input-group-prepend:not(:first-child) > .btn-cancelar,
 .input-group > .input-group-prepend:not(:first-child) > .input-group-text,
 .input-group > .input-group-prepend:first-child > .btn:not(:first-child),
 .input-group > .input-group-prepend:first-child > .btn-base:not(:first-child),
-.input-group > .input-group-prepend:first-child > .patata:not(:first-child),
+.input-group > .input-group-prepend:first-child > .btn-cancelar:not(:first-child),
 .input-group > .input-group-prepend:first-child > .input-group-text:not(:first-child) {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
@@ -4945,7 +5015,7 @@ input[type="button"].btn-block {
   overflow-y: auto;
 }
 
-@media (max-width: 575.98px) {
+@media (max-width: 843.98px) {
   /* line 156, node_modules/bootstrap/scss/_navbar.scss */
   .navbar-expand-sm > .container,
   .navbar-expand-sm > .container-fluid,
@@ -4957,7 +5027,7 @@ input[type="button"].btn-block {
     padding-left: 0;
   }
 }
-@media (min-width: 576px) {
+@media (min-width: 844px) {
   /* line 154, node_modules/bootstrap/scss/_navbar.scss */
   .navbar-expand-sm {
     flex-flow: row nowrap;
@@ -4999,7 +5069,7 @@ input[type="button"].btn-block {
     display: none;
   }
 }
-@media (max-width: 767.98px) {
+@media (max-width: 991.98px) {
   /* line 156, node_modules/bootstrap/scss/_navbar.scss */
   .navbar-expand-md > .container,
   .navbar-expand-md > .container-fluid,
@@ -5011,7 +5081,7 @@ input[type="button"].btn-block {
     padding-left: 0;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   /* line 154, node_modules/bootstrap/scss/_navbar.scss */
   .navbar-expand-md {
     flex-flow: row nowrap;
@@ -5053,7 +5123,7 @@ input[type="button"].btn-block {
     display: none;
   }
 }
-@media (max-width: 991.98px) {
+@media (max-width: 1279.98px) {
   /* line 156, node_modules/bootstrap/scss/_navbar.scss */
   .navbar-expand-lg > .container,
   .navbar-expand-lg > .container-fluid,
@@ -5065,7 +5135,7 @@ input[type="button"].btn-block {
     padding-left: 0;
   }
 }
-@media (min-width: 992px) {
+@media (min-width: 1280px) {
   /* line 154, node_modules/bootstrap/scss/_navbar.scss */
   .navbar-expand-lg {
     flex-flow: row nowrap;
@@ -5107,7 +5177,7 @@ input[type="button"].btn-block {
     display: none;
   }
 }
-@media (max-width: 1199.98px) {
+@media (max-width: 1399.98px) {
   /* line 156, node_modules/bootstrap/scss/_navbar.scss */
   .navbar-expand-xl > .container,
   .navbar-expand-xl > .container-fluid,
@@ -5119,7 +5189,7 @@ input[type="button"].btn-block {
     padding-left: 0;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1400px) {
   /* line 154, node_modules/bootstrap/scss/_navbar.scss */
   .navbar-expand-xl {
     flex-flow: row nowrap;
@@ -5317,7 +5387,7 @@ input[type="button"].btn-block {
 }
 
 /* line 5, node_modules/bootstrap/scss/_card.scss */
-.card, .card-admin {
+.card, .card-coche, .card-admin {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -5329,30 +5399,31 @@ input[type="button"].btn-block {
   border-radius: 0.25rem;
 }
 /* line 17, node_modules/bootstrap/scss/_card.scss */
-.card > hr, .card-admin > hr {
+.card > hr, .card-coche > hr, .card-admin > hr {
   margin-right: 0;
   margin-left: 0;
 }
 /* line 22, node_modules/bootstrap/scss/_card.scss */
-.card > .list-group, .card-admin > .list-group {
+.card > .list-group, .card-coche > .list-group, .card-admin > .list-group {
   border-top: inherit;
   border-bottom: inherit;
 }
 /* line 26, node_modules/bootstrap/scss/_card.scss */
-.card > .list-group:first-child, .card-admin > .list-group:first-child {
+.card > .list-group:first-child, .card-coche > .list-group:first-child, .card-admin > .list-group:first-child {
   border-top-width: 0;
   border-top-left-radius: calc(0.25rem - 1px);
   border-top-right-radius: calc(0.25rem - 1px);
 }
 /* line 31, node_modules/bootstrap/scss/_card.scss */
-.card > .list-group:last-child, .card-admin > .list-group:last-child {
+.card > .list-group:last-child, .card-coche > .list-group:last-child, .card-admin > .list-group:last-child {
   border-bottom-width: 0;
   border-bottom-right-radius: calc(0.25rem - 1px);
   border-bottom-left-radius: calc(0.25rem - 1px);
 }
 /* line 39, node_modules/bootstrap/scss/_card.scss */
-.card > .card-header + .list-group, .card-admin > .card-header + .list-group,
+.card > .card-header + .list-group, .card-coche > .card-header + .list-group, .card-admin > .card-header + .list-group,
 .card > .list-group + .card-footer,
+.card-coche > .list-group + .card-footer,
 .card-admin > .list-group + .card-footer {
   border-top: 0;
 }
@@ -5460,10 +5531,10 @@ input[type="button"].btn-block {
 }
 
 /* line 155, node_modules/bootstrap/scss/_card.scss */
-.card-deck .card, .card-deck .card-admin {
+.card-deck .card, .card-deck .card-coche, .card-deck .card-admin {
   margin-bottom: 15px;
 }
-@media (min-width: 576px) {
+@media (min-width: 844px) {
   /* line 154, node_modules/bootstrap/scss/_card.scss */
   .card-deck {
     display: flex;
@@ -5472,7 +5543,7 @@ input[type="button"].btn-block {
     margin-left: -15px;
   }
   /* line 165, node_modules/bootstrap/scss/_card.scss */
-  .card-deck .card, .card-deck .card-admin {
+  .card-deck .card, .card-deck .card-coche, .card-deck .card-admin {
     flex: 1 0 0%;
     margin-right: 15px;
     margin-bottom: 0;
@@ -5481,66 +5552,70 @@ input[type="button"].btn-block {
 }
 
 /* line 183, node_modules/bootstrap/scss/_card.scss */
-.card-group > .card, .card-group > .card-admin {
+.card-group > .card, .card-group > .card-coche, .card-group > .card-admin {
   margin-bottom: 15px;
 }
-@media (min-width: 576px) {
+@media (min-width: 844px) {
   /* line 180, node_modules/bootstrap/scss/_card.scss */
   .card-group {
     display: flex;
     flex-flow: row wrap;
   }
   /* line 192, node_modules/bootstrap/scss/_card.scss */
-  .card-group > .card, .card-group > .card-admin {
+  .card-group > .card, .card-group > .card-coche, .card-group > .card-admin {
     flex: 1 0 0%;
     margin-bottom: 0;
   }
   /* line 197, node_modules/bootstrap/scss/_card.scss */
-  .card-group > .card + .card, .card-group > .card-admin + .card, .card-group > .card + .card-admin, .card-group > .card-admin + .card-admin {
+  .card-group > .card + .card, .card-group > .card-coche + .card, .card-group > .card-admin + .card, .card-group > .card + .card-coche, .card-group > .card-coche + .card-coche, .card-group > .card-admin + .card-coche, .card-group > .card + .card-admin, .card-group > .card-coche + .card-admin, .card-group > .card-admin + .card-admin {
     margin-left: 0;
     border-left: 0;
   }
   /* line 204, node_modules/bootstrap/scss/_card.scss */
-  .card-group > .card:not(:last-child), .card-group > .card-admin:not(:last-child) {
+  .card-group > .card:not(:last-child), .card-group > .card-coche:not(:last-child), .card-group > .card-admin:not(:last-child) {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
   /* line 207, node_modules/bootstrap/scss/_card.scss */
-  .card-group > .card:not(:last-child) .card-img-top, .card-group > .card-admin:not(:last-child) .card-img-top,
+  .card-group > .card:not(:last-child) .card-img-top, .card-group > .card-coche:not(:last-child) .card-img-top, .card-group > .card-admin:not(:last-child) .card-img-top,
   .card-group > .card:not(:last-child) .card-header,
+  .card-group > .card-coche:not(:last-child) .card-header,
   .card-group > .card-admin:not(:last-child) .card-header {
     border-top-right-radius: 0;
   }
   /* line 212, node_modules/bootstrap/scss/_card.scss */
-  .card-group > .card:not(:last-child) .card-img-bottom, .card-group > .card-admin:not(:last-child) .card-img-bottom,
+  .card-group > .card:not(:last-child) .card-img-bottom, .card-group > .card-coche:not(:last-child) .card-img-bottom, .card-group > .card-admin:not(:last-child) .card-img-bottom,
   .card-group > .card:not(:last-child) .card-footer,
+  .card-group > .card-coche:not(:last-child) .card-footer,
   .card-group > .card-admin:not(:last-child) .card-footer {
     border-bottom-right-radius: 0;
   }
   /* line 219, node_modules/bootstrap/scss/_card.scss */
-  .card-group > .card:not(:first-child), .card-group > .card-admin:not(:first-child) {
+  .card-group > .card:not(:first-child), .card-group > .card-coche:not(:first-child), .card-group > .card-admin:not(:first-child) {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
   /* line 222, node_modules/bootstrap/scss/_card.scss */
-  .card-group > .card:not(:first-child) .card-img-top, .card-group > .card-admin:not(:first-child) .card-img-top,
+  .card-group > .card:not(:first-child) .card-img-top, .card-group > .card-coche:not(:first-child) .card-img-top, .card-group > .card-admin:not(:first-child) .card-img-top,
   .card-group > .card:not(:first-child) .card-header,
+  .card-group > .card-coche:not(:first-child) .card-header,
   .card-group > .card-admin:not(:first-child) .card-header {
     border-top-left-radius: 0;
   }
   /* line 227, node_modules/bootstrap/scss/_card.scss */
-  .card-group > .card:not(:first-child) .card-img-bottom, .card-group > .card-admin:not(:first-child) .card-img-bottom,
+  .card-group > .card:not(:first-child) .card-img-bottom, .card-group > .card-coche:not(:first-child) .card-img-bottom, .card-group > .card-admin:not(:first-child) .card-img-bottom,
   .card-group > .card:not(:first-child) .card-footer,
+  .card-group > .card-coche:not(:first-child) .card-footer,
   .card-group > .card-admin:not(:first-child) .card-footer {
     border-bottom-left-radius: 0;
   }
 }
 
 /* line 244, node_modules/bootstrap/scss/_card.scss */
-.card-columns .card, .card-columns .card-admin {
+.card-columns .card, .card-columns .card-coche, .card-columns .card-admin {
   margin-bottom: 0.75rem;
 }
-@media (min-width: 576px) {
+@media (min-width: 844px) {
   /* line 243, node_modules/bootstrap/scss/_card.scss */
   .card-columns {
     column-count: 3;
@@ -5549,7 +5624,7 @@ input[type="button"].btn-block {
     widows: 1;
   }
   /* line 254, node_modules/bootstrap/scss/_card.scss */
-  .card-columns .card, .card-columns .card-admin {
+  .card-columns .card, .card-columns .card-coche, .card-columns .card-admin {
     display: inline-block;
     width: 100%;
   }
@@ -5560,22 +5635,22 @@ input[type="button"].btn-block {
   overflow-anchor: none;
 }
 /* line 269, node_modules/bootstrap/scss/_card.scss */
-.accordion > .card, .accordion > .card-admin {
+.accordion > .card, .accordion > .card-coche, .accordion > .card-admin {
   overflow: hidden;
 }
 /* line 272, node_modules/bootstrap/scss/_card.scss */
-.accordion > .card:not(:last-of-type), .accordion > .card-admin:not(:last-of-type) {
+.accordion > .card:not(:last-of-type), .accordion > .card-coche:not(:last-of-type), .accordion > .card-admin:not(:last-of-type) {
   border-bottom: 0;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
 /* line 277, node_modules/bootstrap/scss/_card.scss */
-.accordion > .card:not(:first-of-type), .accordion > .card-admin:not(:first-of-type) {
+.accordion > .card:not(:first-of-type), .accordion > .card-coche:not(:first-of-type), .accordion > .card-admin:not(:first-of-type) {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
 /* line 281, node_modules/bootstrap/scss/_card.scss */
-.accordion > .card > .card-header, .accordion > .card-admin > .card-header {
+.accordion > .card > .card-header, .accordion > .card-coche > .card-header, .accordion > .card-admin > .card-header {
   border-radius: 0;
   margin-bottom: -1px;
 }
@@ -5739,7 +5814,7 @@ a.badge:hover, a.badge:focus {
 }
 
 /* line 31, node_modules/bootstrap/scss/_badge.scss */
-.btn .badge, .btn-base .badge, .patata .badge {
+.btn .badge, .btn-base .badge, .btn-cancelar .badge {
   position: relative;
   top: -1px;
 }
@@ -5886,7 +5961,7 @@ a.badge-dark:focus, a.badge-dark.focus {
   background-color: #e9ecef;
   border-radius: 0.3rem;
 }
-@media (min-width: 576px) {
+@media (min-width: 844px) {
   /* line 1, node_modules/bootstrap/scss/_jumbotron.scss */
   .jumbotron {
     padding: 4rem 2rem;
@@ -6217,7 +6292,7 @@ a.badge-dark:focus, a.badge-dark.focus {
   border-left-width: 1px;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 844px) {
   /* line 96, node_modules/bootstrap/scss/_list-group.scss */
   .list-group-horizontal-sm {
     flex-direction: row;
@@ -6247,7 +6322,7 @@ a.badge-dark:focus, a.badge-dark.focus {
     border-left-width: 1px;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   /* line 96, node_modules/bootstrap/scss/_list-group.scss */
   .list-group-horizontal-md {
     flex-direction: row;
@@ -6277,7 +6352,7 @@ a.badge-dark:focus, a.badge-dark.focus {
     border-left-width: 1px;
   }
 }
-@media (min-width: 992px) {
+@media (min-width: 1280px) {
   /* line 96, node_modules/bootstrap/scss/_list-group.scss */
   .list-group-horizontal-lg {
     flex-direction: row;
@@ -6307,7 +6382,7 @@ a.badge-dark:focus, a.badge-dark.focus {
     border-left-width: 1px;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1400px) {
   /* line 96, node_modules/bootstrap/scss/_list-group.scss */
   .list-group-horizontal-xl {
     flex-direction: row;
@@ -6751,7 +6826,7 @@ a.close.disabled {
   overflow: scroll;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 844px) {
   /* line 202, node_modules/bootstrap/scss/_modal.scss */
   .modal-dialog {
     max-width: 500px;
@@ -6782,14 +6857,14 @@ a.close.disabled {
     max-width: 300px;
   }
 }
-@media (min-width: 992px) {
+@media (min-width: 1280px) {
   /* line 232, node_modules/bootstrap/scss/_modal.scss */
   .modal-lg,
   .modal-xl {
     max-width: 800px;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1400px) {
   /* line 239, node_modules/bootstrap/scss/_modal.scss */
   .modal-xl {
     max-width: 1140px;
@@ -7091,13 +7166,13 @@ a.close.disabled {
 }
 
 /* line 22, node_modules/bootstrap/scss/_carousel.scss */
-.carousel-inner {
+.carousel-inner, .carousel-personalizado {
   position: relative;
   width: 100%;
   overflow: hidden;
 }
 /* line 2, node_modules/bootstrap/scss/mixins/_clearfix.scss */
-.carousel-inner::after {
+.carousel-inner::after, .carousel-personalizado::after {
   display: block;
   clear: both;
   content: "";
@@ -7679,7 +7754,7 @@ button.bg-dark:focus {
   display: inline-flex !important;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 844px) {
   /* line 12, node_modules/bootstrap/scss/utilities/_display.scss */
   .d-sm-none {
     display: none !important;
@@ -7725,7 +7800,7 @@ button.bg-dark:focus {
     display: inline-flex !important;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   /* line 12, node_modules/bootstrap/scss/utilities/_display.scss */
   .d-md-none {
     display: none !important;
@@ -7771,7 +7846,7 @@ button.bg-dark:focus {
     display: inline-flex !important;
   }
 }
-@media (min-width: 992px) {
+@media (min-width: 1280px) {
   /* line 12, node_modules/bootstrap/scss/utilities/_display.scss */
   .d-lg-none {
     display: none !important;
@@ -7817,7 +7892,7 @@ button.bg-dark:focus {
     display: inline-flex !important;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1400px) {
   /* line 12, node_modules/bootstrap/scss/utilities/_display.scss */
   .d-xl-none {
     display: none !important;
@@ -8127,7 +8202,7 @@ button.bg-dark:focus {
   align-self: stretch !important;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 844px) {
   /* line 11, node_modules/bootstrap/scss/utilities/_flex.scss */
   .flex-sm-row {
     flex-direction: row !important;
@@ -8298,7 +8373,7 @@ button.bg-dark:focus {
     align-self: stretch !important;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   /* line 11, node_modules/bootstrap/scss/utilities/_flex.scss */
   .flex-md-row {
     flex-direction: row !important;
@@ -8469,7 +8544,7 @@ button.bg-dark:focus {
     align-self: stretch !important;
   }
 }
-@media (min-width: 992px) {
+@media (min-width: 1280px) {
   /* line 11, node_modules/bootstrap/scss/utilities/_flex.scss */
   .flex-lg-row {
     flex-direction: row !important;
@@ -8640,7 +8715,7 @@ button.bg-dark:focus {
     align-self: stretch !important;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1400px) {
   /* line 11, node_modules/bootstrap/scss/utilities/_flex.scss */
   .flex-xl-row {
     flex-direction: row !important;
@@ -8826,7 +8901,7 @@ button.bg-dark:focus {
   float: none !important;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 844px) {
   /* line 7, node_modules/bootstrap/scss/utilities/_float.scss */
   .float-sm-left {
     float: left !important;
@@ -8842,7 +8917,7 @@ button.bg-dark:focus {
     float: none !important;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   /* line 7, node_modules/bootstrap/scss/utilities/_float.scss */
   .float-md-left {
     float: left !important;
@@ -8858,7 +8933,7 @@ button.bg-dark:focus {
     float: none !important;
   }
 }
-@media (min-width: 992px) {
+@media (min-width: 1280px) {
   /* line 7, node_modules/bootstrap/scss/utilities/_float.scss */
   .float-lg-left {
     float: left !important;
@@ -8874,7 +8949,7 @@ button.bg-dark:focus {
     float: none !important;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1400px) {
   /* line 7, node_modules/bootstrap/scss/utilities/_float.scss */
   .float-xl-left {
     float: left !important;
@@ -9612,7 +9687,7 @@ button.bg-dark:focus {
   margin-left: auto !important;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 844px) {
   /* line 11, node_modules/bootstrap/scss/utilities/_spacing.scss */
   .m-sm-0 {
     margin: 0 !important;
@@ -10135,7 +10210,7 @@ button.bg-dark:focus {
     margin-left: auto !important;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   /* line 11, node_modules/bootstrap/scss/utilities/_spacing.scss */
   .m-md-0 {
     margin: 0 !important;
@@ -10658,7 +10733,7 @@ button.bg-dark:focus {
     margin-left: auto !important;
   }
 }
-@media (min-width: 992px) {
+@media (min-width: 1280px) {
   /* line 11, node_modules/bootstrap/scss/utilities/_spacing.scss */
   .m-lg-0 {
     margin: 0 !important;
@@ -11181,7 +11256,7 @@ button.bg-dark:focus {
     margin-left: auto !important;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1400px) {
   /* line 11, node_modules/bootstrap/scss/utilities/_spacing.scss */
   .m-xl-0 {
     margin: 0 !important;
@@ -11759,7 +11834,7 @@ button.bg-dark:focus {
   text-align: center !important;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 844px) {
   /* line 22, node_modules/bootstrap/scss/utilities/_text.scss */
   .text-sm-left {
     text-align: left !important;
@@ -11775,7 +11850,7 @@ button.bg-dark:focus {
     text-align: center !important;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   /* line 22, node_modules/bootstrap/scss/utilities/_text.scss */
   .text-md-left {
     text-align: left !important;
@@ -11791,7 +11866,7 @@ button.bg-dark:focus {
     text-align: center !important;
   }
 }
-@media (min-width: 992px) {
+@media (min-width: 1280px) {
   /* line 22, node_modules/bootstrap/scss/utilities/_text.scss */
   .text-lg-left {
     text-align: left !important;
@@ -11807,7 +11882,7 @@ button.bg-dark:focus {
     text-align: center !important;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1400px) {
   /* line 22, node_modules/bootstrap/scss/utilities/_text.scss */
   .text-xl-left {
     text-align: left !important;
@@ -12018,7 +12093,7 @@ a.text-dark:hover, a.text-dark:focus {
   }
 
   /* line 24, node_modules/bootstrap/scss/_print.scss */
-  a:not(.btn):not(.btn-base):not(.patata) {
+  a:not(.btn):not(.btn-base):not(.btn-cancelar) {
     text-decoration: underline;
   }
 
@@ -12069,12 +12144,12 @@ a.text-dark:hover, a.text-dark:focus {
   }
   /* line 92, node_modules/bootstrap/scss/_print.scss */
   body {
-    min-width: 992px !important;
+    min-width: 1280px !important;
   }
 
   /* line 95, node_modules/bootstrap/scss/_print.scss */
   .container {
-    min-width: 992px !important;
+    min-width: 1280px !important;
   }
 
   /* line 100, node_modules/bootstrap/scss/_print.scss */
@@ -12088,12 +12163,13 @@ a.text-dark:hover, a.text-dark:focus {
   }
 
   /* line 107, node_modules/bootstrap/scss/_print.scss */
-  .table {
+  .table, .tabla {
     border-collapse: collapse !important;
   }
   /* line 110, node_modules/bootstrap/scss/_print.scss */
-  .table td,
-  .table th {
+  .table td, .tabla td,
+  .table th,
+  .tabla th {
     background-color: #fff !important;
   }
 
@@ -12116,7 +12192,7 @@ a.text-dark:hover, a.text-dark:focus {
   }
 
   /* line 134, node_modules/bootstrap/scss/_print.scss */
-  .table .thead-dark th {
+  .table .thead-dark th, .tabla .thead-dark th {
     color: inherit;
     border-color: #dee2e6;
   }

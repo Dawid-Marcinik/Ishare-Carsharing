@@ -2,22 +2,32 @@
 <!--INICIO DEL NAV-->
 <nav class="navbar navbar-expand-sm navbar-dark sacar-por-delante barra-nav">
 	<!--PARTE IZQUIERDA DEL NAV-->
-	<div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+	<div class="mx-auto order-0">
+		<a class="navbar-brand" href="/">
+	    	<img src="/img/resources/logotipo_3.png" width="30" height="30" class="d-inline-block align-top" alt="">
+	    	ISHARE
+  		</a>
+  		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+    		<span class="navbar-toggler-icon"></span>
+		</button>
+	</div>
+	<div class="navbar-collapse collapse order-1 order-md-0 dual-collapse2">
 		<ul class="navbar-nav">
 			<li class="nav-item">
 				<a class="nav-link" href="/tarifas"> NUESTRAS TARIFAS </a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="/tarifas"> ALQUILA UN VEHÍCULO </a>
+				<a class="nav-link" href="/coche/alquilar"> ALQUILA UN VEHÍCULO </a>
 			</li>
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
 				SOBRE NOSOTROS
 				</a>
 				<div class="dropdown-menu">
-					<a class="dropdown-item" href="/invitado/c"> ENCUÉNTRANOS </a>
-					<a class="dropdown-item" href="/invitado/a"> CONOCE LA FLOTA </a>
-					<a class="dropdown-item" href="/invitado/a"> DEFENDEMOS LA TIERRA </a>
+					<a class="dropdown-item" href="/donde"> ENCUÉNTRANOS </a>
+					<a class="dropdown-item" href="/quienes"> CONOCE LA FLOTA </a>
+					<a class="dropdown-item" href="/faq"> PREGUNTAS FRECUENTES </a>
+					<a class="dropdown-item" href="/ecoTierra"> DEFENDEMOS LA TIERRA </a>
 				</div>
 			</li>
 			<li th:if="${session.user != null and session.user.rol.nombre == 'Admin'}" class="nav-item dropdown">
@@ -33,20 +43,20 @@
 					<a class="dropdown-item" href="/rol/r"> ROLES </a>
 					<a class="dropdown-item" href="/empresa/r"> EMPRESAS </a>
 					<a class="dropdown-item" href="/particular/r"> PARTICULARES </a>
-					<a class="dropdown-item" href="/"> VER MENÚ </a>
+					<a class="dropdown-item" href="/administracion"> VER MENÚ </a>
 				</div>
 			</li>
 		</ul>
 	</div>
 	<!--PARTE CENTRAL DEL NAV-->
-	<div class="mx-auto order-0">
+	<!--<div class="mx-auto order-0">
         <a class="navbar-brand mx-auto" href="/">ISHARE - CARSHARING</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
             <span class="navbar-toggler-icon"></span>
         </button>
-    </div>
+    </div>-->
 	<!--PARTE DERECHA DEL NAV-->
-	<div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+	<div class="navbar-collapse collapse order-3 dual-collapse2">
 		<ul class="navbar-nav ml-auto">
 		<li th:if="${session.user == null}" class="nav-item">
 			<a class="nav-link" href="/login"> LOGIN </a>

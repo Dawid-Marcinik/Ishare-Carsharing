@@ -1,0 +1,21 @@
+<div class="container">
+<h5 class="display-4">Coches disponibles para alquiler</h5>
+<div class="row">
+<div class="card-deck">
+	<div th:each="coche:${coches}" class="col-xlg-3 col-lg-3 col-md-6 col-sm-12 mb-3">
+		<div class="card-coche">
+			<div class="card-coche-img-container">
+				<img class="card-coche-img card-img-top" th:src="'/retrieve-dir/coche-numero-'+${coche.modelo.id}" th:alt="|coche-numero-${coche.id}|">
+			</div>
+			<div class="card-body">
+				<h4 class="card-title" th:text="|${coche.modelo.marca.nombre} - ${coche.modelo.nombre}|"></h4>
+				<p class="card-text" th:text="|${coche.autonomiaRestante} Km|"></p>
+				<p class="card-text" th:text="|Estacionado en: ${coche.ubicacion.direccion}|"></p>
+				<a href="#" class="btn-base" th:text="|${coche.modelo.tarifa} Tokens/Km|"></a>
+			</div>
+		</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
