@@ -55,7 +55,10 @@
 			<a class="nav-link" href="/registro"> REGISTRO </a>
 		</li>
 		<li th:if="${session.user != null}" class="nav-item">
-			<a class="nav-link" href="/recarga-tokens" th:text="|${session.user.saldo} Tokens|"></a>
+			<form action="/recarga-tokens" id="recargarTokens">
+				<input type="hidden" name="id" th:value="${session.user.id}" />
+				<a class="nav-link" onclick="document.getElementById('recargarTokens').submit();" th:text="|${#httpSession.getAttribute('saldo')} Tokens|"style="cursor: pointer;"></a>
+			</form>
 		</li>
 		<li th:if="${session.user != null}" class="nav-item">
 			<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
@@ -70,4 +73,6 @@
 		</ul>
 	</div>
 </nav>
+
+
 <!--FIN DEL NAV-->

@@ -1,5 +1,6 @@
 package org.ishare.app.controllers;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.ishare.app.domains.Entidad;
@@ -29,8 +30,14 @@ public class HomeController {
 		return "_t/frame";
 	}
 
+	@GetMapping("/tarifas")
+	public String tarifas(final ModelMap modelo) {
+		modelo.put("view", "/home/tarifas");
+		return "_t/frame";
+	}
+
 	@GetMapping("/")
-	public String home(final ModelMap modelo) {
+	public String home(final ModelMap modelo, final HttpServletRequest request) {
 		modelo.put("view", "/home/index");
 		return "_t/frame";
 	}
@@ -94,6 +101,7 @@ public class HomeController {
 			PRG.error("Contraseña incorrecta para la persona con nombre de usuario " + nombreUsuario, "/login");
 		}
 		s.setAttribute("user", entidad);
+		s.setAttribute("saldo", entidad.getSaldo());
 		return "redirect:/";
 	}
 
@@ -104,20 +112,46 @@ public class HomeController {
 		s.removeAttribute("user");
 		return "redirect:/";
 	}
-	
+
 	@GetMapping("quienes")
-	public String empresaQGet(final ModelMap m,final HttpSession s) throws DangerException {
+	public String empresaQGet(final ModelMap m, final HttpSession s) throws DangerException {
 		H.isRolOK("anon", s);
 		m.put("view", "/home/quienes");
 
 		return "/_t/frame";
 	}
-	
+
 	@GetMapping("donde")
-	public String empresaDGet(final ModelMap m,final HttpSession s) throws DangerException {
+	public String empresaDGet(final ModelMap m, final HttpSession s) throws DangerException {
 		H.isRolOK("anon", s);
 		m.put("view", "/home/donde");
 
 		return "/_t/frame";
 	}
+
+	@GetMapping("recarga-tokens")
+	public String recargaTokensGet(@RequestParam("id") final Long id, final ModelMap m, final HttpSession s) {
+		m.put("entidad", entidadRepository.getOne(id));
+		m.put("view", "/home/recarga-tokens");
+		return "/_t/frame";
+
+	}
+
+	@PostMapping("recarga-tokens")
+	public String recargaTokensPost(@RequestParam("id") final Long id, @RequestParam("saldo") final String saldo,
+			final HttpSession s) throws DangerException {
+		if (saldo == "") {
+			PRG.error("No has añadido saldo a tu cuenta");
+		} else {
+			final float fSaldo = Float.parseFloat(saldo);
+			final Entidad en = entidadRepository.getOne(id);
+			final float saldoActual = en.getSaldo();
+			en.setSaldo(saldoActual + fSaldo);
+			final float saldoFinal = saldoActual + fSaldo;
+			entidadRepository.save(en);
+			s.setAttribute("saldo", saldoFinal);
+		}
+		return "redirect:/";
+	}
+
 }
