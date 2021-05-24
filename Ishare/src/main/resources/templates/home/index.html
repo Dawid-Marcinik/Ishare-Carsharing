@@ -10,15 +10,15 @@
     		<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
     		<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
   		</ol>
-  		<div class="carousel-personalizado">
+  		<div class="carousel-inner">
     		<div class="carousel-item active">
-      			<img class="d-block w-100 img-carousel" src="/img/imagen1.jpg" alt="First slide">
+      			<img class="d-block w-100" src="/img/imagen1.jpg" alt="First slide">
     		</div>
     		<div class="carousel-item">
-      			<img class="d-block w-100 img-carousel" src="/img/imagen2.jpg" alt="Second slide">
+      			<img class="d-block w-100" src="/img/imagen2.jpg" alt="Second slide">
     		</div>
     		<div class="carousel-item">
-      			<img class="d-block w-100 img-carousel" src="/img/imagen3.jpg" alt="Third slide">
+      			<img class="d-block w-100" src="/img/imagen3.jpg" alt="Third slide">
     		</div>
   		</div>
   		<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -51,7 +51,7 @@
 	</p>
 	<br>
 	<div th:if="${session.user == null}">
-		<button type="button" class="btn-base" onclick="location.href='/registro';">CREA UNA CUENTA</button> 
+		<button type="button" class="btn btn-primary" onclick="location.href='/registro';">CREA UNA CUENTA</button> 
 	</div>
 	</div>
 	<div class="col-sm" style="text-align:center">
@@ -86,6 +86,36 @@
 			para nuestros clientes.
 		</p>	
 	</div>
+</div>
+
+</div>
+<div id="tercerContenedor" style="background-image: linear-gradient(to right, #0b1709, teal, #0b1709);text-align:center;margin-top:100px;padding:5em">
+	<h1 class="display-5"><b>Tarifas Ishare</b></h1>
+	<br>
+	<p class="h6">
+	Nuestras tarifas han sido pensadas para la flexibilidad de nuestros clientes.<br>
+	Regístrate sin coste, paga menos durante tus paradas<br>
+	y ahorra dinero en los trayectos<br>
+	más largos.<br><br>
+	<button type="button" class="btn btn-primary" onclick="location.href='/tarifas';"style="margin-top:60px;">DESCUBRE NUESTRAS TARIFAS</button>
+	</p>
 </div>	
+<div id="cuartoContenedor" style="padding:50px;margin:200px;" class="row">
+	<div id="textoCuarto" class="col">
+		<h1 class="display-5"><b>Zonas Ishare</b></h1><br>
+		<p class="h6">
+		Descubre las zonas<br>
+		por las que te puedes mover<br>
+		con total libertad con nuestros coches<br>
+		</p>
+		<br>
+		<br>
+		<br>
+		<br>
+		<button type="button" class="btn btn-primary" onclick="location.href='/donde';"style="margin-top:60px;">DESCUBRE NUESTROS APARCAMIENTOS</button>
+	</div>
+	<div id="imgCuarto" class="col-6">
+		<img src="/img/madrid.png" height="600px" width="600px" style="">
+	</div>
 </div>
 </div>

@@ -1,0 +1,11 @@
+<div class="container">
+	<h1>Añadir tokens</h1>
+	
+	<form method="post">
+		<label for="saldo">Tokens a añadir: </label>
+		<input type="number" name="saldo" id="saldo" required/>
+		<br/>
+		<input type="hidden" name="id" th:value="${session.user.id}"/>
+		<input type="submit" id="enviar"/>
+	</form>
+</div>
