@@ -1,6 +1,8 @@
 package org.ishare.app.controllers;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import javax.servlet.http.HttpSession;
 
@@ -63,6 +65,10 @@ public class ModeloController {
 			
 		try {
 			modeloRepository.save(modeloMarca);
+			
+			for(Modelo remodelo : modeloRepository.findAll()){
+				Files.write(Paths.get("src/main/resources/static/retrieve-dir/coche-numero-" +Long.toString(remodelo.getId())), remodelo.getImagen());
+			}
 		} catch (Exception e) {
 			PRG.error("nombre ya existente","modelo/c");
 		}
@@ -100,6 +106,10 @@ public class ModeloController {
 			modeloMarca.setTarifa(tarifa);
 			modeloMarca.setImagen(imagenByte);
 			modeloRepository.save(modeloMarca);
+			
+			for(Modelo remodelo : modeloRepository.findAll()){
+				Files.write(Paths.get("src/main/resources/static/retrieve-dir/coche-numero-" +Long.toString(remodelo.getId())), remodelo.getImagen());
+			}
 		} catch (Exception e) {
 			PRG.error("nombre ya existente","modelo/c");
 		}
