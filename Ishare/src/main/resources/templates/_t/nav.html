@@ -17,7 +17,7 @@
 				<a class="nav-link" href="/tarifas"> NUESTRAS TARIFAS </a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="/tarifas"> ALQUILA UN VEHÍCULO </a>
+				<a class="nav-link" href="/coche/alquilar"> ALQUILA UN VEHÍCULO </a>
 			</li>
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
@@ -26,7 +26,8 @@
 				<div class="dropdown-menu">
 					<a class="dropdown-item" href="/donde"> ENCUÉNTRANOS </a>
 					<a class="dropdown-item" href="/quienes"> CONOCE LA FLOTA </a>
-					<a class="dropdown-item" href="/invitado/a"> DEFENDEMOS LA TIERRA </a>
+					<a class="dropdown-item" href="/faq"> PREGUNTAS FRECUENTES </a>
+					<a class="dropdown-item" href="/ecoTierra"> DEFENDEMOS LA TIERRA </a>
 				</div>
 			</li>
 			<li th:if="${session.user != null and session.user.rol.nombre == 'Admin'}" class="nav-item dropdown">

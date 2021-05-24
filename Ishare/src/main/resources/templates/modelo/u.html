@@ -1,6 +1,6 @@
 <div class="container">
 	<h1 class="display-6">Modificar modelo</h1>
-	<form id="formulario" action="u" method="POST">
+	<form id="formulario" action="u" method="POST" enctype="multipart/form-data">
 		<label for="idMarca">Marca: </label>
 		<select name="idMarca" id="idMarca">
 			<option th:each="marca:${marcas}" th:value="${marca.id}" th:text="${marca.nombre}" th:selected="${marca.id == idMarcaModelo}"></option>
@@ -23,6 +23,9 @@
 		<label for="tarifa">Tarifa: (€/minuto)</label>
 		<input type="number" step="0.01" id="tarifa" name="tarifa" th:value="${modelo.tarifa}" onkeyup="validar_tarifa(this)" onchange="validar_modelo(this)" onclick="validar_tarifa(this)" onfocus="reseteaColor(this)">
 		<br>
+			<label for="imagen">Imagen del modelo:</label>
+	  		<input type="file" th:value="${modelo.imagen}" id="imagen" name="imagen" accept="image/*" onchange="validar_modelo(this)">
+	  		<br>
 		<input type="hidden" name="id" th:value="${modelo.id}">
 		<input class="btn-base" id="envio" type="submit" value="Modificar">
 		<input class="btn-cancelar" type="button" value="Cancelar" onclick="location.href='r'">

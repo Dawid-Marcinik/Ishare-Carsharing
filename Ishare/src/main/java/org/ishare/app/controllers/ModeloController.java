@@ -1,5 +1,7 @@
 package org.ishare.app.controllers;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpSession;
 
 import org.ishare.app.domains.Marca;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("modelo")
@@ -47,7 +50,7 @@ public class ModeloController {
 		return ("_t/frame");
 	}
 	@PostMapping("c")
-	public String cPost(ModelMap modelo, @RequestParam("idMarca") Long idMarca, @RequestParam("nombre") String nombre, @RequestParam("numeroPasajeros") Integer numeroPasajeros, @RequestParam("idTipo") Long idTipo, @RequestParam("autonomiaTotal") Integer autonomiaTotal, @RequestParam("tarifa") Float tarifa, HttpSession sesion) throws DangerException{
+	public String cPost(ModelMap modelo, @RequestParam("idMarca") Long idMarca, @RequestParam("nombre") String nombre, @RequestParam("numeroPasajeros") Integer numeroPasajeros, @RequestParam("idTipo") Long idTipo, @RequestParam("autonomiaTotal") Integer autonomiaTotal, @RequestParam("tarifa") Float tarifa, @RequestParam("imagen") MultipartFile imagen, HttpSession sesion) throws DangerException, IOException{
 		H.isRolOK("Admin", sesion);
 		if(nombre == "" || numeroPasajeros <= 0 || numeroPasajeros == null || autonomiaTotal <= 0 || autonomiaTotal == null || tarifa <= 0 || tarifa == null) {
 			PRG.error("Ningún parámetro puede estar vacío","modelo/c");
@@ -55,7 +58,8 @@ public class ModeloController {
 		
 		Marca marca = marcaRepository.getOne(idMarca);
 		Tipo tipo = tipoRepository.getOne(idTipo);
-		Modelo modeloMarca = new Modelo(nombre, numeroPasajeros, tipo, autonomiaTotal, tarifa, marca);
+		byte[] imagenByte = imagen.getBytes();
+		Modelo modeloMarca = new Modelo(nombre, numeroPasajeros, tipo, autonomiaTotal, tarifa, imagenByte, marca);
 			
 		try {
 			modeloRepository.save(modeloMarca);
@@ -76,7 +80,7 @@ public class ModeloController {
 		return ("_t/frame");
 	}
 	@PostMapping("u")
-	public String uPost(ModelMap modelo, @RequestParam("id") Long id, @RequestParam("idMarca") Long idMarca, @RequestParam("nombre") String nombre, @RequestParam("numeroPasajeros") Integer numeroPasajeros, @RequestParam("idTipo") Long idTipo, @RequestParam("autonomiaTotal") Integer autonomiaTotal, @RequestParam("tarifa") Float tarifa, HttpSession sesion) throws DangerException{
+	public String uPost(ModelMap modelo, @RequestParam("id") Long id, @RequestParam("idMarca") Long idMarca, @RequestParam("nombre") String nombre, @RequestParam("numeroPasajeros") Integer numeroPasajeros, @RequestParam("idTipo") Long idTipo, @RequestParam("autonomiaTotal") Integer autonomiaTotal, @RequestParam("tarifa") Float tarifa, @RequestParam("imagen") MultipartFile imagen, HttpSession sesion) throws DangerException, IOException{
 		H.isRolOK("Admin", sesion);
 		if(nombre == "" || numeroPasajeros <= 0 || numeroPasajeros == null || autonomiaTotal <= 0 || autonomiaTotal == null || tarifa <= 0 || tarifa == null) {
 			PRG.error("Ningún parámetro puede estar vacío","modelo/c");
@@ -85,6 +89,7 @@ public class ModeloController {
 		Marca marca = marcaRepository.getOne(idMarca);	
 		Tipo tipo = tipoRepository.getOne(idTipo);
 		Modelo modeloMarca = modeloRepository.getOne(id);
+		byte[] imagenByte = imagen.getBytes();
 		
 		try {
 			modeloMarca.setMarca(marca);
@@ -93,6 +98,7 @@ public class ModeloController {
 			modeloMarca.setTipo(tipo);
 			modeloMarca.setAutonomiaTotal(autonomiaTotal);
 			modeloMarca.setTarifa(tarifa);
+			modeloMarca.setImagen(imagenByte);
 			modeloRepository.save(modeloMarca);
 		} catch (Exception e) {
 			PRG.error("nombre ya existente","modelo/c");

@@ -7,13 +7,13 @@ $grid-breakpoints: (
   // Extra small screen / phone
   xs: 0,
   // Small screen / phone
-  sm: 682px,
+  sm: 844px,
   // Medium screen / tablet
-  md: 768px,
+  md: 992px,
   // Large screen / desktop
-  lg: 992px,
+  lg: 1280px,
   // Extra large screen / wide desktop
-  xl: 1280px
+  xl: 1400px
 );
 $body-color: white;
 $body-bg: black;
@@ -30,7 +30,10 @@ $color-cancelar-base-hover:rgb(233, 39, 45);
 .capsula{
 	margin: 40px 0;
 }
-
+.card-coche{
+	@extend .card;
+	background-color: rgb(128, 128, 64) !important;
+}
 .btn-base{
 	@extend .btn;
 	background-color: $color-boton-base !important;

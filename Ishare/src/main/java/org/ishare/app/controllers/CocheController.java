@@ -109,4 +109,11 @@ public class CocheController {
 			}
 			return("redirect:/coche/r");
 		}
+		//Alquilar
+		@GetMapping("alquilar")
+		public String alquilarGet(ModelMap modelo) {
+			modelo.put("view", "/coche/alquilar");
+			modelo.put("coches", cocheRepository.findAll());
+			return ("_t/frame");
+		}
 }
