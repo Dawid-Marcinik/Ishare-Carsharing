@@ -16,7 +16,7 @@ SecurityAutoConfiguration.class })
 public class IshareApplication implements CommandLineRunner{
 
 	@Autowired
-	ModeloRepository modeloRepository;
+	private ModeloRepository modeloRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(IshareApplication.class, args);
@@ -26,7 +26,7 @@ public class IshareApplication implements CommandLineRunner{
 	public void run(String... arg0) throws Exception {
 		// retrieve image from MySQL via SpringJPA
 		for(Modelo modelo : modeloRepository.findAll()){
-			Files.write(Paths.get("src/main/resources/static/retrieve-dir/" + Long.toString(modelo.getId())), modelo.getImagen());
+			Files.write(Paths.get("src/main/resources/static/retrieve-dir/coche-numero-" +Long.toString(modelo.getId())), modelo.getImagen());
 		}
 	}
 }

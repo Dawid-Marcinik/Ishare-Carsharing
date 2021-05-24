@@ -5,7 +5,7 @@
 	<div th:each="coche:${coches}" class="col-xlg-3 col-lg-3 col-md-6 col-sm-12 mb-3">
 		<div class="card-coche">
 			<div class="card-coche-img-container">
-				<img class="card-coche-img card-img-top" th:src="'/retrieve-dir/'+${coche.modelo.id}" th:alt="${coche.id}">
+				<img class="card-coche-img card-img-top" th:src="'/retrieve-dir/coche-numero-'+${coche.modelo.id}" th:alt="|coche-numero-${coche.id}|">
 			</div>
 			<div class="card-body">
 				<h4 class="card-title" th:text="|${coche.modelo.marca.nombre} - ${coche.modelo.nombre}|"></h4>
