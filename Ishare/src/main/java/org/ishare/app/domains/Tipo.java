@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Tipo {
 
@@ -19,6 +21,7 @@ public class Tipo {
 	private Long id;
 	@Column(unique = true)
 	private String nombre;
+	@JsonBackReference
 	@OneToMany(mappedBy = "tipo", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	private List<Modelo> modelos;
 	
