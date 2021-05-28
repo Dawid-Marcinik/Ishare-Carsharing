@@ -13,6 +13,9 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Modelo {
 	@Id
@@ -22,6 +25,7 @@ public class Modelo {
 	private String nombre;
 	@Column
 	private Integer numeroPasajeros;
+	@JsonManagedReference
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Tipo tipo;
 	@Column
@@ -31,8 +35,10 @@ public class Modelo {
 	@Lob
     @Column(name = "imagen")
     private byte[] imagen;
+	@JsonManagedReference
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Marca marca;
+	@JsonBackReference
 	@OneToMany(mappedBy = "modelo", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	private List<Coche> coches;
 	

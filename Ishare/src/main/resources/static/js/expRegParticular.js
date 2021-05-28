@@ -202,19 +202,19 @@ y los tres restantes pueden ser cualquier valor numérico
     var dato = form.dni.value.toUpperCase();
     var resul = false;
     var reg = /^\d{8}[A-Z]$/;
- 
+ 	document.getElementById("dni").setAttribute("style","border-color:red");
 
     var arrC = ["T","R","W","A","G","M","Y","F","P","D","X","B","N","J","Z","S","Q","V","H","L","C","K","E",];
     if (reg.test(dato) == true) {
         var numDni = dato.substr(0,8);
         var resto = parseInt(numDni)%23;
         if(dato.charAt(8)==arrC[resto]){
-            document.getElementById("dni").style.borderColor = "black";
-          resul = true;
+          	document.getElementById("dni").style.borderColor = "black";
+          	resul = true;
         }
       	else{
-        document.getElementById("dni").style.borderColor = "red";
-        resul = false;
+	        document.getElementById("dni").style.borderColor = "red";
+	        resul = false;
       	}
       
       } return resul;
