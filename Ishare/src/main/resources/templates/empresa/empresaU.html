@@ -7,19 +7,19 @@
 		Nombre de usuario
 		<input type="text" name="nombreUsuario" id="nombreUsuario" th:value="${empresa.nombreUsuario}" onchange='validarNombreUsuario(this.form)' onkeyup="validar(this.form)"><br>
 		
-		ContraseÃ±a
+		Contraseña
 		<input type="password" name="contrasena" id="contrasena" th:value="${empresa.contrasena}" onchange='validarContrasena(this.form)' onkeyup="validar(this.form)"><br>
 		
 		Localidad
 		<input type="text" name="localidad" id="localidad" th:value="${empresa.localidad}" onchange='validarLocalidad(this.form)' onkeyup="validar(this.form)"><br>
 		
-		DirecciÃ³n
+		Dirección
 		<input type="text" name="direccion" id="direccion" th:value="${empresa.direccion}" onchange='validarDireccion(this.form)' onkeyup="validar(this.form)"><br>
 		
-		CÃ³digo postal
+		Código postal
 		<input type="number" name="codigoPostal" id="codigoPostal" th:value="${empresa.codigoPostal}"  onchange='validarCodigoPostal(this.form)' onkeyup="validar(this.form)"><br>
 		
-		TelÃ©fono
+		Teléfono
 		<input type="number" name="telefono" id="telefono" th:value="${empresa.telefono}" onchange='validarTelefono(this.form)' onkeyup="validar(this.form)"><br>
 		
 		Email
@@ -36,7 +36,7 @@
 		Cif
 		<input type="text" name="cif" id="cif" th:value="${empresa.cif}" onchange='validarCif(this.form)' onkeyup="validar(this.form)"><br>
 		
-		RazÃ³n social
+		Razón social
 		<input type="text" name="razonSocial" id="razonSocial" th:value="${empresa.razonSocial}" onchange='validarRazonSocial(this.form)' onkeyup='validar(this.form)'><br>
 		
 		<input type="hidden" name="id" th:value="${empresa.id}"/>
