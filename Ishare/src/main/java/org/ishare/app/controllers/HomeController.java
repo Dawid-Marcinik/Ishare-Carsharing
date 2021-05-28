@@ -181,5 +181,15 @@ public class HomeController {
 		}
 		return "redirect:/";
 	}
+	
+	@GetMapping("/flota")
+	public String nuestraFlota(final ModelMap m, final HttpSession s) throws DangerException {
+
+		m.put("view", "/home/flota");
+
+		return "/_t/frame";
+	}
+	
+
 
 }
