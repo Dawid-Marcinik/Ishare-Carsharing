@@ -1,11 +1,39 @@
+<meta charset=UTF-8>
+<style>
+	input:valid{
+		border-color: black;
+	}
+
+	input:invalid{
+		border-color:red;
+	}
+	.nullClass{
+		border-color: red;
+	}
+	*:focus { outline: none; } 
+</style>
+<script src="/js/Validar_recarga_tokens_tarjeta.js"></script>
 <div class="container">
-	<h1>A�adir tokens</h1>
+	<h1>Añadir tokens</h1>
 	
 	<form method="post">
-		<label for="saldo">Tokens a a�adir: </label>
-		<input type="number" name="saldo" id="saldo" required/>
+		<div id="datosBancarios">
+		<label for="numTarjeta">Número tarjeta:</label>
+		<input type="number" name="numTarjeta" id="numTarjeta" onkeyup="validar()" required>
+		<br/>
+		<label for="numTarjeta">Nombre tarjeta:</label>
+		<input type="text" name="nomTarjeta" id="nomTarjeta" onkeyup="validar()" required>
+		<br/>
+		<label for="fechaTarjeta">Fecha validación tarjeta:</label>
+		<input type="number" name="mesTarjeta" id="mesTarjeta" onkeyup="validar()" style="width:50px;" required> / <input type="number" name="anioTarjeta" id="anioTarjeta" onkeyup="validarFechaTarjeta()" style="width:75px;" required>
+		<br/>
+		<label for="cvv">CVV tarjeta:</label>
+		<input type="number" name="cvv" id="cvv" onkeyup="validar()" style="width:75px;" required>
+		</div>
+		<label for="saldo">Tokens a añadir: </label>
+		<input type="number" name="saldo" id="saldo" onkeyup="validar()" style="width:100px;" required/>
 		<br/>
 		<input type="hidden" name="id" th:value="${session.user.id}"/>
-		<input type="submit" id="enviar"/>
+		<input type="submit" id="enviar"disabled />
 	</form>
 </div>
