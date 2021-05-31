@@ -11,6 +11,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Ubicacion {
 
@@ -23,13 +26,13 @@ public class Ubicacion {
 
 	@Column
 	private Integer plazasTotales;
-
+	@JsonManagedReference
 	@OneToMany(mappedBy = "iniciaEn", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	private Collection<Alquiler> iniciadosEn;
-
+	@JsonManagedReference
 	@OneToMany(mappedBy = "finalizaEn", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	private Collection<Alquiler> finalizadosEn;
-
+	@JsonBackReference
 	@OneToMany(mappedBy = "ubicacion", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	private Collection<Coche> cochesAlquilados;
 

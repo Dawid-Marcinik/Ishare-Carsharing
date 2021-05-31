@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Alquiler {
 
@@ -21,16 +23,16 @@ public class Alquiler {
 	private LocalDateTime fechaInicio;
 	private LocalDateTime fechaFin;
 	private Integer puntuacion;
-
+	@JsonBackReference
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Ubicacion iniciaEn;
-
+	@JsonBackReference
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Ubicacion finalizaEn;
-
+	@JsonBackReference
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Coche coche;
-
+	@JsonBackReference
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Entidad entidad;
 

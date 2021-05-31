@@ -90,7 +90,7 @@
 		<br/>
 		<label for="idCocheAlquilado">COCHE ALQUILADO: </label>
 		<select name="idCocheAlquilado" id="idCocheAlquilado" required >
-			<option th:each="coche:${coches}" th:text="|${coche.modelo.marca.nombre} - ${coche.modelo.nombre} - ${coche.matricula} - ${coche.autonomiaRestante}|" th:selected="${coche.matricula == alquiler.coche.matricula}" th:value="${coche.id}">
+			<option th:each="coche:${coches}" th:if="${coche.id == coche_id}" th:text="|${coche.modelo.marca.nombre} - ${coche.modelo.nombre} - ${coche.matricula} - ${coche.autonomiaRestante}|" th:selected="${coche.matricula == alquiler.coche.matricula}" th:value="${coche.id}">
 			</option>
 		</select>
 		<br/>
@@ -111,6 +111,7 @@
 		<br/>
 		
 		<input type="hidden" name="idAlquiler" th:value="${alquiler.idAlquiler}"/>
-		<input type="submit" id="enviar"/>
+		<input class="btn-base" type="submit" id="enviar"/>
+		<input class="btn-cancelar" type="button" value="Cancelar" onclick="location.href='r'">
 	</form>
 </div>

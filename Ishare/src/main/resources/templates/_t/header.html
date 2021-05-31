@@ -1,5 +1,5 @@
 <meta charset=UTF-8>
-<header class="cabecera">
+<header th:if="${#httpServletRequest.requestURI == '/'}" class="cabecera">
 <div class="portada">
 	<img class="portada" src="/img/resources/portada.jpg" alt="portada">
 	<div class="norow">
@@ -7,7 +7,7 @@
 		<div class="logo-container">
 			<img class="logo" src="/img/resources/logotipo_3.png" alt="logo">
 		</div>
-		<h1 class="display-2 texto-logo">Ishare - carsharing</h1>
+		<h1 class="display-2 texto-logo">Ishare - pioneros en leasing</h1>
 	</div>
 		<!--<div th:if="${session.user != null}">
 			Hola <span th:text="|${session.user.nombreUsuario} (${session.user.rol.nombre}) |"/> / 

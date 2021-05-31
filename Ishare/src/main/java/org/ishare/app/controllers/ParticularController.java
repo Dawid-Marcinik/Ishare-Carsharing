@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import javax.servlet.http.HttpSession;
 
+import org.ishare.app.domains.Entidad;
 import org.ishare.app.domains.Particular;
 import org.ishare.app.domains.Rol;
 import org.ishare.app.exceptions.DangerException;
@@ -63,18 +64,21 @@ public class ParticularController {
 			final Rol rol = rolRepository.getOne(idRol);
 			final Particular p = new Particular(nombreUsuario, contrasena, localidad, direccion, iCodigoPostal,
 					iTelefono, email, rol, fSaldo, dni, nombre, apellidos, lFechaNacimiento);
-			H.isRolOK("Admin", s);
-			try {
-				particularRepository.save(p);
-
-			} catch (final Exception e) {
-				// TODO: handle exception
-				PRG.error("no pueden haber dos Dni iguales", "/particular/c");
+			if (((Entidad)s.getAttribute("user")).getRol().getNombre() == "User"){
+				PRG.error("no puede estar logueado para realizar esta operación", "/");
 			}
-
+			else {
+				try {
+					particularRepository.save(p);
+	
+				} catch (final Exception e) {
+					// TODO: handle exception
+					PRG.error("no pueden haber dos Dni iguales", "/particular/c");
+				}
+			}
 		}
 
-		return "redirect:/particular/r";
+		return "redirect:/";
 	}
 
 	@GetMapping("r")

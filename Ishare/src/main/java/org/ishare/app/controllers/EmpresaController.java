@@ -6,6 +6,7 @@ import java.text.ParseException;
 import javax.servlet.http.HttpSession;
 
 import org.ishare.app.domains.Empresa;
+import org.ishare.app.domains.Entidad;
 import org.ishare.app.domains.Rol;
 import org.ishare.app.exceptions.DangerException;
 import org.ishare.app.helpers.H;
@@ -58,7 +59,9 @@ public class EmpresaController {
 			final Rol rol = rolRepository.getOne(idRol);
 			final Empresa em = new Empresa(nombreUsuario, contrasena, localidad, direccion, iCodigoPostal, iTelefono,
 					email, rol, fSaldo, cif, razonSocial);
-			H.isRolOK("Admin", s);
+			if (((Entidad)s.getAttribute("user")).getRol().getNombre() == "User"){
+				PRG.error("no puede estar logueado para realizar esta operación", "/");
+			}
 			try {
 				empresaRepository.save(em);
 			} catch (final Exception e) {
@@ -67,7 +70,7 @@ public class EmpresaController {
 			}
 		}
 
-		return "redirect:/empresa/r";
+		return "redirect:/";
 	}
 
 	@GetMapping("r")

@@ -47,12 +47,18 @@ public class AlquilerController {
 	@GetMapping("u")
 	public String alquilerUGet(@RequestParam("idAlquiler") final Long idAlquiler, final ModelMap m, final HttpSession s)
 			throws DangerException {
-		H.isRolOK("Admin", s);
-		m.put("ubicaciones", this.ubicacionRepository.findAll());
-		m.put("alquiler", alquilerRepository.getOne(idAlquiler));
-		m.put("coches", cocheRepository.findAll());
-		m.put("view", "alquiler/uGet");
-		return "/_t/frame";
+		H.isRolOK("User", s);
+		try {
+			m.put("ubicaciones", ubicacionRepository.findAll());
+			m.put("alquiler", alquilerRepository.getOne(idAlquiler));
+			m.put("coches", cocheRepository.findAll());
+			m.put("view", "alquiler/uGet");
+			return "/_t/frame";
+		} catch (Exception e) {
+			m.put("view", "/login");
+			return "/_t/frame";
+		}
+		
 	}
 
 	@PostMapping("u")
@@ -98,12 +104,18 @@ public class AlquilerController {
 	}
 
 	@GetMapping("c")
-	public String alquilerCGet(final ModelMap m) {
-		m.put("ubicaciones", this.ubicacionRepository.findAll());
-		m.put("coches", this.cocheRepository.findAll());
-		m.put("view", "alquiler/cGet");
+	public String alquilerCGet(final ModelMap m, final HttpSession s) throws DangerException {
+		H.isRolOK("User", s);
+		try {
+			m.put("ubicaciones", ubicacionRepository.findAll());
+			m.put("coches", cocheRepository.findAll());
+			m.put("view", "alquiler/cGet");
 
-		return "/_t/frame";
+			return "/_t/frame";
+		} catch (Exception e) {
+			m.put("view", "/login");
+			return "/_t/frame";
+		}
 	}
 
 	@PostMapping("c")

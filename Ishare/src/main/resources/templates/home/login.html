@@ -2,13 +2,14 @@
 	<h1>Inicio de sesión</h1>
 	<form method="post">
 		<label for="nombreUsuario">Nombre de usuario</label>
-		<input type="text" name="nombreUsuario" id="nombreUsuario">
+		<input type="text" name="nombreUsuario" id="nombreUsuario" autofocus>
 		<br/>
 		
 		<label for="contrasena">Contraseña</label>
 		<input type="password" name="contrasena" id="contrasena">
 		<br/>
 		
-		<input type="submit" value="Loguearse"/>
+		<input class="btn-base" type="submit" value="Iniciar Sesión"/>
+		<input class="btn-cancelar" type="button" value="Cancelar" onclick="location.href='/'">
 	</form>
 </div>

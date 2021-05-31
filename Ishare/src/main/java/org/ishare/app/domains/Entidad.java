@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Entidad {
 
@@ -38,12 +41,12 @@ public class Entidad {
 
 	@Column(unique = true)
 	protected String email;
-
+	@JsonBackReference
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	protected Rol rol;
 
 	protected Float saldo;
-
+	@JsonManagedReference
 	@OneToMany(mappedBy = "entidad", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	protected List<Alquiler> alquileres;
 

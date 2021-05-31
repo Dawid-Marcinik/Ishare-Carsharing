@@ -4,25 +4,29 @@
 <div class="container-fluid py-5 pie-de-pagina-a">
 	<div class="row">
 		<div class="col-6 col-sm">
+			<img src="/img/resources/logotipo_3.png" alt="ishare" width="100px">
 			<h5>© ISHARE 2021</h5>
 		</div>
 		<div class="col-6 col-sm">
 			<h5>POLÍTICAS VARIAS</h5>
 			<ul class="list-unstyled text-small">
-				<li>Política de Cookies</li>
-				<li>Términos y condiciones</li>
-				<li>Política de privacidad</li>
-				<li>Política de precios</li>
-				<li>Preguntas frecuentes</li>
-				<li>Nos comprometemos con la Tierra</li>
+				<li><a class="enlace" href="/politicasC">Política de Cookies</a></li>
+				<li><a class="enlace" href="/terminosC">Términos y condiciones</a></li>
+				<li><a class="enlace" href="/privacidadP">Política de privacidad</a></li>
+				<li><a class="enlace" href="/preciosP">Política de precios</a></li>
+				<li><a class="enlace" href="/faq">Preguntas frecuentes</a></li>
+				<li><a class="enlace" href="/ecoTierra">Nos comprometemos con la Tierra</a></li>
 			</ul>
 		</div>
 		<div class="col-6 col-sm">
 			<h5>MENÚ</h5>
-			<hr>
 			<ul class="list-unstyled text-small">
-				<li th:each="ubicacion:${ubicaciones}" th:text="${ubicacion.direccion}">
-				</li>
+				<li><a class="enlace" href="/">HOME</a></li>
+				<li><a class="enlace" href="/tarifas">NUESTRAS TARIFAS</a></li>
+				<li><a class="enlace" href="/coche/alquilar">ALQUILA UN VEHÍCULO</a></li>
+				<li><a class="enlace" href="/flota">CONOCE A LA FLOTA</a></li>
+				<li><a class="enlace" href="/faq">PREGUNTAS FRECUENTES</a></li>
+				<li><a class="enlace" href="/donde">ENCUÉNTRANOS</a></li>
 			</ul>
 		</div>
 	</div>

@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Coche {
 	@Id
@@ -21,10 +23,13 @@ public class Coche {
 	private String matricula;
 	@Column
 	private Integer autonomiaRestante;
+	@JsonManagedReference
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Modelo modelo;
+	@JsonManagedReference
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Ubicacion ubicacion;
+	@JsonManagedReference
 	@OneToMany(mappedBy = "coche", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	private List<Alquiler> alquileres;
 

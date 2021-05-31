@@ -24,11 +24,6 @@ public class HomeController {
 	@Autowired
 	private RolRepository rolRepository;
 
-	@GetMapping("/home")
-	public String hom(final ModelMap modelo) {
-		modelo.put("view", "/home/home");
-		return "_t/frame";
-	}
 
 	@GetMapping("/tarifas")
 	public String tarifas(final ModelMap modelo) {
@@ -115,16 +110,61 @@ public class HomeController {
 
 	@GetMapping("quienes")
 	public String empresaQGet(final ModelMap m, final HttpSession s) throws DangerException {
-		H.isRolOK("anon", s);
 		m.put("view", "/home/quienes");
 
 		return "/_t/frame";
 	}
 
 	@GetMapping("donde")
-	public String empresaDGet(final ModelMap m, final HttpSession s) throws DangerException {
-		H.isRolOK("anon", s);
+	public String empresaDGet(final ModelMap m,final HttpSession s) throws DangerException {
 		m.put("view", "/home/donde");
+
+		return "/_t/frame";
+	}
+	
+	//Añadido por si acaso
+	@GetMapping("/administracion")
+	public String administracion(final ModelMap modelo, final HttpSession s) throws DangerException {
+		H.isRolOK("Admin", s);
+		modelo.put("view", "/home/menuAdmin");
+		return "_t/frame";
+	}
+	@GetMapping("/politicasC")
+	public String politicasC(final ModelMap m, final HttpSession s) throws DangerException {
+		m.put("view", "/home/politicasC");
+
+		return "/_t/frame";
+	}
+	@GetMapping("/terminosC")
+	public String terminosC(final ModelMap m, final HttpSession s) throws DangerException {
+		m.put("view", "/home/terminosC");
+
+		return "/_t/frame";
+	}
+	@GetMapping("/privacidadP")
+	public String privacidadP(final ModelMap m, final HttpSession s) throws DangerException {
+		m.put("view", "/home/privacidadP");
+
+		return "/_t/frame";
+	}
+	@GetMapping("/preciosP")
+	public String politicasP(final ModelMap m, final HttpSession s) throws DangerException {
+
+		m.put("view", "/home/preciosP");
+
+		return "/_t/frame";
+	}
+	@GetMapping("/faq")
+	public String faq(final ModelMap m, final HttpSession s) throws DangerException {
+
+		m.put("view", "/home/faq");
+
+		return "/_t/frame";
+	}
+	@GetMapping("/ecoTierra")
+	public String ecoTierra(final ModelMap m, final HttpSession s) throws DangerException {
+
+		m.put("view", "/home/ecoTierra");
 
 		return "/_t/frame";
 	}
@@ -153,5 +193,15 @@ public class HomeController {
 		}
 		return "redirect:/";
 	}
+	
+	@GetMapping("/flota")
+	public String nuestraFlota(final ModelMap m, final HttpSession s) throws DangerException {
+
+		m.put("view", "/home/flota");
+
+		return "/_t/frame";
+	}
+	
+
 
 }

@@ -110,11 +110,11 @@
 	function validar(){
 		validarFechaInicio();
 		validarFechaFin();
-		validarCocheAlquilado();
-		validarUbicacionInicio();
+		//validarCocheAlquilado();
+		//validarUbicacionInicio();
 		validarUbicacionFin();
-		validarPuntuacion();
-		if(validarFechaInicio()==true && validarFechaFin()==true && validarDifFechas()==true && validarCocheAlquilado()==true && validarUbicacionInicio()==true && validarUbicacionFin()==true && validarPuntuacion()==true){
+		//validarPuntuacion();
+		if(validarFechaInicio()==true && validarFechaFin()==true && validarDifFechas()==true && /*validarCocheAlquilado()==true && validarUbicacionInicio()==true &&*/ validarUbicacionFin()==true /*&& validarPuntuacion()==true*/){
 			document.getElementById("enviar").disabled=false;
 		}else{
 			document.getElementById("enviar").disabled=true;
@@ -126,24 +126,16 @@
 	
 	<form method="post">
 		<label for="fechaInicio">FECHA INICIO: </label>
-		<input type="datetime-local" name="fechaInicio" id="fechaInicio" onchange="validar()" required/>
+		<input type="date" name="fechaInicio" id="fechaInicio" onchange="validar()" required/>
 		<br/>
 		<label for="fechaFin">FECHA FIN: </label>
-		<input type="datetime-local" name="fechaFin" id="fechaFin" onchange="validar()"required/>
+		<input type="date" name="fechaFin" id="fechaFin" onchange="validar()"required/>
 		<br/>
-		<label for="idCocheAlquilado">COCHE ALQUILADO: </label>
-		<select name="idCocheAlquilado" id="idCocheAlquilado" required onchange ="validar()" class="nullClass">
-			<option value="-1" selected>- - - -</option>
-			<option th:each="coche:${coches}" th:text="|${coche.modelo.marca.nombre} - ${coche.modelo.nombre} - ${coche.matricula} - ${coche.autonomiaRestante}|" th:value="${coche.id}">
-			</option>
-		</select>
-		<br/>
-		<label for="idUbicacionInicio">UBICACIÓN DE INICIO: </label>
-		<select name="idUbicacionInicio" id="idUbicacionInicio" required onchange="validar()" class="nullClass">
-			<option value="-1" selected>- - - -</option>
-			<option th:each="ubicacion:${ubicaciones}" th:text="${ubicacion.direccion}" th:value="${ubicacion.idUbicacion}">
-			</option>
-		</select>
+		<!--<label for="idCocheAlquilado">COCHE ALQUILADO: </label>-->
+		<div th:each="coche:${coches}" th:if="${coche.id == T(Long).parseLong(param.idCoche)}">
+			<span th:text="|COCHE ALQUILADO ${coche.modelo.marca.nombre} - ${coche.modelo.nombre} - ${coche.matricula} - ${coche.autonomiaRestante} Km(restante)|"></span><br/>
+			<span th:text="|UBICADO ACTUALMENTE EN: ${coche.ubicacion.direccion}|"></span>
+		</div>
 		<br/>
 		<label for="idUbicacionFin">UBICACIÓN DE FINALIZACIÓN: </label>
 		<select name="idUbicacionFin" id="idUbicacionFin" required onchange="validar()" class="nullClass"> 
@@ -152,10 +144,8 @@
 			</option>
 		</select>
 		<br/>
-		<label for="puntuacion">PUNTUACIÓN: </label>
-		<input type="number" id="puntuacion" name="puntuacion" max="10" min="0" onchange="validar()" required/>
-		<br/>
 		
-		<input type="submit" id="enviar" disabled/>
+		<input class="btn-base" type="submit" id="enviar" disabled/>
+		<input class="btn-cancelar" type="button" value="Cancelar" onclick="location.href='r'">
 	</form>
 </div>
