@@ -65,9 +65,18 @@
 				MI PERFIL
 				</a>
 				<div class="dropdown-menu dropdown-menu-right">
-					<a class="dropdown-item" href="/invitado/c"> MIS DATOS </a>
-					<a class="dropdown-item" href="/invitado/c"> RECARGAR TOKENS </a>
-					<a class="dropdown-item" href="/logout"> LOGOUT </a>
+					<form action="/editar-perfil" id="editarPerfil">
+						<input type="hidden" name="id" th:value="${session.user.id}" />
+						<a class="dropdown-item" onclick="document.getElementById('editarPerfil').submit();"style="cursor: pointer;">MIS DATOS</a>
+					</form>
+					<form action="/recarga-tokens" id="recargarTokens2">
+						<input type="hidden" name="id" th:value="${session.user.id}" />
+						<a class="dropdown-item" onclick="document.getElementById('recargarTokens2').submit();"style="cursor: pointer;">RECARGAR TOKENS</a>
+					</form>
+					<form action="/logout" id="logout">
+						<input type="hidden" name="id" th:value="${session.user.id}" />
+						<a class="dropdown-item" onclick="document.getElementById('logout').submit();" style="cursor: pointer;">LOGOUT</a>
+					</form>
 				</div>
 		</li>
 		</ul>
