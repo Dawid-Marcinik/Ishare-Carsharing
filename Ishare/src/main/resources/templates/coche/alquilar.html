@@ -1,31 +1,99 @@
 <div class="container">
 	<h5 class="display-4">Coches disponibles para alquiler</h5>
+	<select name="filtro" id="filtro">
+		<option value="ninguno" selected="selected">Ninguno</option>
+		<option value="marca">Marca</option>
+		<option value="modelo">Modelo</option>
+		<option value="autonomia">Autonomia</option>
+	</select>
+	<input id="buscador" name="buscador" type="text">
 	<div class="row">
 		<div id="TABLAAJAX" class="card-deck">
-			
+
 		</div>
 	</div>
 </div>
 </div>
 <script>
 	$(document).ready(function () {
-		$.getJSON("http://localhost:8080/REST/coche/recuperar", function (result) {
-			$.each(result, function (clave, coche) {
-				console.log(coche);
-				$("#TABLAAJAX").append(`
-				<div  class="col-xlg-3 col-lg-3 col-md-6 col-sm-12 mb-3">
-				<div class="card-coche">
-				<div class="card-coche-img-container">
-				<img class="card-coche-img card-img-top" src="/retrieve-dir/coche-numero-${coche.modelo.id}" alt="coche-numero-${coche.id}">
-				</div><div class="card-body">
-				<h4 class="card-title">${coche.modelo.marca.nombre} - ${coche.modelo.nombre}</h4>
-				<p class="card-text">${coche.autonomiaRestante} Km</p><p class="card-text">Estacionado en: ${coche.ubicacion.direccion}</p>
-				<form action="/alquiler/c" method="GET"><input type="hidden" name="idCoche" value="${coche.id}">
-				<input type="submit" class="btn-base" value="${coche.modelo.tarifa} Tokens/Km"></a></form>
-				</div>
-				</div>
-				</div>`);
+		var peticionAjax = cargarAjax('http://localhost:8080/REST/coche/recuperar', '');
+		function cargarAjax(donde, queEnvio){
+			console.log(donde);
+			console.log(queEnvio);
+			$.ajax({
+				url : donde,
+				data : queEnvio,
+				type : 'GET',
+				//cache : false,
+				timeout : 200,
+				dataType : 'json',
+				success : function(json){
+					var $resultado = "";
+					$.each(json, function (clave, coche) {
+						console.log(coche);
+						$resultado += (`
+						<div  class="col-xlg-3 col-lg-3 col-md-6 col-sm-12 mb-3">
+						<div class="card-coche">
+						<div class="card-coche-img-container">
+						<img class="card-coche-img card-img-top" src="/retrieve-dir/coche-numero-${coche.modelo.id}" alt="coche-numero-${coche.id}">
+						</div><div class="card-body">
+						<h4 class="card-title">${coche.modelo.marca.nombre} - ${coche.modelo.nombre}</h4>
+						<p class="card-text">${coche.autonomiaRestante} Km</p><p class="card-text">Estacionado en: ${coche.ubicacion.direccion}</p>
+						<form action="/alquiler/c" method="GET"><input type="hidden" name="idCoche" value="${coche.id}">
+						<input type="submit" class="btn-base" value="${coche.modelo.tarifa} Tokens/Km"></a></form>
+						</div>
+						</div>
+						</div>`);
+					});
+					DatosListos($resultado);
+				},
+				error : function(xhr, status) {
+					xhr.abort();
+			    },
+			    complete : function(xhr, status) {
+					xhr.abort();
+	    		}
 			});
+		}
+		function DatosListos(resultado) {
+			$("#TABLAAJAX").html("");
+			$("#TABLAAJAX").html(resultado);
+		}
+		$("#filtro").on('change',function () {
+			var $filtro = $("#filtro").val();
+			abortar();
+			switch($filtro) {
+				case "ninguno":
+					$("#buscador").keyup(function () {
+						abortar();
+						peticionAjax = cargarAjax('http://localhost:8080/REST/coche/recuperar', '');
+					});
+				break;
+				case "marca":
+					$("#buscador").keyup(function () {
+						abortar();
+						peticionAjax = cargarAjax('http://localhost:8080/REST/coche/recuperarPorMarca', "nombreMarca="+$("#buscador").val());
+					});
+				break;
+				case "modelo":
+					$("#buscador").keyup(function () {
+						abortar();
+						peticionAjax = cargarAjax('http://localhost:8080/REST/coche/recuperarPorModelo', "nombreModelo="+$("#buscador").val());
+					});
+				break;
+				case "autonomia":
+					$("#buscador").keyup(function () {
+						abortar();
+						peticionAjax = cargarAjax('http://localhost:8080/REST/coche/recuperarPorAutonomia', "autonomia="+$("#buscador").val());
+					});
+				break;
+
+			}
 		});
+		function abortar(){
+			if (peticionAjax) {
+				peticionAjax.abort();
+			}
+		}
 	});
 </script>
