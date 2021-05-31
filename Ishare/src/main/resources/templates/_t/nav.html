@@ -65,7 +65,7 @@
 			<a class="nav-link" href="/registro"> REGISTRO </a>
 		</li>
 		<li th:if="${session.user != null}" class="nav-item">
-			<form action="/recarga-tokens" id="recargarTokens">
+			<form class="form-hidden" action="/recarga-tokens" id="recargarTokens">
 				<input type="hidden" name="id" th:value="${session.user.id}" />
 				<a class="nav-link" onclick="document.getElementById('recargarTokens').submit();" th:text="|${#httpSession.getAttribute('saldo')} Tokens|"style="cursor: pointer;"></a>
 			</form>
@@ -75,15 +75,15 @@
 				MI PERFIL
 				</a>
 				<div class="dropdown-menu dropdown-menu-right">
-					<form action="/editar-perfil" id="editarPerfil">
+					<form class="form-hidden" action="/editar-perfil" id="editarPerfil">
 						<input type="hidden" name="id" th:value="${session.user.id}" />
 						<a class="dropdown-item" onclick="document.getElementById('editarPerfil').submit();"style="cursor: pointer;">MIPERFIL</a>
 					</form>
-					<form action="/recarga-tokens" id="recargarTokens2">
+					<form class="form-hidden" action="/recarga-tokens" id="recargarTokens2">
 						<input type="hidden" name="id" th:value="${session.user.id}" />
 						<a class="dropdown-item" onclick="document.getElementById('recargarTokens2').submit();"style="cursor: pointer;">RECARGAR TOKENS</a>
 					</form>
-					<form action="/logout" id="logout">
+					<form class="form-hidden" action="/logout" id="logout">
 						<input type="hidden" name="id" th:value="${session.user.id}" />
 						<a class="dropdown-item" onclick="document.getElementById('logout').submit();" style="cursor: pointer;">LOGOUT</a>
 					</form>
