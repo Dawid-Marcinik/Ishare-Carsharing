@@ -59,41 +59,16 @@
 			$("#TABLAAJAX").html("");
 			$("#TABLAAJAX").html(resultado);
 		}
-		$("#filtro").on('change',function () {
-			var $filtro = $("#filtro").val();
-			abortar();
-			switch($filtro) {
-				case "ninguno":
-					$("#buscador").keyup(function () {
-						abortar();
-						peticionAjax = cargarAjax('http://localhost:8080/REST/coche/recuperar', '');
-					});
-				break;
-				case "marca":
-					$("#buscador").keyup(function () {
-						abortar();
-						peticionAjax = cargarAjax('http://localhost:8080/REST/coche/recuperarPorMarca', "nombreMarca="+$("#buscador").val());
-					});
-				break;
-				case "modelo":
-					$("#buscador").keyup(function () {
-						abortar();
-						peticionAjax = cargarAjax('http://localhost:8080/REST/coche/recuperarPorModelo', "nombreModelo="+$("#buscador").val());
-					});
-				break;
-				case "autonomia":
-					$("#buscador").keyup(function () {
-						abortar();
-						peticionAjax = cargarAjax('http://localhost:8080/REST/coche/recuperarPorAutonomia', "autonomia="+$("#buscador").val());
-					});
-				break;
+		$("#buscador").on('keyup',function () {
+			
+			peticionAjax = cargarAjax('http://localhost:8080/REST/coche/recuperar', "filtro="+$("#filtro").val()+"&argumento="+$("#buscador").val());
 
-			}
 		});
 		function abortar(){
 			if (peticionAjax) {
 				peticionAjax.abort();
 			}
 		}
+		cargarAjax('http://localhost:8080/REST/coche/recuperar', "filtro="+$("#filtro").val()+"&argumento="+$("#buscador").val());
 	});
 </script>
