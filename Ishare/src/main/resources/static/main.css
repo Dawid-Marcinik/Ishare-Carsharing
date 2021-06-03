@@ -184,6 +184,11 @@
   margin: 0;
 }
 
+/* line 178, main.scss */
+.baraja-cartas {
+  width: 100%;
+}
+
 /*!
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -5536,19 +5541,19 @@ input[type="button"].btn-block {
 }
 
 /* line 155, node_modules/bootstrap/scss/_card.scss */
-.card-deck .card, .card-deck .card-coche, .card-deck .card-admin {
+.card-deck .card, .baraja-cartas .card, .card-deck .card-coche, .baraja-cartas .card-coche, .card-deck .card-admin, .baraja-cartas .card-admin {
   margin-bottom: 15px;
 }
 @media (min-width: 844px) {
   /* line 154, node_modules/bootstrap/scss/_card.scss */
-  .card-deck {
+  .card-deck, .baraja-cartas {
     display: flex;
     flex-flow: row wrap;
     margin-right: -15px;
     margin-left: -15px;
   }
   /* line 165, node_modules/bootstrap/scss/_card.scss */
-  .card-deck .card, .card-deck .card-coche, .card-deck .card-admin {
+  .card-deck .card, .baraja-cartas .card, .card-deck .card-coche, .baraja-cartas .card-coche, .card-deck .card-admin, .baraja-cartas .card-admin {
     flex: 1 0 0%;
     margin-right: 15px;
     margin-bottom: 0;

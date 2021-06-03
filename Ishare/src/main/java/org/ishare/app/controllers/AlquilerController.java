@@ -147,8 +147,8 @@ public class AlquilerController {
 				|| idCocheAlquilado == -1) {
 			PRG.error("Hay campos vacíos", "/alquiler/r");
 		} else {
-			String horaInicial = "";
-			String horaFinal = "";
+			String horaInicial = Integer.toString(horaInicio);
+			String horaFinal = Integer.toString(horaFin);
 			if(horaInicio < 10) {
 				horaInicial = "0"+horaInicio;
 			}
@@ -164,7 +164,7 @@ public class AlquilerController {
 			final Entidad entidad = entidadRepository.getOne(((Entidad)s.getAttribute("user")).getId());
 			final Alquiler alquiler = new Alquiler(fechaInicio, fechaFin, entidad, cocheAlquilado, ubicacionInicio, ubicacionFin);
 			Long tiempoAlquiler = Duration.between(fechaInicio, fechaFin).getSeconds();
-			Long conversionHorasAlquiler = tiempoAlquiler/(60*60);
+			Long conversionHorasAlquiler = tiempoAlquiler/60;
 			Float saldoRestante = (entidad.getSaldo() - (cocheAlquilado.getModelo().getTarifa() * conversionHorasAlquiler));
 			if (fechaFin.compareTo(fechaInicio) < 0) {
 				PRG.error("La fecha de inicio no puede ser después de la fecha de finalización", "/alquiler/r");
@@ -174,6 +174,8 @@ public class AlquilerController {
 					alquilerRepository.save(alquiler);
 					entidad.setSaldo(saldoRestante);
 					entidadRepository.save(entidad);
+					cocheAlquilado.setUbicacion(ubicacionFin);
+					cocheRepository.save(cocheAlquilado);
 					s.setAttribute("saldo", entidad.getSaldo());
 				} catch (final Exception e) {
 					PRG.error("Alquiler duplicado", "/alquiler/r");
