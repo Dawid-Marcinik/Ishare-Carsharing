@@ -64,7 +64,8 @@ public class ParticularController {
 			final Rol rol = rolRepository.getOne(idRol);
 			final Particular p = new Particular(nombreUsuario, contrasena, localidad, direccion, iCodigoPostal,
 					iTelefono, email, rol, fSaldo, dni, nombre, apellidos, lFechaNacimiento);
-			if (((Entidad)s.getAttribute("user")).getRol().getNombre() == "User"){
+			String rolActual = s.getAttribute("user")!=null ? ((Entidad)s.getAttribute("user")).getRol().getNombre() : "anon";
+			if (rolActual == "User"){
 				PRG.error("no puede estar logueado para realizar esta operación", "/");
 			}
 			else {
