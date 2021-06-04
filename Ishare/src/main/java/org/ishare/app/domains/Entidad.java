@@ -19,7 +19,10 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 public class Entidad {
 
 //Atributos
-//=================================================================	
+//=================================================================
+
+	@Column(insertable = false, updatable = false)
+	private String dtype;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -71,8 +74,28 @@ public class Entidad {
 		this.saldo = saldo;
 	}
 
+	public Entidad(final String nombreUsuario, final String contrasena, final String localidad, final String direccion,
+			final Integer codigoPostal, final Integer telefono, final String email) {
+		super();
+		this.nombreUsuario = nombreUsuario;
+		this.contrasena = contrasena;
+		this.localidad = localidad;
+		this.direccion = direccion;
+		this.codigoPostal = codigoPostal;
+		this.telefono = telefono;
+		this.email = email;
+	}
+
 	// GETTERS Y SETTERS
 	// =========================================================================
+
+	public String getDtype() {
+		return dtype;
+	}
+
+	public void setDtype(final String dtype) {
+		this.dtype = dtype;
+	}
 
 	public Long getId() {
 		return id;
@@ -162,11 +185,8 @@ public class Entidad {
 		this.alquileres = alquileres;
 	}
 
-	
 	public boolean isAdmin() {
-		return (this.getRol()!= null && this.getRol().getNombre().equals("Admin"));
+		return this.getRol() != null && this.getRol().getNombre().equals("Admin");
 	}
-
-
 
 }

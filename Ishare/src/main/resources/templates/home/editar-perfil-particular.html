@@ -1,0 +1,45 @@
+<meta charset=UTF-8>
+<div class="container">
+	<h1 class="display-6">Editar perfil</h1>
+	<form method="post" action="/editar-perfil-particular" class="form">
+	
+	Nombre de usuario
+		<input type="text" name="nombreUsuario" id="nombreUsuario" th:value="${particular.nombreUsuario}" onchange='validarNombreUsuario(this.form)' onkeyup="validar(this.form)"><br>
+		
+		ContraseÃ±a
+		<input type="password" name="contrasena" id="contrasena" th:value="${particular.contrasena}" onchange='validarContrasena(this.form)' onkeyup="validar(this.form)"><br>
+		
+		Localidad
+		<input type="text" name="localidad" id="localidad" th:value="${particular.localidad}" onchange='validarLocalidad(this.form)' onkeyup="validar(this.form)"><br>
+		
+		Dirección
+		<input type="text" name="direccion" id="direccion" th:value="${particular.direccion}" onchange='validarDireccion(this.form)' onkeyup="validar(this.form)"><br>
+		
+		Código postal
+		<input type="number" name="codigoPostal" id="codigoPostal" th:value="${particular.codigoPostal}"  onchange='validarCodigoPostal(this.form)' onkeyup="validar(this.form)"><br>
+		
+		Teléfono
+		<input type="number" name="telefono" id="telefono" th:value="${particular.telefono}" onchange='validarTelefono(this.form)' onkeyup="validar(this.form)"><br>
+		
+		Email
+		<input type="email" name="email" id="email" th:value="${particular.email}" onchange='validarEmail(this.form)' onkeyup="validar(this.form)"><br>
+		
+		Dni
+		<input type="text" name="dni"  id="dni" th:value="${particular.dni}" onkeyup="validar(this.form)" onchange='validarDni(this.form)'><br>
+		
+		Nombre
+		<input type="text" name="nombre" id="nombre" th:value="${particular.nombre}" onkeyup="validar(this.form)" onchange='validarNombre(this.form)'><br>
+		
+		Apellidos
+		<input type="text" name="apellidos" id="apellidos" th:value="${particular.apellidos}" onkeyup="validar(this.form)" onchange='validarApellidos(this.form)'><br>
+		
+		Fecha de nacimiento
+		<input type="Date" name="fechaNacimiento" id="fechaNacimiento"  th:value="${particular.fechaNacimiento}" onchange='validarFechaNac(this.form)' onkeyup="validar(this.form)"><br>
+		
+		<input type="hidden" name="id" id="id" th:value="${particular.id}"/>
+		
+		<input class="btn-base form-item" type="submit" id="envio" name="envio" onclick="validar(this.form)"/>
+		<button class="btn-cancelar"><a class="enlace" href="/">Volver</a></button>
+	</form>
+	</div>
+<script src="/js/Validar_editar_perfil_particular.js"></script>
