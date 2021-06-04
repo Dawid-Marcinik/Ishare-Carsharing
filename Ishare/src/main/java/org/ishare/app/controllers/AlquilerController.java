@@ -157,7 +157,7 @@ public class AlquilerController {
 			}
 			DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 			final LocalDateTime fechaInicio = LocalDateTime.parse(stringFechaInicio+" "+horaInicial+":00",formato);
-			final LocalDateTime fechaFin = LocalDateTime.parse(stringFechaInicio+" "+horaFinal+":00",formato);
+			final LocalDateTime fechaFin = LocalDateTime.parse(stringFechaFin+" "+horaFinal+":00",formato);
 			final Coche cocheAlquilado = cocheRepository.getOne(idCocheAlquilado);
 			final Ubicacion ubicacionInicio = ubicacionRepository.getOne(idUbicacionInicio);
 			final Ubicacion ubicacionFin = ubicacionRepository.getOne(idUbicacionFin);
@@ -168,7 +168,11 @@ public class AlquilerController {
 			Float saldoRestante = (entidad.getSaldo() - (cocheAlquilado.getModelo().getTarifa() * conversionHorasAlquiler));
 			if (fechaFin.compareTo(fechaInicio) < 0) {
 				PRG.error("La fecha de inicio no puede ser después de la fecha de finalización", "/alquiler/r");
-			} else {
+			}
+			else if (saldoRestante<0){
+				PRG.error("No tiene saldo suficiente en su cartera de Tokens", "/alquiler/r");
+			}
+			else {
 
 				try {
 					alquilerRepository.save(alquiler);
@@ -178,7 +182,7 @@ public class AlquilerController {
 					cocheRepository.save(cocheAlquilado);
 					s.setAttribute("saldo", entidad.getSaldo());
 				} catch (final Exception e) {
-					PRG.error("Alquiler duplicado", "/alquiler/r");
+					PRG.error("Alquiler duplicado", "/coche/alquilar");
 				}
 			}
 		}
