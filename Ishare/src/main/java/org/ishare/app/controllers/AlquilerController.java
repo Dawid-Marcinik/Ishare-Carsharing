@@ -2,20 +2,27 @@
 package org.ishare.app.controllers;
 
 import java.text.ParseException;
+import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 
 import javax.servlet.http.HttpSession;
 
 import org.ishare.app.domains.Alquiler;
 import org.ishare.app.domains.Coche;
+import org.ishare.app.domains.Entidad;
 import org.ishare.app.domains.Ubicacion;
 import org.ishare.app.exceptions.DangerException;
 import org.ishare.app.helpers.H;
 import org.ishare.app.helpers.PRG;
 import org.ishare.app.repositories.AlquilerRepository;
 import org.ishare.app.repositories.CocheRepository;
+import org.ishare.app.repositories.EntidadRepository;
 import org.ishare.app.repositories.UbicacionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,6 +42,9 @@ public class AlquilerController {
 
 	@Autowired
 	CocheRepository cocheRepository;
+	
+	@Autowired
+	EntidadRepository entidadRepository;
 
 	@GetMapping("d")
 	public String alquilerDGet(@RequestParam("idAlquiler") final Long idAlquiler, final HttpSession s)
@@ -63,11 +73,13 @@ public class AlquilerController {
 
 	@PostMapping("u")
 	public String alquilerUPost(@RequestParam("idAlquiler") final Long idAlquiler,
-			@RequestParam("fechaInicio") final String stringFechaInicio,
-			@RequestParam("fechaFin") final String stringFechaFin,
+			@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) @RequestParam("fechaInicio") final String stringFechaInicio,
+			@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) @RequestParam("fechaFin") final String stringFechaFin,
 			@RequestParam("idCocheAlquilado") final Long idCocheAlquilado,
 			@RequestParam("idUbicacionInicio") final Long idUbicacionInicio,
 			@RequestParam("idUbicacionFin") final Long idUbicacionFin,
+			@RequestParam("horaInicio") final Integer horaInicio,
+			@RequestParam("horaFin") final Integer horaFin,
 			@RequestParam("puntuacion") final String puntuacion, final ModelMap data)
 			throws DangerException, ParseException {
 		if (puntuacion == "" || stringFechaInicio == "" || stringFechaFin == "" || idUbicacionInicio == null
@@ -119,39 +131,58 @@ public class AlquilerController {
 	}
 
 	@PostMapping("c")
-	public String alquilerCPost(@RequestParam("fechaInicio") final String stringFechaInicio,
-			@RequestParam("fechaFin") final String stringFechaFin,
+	public String alquilerCPost(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) @RequestParam("fechaInicio") final String stringFechaInicio,
+			@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) @RequestParam("fechaFin") final String stringFechaFin,
 			@RequestParam("idCocheAlquilado") final Long idCocheAlquilado,
 			@RequestParam("idUbicacionInicio") final Long idUbicacionInicio,
 			@RequestParam("idUbicacionFin") final Long idUbicacionFin,
-			@RequestParam("puntuacion") final String stringPuntuacion, final ModelMap data)
+			@RequestParam("horaInicio") final Integer horaInicio,
+			@RequestParam("horaFin") final Integer horaFin,
+			final ModelMap data,
+			final HttpSession s)
 			throws DangerException, ParseException {
 
-		if (stringPuntuacion == "" || stringFechaInicio == "" || stringFechaFin == "" || idUbicacionInicio == null
+		if (stringFechaInicio == "" || stringFechaFin == "" || idUbicacionInicio == null
 				|| idUbicacionFin == null || idCocheAlquilado == null || idUbicacionInicio == -1 || idUbicacionFin == -1
 				|| idCocheAlquilado == -1) {
 			PRG.error("Hay campos vacíos", "/alquiler/r");
 		} else {
-			final int puntuacion = Integer.parseInt(stringPuntuacion);
-			final LocalDateTime fechaInicio = LocalDateTime.parse(stringFechaInicio);
-			final LocalDateTime fechaFin = LocalDateTime.parse(stringFechaFin);
-			final Alquiler alquiler = new Alquiler(fechaInicio, fechaFin, puntuacion);
+			String horaInicial = Integer.toString(horaInicio);
+			String horaFinal = Integer.toString(horaFin);
+			if(horaInicio < 10) {
+				horaInicial = "0"+horaInicio;
+			}
+			if(horaFin < 10) {
+				horaFinal = "0"+horaFin;
+			}
+			DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+			final LocalDateTime fechaInicio = LocalDateTime.parse(stringFechaInicio+" "+horaInicial+":00",formato);
+			final LocalDateTime fechaFin = LocalDateTime.parse(stringFechaFin+" "+horaFinal+":00",formato);
 			final Coche cocheAlquilado = cocheRepository.getOne(idCocheAlquilado);
 			final Ubicacion ubicacionInicio = ubicacionRepository.getOne(idUbicacionInicio);
 			final Ubicacion ubicacionFin = ubicacionRepository.getOne(idUbicacionFin);
-			alquiler.setCoche(cocheAlquilado);
-			alquiler.setIniciaEn(ubicacionInicio);
-			alquiler.setFinalizaEn(ubicacionFin);
-			ubicacionInicio.getIniciadosEn().add(alquiler);
-			ubicacionFin.getFinalizadosEn().add(alquiler);
+			final Entidad entidad = entidadRepository.getOne(((Entidad)s.getAttribute("user")).getId());
+			final Alquiler alquiler = new Alquiler(fechaInicio, fechaFin, entidad, cocheAlquilado, ubicacionInicio, ubicacionFin);
+			Long tiempoAlquiler = Duration.between(fechaInicio, fechaFin).getSeconds();
+			Long conversionHorasAlquiler = tiempoAlquiler/60;
+			Float saldoRestante = (entidad.getSaldo() - (cocheAlquilado.getModelo().getTarifa() * conversionHorasAlquiler));
 			if (fechaFin.compareTo(fechaInicio) < 0) {
 				PRG.error("La fecha de inicio no puede ser después de la fecha de finalización", "/alquiler/r");
-			} else {
+			}
+			else if (saldoRestante<0){
+				PRG.error("No tiene saldo suficiente en su cartera de Tokens", "/alquiler/r");
+			}
+			else {
 
 				try {
 					alquilerRepository.save(alquiler);
+					entidad.setSaldo(saldoRestante);
+					entidadRepository.save(entidad);
+					cocheAlquilado.setUbicacion(ubicacionFin);
+					cocheRepository.save(cocheAlquilado);
+					s.setAttribute("saldo", entidad.getSaldo());
 				} catch (final Exception e) {
-					PRG.error("Alquiler duplicado", "/alquiler/r");
+					PRG.error("Alquiler duplicado", "/coche/alquilar");
 				}
 			}
 		}
