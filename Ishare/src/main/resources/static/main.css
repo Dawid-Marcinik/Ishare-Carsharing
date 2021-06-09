@@ -1,16 +1,21 @@
 @import url(css/datatables.css);
 @import url(css/datatables.min.css);
 /* line 30, main.scss */
+html, body {
+  height: 100%;
+}
+
+/* line 33, main.scss */
 .capsula {
   margin: 40px 0;
 }
 
-/* line 33, main.scss */
+/* line 36, main.scss */
 .card-coche {
   background-color: #1b5165 !important;
 }
 
-/* line 37, main.scss */
+/* line 40, main.scss */
 .card-coche-img {
   width: 100%;
   height: 100%;
@@ -18,18 +23,18 @@
   position: relative;
 }
 
-/* line 43, main.scss */
+/* line 46, main.scss */
 .card-coche-img-container {
   width: 100%;
   height: 200px;
 }
 
-/* line 47, main.scss */
+/* line 50, main.scss */
 .contenedorCuatro {
   margin: 5%;
 }
 
-/* line 51, main.scss */
+/* line 54, main.scss */
 .btn-base {
   background-color: teal !important;
   color: white !important;
@@ -37,13 +42,13 @@
   transition: 2s;
 }
 
-/* line 59, main.scss */
+/* line 62, main.scss */
 .btn-primary:hover {
   background-color: #8bab0c !important;
   border-color: #8bab0c !important;
 }
 
-/* line 65, main.scss */
+/* line 68, main.scss */
 .btn-cancelar {
   background-color: #ee9206 !important;
   color: white !important;
@@ -51,36 +56,36 @@
   transition: 2s;
 }
 
-/* line 73, main.scss */
+/* line 76, main.scss */
 .btn-cancelar:hover {
   background-color: #e9272d !important;
 }
 
-/* line 77, main.scss */
+/* line 80, main.scss */
 .btn-base:hover {
   background-color: #8bab0c !important;
 }
 
-/* line 80, main.scss */
+/* line 83, main.scss */
 .cabezaEspecial {
   margin-top: 100px;
 }
 
-/* line 83, main.scss */
+/* line 86, main.scss */
 .cabecera {
   width: 100%;
   height: 100vh;
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), black);
 }
 
-/* line 88, main.scss */
+/* line 91, main.scss */
 .logo-container {
   width: 150px;
   height: 150px;
   display: inline-block;
 }
 
-/* line 93, main.scss */
+/* line 96, main.scss */
 .logo {
   object-fit: cover;
   height: 100%;
@@ -89,12 +94,12 @@
   margin-right: auto;
 }
 
-/* line 100, main.scss */
+/* line 103, main.scss */
 .texto-logo {
   display: inline-block;
 }
 
-/* line 103, main.scss */
+/* line 106, main.scss */
 .portada {
   background-image: url("/img/resources/portada.jpg");
   width: 100%;
@@ -104,7 +109,7 @@
   z-index: -1;
 }
 
-/* line 112, main.scss */
+/* line 115, main.scss */
 .barra-nav {
   width: 100%;
   padding-top: 20px !important;
@@ -114,18 +119,18 @@
   z-index: 999;
 }
 
-/* line 121, main.scss */
+/* line 124, main.scss */
 .titulo {
   position: relative;
   margin-top: 100px;
 }
 
-/* line 125, main.scss */
+/* line 128, main.scss */
 .nav-link-color {
   color: black !important;
 }
 
-/* line 130, main.scss */
+/* line 133, main.scss */
 .pie-de-pagina-a {
   width: 100%;
   padding: 30px;
@@ -134,7 +139,7 @@
   text-align: center;
 }
 
-/* line 138, main.scss */
+/* line 141, main.scss */
 .pie-de-pagina-b {
   width: 100%;
   padding: 30px;
@@ -143,7 +148,7 @@
   text-align: center;
 }
 
-/* line 145, main.scss */
+/* line 148, main.scss */
 .card-admin {
   height: 270px;
   width: 100%;
@@ -151,41 +156,41 @@
   margin: 10px 0;
 }
 
-/* line 152, main.scss */
+/* line 155, main.scss */
 .img-admin-fondo {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* line 157, main.scss */
+/* line 160, main.scss */
 .img-ancha {
   width: 100%;
 }
 
-/* line 160, main.scss */
+/* line 163, main.scss */
 .overlay-menu-admin {
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent);
 }
 
-/* line 163, main.scss */
+/* line 166, main.scss */
 .enlace {
   color: white !important;
   text-decoration: none !important;
 }
 
-/* line 167, main.scss */
+/* line 170, main.scss */
 .enlace:visited {
   color: white !important;
   text-decoration: none !important;
 }
 
-/* line 171, main.scss */
+/* line 174, main.scss */
 .carousel-personalizado {
   height: 500px;
 }
 
-/* line 176, main.scss */
+/* line 179, main.scss */
 .img-carousel {
   width: 100%;
   height: 100%;
@@ -193,35 +198,35 @@
   position: relative;
 }
 
-/* line 182, main.scss */
+/* line 185, main.scss */
 .tabla {
   color: black !important;
 }
 
-/* line 185, main.scss */
+/* line 188, main.scss */
 .mapa {
   width: 100%;
   height: 600px;
   border: 0px;
 }
 
-/* line 190, main.scss */
+/* line 193, main.scss */
 .form-hidden {
   margin: 0;
 }
 
-/* line 193, main.scss */
+/* line 196, main.scss */
 .baraja-cartas {
   width: 100%;
 }
 
-/* line 197, main.scss */
+/* line 200, main.scss */
 .fondoBlanco {
   background-color: white !important;
   padding: 20px;
 }
 
-/* line 201, main.scss */
+/* line 204, main.scss */
 .texto-destaca {
   color: #8bab0c !important;
 }

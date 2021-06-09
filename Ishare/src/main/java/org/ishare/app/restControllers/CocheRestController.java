@@ -1,4 +1,4 @@
-package org.ishare.app.controllers;
+package org.ishare.app.restControllers;
 
 import java.util.List;
 

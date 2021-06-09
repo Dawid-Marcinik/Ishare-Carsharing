@@ -67,9 +67,6 @@
 		o necesites.
 	</p>
 	<br>
-	<div th:if="${session.user == null}">
-		<button type="button" class="btn btn-primary" onclick="location.href='/registro';">CREA UNA CUENTA</button> 
-	</div>
 	</div>
 	<div class="col-sm" style="text-align:center">
 		<img src="/img/asiento.png" height="100px" width="100px" style="position:relative; left:0px;">
@@ -101,7 +98,11 @@
 			bastante económica<br>
 			y accesible<br>
 			para nuestros clientes.
-		</p>	
+		</p>
+		<br>
+		<div th:if="${session.user == null}">
+		<button type="button" class="btn btn-primary" onclick="location.href='/registro';">CREA UNA CUENTA</button> 
+		</div>	
 	</div>
 </div>
 

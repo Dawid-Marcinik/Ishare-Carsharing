@@ -16,7 +16,7 @@ $(document).ready(function () {
 						console.log(coche);
 						$resultado += (`
 						<div  class="col-xlg-3 col-lg-3 col-md-6 col-sm-12 mb-3">
-						<div class="card-coche">
+						<div class="card-coche h-100">
 						<div class="card-coche-img-container">
 						<img class="card-coche-img card-img-top" src="/retrieve-dir/coche-numero-${coche.modelo.id}" alt="coche-numero-${coche.id}">
 						</div><div class="card-body">
@@ -47,10 +47,29 @@ $(document).ready(function () {
 			peticionAjax = cargarAjax('http://localhost:8080/REST/coche/recuperar', "filtro="+$("#filtro").val()+"&argumento="+$("#buscador").val());
 
 		});
+		$("#filtro").on('change',function () {
+			
+			if ($("#filtro").val() == "ninguno"){
+				$("#buscador").val("");
+				$("#buscador").hide();
+			}
+			else{
+				$("#buscador").show();
+			}
+			
+			peticionAjax = cargarAjax('http://localhost:8080/REST/coche/recuperar', "filtro="+$("#filtro").val()+"&argumento="+$("#buscador").val());
+
+		});
 		function abortar(){
 			if (peticionAjax) {
 				peticionAjax.abort();
 			}
 		}
+		function comprobarFiltro(valor){
+			if(valor == "ninguno"){
+				$("#buscador").hide();
+			}
+		}
 		cargarAjax('http://localhost:8080/REST/coche/recuperar', "filtro="+$("#filtro").val()+"&argumento="+$("#buscador").val());
+		comprobarFiltro($("#filtro").val());
 	});

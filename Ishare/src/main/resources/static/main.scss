@@ -27,6 +27,9 @@ $color-cancelar-base:rgb(238, 146, 6);
 $color-cancelar-base-hover:rgb(233, 39, 45);
 
 // SEGUNDO: EXTENSIONES A LAS CLASES DE BOOTSTRAP
+html, body {
+  height: 100%;
+}
 .capsula{
 	margin: 40px 0;
 }
