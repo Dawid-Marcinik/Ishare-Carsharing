@@ -3,6 +3,7 @@ package org.ishare.app.controllers;
 import java.util.List;
 
 import org.ishare.app.domains.Coche;
+import org.ishare.app.repositories.AlquilerRepository;
 import org.ishare.app.repositories.CocheRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,7 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/REST/coche")
 
 public class CocheRestController {
-
+	@Autowired
+	private AlquilerRepository alquilerRepository;
+	
 	@Autowired
 	private CocheRepository cocheRepository;
 	

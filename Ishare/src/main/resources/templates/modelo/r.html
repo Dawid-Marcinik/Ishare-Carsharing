@@ -4,8 +4,8 @@
 	<button class="btn-cancelar"><a class="enlace" href="/">Volver</a></button>
 </div>
 </div>
-	<table class="tabla table-striped table-dark table-responsive-sm">
-		<tr>
+	<table id="tabla" class="display table-responsive-sm tabla">
+		<thead>
 			<th>Marca</th>
 			<th>Nombre</th>
 			<th>Número de pasajeros</th>
@@ -14,7 +14,7 @@
 			<th>Tarifa (€/minuto)</th>
 			<th>Modificar</th>
 			<th>Borrar</th>
-		</tr>
+		</thead>
 		<tr th:each="modelo:${modelos}">
 			<td th:text="${modelo.marca.nombre}"></td>
 			<td th:text="${modelo.nombre}"></td>

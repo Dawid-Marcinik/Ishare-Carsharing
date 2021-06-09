@@ -6,8 +6,8 @@
 </div>
 </div>
 
-	<table class="tabla table-striped table-dark table-responsive-sm">
-		<tr>
+	<table id="tabla" class="display table-responsive-sm tabla">
+		<thead>
 			<th>Fecha inicio</th>
 			<th>Fecha fin</th>
 			<th>Ubicación de inicio</th>
@@ -15,7 +15,7 @@
 			<th>Puntuación</th>
 			<th>Modificar</th>
 			<th>Borrar</th>
-		</tr>
+		</thead>
 
 		<tr th:each="alquiler:${alquileres}">
 			<td th:text="${#temporals.format(alquiler.fechaInicio, 'dd/MM/yyyy HH:mm')}"></td>

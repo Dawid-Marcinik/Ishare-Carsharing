@@ -8,15 +8,15 @@
 	</a>
 </div>
 </div>
-	<table class="tabla table-striped table-striped table-dark table-responsive-sm">
-		<tr>
-			<th>Dni</th>
+	<table id="tabla" class="display table-responsive-sm tabla">
+		<thead>
+			<th>DNI/NIE</th>
 			<th>Nombre</th>
 			<th>Apellidos</th>
 			<th>Fecha de nacimiento</th>
 			<th>Rol</th>
 			<th>Acciones</th>
-		</tr>
+		</thead>
 
 		<tr th:each="particular:${particulares}">
 			<td th:text="${particular.dni}"></td>

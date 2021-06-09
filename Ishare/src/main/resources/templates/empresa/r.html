@@ -8,8 +8,8 @@
 	</a>
 </div>
 </div>
-	<table class="tabla table-striped table-dark table-responsive-sm">
-		<tr>
+	<table id="tabla" class="display table-responsive-sm tabla">
+		<thead>
 			<th>Nombre del Usuario</th>
 			<th>Contrasena</th>
 			<th>Localidad</th>
@@ -22,7 +22,7 @@
 			<th>Cif</th>
 			<th>Razón social</th>
 			<th>Acciones</th>
-		</tr>
+		</thead>
 
 			<tr th:each="empresa:${empresas}">
 			<td th:text="${empresa.nombreUsuario}"></td>

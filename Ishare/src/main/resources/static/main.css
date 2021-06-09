@@ -1,3 +1,5 @@
+@import url(css/datatables.css);
+@import url(css/datatables.min.css);
 /* line 30, main.scss */
 .capsula {
   margin: 40px 0;
@@ -22,7 +24,12 @@
   height: 200px;
 }
 
-/* line 48, main.scss */
+/* line 47, main.scss */
+.contenedorCuatro {
+  margin: 5%;
+}
+
+/* line 51, main.scss */
 .btn-base {
   background-color: teal !important;
   color: white !important;
@@ -30,7 +37,13 @@
   transition: 2s;
 }
 
-/* line 56, main.scss */
+/* line 59, main.scss */
+.btn-primary:hover {
+  background-color: #8bab0c !important;
+  border-color: #8bab0c !important;
+}
+
+/* line 65, main.scss */
 .btn-cancelar {
   background-color: #ee9206 !important;
   color: white !important;
@@ -38,43 +51,50 @@
   transition: 2s;
 }
 
-/* line 64, main.scss */
+/* line 73, main.scss */
 .btn-cancelar:hover {
   background-color: #e9272d !important;
 }
 
-/* line 68, main.scss */
+/* line 77, main.scss */
 .btn-base:hover {
   background-color: #8bab0c !important;
 }
 
-/* line 72, main.scss */
+/* line 80, main.scss */
+.cabezaEspecial {
+  margin-top: 100px;
+}
+
+/* line 83, main.scss */
 .cabecera {
   width: 100%;
   height: 100vh;
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), black);
 }
 
-/* line 77, main.scss */
+/* line 88, main.scss */
 .logo-container {
   width: 150px;
   height: 150px;
   display: inline-block;
 }
 
-/* line 82, main.scss */
+/* line 93, main.scss */
 .logo {
   object-fit: cover;
-  width: 100%;
   height: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* line 88, main.scss */
+/* line 100, main.scss */
 .texto-logo {
   display: inline-block;
 }
 
-/* line 91, main.scss */
+/* line 103, main.scss */
 .portada {
   background-image: url("/img/resources/portada.jpg");
   width: 100%;
@@ -84,7 +104,7 @@
   z-index: -1;
 }
 
-/* line 100, main.scss */
+/* line 112, main.scss */
 .barra-nav {
   width: 100%;
   padding-top: 20px !important;
@@ -94,18 +114,18 @@
   z-index: 999;
 }
 
-/* line 109, main.scss */
+/* line 121, main.scss */
 .titulo {
   position: relative;
   margin-top: 100px;
 }
 
-/* line 113, main.scss */
+/* line 125, main.scss */
 .nav-link-color {
   color: black !important;
 }
 
-/* line 118, main.scss */
+/* line 130, main.scss */
 .pie-de-pagina-a {
   width: 100%;
   padding: 30px;
@@ -114,7 +134,7 @@
   text-align: center;
 }
 
-/* line 126, main.scss */
+/* line 138, main.scss */
 .pie-de-pagina-b {
   width: 100%;
   padding: 30px;
@@ -123,7 +143,7 @@
   text-align: center;
 }
 
-/* line 133, main.scss */
+/* line 145, main.scss */
 .card-admin {
   height: 270px;
   width: 100%;
@@ -131,36 +151,41 @@
   margin: 10px 0;
 }
 
-/* line 140, main.scss */
+/* line 152, main.scss */
 .img-admin-fondo {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* line 145, main.scss */
+/* line 157, main.scss */
+.img-ancha {
+  width: 100%;
+}
+
+/* line 160, main.scss */
 .overlay-menu-admin {
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent);
 }
 
-/* line 148, main.scss */
+/* line 163, main.scss */
 .enlace {
   color: white !important;
   text-decoration: none !important;
 }
 
-/* line 152, main.scss */
+/* line 167, main.scss */
 .enlace:visited {
   color: white !important;
   text-decoration: none !important;
 }
 
-/* line 156, main.scss */
+/* line 171, main.scss */
 .carousel-personalizado {
   height: 500px;
 }
 
-/* line 161, main.scss */
+/* line 176, main.scss */
 .img-carousel {
   width: 100%;
   height: 100%;
@@ -168,25 +193,37 @@
   position: relative;
 }
 
-/* line 167, main.scss */
+/* line 182, main.scss */
 .tabla {
-  margin-bottom: 0 !important;
+  color: black !important;
 }
 
-/* line 171, main.scss */
+/* line 185, main.scss */
 .mapa {
   width: 100%;
   height: 600px;
+  border: 0px;
 }
 
-/* line 175, main.scss */
+/* line 190, main.scss */
 .form-hidden {
   margin: 0;
 }
 
-/* line 178, main.scss */
+/* line 193, main.scss */
 .baraja-cartas {
   width: 100%;
+}
+
+/* line 197, main.scss */
+.fondoBlanco {
+  background-color: white !important;
+  padding: 20px;
+}
+
+/* line 201, main.scss */
+.texto-destaca {
+  color: #8bab0c !important;
 }
 
 /*!
@@ -2148,26 +2185,25 @@ pre code {
   }
 }
 /* line 5, node_modules/bootstrap/scss/_tables.scss */
-.table, .tabla {
+.table {
   width: 100%;
   margin-bottom: 1rem;
   color: white;
 }
 /* line 11, node_modules/bootstrap/scss/_tables.scss */
-.table th, .tabla th,
-.table td,
-.tabla td {
+.table th,
+.table td {
   padding: 0.75rem;
   vertical-align: top;
   border-top: 1px solid #dee2e6;
 }
 /* line 18, node_modules/bootstrap/scss/_tables.scss */
-.table thead th, .tabla thead th {
+.table thead th {
   vertical-align: bottom;
   border-bottom: 2px solid #dee2e6;
 }
 /* line 23, node_modules/bootstrap/scss/_tables.scss */
-.table tbody + tbody, .tabla tbody + tbody {
+.table tbody + tbody {
   border-top: 2px solid #dee2e6;
 }
 
@@ -2421,13 +2457,13 @@ pre code {
 }
 
 /* line 114, node_modules/bootstrap/scss/_tables.scss */
-.table .thead-dark th, .tabla .thead-dark th {
+.table .thead-dark th {
   color: #fff;
   background-color: #343a40;
   border-color: #454d55;
 }
 /* line 122, node_modules/bootstrap/scss/_tables.scss */
-.table .thead-light th, .tabla .thead-light th {
+.table .thead-light th {
   color: #495057;
   background-color: #e9ecef;
   border-color: #dee2e6;
@@ -12173,13 +12209,12 @@ a.text-dark:hover, a.text-dark:focus {
   }
 
   /* line 107, node_modules/bootstrap/scss/_print.scss */
-  .table, .tabla {
+  .table {
     border-collapse: collapse !important;
   }
   /* line 110, node_modules/bootstrap/scss/_print.scss */
-  .table td, .tabla td,
-  .table th,
-  .tabla th {
+  .table td,
+  .table th {
     background-color: #fff !important;
   }
 
@@ -12202,7 +12237,7 @@ a.text-dark:hover, a.text-dark:focus {
   }
 
   /* line 134, node_modules/bootstrap/scss/_print.scss */
-  .table .thead-dark th, .tabla .thead-dark th {
+  .table .thead-dark th {
     color: inherit;
     border-color: #dee2e6;
   }

@@ -4,8 +4,8 @@
 	<button class="btn-cancelar"><a class="enlace" href="/">Volver</a></button>
 </div>
 </div>
-<table class="tabla table-striped table-dark table-responsive-sm">
-		<tr>
+<table id="tabla" class="display table-responsive-sm tabla">
+		<thead>
 			<th>Matrícula</th>
 			<th>Marca</th>
 			<th>Modelo</th>
@@ -15,7 +15,7 @@
 			<th>Autonomía restante</th>
 			<th>Modificar</th>
 			<th>Borrar</th>
-		</tr>
+		</thead>
 		<tr th:each="coche:${coches}">
 			<td th:text="${coche.matricula}"></td>
 			<td th:text="${coche.modelo.marca.nombre}"></td>
