@@ -23,31 +23,24 @@ public class CocheRestController {
 	private CocheRepository cocheRepository;
 	
 	@RequestMapping(value = "/recuperar",method = RequestMethod.GET)
-	public ResponseEntity<Object> getCoches(){
+	public ResponseEntity<Object> getCoches(@RequestParam("filtro") String filtro, @RequestParam("argumento") String argumento){
 		
-		List<Coche> listaCoches = cocheRepository.findAll();
+		List<Coche> listaCoches = null;
+		
+		switch(filtro) {
+			case "ninguno":
+				listaCoches = cocheRepository.findAll();
+				break;	
+			case "marca":
+				listaCoches = cocheRepository.findByModelo_Marca_NombreContaining(argumento);
+				break;
+			case "modelo":
+				listaCoches = cocheRepository.findByModelo_NombreContaining(argumento);
+				break;
+			case "autonomia":
+				listaCoches = cocheRepository.findByAutonomiaRestanteGreaterThan(Integer.parseInt(argumento));
+				break;
+		}
 		return new ResponseEntity<>(listaCoches, HttpStatus.OK);
-		
-	}
-	@RequestMapping(value = "/recuperarPorMarca",method = RequestMethod.GET)
-	public ResponseEntity<Object> getCochesByMarca(@RequestParam("nombreMarca") String nombreMarca){
-			
-		List<Coche> listaCoches = cocheRepository.findByModelo_Marca_NombreContaining(nombreMarca);
-		return new ResponseEntity<>(listaCoches, HttpStatus.OK);
-			
-	}
-	@RequestMapping(value = "/recuperarPorModelo",method = RequestMethod.GET)
-	public ResponseEntity<Object> getCochesByModelo(@RequestParam("nombreModelo") String nombreModelo){
-		
-		List<Coche> listaCoches = cocheRepository.findByModelo_NombreContaining(nombreModelo);
-		return new ResponseEntity<>(listaCoches, HttpStatus.OK);
-		
-	}
-	@RequestMapping(value = "/recuperarPorAutonomia",method = RequestMethod.GET)
-	public ResponseEntity<Object> getCochesByAutonomia(@RequestParam("autonomia") Integer autonomia){
-		
-		List<Coche> listaCoches = cocheRepository.findByAutonomiaRestanteGreaterThan(autonomia);
-		return new ResponseEntity<>(listaCoches, HttpStatus.OK);
-			
 	}
 }

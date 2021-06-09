@@ -6,7 +6,7 @@
 </div>
 </div>
 
-	<table class="tabla table-striped table-dark">
+	<table class="tabla table-striped table-dark table-responsive-sm">
 		<tr>
 			<th>Fecha inicio</th>
 			<th>Fecha fin</th>
@@ -18,8 +18,8 @@
 		</tr>
 
 		<tr th:each="alquiler:${alquileres}">
-			<td th:text="${#temporals.format(alquiler.fechaInicio, 'dd/MM/yyyy   HH:mm')}"></td>
-			<td th:text="${#temporals.format(alquiler.fechaFin, 'dd/MM/yyyy   HH:mm')}"></td>
+			<td th:text="${#temporals.format(alquiler.fechaInicio, 'dd/MM/yyyy HH:mm')}"></td>
+			<td th:text="${#temporals.format(alquiler.fechaFin, 'dd/MM/yyyy HH:mm')}"></td>
 			<td th:text="${alquiler.iniciaEn?.direccion}"></td>
 			<td th:text="${alquiler.finalizaEn?.direccion}"></td>
 			<td th:text="${alquiler.puntuacion}"></td>

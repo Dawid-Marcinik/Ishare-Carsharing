@@ -175,6 +175,10 @@ $color-cancelar-base-hover:rgb(233, 39, 45);
 .form-hidden{
 	margin:0;
 }
+.baraja-cartas{
+	@extend .card-deck;
+	width:100%;
+}
 // TERCERO: IMPORTACIÓN DEL PROPIO BOOTSTRAP
 @import "node_modules/bootstrap/scss/bootstrap";
 

@@ -12,129 +12,25 @@
 	}
 	*:focus { outline: none; } 
 </style>
-<script type="text/javascript">
-	function validarFechaInicio(){
-	var ret;
-	if (document.getElementById("fechaInicio").value==""){
-		document.getElementById("fechaInicio").setAttribute("style","border-color:red");
-		ret=false;
-	}else{
-		document.getElementById("fechaInicio").setAttribute("style","border-color:black");
-		ret=true;
-	}
-	
-	return ret;
-	}
-	
-	function validarFechaFin(){
-	var ret;
-	if (document.getElementById("fechaFin").value==""){
-		document.getElementById("fechaFin").setAttribute("style","border-color:red");
-		ret=false;
-	}else{
-		document.getElementById("fechaFin").setAttribute("style","border-color:black");
-		ret=true;
-	}
-	
-	
-	return ret;
-	}
-	
-	function validarDifFechas(){
-	var ret;
-	var fechaI=new Date(document.getElementById("fechaInicio").value);
-	var fechaF=new Date(document.getElementById("fechaFin").value);
-	
-	if(fechaI>fechaF){
-		ret=false;
-		document.getElementById("fechaInicio").setAttribute("style","border-color:red");
-	}else{
-		ret=true;
-	}
-		return ret;
-	}
-	
-	
-	
-	function validarCocheAlquilado(){
-	var ret;
-		if(document.getElementById("idCocheAlquilado").selectedIndex=="0"){
-		document.getElementById("idCocheAlquilado").setAttribute("style","border-color:red");	
-		ret=false;
-		}else{
-			document.getElementById("idCocheAlquilado").setAttribute("style","border-color:black");
-			ret=true;
-		}
-		
-		return ret;
-	}
-	function validarUbicacionInicio(){
-	var ret;
-		if(document.getElementById("idUbicacionInicio").selectedIndex=="0"){
-		document.getElementById("idUbicacionInicio").setAttribute("style","border-color:red");	
-		ret=false;
-		}else{
-			document.getElementById("idUbicacionInicio").setAttribute("style","border-color:black");
-			ret=true;
-		}
-		
-		return ret;
-	}
-	function validarUbicacionFin(){
-	var ret;
-		if(document.getElementById("idUbicacionFin").selectedIndex=="0"){
-		document.getElementById("idUbicacionFin").setAttribute("style","border-color:red");	
-		ret=false;
-		}else{
-			document.getElementById("idUbicacionFin").setAttribute("style","border-color:black");
-			ret=true;
-		}
-		
-		return ret;
-		
-	}
-
-	function validarPuntuacion(){
-	var ret;
-		if(document.getElementById("puntuacion").value==""){
-		document.getElementById("puntuacion").setAttribute("style","border-color:red");	
-		ret=false;
-		}else{
-			document.getElementById("puntuacion").setAttribute("style","border-color:black");
-			ret=true;
-		}
-		
-		return ret;
-	}
-	
-	function validar(){
-		validarFechaInicio();
-		validarFechaFin();
-		//validarCocheAlquilado();
-		//validarUbicacionInicio();
-		validarUbicacionFin();
-		//validarPuntuacion();
-		if(validarFechaInicio()==true && validarFechaFin()==true && validarDifFechas()==true && /*validarCocheAlquilado()==true && validarUbicacionInicio()==true &&*/ validarUbicacionFin()==true /*&& validarPuntuacion()==true*/){
-			document.getElementById("enviar").disabled=false;
-		}else{
-			document.getElementById("enviar").disabled=true;
-		}
-	}
-</script>
+<script src="/js/Validar_alquiler.js"></script>
 <div class="container">
 	<h1>Nuevo alquiler</h1>
 	
 	<form method="post">
 		<label for="fechaInicio">FECHA INICIO: </label>
 		<input type="date" name="fechaInicio" id="fechaInicio" onchange="validar()" required/>
+		<input type="number" name="horaInicio" id="horaInicio" min="0" max="23" required/>
 		<br/>
 		<label for="fechaFin">FECHA FIN: </label>
 		<input type="date" name="fechaFin" id="fechaFin" onchange="validar()"required/>
+		<input type="number" name="horaFin" id="horaFin" min="0" max="23" required/>
 		<br/>
 		<!--<label for="idCocheAlquilado">COCHE ALQUILADO: </label>-->
 		<div th:each="coche:${coches}" th:if="${coche.id == T(Long).parseLong(param.idCoche)}">
 			<span th:text="|COCHE ALQUILADO ${coche.modelo.marca.nombre} - ${coche.modelo.nombre} - ${coche.matricula} - ${coche.autonomiaRestante} Km(restante)|"></span><br/>
 			<span th:text="|UBICADO ACTUALMENTE EN: ${coche.ubicacion.direccion}|"></span>
+			<input type="hidden" name="idUbicacionInicio" th:value="${coche.ubicacion.idUbicacion}">
+			<input type="hidden" name="idCocheAlquilado" th:value="${coche.id}">
 		</div>
 		<br/>
 		<label for="idUbicacionFin">UBICACIÓN DE FINALIZACIÓN: </label>
@@ -144,8 +40,7 @@
 			</option>
 		</select>
 		<br/>
-		
 		<input class="btn-base" type="submit" id="enviar" disabled/>
-		<input class="btn-cancelar" type="button" value="Cancelar" onclick="location.href='r'">
+		<input class="btn-cancelar" type="button" value="Cancelar" onclick="location.href='/coche/alquilar'">
 	</form>
 </div>

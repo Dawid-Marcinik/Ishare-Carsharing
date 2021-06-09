@@ -1,5 +1,6 @@
 package org.ishare.app.domains;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.persistence.CascadeType;
@@ -9,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -20,7 +23,9 @@ public class Alquiler {
 	private Long idAlquiler;
 
 	@Column()
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
 	private LocalDateTime fechaInicio;
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
 	private LocalDateTime fechaFin;
 	private Integer puntuacion;
 	@JsonBackReference
@@ -40,11 +45,14 @@ public class Alquiler {
 
 	}
 
-	public Alquiler(final LocalDateTime fechaInicio, final LocalDateTime fechaFin, final Integer puntuacion) {
+	public Alquiler(final LocalDateTime fechaInicio, final LocalDateTime fechaFin, final Entidad entidad, final Coche coche, final Ubicacion iniciaEn, final Ubicacion finalizaEn) {
 		super();
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
-		this.puntuacion = puntuacion;
+		this.entidad = entidad;
+		this.coche = coche;
+		this.iniciaEn = iniciaEn;
+		this.finalizaEn = finalizaEn;
 	}
 
 	public Coche getCoche() {
