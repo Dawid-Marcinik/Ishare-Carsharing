@@ -16,7 +16,7 @@ $(document).ready(function () {
 						console.log(coche);
 						$resultado += (`
 						<div  class="col-xlg-3 col-lg-3 col-md-6 col-sm-12 mb-3">
-						<div class="card-coche h-100">
+						<div class="card-coche">
 						<div class="card-coche-img-container">
 						<img class="card-coche-img card-img-top" src="/retrieve-dir/coche-numero-${coche.modelo.id}" alt="coche-numero-${coche.id}">
 						</div><div class="card-body">

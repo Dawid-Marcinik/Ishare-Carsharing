@@ -32,13 +32,9 @@
 		<label for="email">Email</label>
 	<input type="email" name="email" id="email" onchange='validarEmail(this.form)' onkeyup="validar(this.form)"/>
 	<div class="w-100"></div>
-		<label for="idRol">Rol</label>
-		<select name="idRol">
-			<option th:each="rol:${roles}" th:value="${rol.id}" th:text="${rol.nombre}"></option>
-		</select>
+	<input th:each="rol:${roles}" th:if="${rol.nombre == 'User'}" type="hidden" name="idRol" th:value="${rol.id}">
 	<div class="w-100"></div>
-		<label for="saldo">SALDO</label>
-	<input type="number" name="saldo" id="saldo" step="0.01" onchange='validarSaldo(this.form)' onkeyup="validar(this.form)"/>
+	<input type="number" name="saldo" id="saldo" step="0.01" onchange='validarSaldo(this.form)' value="0" onkeyup="validar(this.form)" hidden/>
 	<div class="w-100"></div>
 	<label for="cif">CIF</label>
 	<input type="text" name="cif" id="cif" onchange='validarCif(this.form)' onkeyup="validar(this.form)"/>
