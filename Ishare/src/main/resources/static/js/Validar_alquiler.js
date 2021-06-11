@@ -34,12 +34,29 @@
 		ret=false;
 		document.getElementById("fechaInicio").setAttribute("style","border-color:red");
 	}else{
+		document.getElementById("fechaFin").setAttribute("style","border-color:black");
 		ret=true;
 	}
 		return ret;
 	}
 	
-	
+	function validarDifHoras(){
+		var ret;
+		var horaInicio = document.getElementById("horaInicio").value;
+		var horaFin = document.getElementById("horaFin").value;
+		
+		if(horaFin <= horaInicio){
+			ret = false;
+			document.getElementById("horaInicio").setAttribute("style","border-color:red");
+			document.getElementById("horaFin").setAttribute("style","border-color:red");
+		}
+		else{
+			document.getElementById("horaFin").setAttribute("style","border-color:black");
+			document.getElementById("horaInicio").setAttribute("style","border-color:black");
+			ret = true;
+		}
+		return ret;
+	}
 	
 	function validarCocheAlquilado(){
 	var ret;
@@ -99,7 +116,8 @@
 		//validarUbicacionInicio();
 		validarUbicacionFin();
 		//validarPuntuacion();
-		if(validarFechaInicio()==true && validarFechaFin()==true && validarDifFechas()==true && /*validarCocheAlquilado()==true && validarUbicacionInicio()==true &&*/ validarUbicacionFin()==true /*&& validarPuntuacion()==true*/){
+		validarDifHoras();
+		if(validarFechaInicio()==true && validarFechaFin()==true && validarDifFechas()==true && validarDifHoras()==true &&/*validarCocheAlquilado()==true && validarUbicacionInicio()==true &&*/ validarUbicacionFin()==true /*&& validarPuntuacion()==true*/){
 			document.getElementById("enviar").disabled=false;
 		}else{
 			document.getElementById("enviar").disabled=true;

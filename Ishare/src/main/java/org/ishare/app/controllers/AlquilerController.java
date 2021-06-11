@@ -116,10 +116,11 @@ public class AlquilerController {
 	}
 
 	@GetMapping("c")
-	public String alquilerCGet(final ModelMap m, final HttpSession s) throws DangerException {
+	public String alquilerCGet(@RequestParam("idCoche") Long idCoche,final ModelMap m, final HttpSession s) throws DangerException {
 		H.isRolOK("User", s);
 		try {
 			m.put("ubicaciones", ubicacionRepository.findAll());
+			m.put("alquileres", alquilerRepository.findByCoche_Id(idCoche));
 			m.put("coches", cocheRepository.findAll());
 			m.put("view", "alquiler/cGet");
 

@@ -38,7 +38,7 @@
 	<input type="text" name="apellidos" id="apellidos" onchange='validarApellidos(this.form)' onkeyup="validar(this.form)"/>
 	<div class="w-100"></div>
 	<label for="fechaNacimiento">Fecha de nacimiento</label>
-	<input type="Date" name="fechaNacimiento" id="fechaNacimiento" onchange='validarFechaNac(this.form)' onkeyup="validar(this.form)"/>
+	<input type="Date" name="fechaNacimiento" id="fechaNacimiento" onchange='validarFechaNac(this.form)' onclick="validar(this.form)"/>
 	<div class="w-100"></div>
 	<button class="btn-base" disabled id="envio" onclick="validar(this.form)">Crear</button>
 	<button class="btn-cancelar"><a class="enlace" href="/">Volver</a></button>

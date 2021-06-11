@@ -12,18 +12,34 @@
 	}
 	*:focus { outline: none; } 
 </style>
+<script th:inline="javascript">
+	var alquileres = /*[[${alquileres}]]*/ [];
+	var paresDeFechas = [];
+	function verAlquileres(alquileres){
+		for(alquiler in alquileres){
+			paresDeFechas.push(alquileres[alquiler]["fechaInicio"]+"|"+alquileres[alquiler]["fechaFin"]);
+		}
+		return paresDeFechas;
+	}
+	verAlquileres(alquileres);
+	function fechaOcupada(listaFechas){
+		console.log(listaFechas);
+	}
+	fechaOcupada(verAlquileres(alquileres));
+</script>
 <script src="/js/Validar_alquiler.js"></script>
+
 <div class="container">
 	<h1>Nuevo alquiler</h1>
 	
 	<form method="post">
 		<label for="fechaInicio">FECHA INICIO: </label>
 		<input type="date" name="fechaInicio" id="fechaInicio" onchange="validar()" required/>
-		<input type="number" name="horaInicio" id="horaInicio" min="0" max="23" required/>
+		<input type="number" name="horaInicio" id="horaInicio" onchange="validar()" min="0" max="23" required/>
 		<br/>
 		<label for="fechaFin">FECHA FIN: </label>
-		<input type="date" name="fechaFin" id="fechaFin" onchange="validar()"required/>
-		<input type="number" name="horaFin" id="horaFin" min="0" max="23" required/>
+		<input type="date" name="fechaFin" id="fechaFin" onchange="validar()" required/>
+		<input type="number" name="horaFin" id="horaFin" onchange="validar()" min="0" max="23" required/>
 		<br/>
 		<!--<label for="idCocheAlquilado">COCHE ALQUILADO: </label>-->
 		<div th:each="coche:${coches}" th:if="${coche.id == T(Long).parseLong(param.idCoche)}">
@@ -44,3 +60,4 @@
 		<input class="btn-cancelar" type="button" value="Cancelar" onclick="location.href='/coche/alquilar'">
 	</form>
 </div>
+<!--<input type="button" value="esta mierda no funciona" onclick="verAlquileres(alquileres)">-->
