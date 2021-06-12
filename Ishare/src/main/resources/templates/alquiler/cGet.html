@@ -13,25 +13,67 @@
 	*:focus { outline: none; } 
 </style>
 <script th:inline="javascript">
-	var alquileres = /*[[${alquileres}]]*/ [];
-	var paresDeFechas = [];
+	var alquileres = /*[[${alquileres}]]*/[];
 	function verAlquileres(alquileres){
-		for(alquiler in alquileres){
-			paresDeFechas.push(alquileres[alquiler]["fechaInicio"]+"|"+alquileres[alquiler]["fechaFin"]);
+		var paresDeFechas=[];
+		var fechaActual = new Date();
+		var formateofecha = fechaActual.toLocaleString();
+		for(var alquiler of alquileres){
+			
+			fechaHoraFinAlquiler = alquiler["fechaFin"];
+			finFechaHoraArray = fechaHoraFinAlquiler.split("T");
+			fechaFin = finFechaHoraArray[0].split("-");
+			horaFin = finFechaHoraArray[1].split(":");
+			
+			fechaHoraIniAlquiler = alquiler["fechaInicio"];
+			iniFechaHoraArray = fechaHoraIniAlquiler.split("T");
+			fechaIni = iniFechaHoraArray[0].split("-");
+			horaIni = iniFechaHoraArray[1].split(":");
+			
+			var finAlquiler = new Date(fechaFin[0], fechaFin[1]-1, fechaFin[2], horaFin[0], 0, 0, 0);
+			var iniAlquiler = new Date(fechaIni[0], fechaIni[1]-1, fechaIni[2], horaIni[0], 0, 0, 0);
+			if(finAlquiler.getTime()>fechaActual.getTime()){
+				var fechaA = iniAlquiler.getTime();
+				var fechaB = finAlquiler.getTime();
+				paresDeFechas.push([fechaA,fechaB]);
+			}
+			else;
 		}
 		return paresDeFechas;
 	}
-	verAlquileres(alquileres);
-	function fechaOcupada(listaFechas){
-		console.log(listaFechas);
+	function fechaOcupada(listaFechas,fInicio,fFin,hInicio,hFin){
+		
+		fechaIniAlquiler = fInicio.split("-");
+		fechaFinAlquiler = fFin.split("-");
+
+		fechaSolicitadaIni = new Date(fechaIniAlquiler[0], fechaIniAlquiler[1]-1, fechaIniAlquiler[2], hInicio, 0, 0, 0);
+		fechaSolicitadaFin = new Date(fechaFinAlquiler[0], fechaFinAlquiler[1]-1, fechaFinAlquiler[2], hFin, 0, 0, 0);
+		inicio = fechaSolicitadaIni.getTime();
+		fin = fechaSolicitadaFin.getTime();
+		for(var fecha of listaFechas){
+			if(((inicio>=fecha[0])&&(inicio<=fecha[1]))&&((fin>=fecha[0])&&(fin<=fecha[1]))||((inicio<=fecha[0])&&(inicio<=fecha[1]))&&((fin>=fecha[0])&&(fin<=fecha[1]))||((inicio>=fecha[0])&&(inicio<=fecha[1]))&&((fin>=fecha[0])&&(fin>=fecha[1]))||((inicio<=fecha[0])&&(inicio<=fecha[1]))&&((fin>=fecha[0])&&(fin>=fecha[1]))){
+				document.getElementById("fechaInicio").setAttribute("style","border-color:red");
+				document.getElementById("fechaFin").setAttribute("style","border-color:red");
+				document.getElementById("horaInicio").setAttribute("style","border-color:red");
+				document.getElementById("horaFin").setAttribute("style","border-color:red");
+				return false;
+			}
+			else{
+				document.getElementById("fechaInicio").setAttribute("style","border-color:black");
+				document.getElementById("fechaFin").setAttribute("style","border-color:black");
+				document.getElementById("horaInicio").setAttribute("style","border-color:black");
+				document.getElementById("horaFin").setAttribute("style","border-color:black");
+				return true;
+			}
+		}
 	}
-	fechaOcupada(verAlquileres(alquileres));
+	var reservas = verAlquileres(alquileres);
 </script>
 <script src="/js/Validar_alquiler.js"></script>
 
 <div class="container">
 	<h1>Nuevo alquiler</h1>
-	
+	<!--<button onclick="fechaOcupada(reservas,document.getElementById('fechaInicio').value,document.getElementById('fechaFin').value,document.getElementById('horaInicio').value,document.getElementById('horaFin').value)">HOLA</button>-->
 	<form method="post">
 		<label for="fechaInicio">FECHA INICIO: </label>
 		<input type="date" name="fechaInicio" id="fechaInicio" onchange="validar()" required/>
@@ -43,7 +85,7 @@
 		<br/>
 		<!--<label for="idCocheAlquilado">COCHE ALQUILADO: </label>-->
 		<div th:each="coche:${coches}" th:if="${coche.id == T(Long).parseLong(param.idCoche)}">
-			<span th:text="|COCHE ALQUILADO ${coche.modelo.marca.nombre} - ${coche.modelo.nombre} - ${coche.matricula} - ${coche.autonomiaRestante} Km(restante)|"></span><br/>
+			<span th:text="|COCHE ALQUILADO: ${coche.modelo.marca.nombre} - ${coche.modelo.nombre} - ${coche.matricula} - ${coche.autonomiaRestante} Km(restante)|"></span><br/>
 			<span th:text="|UBICADO ACTUALMENTE EN: ${coche.ubicacion.direccion}|"></span>
 			<input type="hidden" name="idUbicacionInicio" th:value="${coche.ubicacion.idUbicacion}">
 			<input type="hidden" name="idCocheAlquilado" th:value="${coche.id}">
@@ -60,4 +102,3 @@
 		<input class="btn-cancelar" type="button" value="Cancelar" onclick="location.href='/coche/alquilar'">
 	</form>
 </div>
-<!--<input type="button" value="esta mierda no funciona" onclick="verAlquileres(alquileres)">-->

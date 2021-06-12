@@ -117,9 +117,12 @@
 		validarUbicacionFin();
 		//validarPuntuacion();
 		validarDifHoras();
-		if(validarFechaInicio()==true && validarFechaFin()==true && validarDifFechas()==true && validarDifHoras()==true &&/*validarCocheAlquilado()==true && validarUbicacionInicio()==true &&*/ validarUbicacionFin()==true /*&& validarPuntuacion()==true*/){
+		var ocupado = fechaOcupada(reservas,document.getElementById("fechaInicio").value,document.getElementById("fechaFin").value,document.getElementById("horaInicio").value,document.getElementById("horaFin").value);
+		if(ocupado == true && validarFechaInicio()==true && validarFechaFin()==true && validarDifFechas()==true && validarDifHoras()==true && validarUbicacionFin()==true){
+			console.log("si");
 			document.getElementById("enviar").disabled=false;
 		}else{
+			console.log("NO");
 			document.getElementById("enviar").disabled=true;
 		}
 	}
