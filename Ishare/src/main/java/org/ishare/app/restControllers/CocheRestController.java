@@ -41,6 +41,9 @@ public class CocheRestController {
 			case "autonomia":
 				listaCoches = cocheRepository.findByAutonomiaRestanteGreaterThan(Integer.parseInt(argumento));
 				break;
+			case "ubicacion":
+				listaCoches = cocheRepository.findByUbicacion_DireccionContaining(argumento);
+				break;
 		}
 		return new ResponseEntity<>(listaCoches, HttpStatus.OK);
 	}

@@ -11,6 +11,7 @@ public interface CocheRepository extends JpaRepository<Coche, Long>{
 
 	public List<Coche> findByModelo_Marca_NombreContaining(String nombre);
 	public List<Coche> findByModelo_NombreContaining(String nombre);
+	public List<Coche> findByUbicacion_DireccionContaining(String nombre);
 	public List<Coche> findByAutonomiaRestanteGreaterThan(Integer numero);
 	
 	

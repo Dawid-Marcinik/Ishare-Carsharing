@@ -137,8 +137,11 @@ public class AlquilerController {
 	}
 */
 	@GetMapping("c")
-	public String alquilerCGet(@RequestParam("idCoche") Long idCoche,final ModelMap m, final HttpSession s) throws DangerException {
-		H.isRolOK("User", s);
+	public String alquilerCGet(@RequestParam("idCoche") Long idCoche,final ModelMap m, final HttpSession s) throws DangerException, InfoException {
+		//H.isRolOK("User", s);
+		if(((Entidad)s.getAttribute("user")) == null) {
+			PRG.info("Debe loguearse para realizar esta operación", "/login");
+		}
 		try {
 			m.put("ubicaciones", ubicacionRepository.findAll());
 			m.put("alquileres", alquilerRepository.findByCoche_Id(idCoche));
