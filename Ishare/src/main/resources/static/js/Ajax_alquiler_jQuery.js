@@ -47,10 +47,29 @@ $(document).ready(function () {
 			peticionAjax = cargarAjax('http://localhost:8080/REST/coche/recuperar', "filtro="+$("#filtro").val()+"&argumento="+$("#buscador").val());
 
 		});
+		$("#filtro").on('change',function () {
+			
+			if ($("#filtro").val() == "ninguno"){
+				$("#buscador").val("");
+				$("#buscador").hide();
+			}
+			else{
+				$("#buscador").show();
+			}
+			
+			peticionAjax = cargarAjax('http://localhost:8080/REST/coche/recuperar', "filtro="+$("#filtro").val()+"&argumento="+$("#buscador").val());
+
+		});
 		function abortar(){
 			if (peticionAjax) {
 				peticionAjax.abort();
 			}
 		}
+		function comprobarFiltro(valor){
+			if(valor == "ninguno"){
+				$("#buscador").hide();
+			}
+		}
 		cargarAjax('http://localhost:8080/REST/coche/recuperar', "filtro="+$("#filtro").val()+"&argumento="+$("#buscador").val());
+		comprobarFiltro($("#filtro").val());
 	});

@@ -1,10 +1,9 @@
 <meta charset=UTF-8>
 
-<div id="cuerpo" style="margin-top:100">
 <div class="container" style="padding:50px;">
 <div id="primerContenedor" style="margin:3px">
-	<h1 class="display-5"><b>Ishare, <br>tu aplicación de <i>carhsaring</i> <br>favorita.</b></h1>
-	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+	<h1 class="texto-destaca display-5"><b>Ishare, <br>tu aplicación de <i>carhsaring</i> <br>favorita.</b></h1><br><br>
+	<!--<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   		<ol class="carousel-indicators">
    			<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
     		<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -29,13 +28,31 @@
     		<span class="carousel-control-next-icon" aria-hidden="true"></span>
     		<span class="sr-only">Next</span>
   		</a>
-	</div>
+	</div>-->
+	<div class="swiper-container">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+    <div class="swiper-slide"><img class="img-carousel d-block w-100" src="/img/imagen1.png" alt="First slide"></div>
+    <div class="swiper-slide"><img class="img-carousel d-block w-100" src="/img/imagen2.jpg" alt="Second slide"></div>
+    <div class="swiper-slide"><img class="img-carousel d-block w-100" src="/img/imagen3.jpg" alt="Third slide"></div>
+  </div>
+  <!-- If we need pagination -->
+  <div class="swiper-pagination"></div>
+
+  <!-- If we need navigation buttons -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+
+  <!-- If we need scrollbar -->
+  <div class="swiper-scrollbar"></div>
+</div>
 </div>
 <br>
 <br>
 <div id="segundoContenedor" class="row">
 	<div class="col-sm">
-	<h1 class="display-5"><b>¿Qué es Ishare?</b></h1>
+	<h1 class="texto-destaca display-5"><b>¿Qué es Ishare?</b></h1>
 	<br>
 	<p class="h4">
 		Somos un servicio de <i>carsharing</i><br>
@@ -50,9 +67,6 @@
 		o necesites.
 	</p>
 	<br>
-	<div th:if="${session.user == null}">
-		<button type="button" class="btn btn-base" onclick="location.href='/registro';">CREA UNA CUENTA</button> 
-	</div>
 	</div>
 	<div class="col-sm" style="text-align:center">
 		<img src="/img/asiento.png" height="100px" width="100px" style="position:relative; left:0px;">
@@ -68,7 +82,7 @@
 			para cubrir<br>
 			cualquier necesidad<br>
 			de nuestros clientes.
-		</p>	
+		</p>
 	</div>
 	<div class="col-sm" style="text-align:center">
 		<img src="/img/acunar.png" height="100px" width="100px" style="position:relative; left:0px;">
@@ -84,12 +98,16 @@
 			bastante económica<br>
 			y accesible<br>
 			para nuestros clientes.
-		</p>	
+		</p>
+		<br>
+		<div th:if="${session.user == null}">
+			<button type="button" class="btn btn-base" onclick="location.href='/registro';">CREA UNA CUENTA</button> 
+		</div>	
 	</div>
 </div>
 
 </div>
-<div id="tercerContenedor" style="background-image: linear-gradient(to right, #0b1709, teal, #0b1709);text-align:center;margin-top:100px;padding:5em">
+<div id="tercerContenedor" style="background-image: linear-gradient(to right, rgb(19, 23, 23), rgb(126, 165, 12), rgb(19, 23, 23));text-align:center;margin-top:100px;padding:5em">
 	<h1 class="display-5"><b>Tarifas Ishare</b></h1>
 	<br>
 	<p class="h6">
@@ -100,9 +118,10 @@
 	<button type="button" class="btn btn-dark" onclick="location.href='/tarifas';"style="margin-top:60px;">DESCUBRE NUESTRAS TARIFAS</button>
 	</p>
 </div>	
-<div id="cuartoContenedor" style="padding:50px;margin:200px;" class="row">
-	<div id="textoCuarto" class="col">
-		<h1 class="display-5"><b>Zonas Ishare</b></h1><br>
+</div>
+<div id="cuartoContenedor" style="padding:50px;margin:5px;" class="row">
+	<div id="textoCuarto" class="col-xlg-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+		<h1 class="texto-destaca display-5"><b>Zonas Ishare</b></h1><br>
 		<p class="h6">
 		Descubre las zonas<br>
 		por las que te puedes mover<br>
@@ -114,8 +133,8 @@
 		<br>
 		<button type="button" class="btn btn-base" onclick="location.href='/donde';"style="margin-top:60px;">DESCUBRE NUESTROS APARCAMIENTOS</button>
 	</div>
-	<div id="imgCuarto" class="col-6">
-		<img src="/img/madrid.png" height="600px" width="600px" style="">
+	<div id="imgCuarto" class="col-xlg-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+		<img class="img-ancha" src="/img/madrid.png">
 	</div>
 </div>
-</div>
+<script src="/js/sliderHome.js"></script>

@@ -34,6 +34,7 @@
 		<input type="number" name="saldo" id="saldo" onkeyup="validar()" style="width:100px;" required/>
 		<br/>
 		<input type="hidden" name="id" th:value="${session.user.id}"/>
-		<input type="submit" id="enviar"disabled />
+		<input type="submit" class="btn-base" id="enviar"disabled />
+		<a class="btn-cancelar" href="/">Cancelar</a>
 	</form>
 </div>

@@ -8,6 +8,7 @@ import org.ishare.app.domains.Ubicacion;
 import org.ishare.app.exceptions.DangerException;
 import org.ishare.app.helpers.H;
 import org.ishare.app.helpers.PRG;
+import org.ishare.app.repositories.AlquilerRepository;
 import org.ishare.app.repositories.CocheRepository;
 import org.ishare.app.repositories.ModeloRepository;
 import org.ishare.app.repositories.TipoRepository;
@@ -27,6 +28,8 @@ public class CocheController {
 	private ModeloRepository modeloRepository;
 	@Autowired
 	private CocheRepository cocheRepository;
+	@Autowired
+	private AlquilerRepository alquilerRepository;
 	@Autowired
 	private UbicacionRepository ubicacionRepository;
 	@Autowired
@@ -113,6 +116,7 @@ public class CocheController {
 		@GetMapping("alquilar")
 		public String alquilarGet(ModelMap modelo) {
 			modelo.put("view", "/coche/alquilar");
+			modelo.put("alquileres", alquilerRepository.findAll());
 			modelo.put("coches", cocheRepository.findAll());
 			return ("_t/frame");
 		}

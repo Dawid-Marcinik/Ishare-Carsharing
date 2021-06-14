@@ -4,12 +4,12 @@
 	<button class="btn-cancelar"><a class="enlace" href="/">Volver</a></button>
 </div>
 </div>
-	<table class="tabla table-striped table-dark">
-		<tr>
+	<table id="tabla" class="display tabla">
+		<thead>
 			<th>Nombre</th>
 			<th>Modificar</th>
 			<th>Borrar</th>
-		</tr>
+		</thead>
 		<tr th:each="marca:${marcas}">
 			<td th:text="${marca.nombre}"></td>
 			<td>

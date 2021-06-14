@@ -12,28 +12,24 @@
 	}
 	*:focus { outline: none; } 
 </style>
-<script src="/js/Validar_alquiler.js"></script>
 <div class="container">
 	<h1>Editar alquiler</h1>
 	
 	<form method="post">
 		<label for="fechaInicio">FECHA INICIO: </label>
-		<input type="date" th:value="${alquiler.fechaInicio}" name="fechaInicio" id="fechaInicio" onchange="validar()"  required />
+		<input type="date" name="fechaInicio" id="fechaInicio" onchange="validar()"  required />
+		<input type="number" name="horaInicio" id="horaInicio" onchange="validar()" min="0" max="23" required/>
 		<br/>
 		<label for="fechaFin">FECHA FIN: </label>
-		<input type="date" th:value="${alquiler.fechaFin}" name="fechaFin" id="fechaFin" onchange="validar()" required />
+		<input type="date" name="fechaFin" id="fechaFin" onchange="validar()" required />
+		<input type="number" name="horaFin" id="horaFin" onchange="validar()" min="0" max="23" required/>
 		<br/>
-		<label for="idCocheAlquilado">COCHE ALQUILADO: </label>
-		<select name="idCocheAlquilado" id="idCocheAlquilado" required >
-			<option th:each="coche:${coches}" th:if="${coche.id == coche_id}" th:text="|${coche.modelo.marca.nombre} - ${coche.modelo.nombre} - ${coche.matricula} - ${coche.autonomiaRestante}|" th:selected="${coche.matricula == alquiler.coche.matricula}" th:value="${coche.id}">
-			</option>
-		</select>
-		<br/>
-		<label for="idUbicacionInicio">UBICACIÓN DE INICIO: </label>
-		<select name="idUbicacionInicio" id="idUbicacionInicio" required >
-			<option th:each="ubicacion:${ubicaciones}" th:text="${ubicacion.direccion}" th:selected= "${ubicacion.direccion == alquiler.iniciaEn.direccion}" th:value="${ubicacion.idUbicacion}">
-			</option>
-		</select>
+		<div>
+			<span th:text="|COCHE ALQUILADO: ${coche.modelo.marca.nombre} - ${coche.modelo.nombre} - ${coche.matricula} - ${coche.autonomiaRestante} Km(restante)|"></span><br/>
+			<span th:text="|UBICADO ACTUALMENTE EN: ${coche.ubicacion.direccion}|"></span>
+			<input type="hidden" name="idUbicacionInicio" th:value="${coche.ubicacion.idUbicacion}">
+			<input type="hidden" name="idCocheAlquilado" th:value="${coche.id}">
+		</div>
 		<br/>
 		<label for="idUbicacionFin">UBICACIÓN DE FINALIZACIÓN: </label>
 		<select name="idUbicacionFin" id="idUbicacionFin" required > 
@@ -41,8 +37,8 @@
 			</option>
 		</select>
 		<br/>
-		<label for="puntuacion">PUNTUACIÓN: </label>
-		<input type="number" id="puntuacion" name="puntuacion" th:value="${alquiler.puntuacion}" max="10" min="0" oninput="validar()" required/>
+		<label for="puntuacion">¡PUNTÚA NUESTRO SERVICIO!: </label>
+		<input type="number" id="puntuacion" name="puntuacion" th:value="${alquiler.puntuacion}" max="10" min="0" oninput="validar()" required/><span>/10</span>
 		<br/>
 		
 		<input type="hidden" name="idAlquiler" th:value="${alquiler.idAlquiler}"/>
@@ -50,3 +46,108 @@
 		<input class="btn-cancelar" type="button" value="Cancelar" onclick="location.href='r'">
 	</form>
 </div>
+</div>
+<script src="/js/Validar_alquiler.js"></script>
+<script th:inline="javascript">
+	console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAA");
+	var alquileres = /*[[${alquileres}]]*/[];
+	var fechaIAlq = /*[[${alquiler.fechaInicio}]]*/[];
+	var fechaFAlq = /*[[${alquiler.fechaFin}]]*/[];
+	console.log(alquileres);
+	console.log(fechaIAlq);
+	console.log(fechaFAlq);
+	function rellenoFecha(){
+		var fechaActual = new Date();
+		if (fechaIAlq != [] && fechaFAlq != []){
+			console.log("hola")
+			var empieza = fechaIAlq.split("T");
+			var termina = fechaFAlq.split("T");
+			var horaEmpieza = empieza[1].split(":");
+			var horaTermina = termina[1].split(":");
+			document.getElementById("fechaInicio").value = empieza[0];
+			document.getElementById("horaInicio").value = horaEmpieza[1];
+			document.getElementById("fechaFin").value = termina[0];
+			document.getElementById("horaFin").value = horaTermina[1];
+		}
+		else{
+			document.getElementById("fechaInicio").value = fechaActual.getFullYear()+"-"+fechaActual.getMonth()+"-"+fechaActual.getDate();
+			document.getElementById("horaInicio").value = fechaActual.getHours();
+			document.getElementById("fechaFin").value =	fechaActual.getFullYear()+"-"+fechaActual.getMonth()+"-"+fechaActual.getDate();
+			document.getElementById("horaFin").value = fechaActual.getHours()+1;
+		}
+		
+	}
+	rellenoFecha();
+	function verAlquileres(alquileres){
+		var paresDeFechas=[];
+		var fechaActual = new Date();
+		var formateofecha = fechaActual.toLocaleString();
+		for(var alquiler of alquileres){
+			
+			var fechaHoraFinAlquiler = alquiler["fechaFin"];
+			var finFechaHoraArray = fechaHoraFinAlquiler.split("T");
+			var fechaFin = finFechaHoraArray[0].split("-");
+			var horaFin = finFechaHoraArray[1].split(":");
+			
+			var fechaHoraIniAlquiler = alquiler["fechaInicio"];
+			var iniFechaHoraArray = fechaHoraIniAlquiler.split("T");
+			var fechaIni = iniFechaHoraArray[0].split("-");
+			var horaIni = iniFechaHoraArray[1].split(":");
+			
+			var finAlquiler = new Date(fechaFin[0], fechaFin[1]-1, fechaFin[2], horaFin[0], 0, 0, 0);
+			var iniAlquiler = new Date(fechaIni[0], fechaIni[1]-1, fechaIni[2], horaIni[0], 0, 0, 0);
+			if(finAlquiler.getTime()>fechaActual.getTime()){
+				var fechaA = iniAlquiler.getTime();
+				var fechaB = finAlquiler.getTime();
+				paresDeFechas.push([fechaA,fechaB]);
+			}
+			else;
+		}
+		return paresDeFechas;
+	}
+	function fechaOcupada(listaFechas,fInicio,fFin,hInicio,hFin){
+		
+		var fechaIniAlquiler = fInicio.split("-");
+		var fechaFinAlquiler = fFin.split("-");
+
+		var fechaSolicitadaIni = new Date(fechaIniAlquiler[0], fechaIniAlquiler[1]-1, fechaIniAlquiler[2], hInicio, 0, 0, 0);
+		var fechaSolicitadaFin = new Date(fechaFinAlquiler[0], fechaFinAlquiler[1]-1, fechaFinAlquiler[2], hFin, 0, 0, 0);
+		var fechaActual = new Date().getTime();
+		var inicio = fechaSolicitadaIni.getTime();
+		var fin = fechaSolicitadaFin.getTime();
+		for(var fecha of listaFechas){
+			if((((inicio>=fecha[0])&&(inicio<=fecha[1]))&&((fin>=fecha[0])&&(fin<=fecha[1]))||((inicio<=fecha[0])&&(inicio<=fecha[1]))&&((fin>=fecha[0])&&(fin<=fecha[1]))||((inicio>=fecha[0])&&(inicio<=fecha[1]))&&((fin>=fecha[0])&&(fin>=fecha[1]))||((inicio<=fecha[0])&&(inicio<=fecha[1]))&&((fin>=fecha[0])&&(fin>=fecha[1])))||((fechaActual>inicio)||(fechaActual>fin))){
+				document.getElementById("fechaInicio").setAttribute("style","border-color:red");
+				document.getElementById("fechaFin").setAttribute("style","border-color:red");
+				document.getElementById("horaInicio").setAttribute("style","border-color:red");
+				document.getElementById("horaFin").setAttribute("style","border-color:red");
+				return false;
+			}
+			else{
+				document.getElementById("fechaInicio").setAttribute("style","border-color:black");
+				document.getElementById("fechaFin").setAttribute("style","border-color:black");
+				document.getElementById("horaInicio").setAttribute("style","border-color:black");
+				document.getElementById("horaFin").setAttribute("style","border-color:black");
+				return true;
+			}
+		}
+	}
+	var reservas = verAlquileres(alquileres);
+	function validar(){
+		validarFechaInicio();
+		validarFechaFin();
+		//validarCocheAlquilado();
+		//validarUbicacionInicio();
+		validarUbicacionFin();
+		//validarPuntuacion();
+		validarDifHoras();
+		var ocupado = fechaOcupada(reservas,document.getElementById("fechaInicio").value,document.getElementById("fechaFin").value,document.getElementById("horaInicio").value,document.getElementById("horaFin").value);
+		if(ocupado == true && validarFechaInicio()==true && validarFechaFin()==true && validarDifFechas()==true && validarDifHoras()==true && validarUbicacionFin()==true){
+			console.log(ocupado+"|"+validarDifHoras()+"|"+validarUbicacionFin()+"|"+validarFechaFin()+"|"+validarFechaInicio());
+			document.getElementById("enviar").disabled=false;
+		}else{
+			console.log(ocupado+"|"+validarDifHoras()+"|"+validarUbicacionFin()+"|"+validarFechaFin()+"|"+validarFechaInicio());
+			document.getElementById("enviar").disabled=true;
+		}
+	}
+</script>

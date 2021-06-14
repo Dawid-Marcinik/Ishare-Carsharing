@@ -14,6 +14,7 @@ import org.ishare.app.repositories.ParticularRepository;
 import org.ishare.app.repositories.RolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -62,7 +63,7 @@ public class ParticularController {
 			final float fSaldo = Float.parseFloat(saldo);
 			final LocalDate lFechaNacimiento = LocalDate.parse(fechaNacimiento);
 			final Rol rol = rolRepository.getOne(idRol);
-			final Particular p = new Particular(nombreUsuario, contrasena, localidad, direccion, iCodigoPostal,
+			final Particular p = new Particular(nombreUsuario, (new BCryptPasswordEncoder()).encode(contrasena), localidad, direccion, iCodigoPostal,
 					iTelefono, email, rol, fSaldo, dni, nombre, apellidos, lFechaNacimiento);
 			String rolActual = s.getAttribute("user")!=null ? ((Entidad)s.getAttribute("user")).getRol().getNombre() : "anon";
 			if (rolActual == "User"){
@@ -120,7 +121,7 @@ public class ParticularController {
 			final LocalDate lFechaNacimiento = LocalDate.parse(fechaNacimiento);
 			final Particular p = particularRepository.getOne(id);
 			p.setNombreUsuario(nombreUsuario);
-			p.setContrasena(contrasena);
+			p.setContrasena((new BCryptPasswordEncoder()).encode(contrasena));
 			p.setLocalidad(localidad);
 			p.setDireccion(direccion);
 			p.setCodigoPostal(iCodigoPostal);

@@ -10,6 +10,7 @@ import org.ishare.app.domains.Empresa;
 import org.ishare.app.domains.Entidad;
 import org.ishare.app.domains.Particular;
 import org.ishare.app.exceptions.DangerException;
+import org.ishare.app.exceptions.InfoException;
 import org.ishare.app.helpers.H;
 import org.ishare.app.helpers.PRG;
 import org.ishare.app.repositories.EmpresaRepository;
@@ -18,6 +19,7 @@ import org.ishare.app.repositories.ParticularRepository;
 import org.ishare.app.repositories.RolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -66,7 +68,6 @@ public class HomeController {
 		m.put("view", "/_t/info");
 		return "/_t/frame";
 	}
-
 	// REGISTRO
 	@GetMapping("/registro")
 	public String registroGet(final ModelMap m) throws DangerException {
@@ -101,10 +102,10 @@ public class HomeController {
 			@RequestParam("contrasena") final String contrasena, final HttpSession s) throws DangerException {
 		final Entidad entidad = entidadRepository.getByNombreUsuario(nombreUsuario);
 		if (entidad == null) {
-			PRG.error("No existe una persona con el nombre de usuario " + nombreUsuario, "/login");
+			PRG.error("Nombre de usuario o contraseña incorrectos","/login");
 		}
-		if (!contrasena.equals(entidad.getContrasena())) {
-			PRG.error("Contraseña incorrecta para la persona con nombre de usuario " + nombreUsuario, "/login");
+		if (!(new BCryptPasswordEncoder()).matches(contrasena,entidad.getContrasena())) {
+			PRG.error("Nombre de usuario o contraseña incorrectos","/login");
 		}
 		s.setAttribute("user", entidad);
 		s.setAttribute("saldo", entidad.getSaldo());
@@ -307,5 +308,5 @@ public class HomeController {
 		}
 		return "redirect:/";
 	}
-
+	
 }

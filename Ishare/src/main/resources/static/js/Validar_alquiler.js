@@ -34,12 +34,42 @@
 		ret=false;
 		document.getElementById("fechaInicio").setAttribute("style","border-color:red");
 	}else{
+		document.getElementById("fechaFin").setAttribute("style","border-color:black");
 		ret=true;
 	}
 		return ret;
 	}
 	
-	
+	function validarDifHoras(){
+		var ret;
+		var fechaI=new Date(document.getElementById("fechaInicio").value);
+		var fechaF=new Date(document.getElementById("fechaFin").value);
+		var horaInicio = Number.parseInt(document.getElementById("horaInicio").value);
+		var horaFin = Number.parseInt(document.getElementById("horaFin").value);
+		if(fechaI.getTime() == fechaF.getTime()){
+			console.log(horaInicio+"|"+horaFin);
+			console.log("entro");
+			if(horaFin <= horaInicio){
+				console.log("epluf");
+				ret = false;
+				document.getElementById("horaInicio").setAttribute("style","border-color:red");
+				document.getElementById("horaFin").setAttribute("style","border-color:red");
+			}
+			else{
+				console.log("si");
+				document.getElementById("horaFin").setAttribute("style","border-color:black");
+				document.getElementById("horaInicio").setAttribute("style","border-color:black");
+				ret = true;
+			}
+		}
+		else{
+			console.log("no");
+			document.getElementById("horaFin").setAttribute("style","border-color:black");
+			document.getElementById("horaInicio").setAttribute("style","border-color:black");
+			ret = true;
+		}
+		return ret;
+	}
 	
 	function validarCocheAlquilado(){
 	var ret;
@@ -92,16 +122,3 @@
 		return ret;
 	}
 	
-	function validar(){
-		validarFechaInicio();
-		validarFechaFin();
-		//validarCocheAlquilado();
-		//validarUbicacionInicio();
-		validarUbicacionFin();
-		//validarPuntuacion();
-		if(validarFechaInicio()==true && validarFechaFin()==true && validarDifFechas()==true && /*validarCocheAlquilado()==true && validarUbicacionInicio()==true &&*/ validarUbicacionFin()==true /*&& validarPuntuacion()==true*/){
-			document.getElementById("enviar").disabled=false;
-		}else{
-			document.getElementById("enviar").disabled=true;
-		}
-	}

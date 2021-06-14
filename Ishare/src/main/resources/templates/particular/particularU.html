@@ -7,7 +7,7 @@
 		<input type="text" name="nombreUsuario" id="nombreUsuario" th:value="${particular.nombreUsuario}" onchange='validarNombreUsuario(this.form)' onkeyup="validar(this.form)"><br>
 		
 		Contraseña
-		<input type="password" name="contrasena" id="contrasena" th:value="${particular.contrasena}" onchange='validarContrasena(this.form)' onkeyup="validar(this.form)"><br>
+		<input type="password" name="contrasena" id="contrasena" value="" onchange='validarContrasena(this.form)' onkeyup="validar(this.form)"><br>
 		
 		Localidad
 		<input type="text" name="localidad" id="localidad" th:value="${particular.localidad}" onchange='validarLocalidad(this.form)' onkeyup="validar(this.form)"><br>
@@ -31,7 +31,7 @@
 		
 		Saldo
 		<input type="number" name="saldo" id="saldo" th:value="${particular.saldo}" onchange='validarSaldo(this.form)' onkeyup="validar(this.form)"><br>
-		Dni
+		DNI/NIE
 		<input type="text" name="dni"  id="dni" th:value="${particular.dni}" onkeyup="validar(this.form)" onchange='validarDni(this.form)'><br>
 		
 		Nombre

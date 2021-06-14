@@ -201,22 +201,39 @@ y los tres restantes pueden ser cualquier valor numérico
 
     var dato = form.dni.value.toUpperCase();
     var resul = false;
-    var reg = /^\d{8}[A-Z]$/;
+    var reg = /^((\d{8}[A-Z])|([A-Z]\d{7}[A-Z]))$/;
  	document.getElementById("dni").setAttribute("style","border-color:red");
-
+	var arrN = ["X","Y","Z"];
     var arrC = ["T","R","W","A","G","M","Y","F","P","D","X","B","N","J","Z","S","Q","V","H","L","C","K","E",];
     if (reg.test(dato) == true) {
-        var numDni = dato.substr(0,8);
-        var resto = parseInt(numDni)%23;
-        if(dato.charAt(8)==arrC[resto]){
-          	document.getElementById("dni").style.borderColor = "black";
-          	resul = true;
-        }
-      	else{
-	        document.getElementById("dni").style.borderColor = "red";
-	        resul = false;
-      	}
-      
+		
+			if(arrN.indexOf(dato.charAt(0)) == -1){
+				console.log("soy DNI");
+		        var numDni = dato.substr(0,8);
+		        var restoDni = parseInt(numDni)%23;
+		        if(dato.charAt(8)==arrC[restoDni]){
+		          	document.getElementById("dni").style.borderColor = "black";
+		          	resul = true;
+		        }
+		      	else{
+			        document.getElementById("dni").style.borderColor = "red";
+			        resul = false;
+		      	}
+	      	}
+	      	else {
+				console.log("soy NIE");
+				var numNie = dato.substr(1,9);
+		        var restoNie = parseInt(numNie)%23;
+		        if(dato.charAt(8)==arrC[restoNie]){
+		          	document.getElementById("dni").style.borderColor = "black";
+		          	resul = true;
+		        }
+		      	else{
+			        document.getElementById("dni").style.borderColor = "red";
+			        resul = false;
+		      	}
+			}
+		
       } return resul;
 
   }

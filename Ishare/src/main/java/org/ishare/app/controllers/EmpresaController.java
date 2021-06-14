@@ -14,6 +14,7 @@ import org.ishare.app.helpers.PRG;
 import org.ishare.app.repositories.EmpresaRepository;
 import org.ishare.app.repositories.RolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -57,7 +58,7 @@ public class EmpresaController {
 			final int iTelefono = Integer.parseInt(telefono);
 			final float fSaldo = Float.parseFloat(saldo);
 			final Rol rol = rolRepository.getOne(idRol);
-			final Empresa em = new Empresa(nombreUsuario, contrasena, localidad, direccion, iCodigoPostal, iTelefono,
+			final Empresa em = new Empresa(nombreUsuario, (new BCryptPasswordEncoder()).encode(contrasena), localidad, direccion, iCodigoPostal, iTelefono,
 					email, rol, fSaldo, cif, razonSocial);
 			if (((Entidad)s.getAttribute("user")).getRol().getNombre() == "User"){
 				PRG.error("no puede estar logueado para realizar esta operación", "/");
@@ -111,7 +112,7 @@ public class EmpresaController {
 				final Rol rol = rolRepository.getOne(idRol);
 				final Empresa em = empresaRepository.getOne(id);
 				em.setNombreUsuario(nombreUsuario);
-				em.setContrasena(contrasena);
+				em.setContrasena((new BCryptPasswordEncoder()).encode(contrasena));
 				em.setLocalidad(localidad);
 				em.setDireccion(direccion);
 				em.setCodigoPostal(iCodigoPostal);
