@@ -28,6 +28,7 @@ public class Alquiler {
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
 	private LocalDateTime fechaFin;
 	private Integer puntuacion;
+	private Float importeTotal;
 	@JsonBackReference
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Ubicacion iniciaEn;
@@ -45,7 +46,7 @@ public class Alquiler {
 
 	}
 
-	public Alquiler(final LocalDateTime fechaInicio, final LocalDateTime fechaFin, final Entidad entidad, final Coche coche, final Ubicacion iniciaEn, final Ubicacion finalizaEn) {
+	public Alquiler(final LocalDateTime fechaInicio, final LocalDateTime fechaFin, final Entidad entidad, final Coche coche, final Ubicacion iniciaEn, final Ubicacion finalizaEn, final Float importeTotal) {
 		super();
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
@@ -53,6 +54,7 @@ public class Alquiler {
 		this.coche = coche;
 		this.iniciaEn = iniciaEn;
 		this.finalizaEn = finalizaEn;
+		this.importeTotal = importeTotal;
 	}
 
 	public Coche getCoche() {
@@ -117,6 +119,14 @@ public class Alquiler {
 
 	public void setEntidad(final Entidad entidad) {
 		this.entidad = entidad;
+	}
+
+	public Float getImporteTotal() {
+		return importeTotal;
+	}
+
+	public void setImporteTotal(Float importeTotal) {
+		this.importeTotal = importeTotal;
 	}
 
 }

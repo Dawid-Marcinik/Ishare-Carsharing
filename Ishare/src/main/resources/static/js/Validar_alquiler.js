@@ -42,15 +42,27 @@
 	
 	function validarDifHoras(){
 		var ret;
+		var fechaI=new Date(document.getElementById("fechaInicio").value);
+		var fechaF=new Date(document.getElementById("fechaFin").value);
 		var horaInicio = document.getElementById("horaInicio").value;
 		var horaFin = document.getElementById("horaFin").value;
-		
-		if(horaFin <= horaInicio){
-			ret = false;
-			document.getElementById("horaInicio").setAttribute("style","border-color:red");
-			document.getElementById("horaFin").setAttribute("style","border-color:red");
+		if(fechaI.getTime() == fechaF.getTime()){
+			console.log("entro");
+			if(horaFin <= horaInicio){
+				console.log("epluf");
+				ret = false;
+				document.getElementById("horaInicio").setAttribute("style","border-color:red");
+				document.getElementById("horaFin").setAttribute("style","border-color:red");
+			}
+			else{
+				console.log("si");
+				document.getElementById("horaFin").setAttribute("style","border-color:black");
+				document.getElementById("horaInicio").setAttribute("style","border-color:black");
+				ret = true;
+			}
 		}
 		else{
+			console.log("no");
 			document.getElementById("horaFin").setAttribute("style","border-color:black");
 			document.getElementById("horaInicio").setAttribute("style","border-color:black");
 			ret = true;
@@ -107,22 +119,4 @@
 		}
 		
 		return ret;
-	}
-	
-	function validar(){
-		validarFechaInicio();
-		validarFechaFin();
-		//validarCocheAlquilado();
-		//validarUbicacionInicio();
-		validarUbicacionFin();
-		//validarPuntuacion();
-		validarDifHoras();
-		var ocupado = fechaOcupada(reservas,document.getElementById("fechaInicio").value,document.getElementById("fechaFin").value,document.getElementById("horaInicio").value,document.getElementById("horaFin").value);
-		if(ocupado == true && validarFechaInicio()==true && validarFechaFin()==true && validarDifFechas()==true && validarDifHoras()==true && validarUbicacionFin()==true){
-			console.log("si");
-			document.getElementById("enviar").disabled=false;
-		}else{
-			console.log("NO");
-			document.getElementById("enviar").disabled=true;
-		}
 	}

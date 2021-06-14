@@ -18,6 +18,7 @@ import org.ishare.app.repositories.ParticularRepository;
 import org.ishare.app.repositories.RolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -103,7 +104,7 @@ public class HomeController {
 		if (entidad == null) {
 			PRG.error("No existe una persona con el nombre de usuario " + nombreUsuario, "/login");
 		}
-		if (!contrasena.equals(entidad.getContrasena())) {
+		if (!(new BCryptPasswordEncoder()).matches(contrasena,entidad.getContrasena())) {
 			PRG.error("Contraseña incorrecta para la persona con nombre de usuario " + nombreUsuario, "/login");
 		}
 		s.setAttribute("user", entidad);

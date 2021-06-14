@@ -49,8 +49,26 @@ public class AlquilerController {
 	@GetMapping("d")
 	public String alquilerDGet(@RequestParam("idAlquiler") final Long idAlquiler, final HttpSession s)
 			throws DangerException {
-		H.isRolOK("Admin", s);
-		alquilerRepository.delete(alquilerRepository.getOne(idAlquiler));
+		H.isRolOK("User", s);
+		Alquiler alquilerAfectado = alquilerRepository.getOne(idAlquiler);
+		Entidad entidad = entidadRepository.getOne(((Entidad)s.getAttribute("user")).getId());
+		Float importeDevol = alquilerAfectado.getImporteTotal();
+		Float saldoRestante = entidad.getSaldo()+importeDevol;
+		LocalDateTime ahora = LocalDateTime.now();
+		LocalDateTime fechaInitAlq = alquilerAfectado.getFechaInicio();
+		if((alquilerAfectado.getEntidad().getId() == ((Entidad)s.getAttribute("user")).getId())) {
+			if(ahora.isAfter(fechaInitAlq)) {
+				PRG.error("No puede cancelar un alquiler que está en curso", "/alquiler/r");
+			}
+			else{
+				alquilerRepository.delete(alquilerAfectado);
+				entidad.setSaldo(saldoRestante);
+				s.setAttribute("saldo", entidad.getSaldo());
+			}
+		}
+		else {
+			PRG.error("Usted no es el usuario adecuado para realizar esta operación", "/alquiler/r");
+		}
 		return "redirect:/alquiler/r";
 	}
 
@@ -162,16 +180,21 @@ public class AlquilerController {
 			final Coche cocheAlquilado = cocheRepository.getOne(idCocheAlquilado);
 			final Ubicacion ubicacionInicio = ubicacionRepository.getOne(idUbicacionInicio);
 			final Ubicacion ubicacionFin = ubicacionRepository.getOne(idUbicacionFin);
+			final Integer plazasOcupadas = (ubicacionInicio == ubicacionFin)?ubicacionFin.getCochesAlquilados().size() : ubicacionFin.getCochesAlquilados().size()+1;
 			final Entidad entidad = entidadRepository.getOne(((Entidad)s.getAttribute("user")).getId());
-			final Alquiler alquiler = new Alquiler(fechaInicio, fechaFin, entidad, cocheAlquilado, ubicacionInicio, ubicacionFin);
 			Long tiempoAlquiler = Duration.between(fechaInicio, fechaFin).getSeconds();
 			Long conversionHorasAlquiler = tiempoAlquiler/60;
+			Float importeTotal = cocheAlquilado.getModelo().getTarifa() * conversionHorasAlquiler;
 			Float saldoRestante = (entidad.getSaldo() - (cocheAlquilado.getModelo().getTarifa() * conversionHorasAlquiler));
+			final Alquiler alquiler = new Alquiler(fechaInicio, fechaFin, entidad, cocheAlquilado, ubicacionInicio, ubicacionFin,importeTotal);
 			if (fechaFin.compareTo(fechaInicio) < 0) {
 				PRG.error("La fecha de inicio no puede ser después de la fecha de finalización", "/alquiler/r");
 			}
 			else if (saldoRestante<0){
 				PRG.error("No tiene saldo suficiente en su cartera de Tokens", "/alquiler/r");
+			}
+			else if (plazasOcupadas>ubicacionFin.getPlazasTotales()) {
+				PRG.error("No quedan plazas disponibles reservadas en este aparcamiento", "/alquiler/r");
 			}
 			else {
 
