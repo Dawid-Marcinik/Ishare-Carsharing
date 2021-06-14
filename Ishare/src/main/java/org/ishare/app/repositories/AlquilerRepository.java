@@ -10,5 +10,7 @@ import org.springframework.stereotype.Repository;
 public interface AlquilerRepository extends JpaRepository<Alquiler, Long> {
 	
 	public List<Alquiler> findByCoche_Id(Long cocheId);
+	public List<Alquiler> findByEntidad_Id(Long entidadId);
+	public List<Alquiler> findAllByCocheId(Long cocheId);
 	
 }

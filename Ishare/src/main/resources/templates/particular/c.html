@@ -28,6 +28,9 @@
 	<div class="w-100"></div>
 	<input type="number" name="saldo" id="saldo" step="0.01" onchange='validarSaldo(this.form)' value="0" onkeyup="validar(this.form)" hidden/>
 	<div class="w-100"></div>
+	<label for="fechaNacimiento">Fecha de nacimiento</label>
+	<input type="Date" name="fechaNacimiento" id="fechaNacimiento" onchange='validarFechaNac(this.form)' onclick="validar(this.form)"/>
+	<div class="w-100"></div>
 	<label for="dni">DNI/NIE</label>
 	<input type="text" name="dni" id="dni" onchange='validarDni(this.form)' onkeyup="validar(this.form)"/>
 	<div class="w-100"></div>
@@ -36,9 +39,6 @@
 	<div class="w-100"></div>
 	<label for="apellidos">Apellidos</label>
 	<input type="text" name="apellidos" id="apellidos" onchange='validarApellidos(this.form)' onkeyup="validar(this.form)"/>
-	<div class="w-100"></div>
-	<label for="fechaNacimiento">Fecha de nacimiento</label>
-	<input type="Date" name="fechaNacimiento" id="fechaNacimiento" onchange='validarFechaNac(this.form)' onclick="validar(this.form)"/>
 	<div class="w-100"></div>
 	<button class="btn-base" disabled id="envio" onclick="validar(this.form)">Crear</button>
 	<button class="btn-cancelar"><a class="enlace" href="/">Volver</a></button>

@@ -15,6 +15,7 @@ import org.ishare.app.domains.Coche;
 import org.ishare.app.domains.Entidad;
 import org.ishare.app.domains.Ubicacion;
 import org.ishare.app.exceptions.DangerException;
+import org.ishare.app.exceptions.InfoException;
 import org.ishare.app.helpers.H;
 import org.ishare.app.helpers.PRG;
 import org.ishare.app.repositories.AlquilerRepository;
@@ -47,8 +48,8 @@ public class AlquilerController {
 	EntidadRepository entidadRepository;
 
 	@GetMapping("d")
-	public String alquilerDGet(@RequestParam("idAlquiler") final Long idAlquiler, final HttpSession s)
-			throws DangerException {
+	public void alquilerDGet(@RequestParam("idAlquiler") final Long idAlquiler, final HttpSession s)
+			throws DangerException, InfoException {
 		H.isRolOK("User", s);
 		Alquiler alquilerAfectado = alquilerRepository.getOne(idAlquiler);
 		Entidad entidad = entidadRepository.getOne(((Entidad)s.getAttribute("user")).getId());
@@ -58,7 +59,7 @@ public class AlquilerController {
 		LocalDateTime fechaInitAlq = alquilerAfectado.getFechaInicio();
 		if((alquilerAfectado.getEntidad().getId() == ((Entidad)s.getAttribute("user")).getId())) {
 			if(ahora.isAfter(fechaInitAlq)) {
-				PRG.error("No puede cancelar un alquiler que está en curso", "/alquiler/r");
+				PRG.error("No puede cancelar un alquiler que está en curso o ya ha ocurrido", "/alquiler/r");
 			}
 			else{
 				alquilerRepository.delete(alquilerAfectado);
@@ -69,17 +70,19 @@ public class AlquilerController {
 		else {
 			PRG.error("Usted no es el usuario adecuado para realizar esta operación", "/alquiler/r");
 		}
-		return "redirect:/alquiler/r";
+		PRG.info("Alquiler cancelado", "/");
 	}
 
 	@GetMapping("u")
-	public String alquilerUGet(@RequestParam("idAlquiler") final Long idAlquiler, final ModelMap m, final HttpSession s)
+	public String alquilerUGet(@RequestParam("idAlquiler") final Long idAlquiler, @RequestParam("idCoche") final Long idCoche, final ModelMap m, final HttpSession s)
 			throws DangerException {
 		H.isRolOK("User", s);
 		try {
+			
 			m.put("ubicaciones", ubicacionRepository.findAll());
 			m.put("alquiler", alquilerRepository.getOne(idAlquiler));
-			m.put("coches", cocheRepository.findAll());
+			m.put("alquileres", alquilerRepository.findAllByCocheId(idCoche));
+			m.put("coche", cocheRepository.getOne(idCoche));
 			m.put("view", "alquiler/uGet");
 			return "/_t/frame";
 		} catch (Exception e) {
@@ -102,7 +105,7 @@ public class AlquilerController {
 			throws DangerException, ParseException {
 		if (puntuacion == "" || stringFechaInicio == "" || stringFechaFin == "" || idUbicacionInicio == null
 				|| idUbicacionFin == null || idCocheAlquilado == null) {
-			PRG.error("Hay campos vacíos", "/alquiler/r");
+			PRG.error("Hay campos vacíos", "/coche/alquilar");
 		} else {
 
 			final int punt = Integer.parseInt(puntuacion);
@@ -126,11 +129,11 @@ public class AlquilerController {
 				try {
 					alquilerRepository.save(alquiler);
 				} catch (final Exception e) {
-					PRG.error("Alquiler duplicado", "/alquiler/r");
+					PRG.error("Alquiler duplicado", "/coche/alquilar");
 				}
 			}
 		}
-		return "redirect:/alquiler/r";
+		return "redirect:/alquiler/alquiler-alquiler-actualizado";
 	}
 
 	@GetMapping("c")
@@ -211,7 +214,7 @@ public class AlquilerController {
 			}
 		}
 
-		return "redirect:/alquiler/r";
+		return "redirect:/alquiler/alquiler-exitoso";
 	}
 
 	@GetMapping("r")
@@ -219,6 +222,24 @@ public class AlquilerController {
 		m.put("alquileres", alquilerRepository.findAll());
 		m.put("view", "alquiler/rGet");
 		return "/_t/frame";
+	}
+	
+	@GetMapping("mis-alquileres")
+	public String listarAlquileres(final ModelMap m, @RequestParam("id") Long idUsuario, HttpSession s) throws DangerException {
+		m.put("alquileres", alquilerRepository.findByEntidad_Id(idUsuario));
+		if((((Entidad)s.getAttribute("user")).getId() != idUsuario)||((Entidad)s.getAttribute("user")).getId() == null) {
+			PRG.error("Ups, algo salió mal", "/");
+		}
+			m.put("view", "alquiler/rGet");
+		return "/_t/frame";
+	}
+	@GetMapping("alquiler-exitoso")
+	public void alquilerExitoso() throws InfoException {
+		PRG.info("Alquiler realizado", "/");
+	}
+	@GetMapping("alquiler-actualizado")
+	public void alquilerActualizado() throws InfoException {
+		PRG.info("Alquiler actualizado", "/");
 	}
 
 }

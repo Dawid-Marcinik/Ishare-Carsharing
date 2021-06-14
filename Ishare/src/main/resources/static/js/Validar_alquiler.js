@@ -44,9 +44,10 @@
 		var ret;
 		var fechaI=new Date(document.getElementById("fechaInicio").value);
 		var fechaF=new Date(document.getElementById("fechaFin").value);
-		var horaInicio = document.getElementById("horaInicio").value;
-		var horaFin = document.getElementById("horaFin").value;
+		var horaInicio = Number.parseInt(document.getElementById("horaInicio").value);
+		var horaFin = Number.parseInt(document.getElementById("horaFin").value);
 		if(fechaI.getTime() == fechaF.getTime()){
+			console.log(horaInicio+"|"+horaFin);
 			console.log("entro");
 			if(horaFin <= horaInicio){
 				console.log("epluf");

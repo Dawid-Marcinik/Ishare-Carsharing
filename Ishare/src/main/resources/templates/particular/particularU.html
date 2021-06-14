@@ -7,7 +7,7 @@
 		<input type="text" name="nombreUsuario" id="nombreUsuario" th:value="${particular.nombreUsuario}" onchange='validarNombreUsuario(this.form)' onkeyup="validar(this.form)"><br>
 		
 		Contraseña
-		<input type="password" name="contrasena" id="contrasena" th:value="${particular.contrasena}" onchange='validarContrasena(this.form)' onkeyup="validar(this.form)"><br>
+		<input type="password" name="contrasena" id="contrasena" value="" onchange='validarContrasena(this.form)' onkeyup="validar(this.form)"><br>
 		
 		Localidad
 		<input type="text" name="localidad" id="localidad" th:value="${particular.localidad}" onchange='validarLocalidad(this.form)' onkeyup="validar(this.form)"><br>

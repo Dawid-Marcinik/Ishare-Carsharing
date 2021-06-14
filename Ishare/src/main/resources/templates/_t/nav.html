@@ -41,6 +41,7 @@
 					<a class="dropdown-item" href="/coche/r"> COCHES DE LA FLOTA </a>
 					<a class="dropdown-item" href="/ubicacion/r"> UBICACIONES </a>
 					<a class="dropdown-item" href="/rol/r"> ROLES </a>
+					<a class="dropdown-item" href="/alquiler/r"> ALQUILERES </a>
 					<a class="dropdown-item" href="/empresa/r"> EMPRESAS </a>
 					<a class="dropdown-item" href="/particular/r"> PARTICULARES </a>
 					<a class="dropdown-item" href="/administracion"> VER MENÚ </a>
@@ -62,7 +63,7 @@
 			<a class="nav-link" href="/login"> LOGIN </a>
 		</li>
 		<li th:if="${session.user == null}" class="nav-item">
-			<a class="nav-link" href="/registro"> REGISTRO </a>
+			<a class="nav-link" href="/registro"> REGISTRARSE </a>
 		</li>
 		<li th:if="${session.user != null}" class="nav-item">
 			<form class="form-hidden" action="/recarga-tokens" id="recargarTokens">
@@ -79,6 +80,10 @@
 						<input type="hidden" name="id" th:value="${session.user.id}" />
 						<input type="hidden" name="type" th:value="${#httpSession.getAttribute('type')}" />
 						<a class="dropdown-item" onclick="document.getElementById('editarPerfil').submit();"style="cursor: pointer;">EDITAR PERFIL</a>
+					</form>
+					<form class="form-hidden" action="/alquiler/mis-alquileres" id="mis-alquileres">
+						<input type="hidden" name="id" th:value="${session.user.id}" />
+						<a class="dropdown-item" onclick="document.getElementById('mis-alquileres').submit();"style="cursor: pointer;">MIS ALQUILERES</a>
 					</form>
 					<form class="form-hidden" action="/recarga-tokens" id="recargarTokens2">
 						<input type="hidden" name="id" th:value="${session.user.id}" />

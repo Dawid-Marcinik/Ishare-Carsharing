@@ -198,7 +198,7 @@ y los tres restantes pueden ser cualquier valor numérico
   function validarCif(form){
     //Una letra seguido de 7 digitos y al final una letra o numero
     var dato = form.cif.value;
-    var reg =  /^[a-zA-Z]{1}\d{7}[a-zA-Z0-9]{1}$/;
+    var reg =  /^[ABCDEFGHJNPQRSUVWabcdefghjnpqrsuvw]{1}\d{7}[ABCDEFGHIJabcdefghij0-9]{1}$/;
     if (reg.test(dato) == false) {
       form.cif.style.color = "red";
       document.getElementById("cif").style.borderColor = "red";

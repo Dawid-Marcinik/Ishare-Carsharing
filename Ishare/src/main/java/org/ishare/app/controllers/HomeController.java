@@ -10,6 +10,7 @@ import org.ishare.app.domains.Empresa;
 import org.ishare.app.domains.Entidad;
 import org.ishare.app.domains.Particular;
 import org.ishare.app.exceptions.DangerException;
+import org.ishare.app.exceptions.InfoException;
 import org.ishare.app.helpers.H;
 import org.ishare.app.helpers.PRG;
 import org.ishare.app.repositories.EmpresaRepository;
@@ -67,7 +68,6 @@ public class HomeController {
 		m.put("view", "/_t/info");
 		return "/_t/frame";
 	}
-
 	// REGISTRO
 	@GetMapping("/registro")
 	public String registroGet(final ModelMap m) throws DangerException {
@@ -308,5 +308,5 @@ public class HomeController {
 		}
 		return "redirect:/";
 	}
-
+	
 }

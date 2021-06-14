@@ -42,7 +42,7 @@
 		return paresDeFechas;
 	}
 	function fechaOcupada(listaFechas,fInicio,fFin,hInicio,hFin){
-		
+		var devuelvo= true;
 		var fechaIniAlquiler = fInicio.split("-");
 		var fechaFinAlquiler = fFin.split("-");
 
@@ -57,16 +57,16 @@
 				document.getElementById("fechaFin").setAttribute("style","border-color:red");
 				document.getElementById("horaInicio").setAttribute("style","border-color:red");
 				document.getElementById("horaFin").setAttribute("style","border-color:red");
-				return false;
+				devuelvo = false;
 			}
 			else{
 				document.getElementById("fechaInicio").setAttribute("style","border-color:black");
 				document.getElementById("fechaFin").setAttribute("style","border-color:black");
 				document.getElementById("horaInicio").setAttribute("style","border-color:black");
 				document.getElementById("horaFin").setAttribute("style","border-color:black");
-				return true;
 			}
 		}
+		return devuelvo;
 	}
 	var reservas = verAlquileres(alquileres);
 	function validar(){
