@@ -92,7 +92,7 @@
 <div class="container">
 	<h1>Nuevo alquiler</h1>
 	<!--<button onclick="fechaOcupada(reservas,document.getElementById('fechaInicio').value,document.getElementById('fechaFin').value,document.getElementById('horaInicio').value,document.getElementById('horaFin').value)">HOLA</button>-->
-	<form method="post">
+	<form method="post" onsubmit="return confirm('Una vez realizada esta acción no podrá modificar su alquiler. Puede cancelar el alquiler en cualquier momento siempre y cuando sea antes de su comienzo. ¿Desea continuar?');">
 		<label for="fechaInicio">FECHA INICIO: </label>
 		<input type="date" name="fechaInicio" id="fechaInicio" onchange="validar()" required/>
 		<input type="number" name="horaInicio" id="horaInicio" onchange="validar()" min="0" max="23" required/>

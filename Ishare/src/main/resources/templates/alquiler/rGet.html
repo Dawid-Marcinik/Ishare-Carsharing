@@ -11,11 +11,12 @@
 			<th>Fecha inicio</th>
 			<th>Fecha fin</th>
 			<th>Vehículo</th>
+			<th>Cliente</th>
 			<th>Ubicación de inicio</th>
 			<th>Ubicación de finalización</th>
 			<th>Importe total</th>
 			<th>Puntuación</th>
-			<th>Modificar</th>
+			<!--<th>Modificar</th>-->
 			<th>Borrar</th>
 		</thead>
 
@@ -23,19 +24,19 @@
 			<td th:text="${#temporals.format(alquiler.fechaInicio, 'dd/MM/yyyy HH:mm')}"></td>
 			<td th:text="${#temporals.format(alquiler.fechaFin, 'dd/MM/yyyy HH:mm')}"></td>
 			<td th:text="|${alquiler.coche.modelo.marca.nombre} ${alquiler.coche.modelo.nombre}|"></td>
+			<td th:text="${alquiler.entidad.nombreUsuario}"></td>
 			<td th:text="${alquiler.iniciaEn?.direccion}"></td>
 			<td th:text="${alquiler.finalizaEn?.direccion}"></td>
 			<td th:text="|${alquiler.importeTotal} Tokens|"></td>
 			<td th:text="${alquiler.puntuacion}"></td>
-			<td>
-
+			<!--<td>
 				<form action="/alquiler/u">
 					<input type="hidden" name="idAlquiler" th:value="${alquiler.idAlquiler}" />
 					<input type="hidden" name="idCoche" th:value="${alquiler.coche.id}" />
 					<button onclick="submit()" onmouseover="" style="cursor: pointer;"><img src="/img/edit.png" height="20px" width="20px">
 					</button>
 				</form>
-			</td>
+			</td>-->
 			<td>
 				<form action="/alquiler/d">
 					<input type="hidden" name="idAlquiler" th:value="${alquiler.idAlquiler}" />

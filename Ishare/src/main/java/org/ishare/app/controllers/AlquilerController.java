@@ -59,20 +59,20 @@ public class AlquilerController {
 		LocalDateTime fechaInitAlq = alquilerAfectado.getFechaInicio();
 		if((alquilerAfectado.getEntidad().getId() == ((Entidad)s.getAttribute("user")).getId())) {
 			if(ahora.isAfter(fechaInitAlq)) {
-				PRG.error("No puede cancelar un alquiler que está en curso o ya ha ocurrido", "/alquiler/r");
+				PRG.error("No puede cancelar un alquiler que está en curso o ya ha ocurrido", "/coche/alquilar");
 			}
 			else{
-				alquilerRepository.delete(alquilerAfectado);
 				entidad.setSaldo(saldoRestante);
 				s.setAttribute("saldo", entidad.getSaldo());
+				alquilerRepository.delete(alquilerAfectado);
 			}
 		}
 		else {
-			PRG.error("Usted no es el usuario adecuado para realizar esta operación", "/alquiler/r");
+			PRG.error("Usted no es el usuario adecuado para realizar esta operación", "/coche/alquilar");
 		}
 		PRG.info("Alquiler cancelado", "/");
 	}
-
+/*
 	@GetMapping("u")
 	public String alquilerUGet(@RequestParam("idAlquiler") final Long idAlquiler, @RequestParam("idCoche") final Long idCoche, final ModelMap m, final HttpSession s)
 			throws DangerException {
@@ -135,7 +135,7 @@ public class AlquilerController {
 		}
 		return "redirect:/alquiler/alquiler-alquiler-actualizado";
 	}
-
+*/
 	@GetMapping("c")
 	public String alquilerCGet(@RequestParam("idCoche") Long idCoche,final ModelMap m, final HttpSession s) throws DangerException {
 		H.isRolOK("User", s);
@@ -218,7 +218,8 @@ public class AlquilerController {
 	}
 
 	@GetMapping("r")
-	public String alquilerRGet(final ModelMap m) {
+	public String alquilerRGet(final ModelMap m, HttpSession s) throws DangerException {
+		H.isRolOK("Admin", s);
 		m.put("alquileres", alquilerRepository.findAll());
 		m.put("view", "alquiler/rGet");
 		return "/_t/frame";
@@ -228,9 +229,9 @@ public class AlquilerController {
 	public String listarAlquileres(final ModelMap m, @RequestParam("id") Long idUsuario, HttpSession s) throws DangerException {
 		m.put("alquileres", alquilerRepository.findByEntidad_Id(idUsuario));
 		if((((Entidad)s.getAttribute("user")).getId() != idUsuario)||((Entidad)s.getAttribute("user")).getId() == null) {
-			PRG.error("Ups, algo salió mal", "/");
+			PRG.error("Ups, algo salió mal :(", "/");
 		}
-			m.put("view", "alquiler/rGet");
+		m.put("view", "alquiler/rGet");
 		return "/_t/frame";
 	}
 	@GetMapping("alquiler-exitoso")

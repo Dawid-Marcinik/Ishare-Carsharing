@@ -102,10 +102,10 @@ public class HomeController {
 			@RequestParam("contrasena") final String contrasena, final HttpSession s) throws DangerException {
 		final Entidad entidad = entidadRepository.getByNombreUsuario(nombreUsuario);
 		if (entidad == null) {
-			PRG.error("No existe una persona con el nombre de usuario " + nombreUsuario, "/login");
+			PRG.error("Nombre de usuario o contraseña incorrectos","/login");
 		}
 		if (!(new BCryptPasswordEncoder()).matches(contrasena,entidad.getContrasena())) {
-			PRG.error("Contraseña incorrecta para la persona con nombre de usuario " + nombreUsuario, "/login");
+			PRG.error("Nombre de usuario o contraseña incorrectos","/login");
 		}
 		s.setAttribute("user", entidad);
 		s.setAttribute("saldo", entidad.getSaldo());

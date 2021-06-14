@@ -2,7 +2,7 @@
 	<h1>Lista de empresas</h1>
 
 	<a class="enlace" href="/empresa/c">
-		<button class="btn-base">Crear</button>
+		<button class="btn-base">Crear Empresa</button>
 	</a> <a href="/">
 		<button class="btn-cancelar">Cancelar</button>
 	</a>
@@ -19,9 +19,10 @@
 			<th>Email</th>
 			<th>Rol</th>
 			<th>Saldo</th>
-			<th>Cif</th>
+			<th>NIF</th>
 			<th>Razón social</th>
-			<th>Acciones</th>
+			<th>Modificar</th>
+			<th>Borrar</th>
 		</thead>
 
 			<tr th:each="empresa:${empresas}">
@@ -43,6 +44,8 @@
 						<img src="/img/edit.png" height="20" width="20">
 					</button>
 				</form>
+			</td>
+			<td>
 				<form action="/empresa/d" method="post">
 					<input type="hidden" name="id" th:value="${empresa.id}" />
 					<button onclick="submit()">
