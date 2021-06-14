@@ -43,7 +43,7 @@ public class UbicacionController {
 		H.isRolOK("Admin", s);
 		m.put("ubicacion", ubicacionRepository.getOne(idUbicacion));
 		m.put("view", "ubicacion/uGet");
-		return "/_t/frame";
+		return "_t/frame";
 	}
 
 	@PostMapping("u")
@@ -71,7 +71,7 @@ public class UbicacionController {
 	@GetMapping("c")
 	public String ubicacionCGet(final ModelMap m) {
 		m.put("view", "ubicacion/cGet");
-		return "/_t/frame";
+		return "_t/frame";
 	}
 
 	@PostMapping("c")
@@ -99,6 +99,6 @@ public class UbicacionController {
 	public String ubicacionRGet(final ModelMap m) {
 		m.put("ubicaciones", ubicacionRepository.findAll());
 		m.put("view", "ubicacion/rGet");
-		return "/_t/frame";
+		return "_t/frame";
 	}
 }

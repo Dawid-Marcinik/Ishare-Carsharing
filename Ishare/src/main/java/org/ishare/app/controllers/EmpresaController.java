@@ -35,7 +35,7 @@ public class EmpresaController {
 	public String empresaCGet(final ModelMap m) {
 		m.put("view", "/empresa/c");
 		m.put("roles", rolRepository.findAll());
-		return "/_t/frame";
+		return "_t/frame";
 	}
 
 	@PostMapping("c")
@@ -80,7 +80,7 @@ public class EmpresaController {
 		m.put("empresas", empresaRepository.findAll());
 		m.put("view", "/empresa/r");
 
-		return "/_t/frame";
+		return "_t/frame";
 	}
 
 	@GetMapping("u")
@@ -88,7 +88,7 @@ public class EmpresaController {
 		m.put("empresa", empresaRepository.getOne(id));
 		m.put("roles", rolRepository.findAll());
 		m.put("view", "/empresa/empresaU");
-		return "/_t/frame";
+		return "_t/frame";
 	}
 
 	@PostMapping("u")

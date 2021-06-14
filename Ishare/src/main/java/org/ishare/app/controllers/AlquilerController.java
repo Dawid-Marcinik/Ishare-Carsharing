@@ -148,10 +148,10 @@ public class AlquilerController {
 			m.put("coches", cocheRepository.findAll());
 			m.put("view", "alquiler/cGet");
 
-			return "/_t/frame";
+			return "_t/frame";
 		} catch (Exception e) {
 			m.put("view", "/login");
-			return "/_t/frame";
+			return "_t/frame";
 		}
 	}
 
@@ -225,7 +225,7 @@ public class AlquilerController {
 		H.isRolOK("Admin", s);
 		m.put("alquileres", alquilerRepository.findAll());
 		m.put("view", "alquiler/rGet");
-		return "/_t/frame";
+		return "_t/frame";
 	}
 	
 	@GetMapping("mis-alquileres")
@@ -235,7 +235,7 @@ public class AlquilerController {
 			PRG.error("Ups, algo salió mal :(", "/");
 		}
 		m.put("view", "alquiler/rGet");
-		return "/_t/frame";
+		return "_t/frame";
 	}
 	@GetMapping("alquiler-exitoso")
 	public void alquilerExitoso() throws InfoException {
