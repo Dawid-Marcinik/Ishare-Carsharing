@@ -35,7 +35,7 @@ public class ParticularController {
 
 	@GetMapping("c")
 	public String particularCGet(final ModelMap m) {
-		m.put("view", "/particular/c");
+		m.put("view", "particular/c");
 		m.put("roles", rolRepository.findAll());
 		return "_t/frame";
 	}
@@ -87,7 +87,7 @@ public class ParticularController {
 	public String particularRGet(final ModelMap m,final HttpSession s) throws DangerException {
 		H.isRolOK("Admin", s);
 		m.put("particulares", particularRepository.findAll());
-		m.put("view", "/particular/r");
+		m.put("view", "particular/r");
 
 		return "_t/frame";
 	}
@@ -96,7 +96,7 @@ public class ParticularController {
 	public String updateGet(@RequestParam("id") final Long id, final ModelMap m) {
 		m.put("particular", particularRepository.getOne(id));
 		m.put("roles", rolRepository.findAll());
-		m.put("view", "/particular/particularU");
+		m.put("view", "particular/particularU");
 		return "_t/frame";
 	}
 

@@ -115,7 +115,7 @@ public class CocheController {
 		//Alquilar
 		@GetMapping("alquilar")
 		public String alquilarGet(ModelMap modelo) {
-			modelo.put("view", "/coche/alquilar");
+			modelo.put("view", "coche/alquilar");
 			modelo.put("alquileres", alquilerRepository.findAll());
 			modelo.put("coches", cocheRepository.findAll());
 			return ("_t/frame");

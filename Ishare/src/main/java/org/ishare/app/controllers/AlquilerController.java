@@ -150,7 +150,7 @@ public class AlquilerController {
 
 			return "_t/frame";
 		} catch (Exception e) {
-			m.put("view", "/login");
+			m.put("view", "login");
 			return "_t/frame";
 		}
 	}
