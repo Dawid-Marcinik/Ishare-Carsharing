@@ -231,6 +231,39 @@ html, body {
   color: #8bab0c !important;
 }
 
+/* line 207, main.scss */
+.etiq {
+  margin-bottom: 20px;
+  width: 200px;
+}
+
+/* line 211, main.scss */
+input {
+  border-radius: 10px !important;
+  margin-bottom: 20px !important;
+}
+
+/* line 215, main.scss */
+tr {
+  text-align: center !important;
+}
+
+/* line 218, main.scss */
+td {
+  vertical-align: middle !important;
+}
+
+/* line 221, main.scss */
+button {
+  background-color: transparent;
+  border: none;
+}
+
+/* line 225, main.scss */
+.alinear {
+  text-align: center;
+}
+
 /*!
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
