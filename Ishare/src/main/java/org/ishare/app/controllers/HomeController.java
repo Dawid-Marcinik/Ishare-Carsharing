@@ -40,13 +40,13 @@ public class HomeController {
 
 	@GetMapping("/tarifas")
 	public String tarifas(final ModelMap modelo) {
-		modelo.put("view", "/home/tarifas");
+		modelo.put("view", "home/tarifas");
 		return "_t/frame";
 	}
 
 	@GetMapping("/")
 	public String home(final ModelMap modelo, final HttpServletRequest request) {
-		modelo.put("view", "/home/index");
+		modelo.put("view", "home/index");
 		return "_t/frame";
 	}
 
@@ -65,13 +65,13 @@ public class HomeController {
 		m.put("severity", severity);
 		m.put("link", link);
 
-		m.put("view", "/_t/info");
+		m.put("view", "_t/info");
 		return "_t/frame";
 	}
 	// REGISTRO
 	@GetMapping("/registro")
 	public String registroGet(final ModelMap m) throws DangerException {
-		m.put("view", "/home/registro");
+		m.put("view", "home/registro");
 		return "_t/frame";
 	}
 
@@ -80,9 +80,9 @@ public class HomeController {
 			throws DangerException {
 		String link = "";
 		if (tipoEntidad.equals("Empresa")) {
-			link = "/empresa/c";
+			link = "empresa/c";
 		} else if (tipoEntidad.equals("Particular")) {
-			link = "/particular/c";
+			link = "particular/c";
 		}
 		m.put("roles", rolRepository.findAll());
 		m.put("view", link);
@@ -93,7 +93,7 @@ public class HomeController {
 	@GetMapping("/login")
 	public String loginGet(final ModelMap m, final HttpSession s) throws DangerException {
 		H.isRolOK("anon", s);
-		m.put("view", "/home/login");
+		m.put("view", "home/login");
 		return "_t/frame";
 	}
 
@@ -123,14 +123,14 @@ public class HomeController {
 
 	@GetMapping("quienes")
 	public String empresaQGet(final ModelMap m, final HttpSession s) throws DangerException {
-		m.put("view", "/home/quienes");
+		m.put("view", "home/quienes");
 
 		return "_t/frame";
 	}
 
 	@GetMapping("donde")
 	public String empresaDGet(final ModelMap m, final HttpSession s) throws DangerException {
-		m.put("view", "/home/donde");
+		m.put("view", "home/donde");
 
 		return "_t/frame";
 	}
@@ -139,27 +139,27 @@ public class HomeController {
 	@GetMapping("/administracion")
 	public String administracion(final ModelMap modelo, final HttpSession s) throws DangerException {
 		H.isRolOK("Admin", s);
-		modelo.put("view", "/home/menuAdmin");
+		modelo.put("view", "home/menuAdmin");
 		return "_t/frame";
 	}
 
 	@GetMapping("/politicasC")
 	public String politicasC(final ModelMap m, final HttpSession s) throws DangerException {
-		m.put("view", "/home/politicasC");
+		m.put("view", "home/politicasC");
 
 		return "_t/frame";
 	}
 
 	@GetMapping("/terminosC")
 	public String terminosC(final ModelMap m, final HttpSession s) throws DangerException {
-		m.put("view", "/home/terminosC");
+		m.put("view", "home/terminosC");
 
 		return "_t/frame";
 	}
 
 	@GetMapping("/privacidadP")
 	public String privacidadP(final ModelMap m, final HttpSession s) throws DangerException {
-		m.put("view", "/home/privacidadP");
+		m.put("view", "home/privacidadP");
 
 		return "_t/frame";
 	}
@@ -167,7 +167,7 @@ public class HomeController {
 	@GetMapping("/preciosP")
 	public String politicasP(final ModelMap m, final HttpSession s) throws DangerException {
 
-		m.put("view", "/home/preciosP");
+		m.put("view", "home/preciosP");
 
 		return "_t/frame";
 	}
@@ -175,7 +175,7 @@ public class HomeController {
 	@GetMapping("/faq")
 	public String faq(final ModelMap m, final HttpSession s) throws DangerException {
 
-		m.put("view", "/home/faq");
+		m.put("view", "home/faq");
 
 		return "_t/frame";
 	}
@@ -183,7 +183,7 @@ public class HomeController {
 	@GetMapping("/ecoTierra")
 	public String ecoTierra(final ModelMap m, final HttpSession s) throws DangerException {
 
-		m.put("view", "/home/ecoTierra");
+		m.put("view", "home/ecoTierra");
 
 		return "_t/frame";
 	}
@@ -191,7 +191,7 @@ public class HomeController {
 	@GetMapping("recarga-tokens")
 	public String recargaTokensGet(@RequestParam("id") final Long id, final ModelMap m, final HttpSession s) {
 		m.put("entidad", entidadRepository.getOne(id));
-		m.put("view", "/home/recarga-tokens");
+		m.put("view", "home/recarga-tokens");
 		return "_t/frame";
 
 	}
@@ -216,7 +216,7 @@ public class HomeController {
 	@GetMapping("/flota")
 	public String nuestraFlota(final ModelMap m, final HttpSession s) throws DangerException {
 
-		m.put("view", "/home/flota");
+		m.put("view", "home/flota");
 
 		return "_t/frame";
 	}
@@ -225,10 +225,10 @@ public class HomeController {
 	public String getEditarPerfil(@RequestParam("id") final Long id, final ModelMap m, final HttpSession s) {
 		final String tipo = (String) s.getAttribute("type");
 		if (tipo.equals("Particular")) {
-			m.put("view", "/home/editar-perfil-particular");
+			m.put("view", "home/editar-perfil-particular");
 			m.put("particular", particularRepository.getOne(id));
 		} else {
-			m.put("view", "/home/editar-perfil-empresa");
+			m.put("view", "home/editar-perfil-empresa");
 			m.put("empresa", empresaRepository.getOne(id));
 		}
 		return "_t/frame";

@@ -11,7 +11,7 @@ public class ElErrorController implements ErrorController{
 	 @RequestMapping("/error")
 	    public String handleError(ModelMap m) {
 	        //do something like logging
-		 	m.put("view", "/home/error");
+		 	m.put("view", "home/error");
 	        return "_t/frame";
 	    }
 	

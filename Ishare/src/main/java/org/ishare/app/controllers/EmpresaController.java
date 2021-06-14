@@ -33,7 +33,7 @@ public class EmpresaController {
 
 	@GetMapping("c")
 	public String empresaCGet(final ModelMap m) {
-		m.put("view", "/empresa/c");
+		m.put("view", "empresa/c");
 		m.put("roles", rolRepository.findAll());
 		return "_t/frame";
 	}
@@ -78,7 +78,7 @@ public class EmpresaController {
 	public String empresaRGet(final ModelMap m,final HttpSession s) throws DangerException {
 		H.isRolOK("Admin", s);
 		m.put("empresas", empresaRepository.findAll());
-		m.put("view", "/empresa/r");
+		m.put("view", "empresa/r");
 
 		return "_t/frame";
 	}
@@ -87,7 +87,7 @@ public class EmpresaController {
 	public String updateGet(@RequestParam("id") final Long id, final ModelMap m) {
 		m.put("empresa", empresaRepository.getOne(id));
 		m.put("roles", rolRepository.findAll());
-		m.put("view", "/empresa/empresaU");
+		m.put("view", "empresa/empresaU");
 		return "_t/frame";
 	}
 
