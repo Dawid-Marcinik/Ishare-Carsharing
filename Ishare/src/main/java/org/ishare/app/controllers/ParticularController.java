@@ -37,7 +37,7 @@ public class ParticularController {
 	public String particularCGet(final ModelMap m) {
 		m.put("view", "/particular/c");
 		m.put("roles", rolRepository.findAll());
-		return "/_t/frame";
+		return "_t/frame";
 	}
 
 	@PostMapping("c")
@@ -89,7 +89,7 @@ public class ParticularController {
 		m.put("particulares", particularRepository.findAll());
 		m.put("view", "/particular/r");
 
-		return "/_t/frame";
+		return "_t/frame";
 	}
 
 	@GetMapping("u")
@@ -97,7 +97,7 @@ public class ParticularController {
 		m.put("particular", particularRepository.getOne(id));
 		m.put("roles", rolRepository.findAll());
 		m.put("view", "/particular/particularU");
-		return "/_t/frame";
+		return "_t/frame";
 	}
 
 	@PostMapping("u")

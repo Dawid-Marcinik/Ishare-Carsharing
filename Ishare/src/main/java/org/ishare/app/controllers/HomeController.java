@@ -66,13 +66,13 @@ public class HomeController {
 		m.put("link", link);
 
 		m.put("view", "/_t/info");
-		return "/_t/frame";
+		return "_t/frame";
 	}
 	// REGISTRO
 	@GetMapping("/registro")
 	public String registroGet(final ModelMap m) throws DangerException {
 		m.put("view", "/home/registro");
-		return "/_t/frame";
+		return "_t/frame";
 	}
 
 	@PostMapping("/registro")
@@ -94,7 +94,7 @@ public class HomeController {
 	public String loginGet(final ModelMap m, final HttpSession s) throws DangerException {
 		H.isRolOK("anon", s);
 		m.put("view", "/home/login");
-		return "/_t/frame";
+		return "_t/frame";
 	}
 
 	@PostMapping("/login")
@@ -125,14 +125,14 @@ public class HomeController {
 	public String empresaQGet(final ModelMap m, final HttpSession s) throws DangerException {
 		m.put("view", "/home/quienes");
 
-		return "/_t/frame";
+		return "_t/frame";
 	}
 
 	@GetMapping("donde")
 	public String empresaDGet(final ModelMap m, final HttpSession s) throws DangerException {
 		m.put("view", "/home/donde");
 
-		return "/_t/frame";
+		return "_t/frame";
 	}
 
 	// Añadido por si acaso
@@ -147,21 +147,21 @@ public class HomeController {
 	public String politicasC(final ModelMap m, final HttpSession s) throws DangerException {
 		m.put("view", "/home/politicasC");
 
-		return "/_t/frame";
+		return "_t/frame";
 	}
 
 	@GetMapping("/terminosC")
 	public String terminosC(final ModelMap m, final HttpSession s) throws DangerException {
 		m.put("view", "/home/terminosC");
 
-		return "/_t/frame";
+		return "_t/frame";
 	}
 
 	@GetMapping("/privacidadP")
 	public String privacidadP(final ModelMap m, final HttpSession s) throws DangerException {
 		m.put("view", "/home/privacidadP");
 
-		return "/_t/frame";
+		return "_t/frame";
 	}
 
 	@GetMapping("/preciosP")
@@ -169,7 +169,7 @@ public class HomeController {
 
 		m.put("view", "/home/preciosP");
 
-		return "/_t/frame";
+		return "_t/frame";
 	}
 
 	@GetMapping("/faq")
@@ -177,7 +177,7 @@ public class HomeController {
 
 		m.put("view", "/home/faq");
 
-		return "/_t/frame";
+		return "_t/frame";
 	}
 
 	@GetMapping("/ecoTierra")
@@ -185,14 +185,14 @@ public class HomeController {
 
 		m.put("view", "/home/ecoTierra");
 
-		return "/_t/frame";
+		return "_t/frame";
 	}
 
 	@GetMapping("recarga-tokens")
 	public String recargaTokensGet(@RequestParam("id") final Long id, final ModelMap m, final HttpSession s) {
 		m.put("entidad", entidadRepository.getOne(id));
 		m.put("view", "/home/recarga-tokens");
-		return "/_t/frame";
+		return "_t/frame";
 
 	}
 
@@ -218,7 +218,7 @@ public class HomeController {
 
 		m.put("view", "/home/flota");
 
-		return "/_t/frame";
+		return "_t/frame";
 	}
 
 	@GetMapping("/editar-perfil")
@@ -231,7 +231,7 @@ public class HomeController {
 			m.put("view", "/home/editar-perfil-empresa");
 			m.put("empresa", empresaRepository.getOne(id));
 		}
-		return "/_t/frame";
+		return "_t/frame";
 	}
 
 	@PostMapping("/editar-perfil-empresa")
