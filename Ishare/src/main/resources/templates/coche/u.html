@@ -1,20 +1,20 @@
-<div class="container">
+<div class="container alinear">
 	<h1 class="display-6">Modificar coche</h1>
 	<form id="formulario" action="u" method="POST" onSubmit="return validar_matricula(this)">
-		<label for="idMarca">Modelo: </label>
+		<label class="etiq" for="idMarca">Modelo: </label>
 		<select name="idModelo" id="idModelo">
 			<option th:each="modelo:${modelos}" th:value="${modelo.id}" th:selected="${modelo.nombre == coche.modelo.nombre}" th:text="|${modelo.marca.nombre} - ${modelo.nombre}|"></option>
 		</select>
 		<br>
-		<label for="matricula">Matrícula del coche: </label>
+		<label class="etiq" for="matricula">Matrícula del coche: </label>
 		<input type="text" th:value="${coche.matricula}" id="matricula" name="matricula" onkeyup="validar_coche(this)" onfocus="reseteaColor(this)">
 		<br>
-		<label for="idMarca">Ubicación: </label>
+		<label class="etiq" for="idMarca">Ubicación: </label>
 		<select name="idUbicacion" id="idUbicacion">
 			<option th:each="ubicacion:${ubicaciones}" th:value="${ubicacion.idUbicacion}" th:selected="${ubicacion.direccion == coche.ubicacion.direccion}" th:text="${ubicacion.direccion}"></option>
 		</select>
 		<br>
-		<label for="autonomiaRestante">Autonomia restante (Km): </label>
+		<label class="etiq" for="autonomiaRestante">Autonomia restante (Km): </label>
 		<input type="number" th:value="${coche.autonomiaRestante}" id="autonomiaRestante" name="autonomiaRestante">
 		<br>
 		<input type="hidden" name="id" th:value="${coche.id}">

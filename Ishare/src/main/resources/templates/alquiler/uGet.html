@@ -12,15 +12,15 @@
 	}
 	*:focus { outline: none; } 
 </style>
-<div class="container">
+<div class="container alinear">
 	<h1>Editar alquiler</h1>
 	
 	<form method="post">
-		<label for="fechaInicio">FECHA INICIO: </label>
+		<label class="etiq" for="fechaInicio">FECHA INICIO: </label>
 		<input type="date" name="fechaInicio" id="fechaInicio" onchange="validar()"  required />
 		<input type="number" name="horaInicio" id="horaInicio" onchange="validar()" min="0" max="23" required/>
 		<br/>
-		<label for="fechaFin">FECHA FIN: </label>
+		<label class="etiq" for="fechaFin">FECHA FIN: </label>
 		<input type="date" name="fechaFin" id="fechaFin" onchange="validar()" required />
 		<input type="number" name="horaFin" id="horaFin" onchange="validar()" min="0" max="23" required/>
 		<br/>
@@ -31,13 +31,13 @@
 			<input type="hidden" name="idCocheAlquilado" th:value="${coche.id}">
 		</div>
 		<br/>
-		<label for="idUbicacionFin">UBICACIÓN DE FINALIZACIÓN: </label>
+		<label class="etiq" for="idUbicacionFin">UBICACIÓN DE FINALIZACIÓN: </label>
 		<select name="idUbicacionFin" id="idUbicacionFin" required > 
 			<option th:each="ubicacion:${ubicaciones}" th:text="${ubicacion.direccion}" th:selected= "${ubicacion.direccion == alquiler.finalizaEn.direccion}" th:value="${ubicacion.idUbicacion}">
 			</option>
 		</select>
 		<br/>
-		<label for="puntuacion">¡PUNTÚA NUESTRO SERVICIO!: </label>
+		<label class="etiq" for="puntuacion">¡PUNTÚA NUESTRO SERVICIO!: </label>
 		<input type="number" id="puntuacion" name="puntuacion" th:value="${alquiler.puntuacion}" max="10" min="0" oninput="validar()" required/><span>/10</span>
 		<br/>
 		

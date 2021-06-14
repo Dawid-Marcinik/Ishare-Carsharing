@@ -13,28 +13,28 @@
 	*:focus { outline: none; } 
 </style>
 <script src="/js/Validar_recarga_tokens_tarjeta.js"></script>
-<div class="container">
+<div class="container alinear">
 	<h1>Añadir tokens</h1>
 	
 	<form method="post">
 		<div id="datosBancarios">
-		<label for="numTarjeta">Número tarjeta:</label>
+		<label class="etiq" for="numTarjeta">Número tarjeta:</label>
 		<input type="number" name="numTarjeta" id="numTarjeta" onkeyup="validar()" required>
 		<br/>
-		<label for="numTarjeta">Nombre tarjeta:</label>
+		<label class="etiq" for="numTarjeta">Nombre tarjeta:</label>
 		<input type="text" name="nomTarjeta" id="nomTarjeta" onkeyup="validar()" required>
 		<br/>
-		<label for="fechaTarjeta">Fecha validación tarjeta:</label>
+		<label class="etiq" for="fechaTarjeta">Fecha validación tarjeta:</label>
 		<input type="number" name="mesTarjeta" id="mesTarjeta" onkeyup="validar()" style="width:50px;" required> / <input type="number" name="anioTarjeta" id="anioTarjeta" onkeyup="validarFechaTarjeta()" style="width:75px;" required>
 		<br/>
-		<label for="cvv">CVV tarjeta:</label>
+		<label class="etiq" for="cvv">CVV tarjeta:</label>
 		<input type="number" name="cvv" id="cvv" onkeyup="validar()" style="width:75px;" required>
 		</div>
-		<label for="saldo">Tokens a añadir: </label>
+		<label class="etiq" for="saldo">Tokens a añadir: </label>
 		<input type="number" name="saldo" id="saldo" onkeyup="validar()" style="width:100px;" required/>
 		<br/>
 		<input type="hidden" name="id" th:value="${session.user.id}"/>
 		<input type="submit" class="btn-base" id="enviar"disabled />
-		<a class="btn-cancelar" href="/">Cancelar</a>
+		<input class="btn-cancelar" type="button" value="Cancelar" onclick="location.href='/'">
 	</form>
 </div>

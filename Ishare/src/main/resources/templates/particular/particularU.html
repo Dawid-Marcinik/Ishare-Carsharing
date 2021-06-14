@@ -1,52 +1,52 @@
 
-<div class="container">
+<div class="container alinear">
 	<h1 class="display-6">Editar particular</h1>
 	<form method="post" action="/particular/u" class="form">
 	
-	Nombre de usuario
+		<label class="etiq" for="nombreUsuario">Nombre de usuario</label>
 		<input type="text" name="nombreUsuario" id="nombreUsuario" th:value="${particular.nombreUsuario}" onchange='validarNombreUsuario(this.form)' onkeyup="validar(this.form)"><br>
 		
-		Contraseña
+		<label class="etiq" for="contrasena">Contraseña</label>
 		<input type="password" name="contrasena" id="contrasena" value="" onchange='validarContrasena(this.form)' onkeyup="validar(this.form)"><br>
 		
-		Localidad
+		<label class="etiq" for="localidad">Localidad</label>
 		<input type="text" name="localidad" id="localidad" th:value="${particular.localidad}" onchange='validarLocalidad(this.form)' onkeyup="validar(this.form)"><br>
 		
-		Dirección
+		<label class="etiq" for="direccion">Dirección</label>
 		<input type="text" name="direccion" id="direccion" th:value="${particular.direccion}" onchange='validarDireccion(this.form)' onkeyup="validar(this.form)"><br>
 		
-		Código postal
+		<label class="etiq" for="codigoPostal">Código postal</label>
 		<input type="number" name="codigoPostal" id="codigoPostal" th:value="${particular.codigoPostal}"  onchange='validarCodigoPostal(this.form)' onkeyup="validar(this.form)"><br>
 		
-		Teléfono
+		<label class="etiq" for="telefono">Teléfono</label>
 		<input type="number" name="telefono" id="telefono" th:value="${particular.telefono}" onchange='validarTelefono(this.form)' onkeyup="validar(this.form)"><br>
 		
-		Email
+		<label class="etiq" for="email">Email</label>
 		<input type="email" name="email" id="email" th:value="${particular.email}" onchange='validarEmail(this.form)' onkeyup="validar(this.form)"><br>
 		
-		Rol
+		<label class="etiq" for="idRol">Rol</label>
 		<select name="idRol">
 			<option th:each="rol:${roles}" th:value="${rol.id}" th:text="${rol.nombre}"></option>
 		</select>
-		
-		Saldo
+		<br>
+		<label class="etiq" for="saldo">Saldo</label>
 		<input type="number" name="saldo" id="saldo" th:value="${particular.saldo}" onchange='validarSaldo(this.form)' onkeyup="validar(this.form)"><br>
-		DNI/NIE
+		<label class="etiq" for="dni">DNI/NIE</label>
 		<input type="text" name="dni"  id="dni" th:value="${particular.dni}" onkeyup="validar(this.form)" onchange='validarDni(this.form)'><br>
 		
-		Nombre
+		<label class="etiq" for="nombre">Nombre</label>
 		<input type="text" name="nombre" id="nombre" th:value="${particular.nombre}" onkeyup="validar(this.form)" onchange='validarNombre(this.form)'><br>
 		
-		Apellidos
+		<label class="etiq" for="apellidos">Apellidos</label>
 		<input type="text" name="apellidos" id="apellidos" th:value="${particular.apellidos}" onkeyup="validar(this.form)" onchange='validarApellidos(this.form)'><br>
 		
-		Fecha de nacimiento
+		<label class="etiq" for="fechaNacimiento">Fecha nacimiento</label>
 		<input type="Date" name="fechaNacimiento" id="fechaNacimiento"  th:value="${particular.fechaNacimiento}" onchange='validarFechaNac(this.form)' onkeyup="validar(this.form)"><br>
 		
 		<input type="hidden" name="id" id="id" th:value="${particular.id}"/>
 		
 		<input class="btn-base form-item" type="submit" id="envio" onclick="validar(this.form)"/>
-		<button class="btn-cancelar"><a class="enlace" href="/">Volver</a></button>
+		<input class="btn-cancelar" type="button" value="Cancelar" onclick="location.href='/'">
 	</form>
 	</div>
 	<script src="/js/expRegParticular.js"></script>

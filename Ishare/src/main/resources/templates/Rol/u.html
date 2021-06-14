@@ -1,12 +1,13 @@
-<div class="container">
+<div class="container alinear">
 	<h1 class="display-6">Modificar Rol</h1>
 	<form action="u" method="POST">
-		<label for="nombre">Nombre del rol: </label>
+		<label class="etiq" for="nombre">Nombre del rol: </label>
 		<input type="text" id="nombre" name="nombre" th:value="${rol.nombre}" onchange='validarNombreRol(this.form)' onkeyup="validar(this.form)">
 		<input type="hidden" name="id" th:value="${rol.id}">
 		<br>
 		<input class="btn-base" type="submit" value="Modificar" id="envio" onclick="validar(this.form)">
 		<input class="btn-cancelar" type="button" value="Cancelar" onclick="location.href='r'">
 	</form>
+</div>
 </div>
 <script src="/js/expRegRol.js"></script>
