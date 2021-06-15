@@ -129,10 +129,12 @@
 	function validarPuntuacion(){
 	var ret;
 		if(document.getElementById("puntuacion").value==""){
-		document.getElementById("puntuacion").setAttribute("style","border-color:red");	
-		ret=false;
+			document.getElementById("puntuacion").setAttribute("style","border-color:red");	
+			$("#punt").slideDown();
+			ret=false;
 		}else{
 			document.getElementById("puntuacion").setAttribute("style","border-color:black");
+			$("#punt").slideUp();
 			ret=true;
 		}
 		

@@ -80,7 +80,7 @@ function validar_matricula(elemento){
 
 function validar_nombre(elemento){
 	var nombre = elemento.value.toLowerCase();
-	var nombre_exprReg = /^[a-z0-9 áéíóúüëïöä\-]{2,20}$/;
+	var nombre_exprReg = /^[a-z0-9 áéíóúüëïöä\-]{1,20}$/;
 	var nombreBien = nombre_exprReg.test(nombre);
 	var devuelvo = false;
 	

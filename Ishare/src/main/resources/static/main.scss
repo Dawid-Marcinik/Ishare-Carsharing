@@ -208,7 +208,7 @@ html, body {
   margin-bottom: 20px;
   width:200px;
 }
-input{
+input[type=text], input[type=date], input[type=number], input[type=password], input[type=email]{
   border-radius: 10px !important;
   margin-bottom: 20px !important;
 }
@@ -231,6 +231,7 @@ select{
 .rojo{
 	display:none;
 	color:orange;
+	margin-bottom: 20px !important;
 }
 // TERCERO: IMPORTACIÓN DEL PROPIO BOOTSTRAP
 @import "node_modules/bootstrap/scss/bootstrap";
