@@ -41,7 +41,7 @@
 	}
 	
 	function validarDifHoras(){
-		var ret;
+		var ret = true;
 		var fechaActual = new Date();
 		var fechaI=new Date(document.getElementById("fechaInicio").value);
 		var fechaF=new Date(document.getElementById("fechaFin").value);
@@ -59,8 +59,10 @@
 				ret = true;
 			}
 		}
-		else if(fechaI.getTime()<fechaActual.getTime()){
+		else if((fechaI.getTime()+(60000*60*horaInicio))<fechaActual.getTime()){
+			console.log("PROBLEMA");
 			$("#fF").slideDown();
+			ret = false;
 		}
 		else if(fechaI.getTime() > fechaF.getTime()){
 			fechasMal();

@@ -29,15 +29,15 @@
 			var iniFechaHoraArray = fechaHoraIniAlquiler.split("T");
 			var fechaIni = iniFechaHoraArray[0].split("-");
 			var horaIni = iniFechaHoraArray[1].split(":");
-			
-			var finAlquiler = new Date(fechaFin[0], fechaFin[1]-1, fechaFin[2], horaFin[0], 0, 0, 0);
-			var iniAlquiler = new Date(fechaIni[0], fechaIni[1]-1, fechaIni[2], horaIni[0], 0, 0, 0);
-			if(finAlquiler.getTime()>fechaActual.getTime()){
+			console.log(fechaFin[0]);
+			var finAlquiler = new Date(fechaFin[0]-1, fechaFin[1]-1, fechaFin[2], horaFin[0], 0, 0, 0);
+			var iniAlquiler = new Date(fechaIni[0]-1, fechaIni[1]-1, fechaIni[2], horaIni[0], 0, 0, 0);
+			//if(finAlquiler.getTime()>fechaActual.getTime()){
 				var fechaA = iniAlquiler.getTime();
 				var fechaB = finAlquiler.getTime();
 				paresDeFechas.push([fechaA,fechaB]);
-			}
-			else;
+			//}
+			//else;
 		}
 		return paresDeFechas;
 	}
@@ -85,6 +85,7 @@
 		}else{
 			console.log(ocupado+"|"+validarDifHoras()+"|"+validarUbicacionFin()+"|"+validarFechaFin()+"|"+validarFechaInicio());
 			if(ocupado==false)	$("#res").slideDown();
+			else $("#res").slideUp();
 			document.getElementById("enviar").disabled=true;
 		}
 	}
@@ -104,11 +105,11 @@
 			<br>
 			<label class="etiq" for="fechaInicio">FECHA INICIO: </label>
 			<input type="date" name="fechaInicio" id="fechaInicio" onchange="validar()" required/>
-			<input type="number" name="horaInicio" id="horaInicio" onchange="validar()" min="0" max="23" required/>
+			<input type="number" name="horaInicio" id="horaInicio" onchange="validar()" onkeyup="validar()" min="0" max="23" required/>
 			<br>
 			<label class="etiq" for="fechaFin">FECHA FIN: </label>
 			<input type="date" name="fechaFin" id="fechaFin" onchange="validar()" required/>
-			<input type="number" name="horaFin" id="horaFin" onchange="validar()" min="0" max="23" required/>
+			<input type="number" name="horaFin" id="horaFin" onchange="validar()" onkeyup="validar()" min="0" max="23" required/>
 			<div id="fF" class="rojo">
 				Introduzca un rango de fechas válido. La fecha de finalización ha de estar en el futuro y ser mayor a la fecha de inicio. La fecha de inicio por su parte ha de ser igual que la de hoy o posicionada en el futuro.
 			</div>
