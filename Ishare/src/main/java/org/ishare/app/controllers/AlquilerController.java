@@ -228,6 +228,33 @@ public class AlquilerController {
 		return "_t/frame";
 	}
 	
+	@GetMapping("puntuar")
+	public String alquilerPuntuar(final ModelMap m, @RequestParam("idAlquiler") Long idAlquiler, HttpSession s) throws DangerException {
+		H.isRolOK("User", s);
+		Alquiler alquilerAfectado = alquilerRepository.getOne(idAlquiler);
+		m.put("alquiler", alquilerRepository.getOne(idAlquiler));
+		m.put("view", "alquiler/rGet");
+		if((alquilerAfectado.getEntidad().getId() == ((Entidad)s.getAttribute("user")).getId())) {
+			m.put("view", "alquiler/puntuar");
+		}
+		else {
+			PRG.error("Usted no es el usuario adecuado para realizar esta operación", "/coche/alquilar");
+		}
+		return "_t/frame";
+	}
+	@PostMapping("puntuar")
+	public String alquilerPuntuarPost(final ModelMap m, @RequestParam("idAlquiler") Long idAlquiler, @RequestParam("id") Long idUsuario, @RequestParam("puntuacion") Integer puntuacion, HttpSession s) throws DangerException {
+		H.isRolOK("User", s);
+		Alquiler alquiler = alquilerRepository.getOne(idAlquiler);
+		try {
+			alquiler.setPuntuacion(puntuacion);
+			alquilerRepository.save(alquiler);
+		} catch (Exception e) {
+			PRG.error("No se pudo realizar la operación", "/coche/alquilar");
+		}
+		return "redirect:/alquiler/mis-alquileres?id="+idUsuario;
+	}
+	
 	@GetMapping("mis-alquileres")
 	public String listarAlquileres(final ModelMap m, @RequestParam("id") Long idUsuario, HttpSession s) throws DangerException {
 		m.put("alquileres", alquilerRepository.findByEntidad_Id(idUsuario));

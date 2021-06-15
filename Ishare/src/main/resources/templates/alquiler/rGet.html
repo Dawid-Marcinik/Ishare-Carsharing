@@ -16,7 +16,7 @@
 			<th>Ubicación de finalización</th>
 			<th>Importe total</th>
 			<th>Puntuación</th>
-			<!--<th>Modificar</th>-->
+			<th>Puntuar</th>
 			<th>Borrar</th>
 		</thead>
 
@@ -28,15 +28,17 @@
 			<td th:text="${alquiler.iniciaEn?.direccion}"></td>
 			<td th:text="${alquiler.finalizaEn?.direccion}"></td>
 			<td th:text="|${alquiler.importeTotal} Tokens|"></td>
-			<td th:text="${alquiler.puntuacion}"></td>
-			<!--<td>
-				<form action="/alquiler/u">
+			<td th:switch="${alquiler.puntuacion}">
+			    <span th:case="null">Sin puntuar</span>
+			    <span th:case="*" th:text="|${alquiler.puntuacion}/10|"></span>
+			</td>
+			<td>
+				<form action="/alquiler/puntuar">
 					<input type="hidden" name="idAlquiler" th:value="${alquiler.idAlquiler}" />
-					<input type="hidden" name="idCoche" th:value="${alquiler.coche.id}" />
-					<button onclick="submit()" onmouseover="" style="cursor: pointer;"><img src="/img/edit.png" height="20px" width="20px">
+					<button onclick="submit()" onmouseover="" style="cursor: pointer;"><img src="/img/edit.png" height="40px" width="40px">
 					</button>
 				</form>
-			</td>-->
+			</td>
 			<td>
 				<form action="/alquiler/d">
 					<input type="hidden" name="idAlquiler" th:value="${alquiler.idAlquiler}" />

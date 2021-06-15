@@ -26,7 +26,7 @@ public class RolController {
 	@GetMapping("r")
 	public String rGet(final ModelMap modelo,final HttpSession s) throws DangerException {
 		H.isRolOK("Admin", s);
-		modelo.put("view", "rol/r");
+		modelo.put("view", "Rol/r");
 		modelo.put("roles", rolRepository.findAll());
 		return "_t/frame";
 	}
@@ -34,7 +34,7 @@ public class RolController {
 	// Crear
 	@GetMapping("c")
 	public String cGet(final ModelMap modelo) {
-		modelo.put("view", "rol/c");
+		modelo.put("view", "Rol/c");
 		return "_t/frame";
 	}
 
@@ -42,7 +42,7 @@ public class RolController {
 	public String cPost(final ModelMap modelo, @RequestParam("nombre") final String nombre,final HttpSession s) throws DangerException {
 		H.isRolOK("Admin", s);
 		if (nombre == "" || nombre == null) {
-			PRG.error("El nombre del rol no puede estar vacío", "rol/c");
+			PRG.error("El nombre del rol no puede estar vacío", "Rol/c");
 		}
 
 		final Rol rol = new Rol(nombre);
@@ -50,7 +50,7 @@ public class RolController {
 		try {
 			rolRepository.save(rol);
 		} catch (final Exception e) {
-			PRG.error("nombre ya existente", "rol/c");
+			PRG.error("nombre ya existente", "Rol/c");
 		}
 		return "redirect:/rol/r";
 	}
@@ -59,7 +59,7 @@ public class RolController {
 	@GetMapping("u")
 	public String uGet(final ModelMap modelo, @RequestParam("id") final Long id) {
 		modelo.put("rol", rolRepository.getOne(id));
-		modelo.put("view", "rol/u");
+		modelo.put("view", "Rol/u");
 		return "_t/frame";
 	}
 
@@ -68,7 +68,7 @@ public class RolController {
 			@RequestParam("nombre") final String nombre, final HttpSession s) throws DangerException {
 
 		if (nombre == "" || nombre == null) {
-			PRG.error("El nombre del rol no puede estar vacío", "rol/u");
+			PRG.error("El nombre del rol no puede estar vacío", "Rol/u");
 		}
 
 		final Rol rol = rolRepository.getOne(id);
@@ -77,7 +77,7 @@ public class RolController {
 			rol.setNombre(nombre);
 			rolRepository.save(rol);
 		} catch (final Exception e) {
-			PRG.error("nombre ya existente", "rol/u");
+			PRG.error("nombre ya existente", "Rol/u");
 		}
 		return "redirect:/rol/r";
 	}
