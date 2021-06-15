@@ -3,6 +3,9 @@
 	<form action="u" method="POST">
 		<label class="etiq" for="nombre">Nombre del rol: </label>
 		<input type="text" id="nombre" name="nombre" th:value="${rol.nombre}" onchange='validarNombreRol(this.form)' onkeyup="validar(this.form)">
+		<div id="nom" class="rojo">
+			Debe introducir un nombre de rol válido.
+		</div>
 		<input type="hidden" name="id" th:value="${rol.id}">
 		<br>
 		<input class="btn-base" type="submit" value="Modificar" id="envio" onclick="validar(this.form)">

@@ -1,16 +1,19 @@
 function validarNumTarjeta(){
 	var ret;
 	if(document.getElementById("numTarjeta").value==""||document.getElementById("numTarjeta").value.toString().length<16||document.getElementById("numTarjeta").value.toString().length>16){
-		document.getElementById("numTarjeta").setAttribute("style","border-color:red");	
+		document.getElementById("numTarjeta").setAttribute("style","border-color:red");
+		$("#numT").slideDown();	
 		ret=false;
 
 	}else{
 		document.getElementById("numTarjeta").setAttribute("style","border-color:black");
 		if(document.getElementById("numTarjeta").value.charAt(0)=="4"||document.getElementById("numTarjeta").value.charAt(0)=="5"){
 			document.getElementById("numTarjeta").setAttribute("style","border-color:black");
+			$("#numT").slideUp();
 			ret=true;
 		}else{
 			document.getElementById("numTarjeta").setAttribute("style","border-color:red");	
+			$("#numT").slideDown();
 			ret=false;
 		}
 	}
@@ -25,9 +28,11 @@ function validarNombreTarjeta(){
 	valorExp=expReg.test(document.getElementById("nomTarjeta").value)
 	if(valorExp==false){
 		document.getElementById("nomTarjeta").setAttribute("style","border-color:red");	
+		$("#nomT").slideDown();
 		ret=false;
 	}else{
 		document.getElementById("nomTarjeta").setAttribute("style","border-color:black");
+		$("#nomT").slideUp();
 		ret=true;
 	}
 	
@@ -44,10 +49,12 @@ function validarFechaTarjeta(){
 	
 	if(mes.value==""||mes.value<1||mes.value>12){
 		mes.setAttribute("style","border-color:red;width:50px;");
+		$("#fechaT").slideDown();
 		ret=false;
 	}else{
 		mes.setAttribute("style","border-color:black;width:50px;");
 		if(anio.value==""||anio.value<anioAct){
+			$("#fechaT").slideDown();
 			ret=false;
 			anio.setAttribute("style","border-color:red;width:75px;");
 		}else{
@@ -55,13 +62,16 @@ function validarFechaTarjeta(){
 				if(mes.value==mesAct||mes.value<mesAct){
 					mes.setAttribute("style","border-color:red;width:50px;");
 					anio.setAttribute("style","border-color:red;width:75px;");
+					$("#fechaT").slideDown();
 					ret=false;
 				}else{
 					mes.setAttribute("style","border-color:black;width:50px;");
 					anio.setAttribute("style","border-color:black;width:75px;");
+					$("#fechaT").slideUp();
 					ret=true;
 				}
 			}else{
+				$("#fechaT").slideUp();
 				ret=true;
 				anio.setAttribute("style","border-color:black;width:75px;");
 			}
@@ -75,10 +85,12 @@ function validarFechaTarjeta(){
 function validarCVV(){
 	var ret;
 	if(document.getElementById("cvv").value.toString().length<3||document.getElementById("cvv").value.toString().length>3){
-		document.getElementById("cvv").setAttribute("style","border-color:red;width:75px;");	
+		document.getElementById("cvv").setAttribute("style","border-color:red;width:75px;");
+		$("#cvvT").slideDown();	
 		ret=false;
 	}else{
-		document.getElementById("cvv").setAttribute("style","border-color:black;width:75px;");	
+		document.getElementById("cvv").setAttribute("style","border-color:black;width:75px;");
+		$("#cvvT").slideUp();
 		ret=true;
 	}
 	
@@ -89,9 +101,11 @@ function validarTokens(){
 	var ret;
 	if (document.getElementById("saldo").value.toString().length==0||document.getElementById("saldo").value<1){
 		document.getElementById("saldo").setAttribute("style","border-color:red;width:100px;");	
+		$("#anadir").slideDown();
 		ret=false;
 	}else{
 		document.getElementById("saldo").setAttribute("style","border-color:black;width:100px;");	
+		$("#anadir").slideUp();
 		ret=true;
 	}
 	

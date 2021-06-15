@@ -60,7 +60,8 @@ public class EmpresaController {
 			final Rol rol = rolRepository.getOne(idRol);
 			final Empresa em = new Empresa(nombreUsuario, (new BCryptPasswordEncoder()).encode(contrasena), localidad, direccion, iCodigoPostal, iTelefono,
 					email, rol, fSaldo, cif, razonSocial);
-			if (((Entidad)s.getAttribute("user")).getRol().getNombre() == "User"){
+			String rolActual = s.getAttribute("user")!=null ? ((Entidad)s.getAttribute("user")).getRol().getNombre() : "anon";
+			if (rolActual == "User"){
 				PRG.error("no puede estar logueado para realizar esta operación", "/");
 			}
 			try {

@@ -222,8 +222,15 @@ button{
 	background-color: rgba(0,0,0,0);
 	border: none;
 }
+select{
+	width:215px;
+}
 .alinear{
 	text-align: center;
+}
+.rojo{
+	display:none;
+	color:orange;
 }
 // TERCERO: IMPORTACIÓN DEL PROPIO BOOTSTRAP
 @import "node_modules/bootstrap/scss/bootstrap";

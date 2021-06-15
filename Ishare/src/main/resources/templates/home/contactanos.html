@@ -1,0 +1,40 @@
+<div class="container alinear">
+<h1 class="texto-destaca">¿Tienes dudas, sugerencias o algún problema?</h1>
+<h1 class="texto-destaca">¡Contáctanos! </h1><br>
+<h2>Puedes hacerlo llamando al siguiente número: 6108949265</h2>
+<h2>o</h2>
+<h2>rellenar nuestro formulario de contacto</h2>
+<br>
+	<div class="panel-body">
+		<form id="contacto" action="mailto:atencion@ishare.com" onsubmit="validar()" enctype="text/plain" method="POST">
+		 	<div class="form-group">
+		 		<label for="nombre"><i class="fa fa-user" aria-hidden="true"></i> Nombre y apellidos</label>
+		 		<input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre y los apellidos" required>
+		 	</div>
+		 	<div id="nomAp" class="rojo">
+		 		Debe poner un nombre y unos apellidos válidos.
+		 	</div>
+		 	<div class="form-group">
+		 		<label class="email"><i class="fa fa-envelope" aria-hidden="true"></i> Email</label>
+		 		<input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
+		 	</div>
+		 	<div id="mail" class="rojo">
+		 		Ponga un email válido.
+		 	</div>
+		 	<div class="form-group">
+		 		<label><i class="fa fa-comment" aria-hidden="true"></i> Mensaje, duda o incidencia</label>
+		 		<textarea rows="3" id="message" name="message" class="form-control" placeholder="Mensaje" required></textarea>
+		 	</div>
+			<div id="desc" class="rojo">
+		 		Debe describir su solicitud, propuesta o problema.
+		 	</div>
+	
+		 	<div class="form-group">
+		 		<button id="envio" onclick="validar()" class="btn btn-raised btn-block btn-base">Enviar →</button>
+		 	</div>
+		</form>
+	</div>
+</div>
+</div>
+<script src="/js/Validar_contacto.js">
+</script>

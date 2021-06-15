@@ -220,6 +220,21 @@ public class HomeController {
 
 		return "_t/frame";
 	}
+	
+	@GetMapping("/contactanos")
+	public String contactanos(final ModelMap m, final HttpSession s) throws DangerException {
+
+		m.put("view", "home/contactanos");
+
+		return "_t/frame";
+	}
+	@GetMapping("/gracias")
+	public String gracias(final ModelMap m, final HttpSession s) throws DangerException {
+
+		m.put("view", "home/gracias");
+
+		return "_t/frame";
+	}
 
 	@GetMapping("/editar-perfil")
 	public String getEditarPerfil(@RequestParam("id") final Long id, final ModelMap m, final HttpSession s) {

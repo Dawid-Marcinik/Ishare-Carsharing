@@ -4,6 +4,9 @@
 	<form method="POST">
 		<label class="etiq" for="nombre">Nombre del rol: </label>
 		<input type="text" id="nombre" name="nombre" onchange='validarNombreRol(this.form)' onkeyup="validar(this.form)">
+		<div id="nom" class="rojo">
+			Debe introducir un nombre de rol válido.
+		</div>
 		<br>
 		<input class="btn-base" type="submit" id="envio" value="Crear" onclick="validar(this.form)" disabled>
 		<input class="btn-cancelar" type="button" value="Cancelar" onclick="location.href='r'">

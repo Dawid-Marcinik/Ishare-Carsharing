@@ -52,7 +52,7 @@
 		var inicio = fechaSolicitadaIni.getTime();
 		var fin = fechaSolicitadaFin.getTime();
 		for(var fecha of listaFechas){
-			if((((inicio>=fecha[0])&&(inicio<=fecha[1]))&&((fin>=fecha[0])&&(fin<=fecha[1]))||((inicio<=fecha[0])&&(inicio<=fecha[1]))&&((fin>=fecha[0])&&(fin<=fecha[1]))||((inicio>=fecha[0])&&(inicio<=fecha[1]))&&((fin>=fecha[0])&&(fin>=fecha[1]))||((inicio<=fecha[0])&&(inicio<=fecha[1]))&&((fin>=fecha[0])&&(fin>=fecha[1])))||((fechaActual>inicio)||(fechaActual>fin))){
+			if((((inicio>=fecha[0])&&(inicio<=fecha[1]))&&((fin>=fecha[0])&&(fin<=fecha[1]))||((inicio<=fecha[0])&&(inicio<=fecha[1]))&&((fin>=fecha[0])&&(fin<=fecha[1]))||((inicio>=fecha[0])&&(inicio<=fecha[1]))&&((fin>=fecha[0])&&(fin>=fecha[1]))||((inicio<=fecha[0])&&(inicio<=fecha[1]))&&((fin>=fecha[0])&&(fin>=fecha[1])))){
 				document.getElementById("fechaInicio").setAttribute("style","border-color:red");
 				document.getElementById("fechaFin").setAttribute("style","border-color:red");
 				document.getElementById("horaInicio").setAttribute("style","border-color:red");
@@ -80,9 +80,11 @@
 		var ocupado = fechaOcupada(reservas,document.getElementById("fechaInicio").value,document.getElementById("fechaFin").value,document.getElementById("horaInicio").value,document.getElementById("horaFin").value);
 		if(ocupado == true && validarFechaInicio()==true && validarFechaFin()==true && validarDifFechas()==true && validarDifHoras()==true && validarUbicacionFin()==true){
 			console.log(ocupado+"|"+validarDifHoras()+"|"+validarUbicacionFin()+"|"+validarFechaFin()+"|"+validarFechaInicio());
+			$("#res").slideUp();
 			document.getElementById("enviar").disabled=false;
 		}else{
 			console.log(ocupado+"|"+validarDifHoras()+"|"+validarUbicacionFin()+"|"+validarFechaFin()+"|"+validarFechaInicio());
+			if(ocupado==false)	$("#res").slideDown();
 			document.getElementById("enviar").disabled=true;
 		}
 	}
@@ -94,20 +96,26 @@
 	<!--<button onclick="fechaOcupada(reservas,document.getElementById('fechaInicio').value,document.getElementById('fechaFin').value,document.getElementById('horaInicio').value,document.getElementById('horaFin').value)">HOLA</button>-->
 	<form method="post" onsubmit="return confirm('Una vez realizada esta acción no podrá modificar su alquiler. Puede cancelar el alquiler en cualquier momento siempre y cuando sea antes de su comienzo. ¿Desea continuar?');">
 			<div th:each="coche:${coches}" th:if="${coche.id == T(Long).parseLong(param.idCoche)}">
-				<span th:text="|COCHE ALQUILADO: ${coche.modelo.marca.nombre} - ${coche.modelo.nombre} - ${coche.matricula} - ${coche.autonomiaRestante} Km(restante)|"></span><br/>
+				<span th:text="|COCHE ALQUILADO: ${coche.modelo.marca.nombre} - ${coche.modelo.nombre} - ${coche.matricula} - ${coche.autonomiaRestante} Km(restante)|"></span><br>
 				<span th:text="|UBICADO ACTUALMENTE EN: ${coche.ubicacion.direccion}|"></span>
 				<input type="hidden" name="idUbicacionInicio" th:value="${coche.ubicacion.idUbicacion}">
 				<input type="hidden" name="idCocheAlquilado" th:value="${coche.id}">
 			</div>
-			<br/>
+			<br>
 			<label class="etiq" for="fechaInicio">FECHA INICIO: </label>
 			<input type="date" name="fechaInicio" id="fechaInicio" onchange="validar()" required/>
 			<input type="number" name="horaInicio" id="horaInicio" onchange="validar()" min="0" max="23" required/>
-			<br/>
+			<br>
 			<label class="etiq" for="fechaFin">FECHA FIN: </label>
 			<input type="date" name="fechaFin" id="fechaFin" onchange="validar()" required/>
 			<input type="number" name="horaFin" id="horaFin" onchange="validar()" min="0" max="23" required/>
-			<br/>
+			<div id="fF" class="rojo">
+				Introduzca un rango de fechas válido. La fecha de finalización ha de estar en el futuro y ser mayor a la fecha de inicio. La fecha de inicio por su parte ha de ser igual que la de hoy o posicionada en el futuro.
+			</div>
+			<div id="res" class="rojo">
+				La fecha seleccionada colisiona con el alquiler de otro cliente.
+			</div>
+			<br>
 			<!--<label for="idCocheAlquilado">COCHE ALQUILADO: </label>-->
 			<label class="etiq" for="idUbicacionFin">UBICACIÓN DE FINALIZACIÓN: </label>
 			<select name="idUbicacionFin" id="idUbicacionFin" required onchange="validar()" class="nullClass"> 
@@ -115,7 +123,10 @@
 				<option th:each="ubicacion:${ubicaciones}" th:text="${ubicacion.direccion}" th:value="${ubicacion.idUbicacion}">
 				</option>
 			</select>
-			<br/>
+			<br>
+			<div id="ubi" class="rojo">
+				Seleccione el lugar de donde depositará el vehículo tras finalizar su alquiler.
+			</div>
 			<input class="btn-base" type="submit" id="enviar" disabled/>
 			<input class="btn-cancelar" type="button" value="Cancelar" onclick="location.href='/coche/alquilar'">
 	</form>

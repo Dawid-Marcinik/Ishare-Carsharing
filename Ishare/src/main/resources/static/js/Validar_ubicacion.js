@@ -8,10 +8,12 @@
 		valido=expresion.test(direccion);
 
 		if (valido==true){
+			$("#dir").slideUp();
 			document.getElementById("direccion").setAttribute("style","border-color:black");
 			ret=true;
 			
 		}else{
+			$("#dir").slideDown();
 			document.getElementById("direccion").setAttribute("style","border-color:red");
 			ret=false;
 			
@@ -24,8 +26,10 @@
 	function validarNumPlazas(){
 		var ret;
 		if(document.getElementById("plazasTotales").value==""){
+			$("#numTot").slideDown();
 			ret=false;
 		}else{
+			$("#numTot").slideUp();
 			ret=true;
 		}
 		
