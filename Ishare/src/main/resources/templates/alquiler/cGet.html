@@ -30,8 +30,8 @@
 			var fechaIni = iniFechaHoraArray[0].split("-");
 			var horaIni = iniFechaHoraArray[1].split(":");
 			console.log(fechaFin[0]);
-			var finAlquiler = new Date(fechaFin[0]-1, fechaFin[1]-1, fechaFin[2], horaFin[0], 0, 0, 0);
-			var iniAlquiler = new Date(fechaIni[0]-1, fechaIni[1]-1, fechaIni[2], horaIni[0], 0, 0, 0);
+			var finAlquiler = new Date(fechaFin[0], fechaFin[1]-1, fechaFin[2], horaFin[0], 0, 0, 0);
+			var iniAlquiler = new Date(fechaIni[0], fechaIni[1]-1, fechaIni[2], horaIni[0], 0, 0, 0);
 			//if(finAlquiler.getTime()>fechaActual.getTime()){
 				var fechaA = iniAlquiler.getTime();
 				var fechaB = finAlquiler.getTime();
