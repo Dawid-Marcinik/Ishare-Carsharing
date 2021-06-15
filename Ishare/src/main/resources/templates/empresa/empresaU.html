@@ -6,39 +6,59 @@
 		
 		<label class="etiq" for="nombreUsuario">Nombre de usuario</label>
 		<input type="text" name="nombreUsuario" id="nombreUsuario" th:value="${empresa.nombreUsuario}" onchange='validarNombreUsuario(this.form)' onkeyup="validar(this.form)"><br>
-		
+		<div id="nomUs" class="rojo">
+			Debe poner un nombre de usuario válido.
+		</div>
 		<label class="etiq" for="contrasena">Contraseña</label>
 		<input type="password" name="contrasena" id="contrasena" value="${empresa}" onchange='validarContrasena(this.form)' onkeyup="validar(this.form)"><br>
-		
+		<div id="contra" class="rojo">
+			Debe una contraseña válida (al menos 8 caracteres, mayúsculas, minúsculas y números).
+		</div>
 		<label class="etiq" for="localidad">Localidad</label>
 		<input type="text" name="localidad" id="localidad" th:value="${empresa.localidad}" onchange='validarLocalidad(this.form)' onkeyup="validar(this.form)"><br>
-		
+		<div id="loc" class="rojo">
+			Debe poner un nombre de localidad válido.
+		</div>
 		<label class="etiq" for="direccion">Dirección</label>
 		<input type="text" name="direccion" id="direccion" th:value="${empresa.direccion}" onchange='validarDireccion(this.form)' onkeyup="validar(this.form)"><br>
-		
+		<div id="dir" class="rojo">
+			Debe una dirección válida.
+		</div>
 		<label class="etiq" for="codigoPostal">Código postal</label>
 		<input type="number" name="codigoPostal" id="codigoPostal" th:value="${empresa.codigoPostal}"  onchange='validarCodigoPostal(this.form)' onkeyup="validar(this.form)"><br>
-		
+		<div id="codPost" class="rojo">
+			Debe poner un código postal válido.
+		</div>
 		<label class="etiq" for="telefono">Teléfono</label>
 		<input type="number" name="telefono" id="telefono" th:value="${empresa.telefono}" onchange='validarTelefono(this.form)' onkeyup="validar(this.form)"><br>
-		
+		<div id="tlf" class="rojo">
+			Debe poner un número de teléfono válido.
+		</div>
 		<label class="etiq" for="email">Email</label>
 		<input type="email" name="email" id="email" th:value="${empresa.email}" onchange='validarEmail(this.form)' onkeyup="validar(this.form)"><br>
-		
+		<div id="mail" class="rojo">
+			Debe poner email válido.
+		</div>
 		<label class="etiq" for="idRol">Rol</label>
 		<select name="idRol">
 			<option th:each="rol:${roles}" th:value="${rol.id}" th:text="${rol.nombre}"></option>
 		</select>
 		<br>
 		<label class="etiq" for="saldo">Saldo</label>
-		<input type="number" name="saldo" id="saldo" th:value="${empresa.saldo}" onchange='validarSaldo(this.form)' onkeyup="validar(this.form)"><br>
-		
+		<input type="number" name="saldo" id="saldo" min="0" th:value="${empresa.saldo}" onchange='validarSaldo(this.form)' onkeyup="validar(this.form)"><br>
+		<div id="dinero" class="rojo">
+			Debe introducir una cantidad de tokens válida.
+		</div>
 		<label class="etiq" for="cif">NIF</label>
 		<input type="text" name="cif" id="cif" th:value="${empresa.cif}" onchange='validarCif(this.form)' onkeyup="validar(this.form)"><br>
-		
+		<div id="nif" class="rojo">
+			Debe poner un número NIF válido.
+		</div>
 		<label class="etiq" for="razonSocial">Razón social</label>
 		<input type="text" name="razonSocial" id="razonSocial" th:value="${empresa.razonSocial}" onchange='validarRazonSocial(this.form)' onkeyup='validar(this.form)'><br>
-		
+		<div id="razSoc" class="rojo">
+			Debe poner una razón social válida.
+		</div>
 		<input type="hidden" name="id" th:value="${empresa.id}"/>
 		
 		<input class="btn-base form-item" type="submit" id="envio" onclick="validar(this.form)"/>

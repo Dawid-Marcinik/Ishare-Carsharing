@@ -260,8 +260,19 @@ button {
 }
 
 /* line 225, main.scss */
+select {
+  width: 215px;
+}
+
+/* line 228, main.scss */
 .alinear {
   text-align: center;
+}
+
+/* line 231, main.scss */
+.rojo {
+  display: none;
+  color: orange;
 }
 
 /*!

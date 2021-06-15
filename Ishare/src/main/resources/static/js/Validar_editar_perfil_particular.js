@@ -47,10 +47,12 @@
     if (reg.test(dato) == false) {
       form.nombreUsuario.style.color = "red";
       document.getElementById("nombreUsuario").style.borderColor = "red";
+      $("#nomUs").slideDown();
       return false;
     }else{
       form.nombreUsuario.style.color = "black";
       document.getElementById("nombreUsuario").style.borderColor = "black";
+      $("#nomUs").slideUp();
       return true;
     }
     
@@ -67,10 +69,12 @@
     if (reg.test(dato) == false) {
       form.contrasena.style.color = "red";
       document.getElementById("contrasena").style.borderColor = "red";
+      $("#contra").slideDown();
       return false;
     }else{
       form.contrasena.style.color = "black";
       document.getElementById("contrasena").style.borderColor = "black";
+      $("#contra").slideUp();
       return true;
     }
 
@@ -84,10 +88,12 @@
     if (reg.test(dato) == false || dato.length < 2 || dato.length > 30) {
       form.localidad.style.color = "red";
       document.getElementById("localidad").style.borderColor = "red";
+      $("#loc").slideDown();
       return false;
     }else{
       form.localidad.style.color = "black";
       document.getElementById("localidad").style.borderColor = "black";
+      $("#loc").slideUp();
       return true;
     }
     
@@ -100,10 +106,12 @@
     if (reg.test(dato) == false || dato.length < 2 || dato.length > 40) {
       form.direccion.style.color = "red";
       document.getElementById("direccion").style.borderColor = "red";
+      $("#dir").slideDown();
       return false;
     }else{
       form.direccion.style.color = "black";
       document.getElementById("direccion").style.borderColor = "black";
+      $("#dir").slideUp();
       return true;
     }
     
@@ -141,10 +149,12 @@ y los tres restantes pueden ser cualquier valor numérico
     if (reg.test(dato) == false || dato.length < 5 || dato.length > 5) {
       form.codigoPostal.style.color = "red";
       document.getElementById("codigoPostal").style.borderColor = "red";
+      $("#codPost").slideDown();
       return false;
     }else{
       form.codigoPostal.style.color = "black";
       document.getElementById("codigoPostal").style.borderColor = "black";
+      $("#codPost").slideUp();
       return true;
     }
     
@@ -156,10 +166,12 @@ y los tres restantes pueden ser cualquier valor numérico
     if(reg.test(telefono) == false || telefono == ""){
       form.telefono.style.color = "red";
       document.getElementById("telefono").style.borderColor = "red";
+      $("#tlf").slideDown();
       return false;
     }else{
       form.telefono.style.color = "black";
       document.getElementById("telefono").style.borderColor = "black";
+      $("#tlf").slideUp();
       return true;
     }
     
@@ -172,10 +184,12 @@ y los tres restantes pueden ser cualquier valor numérico
     if (reg.test(dato) == false) {
       form.email.style.color = "red";
       document.getElementById("email").style.borderColor = "red";
+      $("#mail").slideDown();
       return false;
     }else{
       form.email.style.color = "black";
       document.getElementById("email").style.borderColor = "black";
+      $("#mail").slideUp();
       return true;
     }
 
@@ -186,23 +200,46 @@ y los tres restantes pueden ser cualquier valor numérico
 
     var dato = form.dni.value.toUpperCase();
     var resul = false;
-    var reg = /^\d{8}[A-Z]$/;
+    var reg = /^((\d{8}[A-Z])|([A-Z]\d{7}[A-Z]))$/;
  	document.getElementById("dni").setAttribute("style","border-color:red");
-
+	var arrN = ["X","Y","Z"];
     var arrC = ["T","R","W","A","G","M","Y","F","P","D","X","B","N","J","Z","S","Q","V","H","L","C","K","E",];
     if (reg.test(dato) == true) {
-        var numDni = dato.substr(0,8);
-        var resto = parseInt(numDni)%23;
-        if(dato.charAt(8)==arrC[resto]){
-          	document.getElementById("dni").style.borderColor = "black";
-          	resul = true;
-        }
-      	else{
-	        document.getElementById("dni").style.borderColor = "red";
-	        resul = false;
-      	}
-      
-      } return resul;
+		
+			if(arrN.indexOf(dato.charAt(0)) == -1){
+		        var numDni = dato.substr(0,8);
+		        var restoDni = parseInt(numDni)%23;
+		        if(dato.charAt(8)==arrC[restoDni]){
+		          	document.getElementById("dni").style.borderColor = "black";
+		          	$("#dniNie").slideUp();
+		          	resul = true;
+		        }
+		      	else{
+			        document.getElementById("dni").style.borderColor = "red";
+			        $("#dniNie").slideDown();
+			        resul = false;
+		      	}
+	      	}
+	      	else {
+				var numNie = dato.substr(1,9);
+		        var restoNie = parseInt(numNie)%23;
+		        if(dato.charAt(8)==arrC[restoNie]){
+		          	document.getElementById("dni").style.borderColor = "black";
+		          	$("#dniNie").slideUp();
+		          	resul = true;
+		        }
+		      	else{
+			        document.getElementById("dni").style.borderColor = "red";
+			        $("#dniNie").slideDown();
+			        resul = false;
+		      	}
+			}
+		
+      }
+    else{
+		document.getElementById("dni").style.borderColor = "red";
+        $("#dniNie").slideDown();
+	} return resul;
 
   }
 
@@ -212,12 +249,14 @@ y los tres restantes pueden ser cualquier valor numérico
         var dato = form.nombre.value;
         var reg = /^[a-zA-ZáéíóúÁÉÍÓÚ çÇñÑ-]{3,25}$/;
         if (reg.test(dato) == false) {
-        form.nombre.style.color = "red";
-        document.getElementById("nombre").style.borderColor = "red";
-          return false;
+	        form.nombre.style.color = "red";
+	        document.getElementById("nombre").style.borderColor = "red";
+	        $("#nom").slideDown();
+          	return false;
         }else{
           form.nombre.style.color = "black";
           document.getElementById("nombre").style.borderColor = "black";
+          $("#nom").slideUp();
           return true;
         }
         
@@ -231,10 +270,12 @@ y los tres restantes pueden ser cualquier valor numérico
         if (reg.test(dato) == false) {
           form.apellidos.style.color = "red";
           document.getElementById("apellidos").style.borderColor = "red";
+          $("#ap").slideDown();
           return false;
         }else{
           form.apellidos.style.color = "black";
           document.getElementById("apellidos").style.borderColor = "black";
+          $("#ap").slideUp();
           return true;
         }
         
@@ -255,10 +296,12 @@ y los tres restantes pueden ser cualquier valor numérico
     if(age>=18){
          form.fechaNacimiento.style.color = "black";
           document.getElementById("fechaNacimiento").style.borderColor = "black";
+          $("#fnac").slideUp();
         return true;
       }else{
         form.fechaNacimiento.style.color = "red";
           document.getElementById("fechaNacimiento").style.borderColor = "red";
+          $("#fnac").slideDown();
       return false;
       }
       

@@ -43,9 +43,11 @@
     if (reg.test(dato) == false) {
       form.nombreUsuario.style.color = "red";
       document.getElementById("nombreUsuario").style.borderColor = "red";
+      $("#nomUs").slideDown();
       return false;
     }else{
       form.nombreUsuario.style.color = "black";
+      $("#nomUs").slideUp();
       document.getElementById("nombreUsuario").style.borderColor = "black";
       return true;
     }
@@ -65,10 +67,12 @@
     if (reg.test(dato) == false) {
       form.contrasena.style.color = "red";
       document.getElementById("contrasena").style.borderColor = "red";
+      $("#contra").slideDown();
       return false;
     }else{
       form.contrasena.style.color = "black";
       document.getElementById("contrasena").style.borderColor = "black";
+      $("#contra").slideUp();
       return true;
     }
 
@@ -82,10 +86,12 @@
     if (reg.test(dato) == false || dato.length < 2 || dato.length > 30) {
       form.localidad.style.color = "red";
       document.getElementById("localidad").style.borderColor = "red";
+      $("#loc").slideDown();
       return false;
     }else{
       form.localidad.style.color = "black";
       document.getElementById("localidad").style.borderColor = "black";
+      $("#loc").slideUp();
       return true;
     }
     
@@ -98,10 +104,12 @@
     if (reg.test(dato) == false || dato.length < 2 || dato.length > 40) {
       form.direccion.style.color = "red";
       document.getElementById("direccion").style.borderColor = "red";
+      $("#dir").slideDown();
       return false;
     }else{
       form.direccion.style.color = "black";
       document.getElementById("direccion").style.borderColor = "black";
+      $("#dir").slideUp();
       return true;
     }
     
@@ -139,10 +147,12 @@ y los tres restantes pueden ser cualquier valor numérico
     if (reg.test(dato) == false || dato.length < 5 || dato.length > 5) {
       form.codigoPostal.style.color = "red";
       document.getElementById("codigoPostal").style.borderColor = "red";
+      $("#codPost").slideDown();
       return false;
     }else{
       form.codigoPostal.style.color = "black";
       document.getElementById("codigoPostal").style.borderColor = "black";
+      $("#codPost").slideUp();
       return true;
     }
     
@@ -154,10 +164,12 @@ y los tres restantes pueden ser cualquier valor numérico
     if(reg.test(telefono) == false || telefono == ""){
       form.telefono.style.color = "red";
       document.getElementById("telefono").style.borderColor = "red";
+      $("#tlf").slideDown();
       return false;
     }else{
       form.telefono.style.color = "black";
       document.getElementById("telefono").style.borderColor = "black";
+      $("#tlf").slideUp();
       return true;
     }
     
@@ -170,10 +182,12 @@ y los tres restantes pueden ser cualquier valor numérico
     if (reg.test(dato) == false) {
       form.email.style.color = "red";
       document.getElementById("email").style.borderColor = "red";
+      $("#mail").slideDown();
       return false;
     }else{
       form.email.style.color = "black";
       document.getElementById("email").style.borderColor = "black";
+      $("#mail").slideUp();
       return true;
     }
 
@@ -187,10 +201,12 @@ y los tres restantes pueden ser cualquier valor numérico
     if (reg.test(dato) == false) {
       form.cif.style.color = "red";
       document.getElementById("cif").style.borderColor = "red";
+      $("#nif").slideDown();
       return false;
     }else{
       form.cif.style.color = "black";
       document.getElementById("cif").style.borderColor = "black";
+      $("#nif").slideUp();
       return true;
     }
   }
@@ -201,10 +217,12 @@ y los tres restantes pueden ser cualquier valor numérico
     if (reg.test(dato) == false) {
       form.razonSocial.style.color = "red";
       document.getElementById("razonSocial").style.borderColor = "red";
+      $("#razSoc").slideDown();
       return false;
     }else{
       form.razonSocial.style.color = "black";
       document.getElementById("razonSocial").style.borderColor = "black";
+      $("#razSoc").slideUp();
       return true;
     }
   }

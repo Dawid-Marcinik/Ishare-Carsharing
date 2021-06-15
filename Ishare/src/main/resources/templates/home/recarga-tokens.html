@@ -21,18 +21,34 @@
 		<label class="etiq" for="numTarjeta">Número tarjeta:</label>
 		<input type="number" name="numTarjeta" id="numTarjeta" onkeyup="validar()" required>
 		<br/>
+		<div id="numT" class="rojo">
+		 	Debe poner un número de tarjeta válido.
+		</div>
 		<label class="etiq" for="numTarjeta">Nombre tarjeta:</label>
 		<input type="text" name="nomTarjeta" id="nomTarjeta" onkeyup="validar()" required>
 		<br/>
-		<label class="etiq" for="fechaTarjeta">Fecha validación tarjeta:</label>
+		<div id="nomT" class="rojo">
+		 	Debe poner un nombre de titular de la tarjeta válido.
+		</div>
+		<label class="etiq" for="fechaTarjeta">Fecha expiración tarjeta:</label>
 		<input type="number" name="mesTarjeta" id="mesTarjeta" onkeyup="validar()" style="width:50px;" required> / <input type="number" name="anioTarjeta" id="anioTarjeta" onkeyup="validarFechaTarjeta()" style="width:75px;" required>
 		<br/>
+		<div id="fechaT" class="rojo">
+		 	Debe una fecha de expiración válida.
+		</div>
 		<label class="etiq" for="cvv">CVV tarjeta:</label>
 		<input type="number" name="cvv" id="cvv" onkeyup="validar()" style="width:75px;" required>
+		<div id="cvvT" class="rojo">
+		 	Debe poner un número de control de tarjeta válido.
+		</div>
 		</div>
 		<label class="etiq" for="saldo">Tokens a añadir: </label>
 		<input type="number" name="saldo" id="saldo" onkeyup="validar()" style="width:100px;" required/>
 		<br/>
+		<div id="anadir" class="rojo">
+		 	Debe poner una cantidad de Tokens.
+		</div>
+		
 		<input type="hidden" name="id" th:value="${session.user.id}"/>
 		<input type="submit" class="btn-base" id="enviar"disabled />
 		<input class="btn-cancelar" type="button" value="Cancelar" onclick="location.href='/'">

@@ -8,6 +8,9 @@
 		<br>
 		<label class="etiq" for="matricula">Matrícula del coche: </label>
 		<input type="text" th:value="${coche.matricula}" id="matricula" name="matricula" onkeyup="validar_coche(this)" onfocus="reseteaColor(this)">
+		<div id="mat" class="rojo">
+			Introduzca una matrícula con el siguiente formato:<br>1234 BBB
+		</div>
 		<br>
 		<label class="etiq" for="idMarca">Ubicación: </label>
 		<select name="idUbicacion" id="idUbicacion">

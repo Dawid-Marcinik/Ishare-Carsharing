@@ -22,7 +22,6 @@ function validar_modelo(campo){
 	
 	if(modeloBien == true && pasajerosBien == true && autonomiaBien == true && tarifaBien == true && imagenBien == true) formulario.envio.disabled = false;
 	else formulario.envio.disabled = true;
-	console.log(imagenBien);
 	
 }
 
@@ -34,11 +33,13 @@ function validar_tipo_o_marca(elemento){
 	
 	if(nombreBien){ 
 		devuelvo = true;
+		$("#nom").slideUp();
 		validar_campo_aspecto(elemento, devuelvo);
 		elemento.parentNode.envio.disabled = false;
 	}
 
 	else {
+		$("#nom").slideDown();
 		validar_campo_aspecto(elemento, devuelvo);
 		elemento.parentNode.envio.disabled = true;
 	}
@@ -65,11 +66,13 @@ function validar_matricula(elemento){
 	if(matriculaBien){ 
 		devuelvo = true;
 		validar_campo_aspecto(elemento, devuelvo);
+		$("#mat").slideUp();
 		return devuelvo;
 	}
 
 	else {
 		validar_campo_aspecto(elemento, devuelvo);
+		$("#mat").slideDown();
 		return devuelvo;
 	}
 	
@@ -84,11 +87,13 @@ function validar_nombre(elemento){
 	if(nombreBien){ 
 		devuelvo = true;
 		validar_campo_aspecto(elemento, devuelvo);
+		$("#nom").slideUp();
 		return devuelvo;
 	}
 
 	else {
 		validar_campo_aspecto(elemento, devuelvo);
+		$("#nom").slideDown();
 		return devuelvo;
 	}
 	
@@ -96,18 +101,20 @@ function validar_nombre(elemento){
 
 function validar_pasajeros(elemento){
 	var numPasajeros = elemento.value;
-	var numPasajeros_exprReg = /^[1-6]$/;
+	var numPasajeros_exprReg = /^[1-7]$/;
 	var numPasajerosBien = numPasajeros_exprReg.test(numPasajeros);
 	var devuelvo = false;
 	
 	if(numPasajerosBien){ 
 		devuelvo = true;
 		validar_campo_aspecto(elemento, devuelvo);
+		$("#numPas").slideUp();
 		return devuelvo;
 	}
 
 	else {
 		validar_campo_aspecto(elemento, devuelvo);
+		$("#numPas").slideDown();
 		return devuelvo;
 	}
 	
@@ -121,11 +128,13 @@ function validar_autonomia(elemento){
 	
 	if(autonomiaBien){ 
 		devuelvo = true;
+		$("#aut").slideUp();
 		validar_campo_aspecto(elemento, devuelvo);
 		return devuelvo;
 	}
 
 	else {
+		$("#aut").slideDown();
 		validar_campo_aspecto(elemento, devuelvo);
 		return devuelvo;
 	}
@@ -137,14 +146,15 @@ function validar_tarifa(elemento){
 	var tarifa_exprReg = /^\d.\d\d|\d.\d$/;
 	var tarifaBien = tarifa_exprReg.test(tarifa);
 	var devuelvo = false;
-	console.log(tarifa);
 	if(tarifaBien){ 
 		devuelvo = true;
+		$("#tar").slideUp();
 		validar_campo_aspecto(elemento, devuelvo);
 		return devuelvo;
 	}
 
 	else {
+		$("#tar").slideDown();
 		validar_campo_aspecto(elemento, devuelvo);
 		return devuelvo;
 	}
@@ -154,8 +164,12 @@ function validar_imagen(elemento){
   devuelvo = true;
 
      if($(elemento).val() == ''){
+		$("#media").slideDown();
         devuelvo = false;
      }
+     else{
+		$("#media").slideUp();
+	 }
 
     return devuelvo;
 }	

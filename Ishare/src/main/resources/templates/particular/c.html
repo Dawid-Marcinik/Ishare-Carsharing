@@ -3,42 +3,75 @@
 <h1 class="row justify-content-center container">Nuevo particular</h1>
 <div class="row justify-content-center container">
 	<form method="POST">
+		<label class="etiq" for="fechaNacimiento">Fecha nacimiento</label>
+	<input type="Date" name="fechaNacimiento" id="fechaNacimiento" onchange='validarFechaNac(this.form)' onclick="validar(this.form)"/>
+	<div id="fnac" class="rojo">
+		Debe poner una fecha de nacimiento válida (debe ser un mayor de edad).
+	</div>
+	<div class="w-100"></div>
 	<label class="etiq" for="nombreUsuario">Nombre del usuario</label>
 	<input type="text" name="nombreUsuario" id="nombreUsuario" onchange='validarNombreUsuario(this.form)' onkeyup="validar(this.form)"/>
+	<div id="nomUs" class="rojo">
+		Debe poner un nombre de usuario válido.
+	</div>
 	<div class="w-100"></div>
 		<label class="etiq" for="contrasena">Contraseña</label>
 	<input type="password" name="contrasena" id="contrasena" onchange='validarContrasena(this.form)' onkeyup="validar(this.form)"/>
+	<div id="contra" class="rojo">
+		Debe una contraseña válida (al menos 8 caracteres, mayúsculas, minúsculas y números).
+	</div>
 	<div class="w-100"></div>
 		<label class="etiq" for="localidad">Localidad</label>
 	<input type="text" name="localidad" id="localidad" onchange='validarLocalidad(this.form)' onkeyup="validar(this.form)"/>
+	<div id="loc" class="rojo">
+		Debe poner un nombre de localidad válido.
+	</div>
 	<div class="w-100"></div>
 		<label class="etiq" for="direccion">Direccion</label>
 	<input type="text" name="direccion" id="direccion" onchange='validarDireccion(this.form)' onkeyup="validar(this.form)"/>
+	<div id="dir" class="rojo">
+		Debe una dirección válida.
+	</div>
 	<div class="w-100"></div>
 		<label class="etiq" for="codigoPostal">Código Postal</label>
 	<input type="number" name="codigoPostal" id="codigoPostal"  onchange='validarCodigoPostal(this.form)' onkeyup="validar(this.form)"/>
+	<div id="codPost" class="rojo">
+		Debe poner un código postal válido.
+	</div>
 	<div class="w-100"></div>
 		<label class="etiq" for="telefono">Teléfono</label>
 	<input type="number" name="telefono" id="telefono" onchange='validarTelefono(this.form)' onkeyup="validar(this.form)"/>
+	<div id="tlf" class="rojo">
+		Debe poner un número de teléfono válido.
+	</div>
 	<div class="w-100"></div>
 		<label class="etiq" for="email">Email</label>
 	<input type="email" name="email" id="email" onchange='validarEmail(this.form)' onkeyup="validar(this.form)"/>
+	<div id="mail" class="rojo">
+		Debe poner email válido.
+	</div>
 	<div class="w-100"></div>
 	<input th:each="rol:${roles}" th:if="${rol.nombre == 'User'}" type="hidden" name="idRol" th:value="${rol.id}">
 	<div class="w-100"></div>
 	<input type="number" name="saldo" id="saldo" step="0.01" onchange='validarSaldo(this.form)' value="0" onkeyup="validar(this.form)" hidden/>
 	<div class="w-100"></div>
-		<label class="etiq" for="fechaNacimiento">Fecha nacimiento</label>
-	<input type="Date" name="fechaNacimiento" id="fechaNacimiento" onchange='validarFechaNac(this.form)' onclick="validar(this.form)"/>
-	<div class="w-100"></div>
 	<label class="etiq" for="dni">DNI/NIE</label>
 	<input type="text" name="dni" id="dni" onchange='validarDni(this.form)' onkeyup="validar(this.form)"/>
+	<div id="dniNie" class="rojo">
+		Debe poner un número DNI válido.
+	</div>
 	<div class="w-100"></div>
 	<label class="etiq" for="nombre">Nombre</label>
 	<input type="text" name="nombre" id="nombre" onchange='validarNombre(this.form)' onkeyup="validar(this.form)"/>
+	<div id="nom" class="rojo">
+		Debe poner un nombre válido.
+	</div>
 	<div class="w-100"></div>
 	<label class="etiq" for="apellidos">Apellidos</label>
 	<input type="text" name="apellidos" id="apellidos" onchange='validarApellidos(this.form)' onkeyup="validar(this.form)"/>
+	<div id="ap" class="rojo">
+		Debe poner un apellido válido.
+	</div>
 	<div class="w-100"></div>
 	<button class="btn-base" disabled id="envio" onclick="validar(this.form)">Crear</button>
 	<button class="btn-cancelar"><a class="enlace" href="/">Volver</a></button>

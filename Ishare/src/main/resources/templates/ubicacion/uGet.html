@@ -16,9 +16,15 @@
 	<form method="post">
 		<label class="etiq" for="direccion">DIRECCIÓN</label>
 		<input type="text" th:value="${ubicacion.direccion}" id="direccion" name="direccion" onkeyup="validar()"/>
+		<div id="dir" class="rojo">
+			Debe introducir un nombre de dirección válido.
+		</div>
 		<br/>
 		<label class="etiq" for="plazasTotales">PLAZAS TOTALES</label>
 		<input type="number" th:value="${ubicacion.plazasTotales}"id="plazasTotales" name="plazasTotales" min="1" onchange="validar()" required />
+		<div id="numTot" class="rojo">
+			Debe introducir un número de plazas totales válido.
+		</div>
 		<br/>
 
 		
