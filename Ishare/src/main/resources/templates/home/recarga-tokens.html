@@ -22,31 +22,32 @@
 		<input type="number" name="numTarjeta" id="numTarjeta" onkeyup="validar()" required>
 		<br/>
 		<div id="numT" class="rojo">
-		 	Debe poner un número de tarjeta válido.
+		 	Debe poner un número de tarjeta válido. Debe tener 16 números y ha de empezar por 4 o 5
 		</div>
 		<label class="etiq" for="numTarjeta">Nombre tarjeta:</label>
 		<input type="text" name="nomTarjeta" id="nomTarjeta" onkeyup="validar()" required>
 		<br/>
 		<div id="nomT" class="rojo">
-		 	Debe poner un nombre de titular de la tarjeta válido.
+		 	Debe poner un nombre del titular de la tarjeta válido. Carácteres permitidos:<br>
+			letras de la A a la Z, Ç, Ñ, espacio y -.
 		</div>
 		<label class="etiq" for="fechaTarjeta">Fecha expiración tarjeta:</label>
 		<input type="number" name="mesTarjeta" id="mesTarjeta" onkeyup="validar()" style="width:50px;" required> / <input type="number" name="anioTarjeta" id="anioTarjeta" onkeyup="validarFechaTarjeta()" style="width:75px;" required>
 		<br/>
 		<div id="fechaT" class="rojo">
-		 	Debe una fecha de expiración válida.
+		 	Debe una fecha de expiración válida. Debe ser una fecha situada en el futuro.
 		</div>
 		<label class="etiq" for="cvv">CVV tarjeta:</label>
 		<input type="number" name="cvv" id="cvv" onkeyup="validar()" style="width:75px;" required>
 		<div id="cvvT" class="rojo">
-		 	Debe poner un número de control de tarjeta válido.
+		 	Debe poner un número de control de tarjeta válido. Han de ser tres números.
 		</div>
 		</div>
 		<label class="etiq" for="saldo">Tokens a añadir: </label>
 		<input type="number" name="saldo" id="saldo" onkeyup="validar()" style="width:100px;" required/>
 		<br/>
 		<div id="anadir" class="rojo">
-		 	Debe poner una cantidad de Tokens.
+		 	Debe poner una cantidad de Tokens(número positivo).
 		</div>
 		
 		<input type="hidden" name="id" th:value="${session.user.id}"/>

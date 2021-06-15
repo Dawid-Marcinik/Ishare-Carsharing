@@ -9,11 +9,12 @@
 		<label class="etiq" for="nombre">Nombre del modelo: </label>
 		<input type="text" id="nombre" name="nombre" th:value="${modelo.nombre}" onchange="validar_nombre(this)" onkeyup="validar_modelo(this)" onfocus="reseteaColor(this)">
 		<div id="nom" class="rojo">
-			Debe introducir un nombre de modelo válido.
+			Debe un nombre de modelo válido. Carácteres permitidos:<br>
+			letras de la A a la Z, espacio, números y -.
 		</div>
 		<br>
 		<label class="etiq" for="numeroPasajeros">Número de pasajeros: </label>
-		<input type="number" id="numeroPasajeros" name="numeroPasajeros" th:value="${modelo.numeroPasajeros}"  onkeyup="validar_pasajeros(this)" onchange="validar_modelo(this)" onclick="validar_pasajeros(this)" onfocus="reseteaColor(this)">
+		<input type="number" min="1" max="7" id="numeroPasajeros" name="numeroPasajeros" th:value="${modelo.numeroPasajeros}"  onkeyup="validar_pasajeros(this)" onchange="validar_modelo(this)" onclick="validar_pasajeros(this)" onfocus="reseteaColor(this)">
 		<div id="numPas" class="rojo">
 			Debe introducir un número de pasajeros entre 1 y 7.
 		</div>
@@ -24,7 +25,7 @@
 		</select>
 		<br>
 		<label class="etiq" for="autonomiaTotal">Autonomía total (Km): </label>
-		<input type="number" id="autonomiaTotal" name="autonomiaTotal" th:value="${modelo.autonomiaTotal}"  onkeyup="validar_autonomia(this)" onchange="validar_modelo(this)" onclick="validar_autonomia(this)" onfocus="reseteaColor(this)">
+		<input type="number" min="100" max="999" id="autonomiaTotal" name="autonomiaTotal" th:value="${modelo.autonomiaTotal}"  onkeyup="validar_autonomia(this)" onchange="validar_modelo(this)" onclick="validar_autonomia(this)" onfocus="reseteaColor(this)">
 		<div id="aut" class="rojo">
 			Debe introducir una autonomía total entre 100 y 999.
 		</div>

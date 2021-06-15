@@ -10,7 +10,8 @@
 		<label class="etiq" for="nombreUsuario">Nombre de usuario</label>
 		<input type="text" name="nombreUsuario" id="nombreUsuario" th:value="${particular.nombreUsuario}" onchange='validarNombreUsuario(this.form)' onkeyup="validar(this.form)"><br>
 		<div id="nomUs" class="rojo">
-		 	Debe poner un nombre de usuario válido.
+		 Debe poner un nombre de usuario válido. Carácteres permitidos:<br>
+			letras de la A a la Z, Ç, Ñ, números, espacio y -.
 		 </div>
 		<label class="etiq" for="contrasena">Contraseña</label>
 		<input type="password" name="contrasena" id="contrasena" value="" onchange='validarContrasena(this.form)' onkeyup="validar(this.form)"><br>
@@ -20,42 +21,48 @@
 		<label class="etiq" for="localidad">Localidad</label>
 		<input type="text" name="localidad" id="localidad" th:value="${particular.localidad}" onchange='validarLocalidad(this.form)' onkeyup="validar(this.form)"><br>
 		<div id="loc" class="rojo">
-		 	Debe poner un nombre de localidad válido.
+		 	Debe poner un nombre de localidad válido. Carácteres permitidos:<br>
+			letras de la A a la Z, Ç, Ñ, espacio y -.
 		 </div>
 		<label class="etiq" for="direccion">Dirección</label>
 		<input type="text" name="direccion" id="direccion" th:value="${particular.direccion}" onchange='validarDireccion(this.form)' onkeyup="validar(this.form)"><br>
 		<div id="dir" class="rojo">
-		 	Debe una dirección válida.
+		 	Debe una dirección válida. Carácteres permitidos:<br>
+			letras de la A a la Z, Ç, Ñ, espacio, -, / y números.
 		 </div>
 		<label class="etiq" for="codigoPostal">Código postal</label>
 		<input type="number" name="codigoPostal" id="codigoPostal" th:value="${particular.codigoPostal}"  onchange='validarCodigoPostal(this.form)' onkeyup="validar(this.form)"><br>
 		<div id="codPost" class="rojo">
-		 	Debe poner un código postal válido.
+		 	Debe poner un código postal válido. Tenga en cuenta que debe tener 5 dígitos y las primeras 2 cifras han de estar contenidas entre 01 y 52
 		 </div>
 		<label class="etiq" for="telefono">Teléfono</label>
 		<input type="number" name="telefono" id="telefono" th:value="${particular.telefono}" onchange='validarTelefono(this.form)' onkeyup="validar(this.form)"><br>
 		<div id="tlf" class="rojo">
-		 	Debe poner un número de teléfono válido.
+		 	Debe poner un número de teléfono válido. Tenga en cuenta que el número de teléfono ha de tener nueve dígitos y empezar por 6, 7, 8 o 9
 		 </div>
 		<label class="etiq" for="email">Email</label>
 		<input type="email" name="email" id="email" th:value="${particular.email}" onchange='validarEmail(this.form)' onkeyup="validar(this.form)"><br>
 		<div id="mail" class="rojo">
-		 	Debe poner email válido.
+		 	Debe poner email válido. Debe tener un formato parecido al siguiente:<br>
+			micorreo@gmail.com o mi.correo@gmail.com
 		 </div>
 		<label class="etiq" for="dni">DNI/NIE</label>
 		<input type="text" name="dni"  id="dni" th:value="${particular.dni}" onkeyup="validar(this.form)" onchange='validarDni(this.form)'><br>
 		<div id="dniNie" class="rojo">
-		 	Debe poner un número DNI válido.
+		 	Debe poner un número DNI o NIE válido con una longitud de 8 o 9 caracteres, tenga en cuenta que el primer dígito ha de ser una letra entre las siguientes opciones X, Y o Z si es un NIE y el último puede ser una letra T, R, W, A, G, M, Y, F, P, D, X, B, N, J, Z, S, Q, V, H, L, C, K o E. El formato sería el siguiente:<br>
+			X0000000T o 0000000T
 		 </div>
 		<label class="etiq" for="nombre">Nombre</label>
 		<input type="text" name="nombre" id="nombre" th:value="${particular.nombre}" onkeyup="validar(this.form)" onchange='validarNombre(this.form)'><br>
 		<div id="nom" class="rojo">
-		 	Debe poner un nombre válido.
+		 	Debe poner un nombre válido. Carácteres permitidos:<br>
+			letras de la A a la Z, Ç, Ñ, espacio y -.
 		 </div>
 		<label class="etiq" for="apellidos">Apellidos</label>
 		<input type="text" name="apellidos" id="apellidos" th:value="${particular.apellidos}" onkeyup="validar(this.form)" onchange='validarApellidos(this.form)'><br>
 		<div id="ap" class="rojo">
-			Debe poner un apellido válido.
+			Debe poner un apellido válido. Carácteres permitidos:<br>
+			letras de la A a la Z, Ç, Ñ, espacio y -.
 		 </div>
 		<input type="hidden" name="id" id="id" th:value="${particular.id}"/>
 		

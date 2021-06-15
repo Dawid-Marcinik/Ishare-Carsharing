@@ -5,7 +5,8 @@
 		<input type="text" id="nombre" name="nombre" th:value="${marca.nombre}" onkeyup="validar_tipo_o_marca(this)" onfocus="reseteaColor(this)">
 		<input type="hidden" name="id" th:value="${marca.id}">
 		<div id="nom" class="rojo">
-			Debe un nombre de marca válido.
+			Debe un nombre de marca válido. Carácteres permitidos:<br>
+			letras de la A a la Z, espacio y -.
 		</div>
 		<br>
 		<input class="btn-base" id="envio" type="submit" value="Modificar">

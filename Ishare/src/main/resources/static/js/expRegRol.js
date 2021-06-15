@@ -26,9 +26,11 @@ function validarNombreRol(form) {//mínimo 3 caracteres, máximo 30 caracteres, 
     if (reg.test(dato) == false) {
       form.nombre.style.color = "red";
       document.getElementById("nombre").style.borderColor = "red";
+      $("#nom").slideDown();
       return false;
     }else{
       form.nombre.style.color = "black";
+      $("#nom").slideUp();
       document.getElementById("nombre").style.borderColor = "black";
       return true;
     }
